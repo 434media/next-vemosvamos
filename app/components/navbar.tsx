@@ -3,6 +3,7 @@
 import { motion } from "motion/react"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import Image from "next/image"
 
 const MotionLink = motion(Link)
 
@@ -51,11 +52,18 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
         </nav>
       </motion.header>
 
-      {/* Fixed menu button with introduction animation */}
+      {/* Fixed menu button with custom image and introduction animation */}
       <motion.button
-        className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-[#8b0000] to-[#a50000] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40 flex items-center justify-center"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-40 flex items-center justify-center p-2 overflow-hidden group"
         onClick={onOpenMenu}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{
+          scale: 1.15,
+          rotate: [0, -5, 5, -5, 0],
+          transition: {
+            scale: { duration: 0.2 },
+            rotate: { duration: 0.6, ease: "easeInOut" },
+          },
+        }}
         whileTap={{ scale: 0.9 }}
         initial={{
           opacity: 0,
@@ -79,37 +87,34 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
           damping: 15,
         }}
       >
-        <motion.svg
-          className="w-6 h-6"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          initial={{ opacity: 0, rotate: -90 }}
-          animate={{ opacity: 1, rotate: 0 }}
+        <motion.div
+          className="relative w-full h-full"
+          initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
+          animate={{ opacity: 1, rotate: 0, scale: 1 }}
           transition={{
             delay: 2,
-            duration: 0.5,
+            duration: 0.6,
             ease: "easeOut",
           }}
+          whileHover={{
+            scale: 1.1,
+            rotate: [0, 10, -10, 5, 0],
+            transition: { duration: 0.8, ease: "easeInOut" },
+          }}
         >
-          <motion.path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{
-              delay: 2.2,
-              duration: 0.6,
-              ease: "easeInOut",
-            }}
+          <Image
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/VV_Sucker_logo.png"
+            alt="Vemos Vamos Menu"
+            fill
+            className="object-contain transition-all duration-300 group-hover:brightness-110"
+            sizes="64px"
+            priority
           />
-        </motion.svg>
+        </motion.div>
 
         {/* Animated ring effect */}
         <motion.div
-          className="absolute inset-0 rounded-full border-2 border-white/30"
+          className="absolute inset-0 rounded-full border-2 border-[#8b0000]/30"
           initial={{ scale: 0, opacity: 0 }}
           animate={{
             scale: [0, 1.2, 1],
@@ -121,6 +126,104 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
             ease: "easeOut",
           }}
         />
+
+        {/* Hover ring effect */}
+        <motion.div
+          className="absolute inset-0 rounded-full border-2 border-[#ffc857] opacity-0"
+          whileHover={{
+            scale: [1, 1.3, 1.1],
+            opacity: [0, 0.8, 0.4],
+            transition: { duration: 0.6, ease: "easeOut" },
+          }}
+        />
+
+        {/* Subtle pulsing glow effect */}
+        <motion.div
+          className="absolute inset-0 rounded-full bg-gradient-to-r from-[#8b0000]/20 to-[#ffc857]/20 blur-sm"
+          animate={{
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.6, 0.3],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+          whileHover={{
+            scale: [1, 1.2, 1.1],
+            opacity: [0.6, 1, 0.8],
+            transition: { duration: 0.4 },
+          }}
+        />
+
+        {/* Floating hearts on hover */}
+        <motion.div className="absolute inset-0 pointer-events-none" whileHover="hover" initial="initial">
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute text-[#8b0000] text-xs"
+              style={{
+                left: `${20 + ((i * 60) % 80)}%`,
+                top: `${20 + ((i * 40) % 60)}%`,
+              }}
+              variants={{
+                initial: {
+                  opacity: 0,
+                  scale: 0,
+                  y: 0,
+                  rotate: 0,
+                },
+                hover: {
+                  opacity: [0, 1, 0],
+                  scale: [0, 1.2, 0],
+                  y: [0, -20, -40],
+                  rotate: [0, 180, 360],
+                  transition: {
+                    duration: 1.2,
+                    delay: i * 0.1,
+                    ease: "easeOut",
+                  },
+                },
+              }}
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" className="w-3 h-3">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Sparkle effects on hover */}
+        <motion.div className="absolute inset-0 pointer-events-none" whileHover="hover" initial="initial">
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`sparkle-${i}`}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              style={{
+                left: `${10 + ((i * 80) % 90)}%`,
+                top: `${10 + ((i * 70) % 80)}%`,
+              }}
+              variants={{
+                initial: {
+                  opacity: 0,
+                  scale: 0,
+                  rotate: 0,
+                },
+                hover: {
+                  opacity: [0, 1, 0],
+                  scale: [0, 1.5, 0],
+                  rotate: [0, 180],
+                  transition: {
+                    duration: 0.8,
+                    delay: i * 0.05,
+                    ease: "easeInOut",
+                  },
+                },
+              }}
+            />
+          ))}
+        </motion.div>
       </motion.button>
     </>
   )
