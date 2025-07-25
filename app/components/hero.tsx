@@ -170,7 +170,7 @@ export function Hero() {
               type="video/mp4"
             />
           ) : (
-            <source src="https://ampd-asset.s3.us-east-2.amazonaws.com/Horizontal+Intro+on+Loop.mov" type="video/mp4" />
+            <source src="https://ampd-asset.s3.us-east-2.amazonaws.com/VV_Intro_V01.mp4" type="video/mp4" />
           )}
           Your browser does not support the video tag.
         </video>
