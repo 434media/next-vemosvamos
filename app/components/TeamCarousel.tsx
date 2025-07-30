@@ -281,24 +281,23 @@ export default function TeamCarousel({ language }: TeamCarouselProps) {
           Meet Our Team
         </h1>
         <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handlePrevious}
-            disabled={isTransitioning}
-            className="w-16 h-14 text-[rgba(134,24,4,1)] hover:bg-[rgba(134,24,4,0.1)] transform transition-all duration-200 hover:scale-110 active:scale-95"
-          >
-            <ChevronLeft className="w-12 h-12" />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => handleNext()}
-            disabled={isTransitioning}
-            className="w-16 h-14 text-[rgba(134,24,4,1)] hover:bg-[rgba(134,24,4,0.1)] transform transition-all duration-200 hover:scale-110 active:scale-95"
-          >
-            <ChevronRight className="w-12 h-12" />
-          </Button>
+        <div className="absolute right-4 top-1/2 -translate-y-1/2 flex gap-3 z-50">
+  <Button
+    onClick={handlePrevious}
+    className="bg-[rgba(134,24,4,0.7)] hover:bg-[rgba(134,24,4,0.9)] text-white p-4 rounded-full shadow-lg backdrop-blur-sm transition-all"
+  >
+    <ChevronLeft className="w-8 h-8" />
+  </Button>
+
+  <Button
+    onClick={handleNext}
+    className="bg-[rgba(134,24,4,0.7)] hover:bg-[rgba(134,24,4,0.9)] text-white p-4 rounded-full shadow-lg backdrop-blur-sm transition-all"
+  >
+    <ChevronRight className="w-8 h-8" />
+  </Button>
+</div>
+
+
         </div>
       </div>
 

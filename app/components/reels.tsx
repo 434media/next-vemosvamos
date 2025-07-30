@@ -4,8 +4,7 @@ import { useRef, useState } from "react"
 import { motion } from "framer-motion"
 
 export default function StacySection() {
-    const createVideoRef = () => useRef<HTMLVideoElement | null>(null)
-    const videoRefs = Array.from({ length: 7 }, () => createVideoRef())
+    const videoRefs = useRef<(HTMLVideoElement | null)[]>([])
     const [hoverIndex, setHoverIndex] = useState<number | null>(null)
 
     const captions = [
@@ -18,13 +17,26 @@ export default function StacySection() {
         "Your story in motion 🎬"
     ]
 
+    const videos = [
+        "https://ampd-asset.s3.us-east-2.amazonaws.com/RGV+Start+Up+Week+2025.mov",
+        "https://nam11.safelinks.protection.outlook.com/?url=https%3A%2F%2Fampd-asset.s3.us-east-2.amazonaws.com%2FCafecito%2By%2BParche.mov&data=05%7C02%7CCamille.Rivera%40my.utsa.edu%7C745d5f4f5a084fec77cc08ddcf8c4e1a%7C3a228dfbc64744cb88357b20617fc906%7C0%7C1%7C638894923692337318%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C60000%7C%7C%7C&sdata=5Yl4Bu3ul2GIB2PWs1rAvbvcxhdC86cix%2B5abA2A8uA%3D&reserved=0",
+        "https://ampd-asset.s3.us-east-2.amazonaws.com/AltBionics+.mov",
+        "https://ampd-asset.s3.us-east-2.amazonaws.com/4+Film+Facts.mov",
+        "https://ampd-asset.s3.us-east-2.amazonaws.com/Arely+Reel+%232+.mov",
+        "https://ampd-asset.s3.us-east-2.amazonaws.com/Marcos+x+Stacy+Motivational+Advice.mov",
+    ]
+
     const handleMouseEnter = (index: number) => {
         setHoverIndex(index)
-        videoRefs[index].current?.play()
+        videoRefs.current[index]?.play()
     }
+
     const handleMouseLeave = (index: number) => {
         setHoverIndex(null)
-        videoRefs[index].current?.pause()
+        if (videoRefs.current[index]) {
+            videoRefs.current[index]?.pause()
+            videoRefs.current[index]!.currentTime = 0
+        }
     }
 
     return (
@@ -41,9 +53,8 @@ export default function StacySection() {
                 </motion.h2>
             </div>
 
-            {/* Full-Width Video Grid */}
             <div className="w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-center">
-                {["reel1", "reel2", "reel3", "reel4", "reel5", "reel6"].map((name, i) => (
+                {videos.map((url, i) => (
                     <motion.div
                         key={i}
                         className="w-full flex flex-col items-center aspect-auto rounded-xl shadow-md transition-transform"
@@ -57,9 +68,12 @@ export default function StacySection() {
                         {/* Video */}
                         <div className="w-full aspect-[9/16] overflow-hidden rounded-xl shadow-md">
                             <video
-                                ref={videoRefs[i]}
-                                src={`/images/${name}.mp4`}
+                                ref={el => (videoRefs.current[i] = el)}
+                                src={url}
                                 playsInline
+                                muted
+                                loop
+                                preload="metadata"
                                 className="w-full h-full rounded-xl bg-white"
                             />
                         </div>
