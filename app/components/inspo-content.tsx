@@ -73,7 +73,6 @@ export default function CollectionSection() {
         {imageBox(images1, current1, setCurrent1)}
         {imageBox(images2, current2, setCurrent2)}
         {imageBox(images3, current3, setCurrent3)}
-        {imageBox(images4, current4, setCurrent4)}
 
       </div>
 
