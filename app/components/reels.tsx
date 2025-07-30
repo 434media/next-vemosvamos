@@ -68,7 +68,7 @@ export default function StacySection() {
                         {/* Video */}
                         <div className="w-full aspect-[9/16] overflow-hidden rounded-xl shadow-md">
                             <video
-                                ref={el => (videoRefs.current[i] = el)}
+                                ref={el => { videoRefs.current[i] = el; }}
                                 src={url}
                                 playsInline
                                 muted
