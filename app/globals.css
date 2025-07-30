@@ -1,1 +1,91 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TeX Gyre Termes font faces */
+
+@font-face {
+  font-family: "TeXGyreTermes";
+  src: url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-regular.woff2") format("woff2"),
+       url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TeXGyreTermes";
+  src: url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-bold.woff2") format("woff2"),
+       url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TeXGyreTermes";
+  src: url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-italic.woff2") format("woff2"),
+       url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-italic.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "TeXGyreTermes";
+  src: url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-bolditalic.woff2") format("woff2"),
+       url("https://cdn.jsdelivr.net/gh/altmshfkgudtjr/texgyretermes@latest/texgyretermes-bolditalic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+
+@layer base {
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-start-rgb));
+    cursor: url(https://ani.cursors-4u.net/nature/nat-11/nat1058.cur), auto;
+    /* font-family: "TeXGyreTermes", serif; */ /* Uncomment to make default for all text */
+  }
+
+  h1 {
+    font-family: "TeXGyreTermes", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.025em;
+  }
+
+    h2 {
+      font-family: "FuturaBold", Futura, "Trebuchet MS", Arial, sans-serif;
+      font-weight: bold;
+      font-style: normal;
+      letter-spacing: 0.01em;
+    }
+  
+    @layer base {
+      h3 {
+        font-family: "FuturaBold", Futura, "Trebuchet MS", Arial, sans-serif;
+        font-weight: bold;
+        font-style: normal;
+        letter-spacing: 0.01em;
+      }
+    }
+  h4,
+  h5,
+  h6 {
+    font-family: "TeXGyreTermes", serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.025em;
+  }
+
+  p {
+    font-family: var(--font-inter);
+    font-weight: 300;
+    opacity: 0.6;
+  }
+}

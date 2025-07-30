@@ -1,120 +1,36 @@
-# Vemos Vamos
-
-Vemos Vamos is a bilingual, creatively-driven web platform designed to foster entrepreneurial success through community, resources, and innovative solutions. The site features a fluid, animated interface built with Next.js and GSAP, offering content in both English and Spanish.
-
-## Tech Stack
-
--   **Framework:** [Next.js](https://nextjs.org/) (with App Router & Turbopack)
--   **Language:** [TypeScript](https://www.typescriptlang.org/)
--   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
--   **Animation:** [GSAP (GreenSock Animation Platform)](https://greensock.com/gsap/) & [Framer Motion](https://www.framer.com/motion/)
--   **Backend Services:**
-    -   [Airtable](https://airtable.com/): For newsletter subscriptions.
-    -   [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/): For spam protection.
--   **Deployment:** Vercel
-
-## Folder Structure
-
-The project follows the standard Next.js App Router structure.
-
-```
-.
-├── app/                  # Main application source code
-│   ├── api/              # API routes (e.g., newsletter)
-│   ├── components/       # Reusable React components
-│   ├── layout.tsx        # Root layout
-│   ├── page.tsx          # Main landing page
-│   └── globals.css       # Global styles
-├── public/               # Static assets (images, svgs)
-├── next.config.ts        # Next.js configuration
-└── package.json          # Project dependencies and scripts
-```
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-Follow these steps to set up and run the project locally.
+First, run the development server:
 
-### Prerequisites
-
--   Node.js (v20 or later)
--   npm, yarn, or pnpm
-
-### 1. Clone the Repository
-
-First, clone the repository to your local machine:
-
-```sh
-git clone https://github.com/your-username/next-vemosvamos.git
-cd next-vemosvamos
-```
-
-### 2. Install Dependencies
-
-Install the project dependencies using npm:
-
-```sh
-npm install
-```
-
-### 3. Set Up Environment Variables
-
-Create a `.env.local` file in the root of the project and add the necessary environment variables. You will need credentials for Airtable and Cloudflare Turnstile.
-
-```env
-# .env.local
-
-# Airtable
-AIRTABLE_API_KEY=your_airtable_api_key
-AIRTABLE_BASE_ID=your_airtable_base_id
-
-# Cloudflare Turnstile
-NEXT_PUBLIC_TURNSTILE_SITE_KEY=your_turnstile_site_key
-TURNSTILE_SECRET_KEY=your_turnstile_secret_key
-```
-
-### 4. Run the Development Server
-
-Start the local development server with Turbopack:
-
-```sh
+```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Available Scripts
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
--   `npm run dev`: Starts the development server.
--   `npm run build`: Builds the application for production.
--   `npm run start`: Starts the production server.
--   `npm run lint`: Runs the linter to check for code quality issues.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## GitHub Workflow & Contribution Process
+## Learn More
 
-We follow a standard feature-branch workflow.
+To learn more about Next.js, take a look at the following resources:
 
-1.  **Create a Branch**: Create a new branch from the `main` branch for your feature or bug fix. Use a descriptive name.
-    ```sh
-    # Example for a new feature
-    git checkout -b feature/add-contact-form
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-    # Example for a bug fix
-    git checkout -b fix/newsletter-api-error
-    ```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-2.  **Make Changes**: Implement your changes, additions, or fixes on your branch.
+## Deploy on Vercel
 
-3.  **Commit Your Changes**: Commit your work with a clear and descriptive commit message.
-    ```sh
-    git add .
-    git commit -m "feat: Add contact form component and API endpoint"
-    ```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-4.  **Push to GitHub**: Push your branch to the remote repository.
-    ```sh
-    git push origin feature/add-contact-form
-    ```
-
-5.  **Create a Pull Request (PR)**: Open a Pull Request on GitHub, comparing your branch to the `main` branch. Provide a summary of your changes in the PR description.
-
-6.  **Review and Merge**: A team member will review your code. Once approved, the PR will be merged into the `main` branch, and your changes will be
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
