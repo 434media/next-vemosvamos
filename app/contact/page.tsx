@@ -12,7 +12,7 @@ const navigation = [
 ]
 
 const images = [
-  "/images/vvintro.mp4",
+  "https://ampd-asset.s3.us-east-2.amazonaws.com/strawberriesgrowing.mp4",
 ]
 
 export default function ContactPage() {
