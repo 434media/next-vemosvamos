@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useState, useEffect, useRef } from "react" // make sure useRef is imported
 
 const images = [
-  "/images/VVSpanishQuote.mp4",
+  "https://ampd-asset.s3.us-east-2.amazonaws.com/VVSpanishQuote.mp4",
 ]
 
 export default function AboutSection() {
