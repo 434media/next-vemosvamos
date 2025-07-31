@@ -141,7 +141,7 @@ export default function AboutPage() {
     transition={{ duration: 0.8 }}
     style={{
       width: imagePosition, // keep width transform
-      height: "30%",}}
+      height: "35.7%",}} //heading video size
   >
     <video
       key={currentImageIndex}
@@ -159,7 +159,7 @@ export default function AboutPage() {
 
       {/* Animated heading */}
       <motion.h1
-        className="absolute top-8 left-1/4 text-[6vw] lg:text-[70px] leading-none text-white mix-blend-difference z-20 italic"
+        className="absolute top-9 left-1/4 text-[6vw] lg:text-[70px] leading-none text-white mix-blend-difference z-64 italic"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.5 }}

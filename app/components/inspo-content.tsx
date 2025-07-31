@@ -8,6 +8,7 @@ const images2 = ["/images/secrets1.jpg", "/images/secrets2.jpg", "/images/secret
 const images3 = ["/images/slowEx1.jpg", "/images/slowEx2.jpg", "/images/slowEx3.jpg", "/images/slowEx4.jpg", "/images/slowEx5.jpg", "/images/slowEx6.jpg", "/images/slowEx7.jpg", "/images/slowEx8.jpg"]
 const images4 = ["/images/funk1.jpg", "/images/funk2.jpg", "/images/funk3.jpg", "/images/funk4.jpg", "/images/funk5.jpg"]
 const images5 = ["/images/norisk1.jpg", "/images/norisk2.jpg", "/images/norisk3.jpg", "/images/norisk4.jpg", "/images/norisk5.jpg", "/images/norisk6.jpg", "/images/norisk7.jpg", "/images/norisk8.jpg"]
+const images6 = ["/images/norisk1.jpg", "/images/norisk2.jpg", "/images/norisk3.jpg", "/images/norisk4.jpg", "/images/norisk5.jpg", "/images/norisk6.jpg", "/images/norisk7.jpg", "/images/norisk8.jpg"]
 
 
 export default function CollectionSection() {
@@ -15,14 +16,17 @@ export default function CollectionSection() {
   const [current2, setCurrent2] = useState(0)
   const [current3, setCurrent3] = useState(0)
   const [current4, setCurrent4] = useState(0)
+  const [current5, setCurrent5] = useState(0)
+  const [current6, setCurrent6] = useState(0)
+
   const [showMore, setShowMore] = useState(false)
 
   const nextImage = (set, images) => set((prev) => (prev + 1) % images.length)
   const prevImage = (set, images) => set((prev) => (prev - 1 + images.length) % images.length)
 
   const imageBox = (images, current, setCurrent) => (
-    <div className="relative w-[400px] h-[500px] rounded-xl overflow-hidden shadow-lg">
-      <div className="relative w-[400px] h-[500px]">
+    <div className="relative w-[300px] h-[400px] rounded-xl overflow-hidden shadow-lg">
+      <div className="relative w-[300px] h-[400px]">
         <AnimatePresence mode="wait">
           <motion.img
             key={images[current]}
@@ -73,6 +77,8 @@ export default function CollectionSection() {
         {imageBox(images1, current1, setCurrent1)}
         {imageBox(images2, current2, setCurrent2)}
         {imageBox(images3, current3, setCurrent3)}
+        {imageBox(images4, current4, setCurrent4)}
+
 
       </div>
 
@@ -87,8 +93,8 @@ export default function CollectionSection() {
       className="overflow-hidden mt-4 flex flex-col items-center gap-6"
     >
       <div className="flex flex-wrap justify-center gap-6">
-      {imageBox(images5, current4, setCurrent4)}
-        {imageBox(images2, current2, setCurrent2)}
+      {imageBox(images5, current5, setCurrent5)}
+        {imageBox(images2, current6, setCurrent6)}
       </div>
 
       {/* Moved button here */}
