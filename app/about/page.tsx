@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import Link from "next/link"
 import TeamCarousel from "../components/TeamCarousel"
+import SpottedSym from "../components/spottedsym"
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -141,7 +142,7 @@ export default function AboutPage() {
     transition={{ duration: 0.8 }}
     style={{
       width: imagePosition, // keep width transform
-      height: "35.7%",}} //heading video size
+      height: "20.5%",}} //heading video size
   >
     <video
       key={currentImageIndex}
@@ -171,9 +172,9 @@ export default function AboutPage() {
       </motion.h1>
 
     
-      <div className="w-full items-start min-h-screen mt-72 px-4">
+      <div className="relative w-full items-start min-h-screen px-10 pt-[20vh] z-20">
         <TeamCarousel language="en" />
-
+        <SpottedSym />
         {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

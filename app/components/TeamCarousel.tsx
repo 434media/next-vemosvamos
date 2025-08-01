@@ -32,7 +32,7 @@ const teamMembers: TeamMember[] = [
     description:
       "Stacy Carrizales is a bilingual digital creator, marketing strategist, and proud San Antonio native with over seven years of experience in social media and brand storytelling. She began her journey through her Instagram handle @strawberry.stacyy, where her “come with me” videos gained viral attention for their approachable, community-centered style. Her platform evolved into Vemos Vamos, a bilingual media space she founded to help entrepreneurs especially Latine creators turn passion into profit through culturally resonant, accessible content.",
     image: "/images/stacyheadshot.jpg",
-    skills: ["Brand Strategy", "Creative Direction", "Visual Design"],
+    skills: ["Creative Director", "Bilingual Storyteller", "Community Builder", "Media Visionary"],
     quote: "Great design isn't just about making things look beautiful—it's about making ideas feel inevitable.",
     philosophy: "Every brand has a unique story waiting to be told through thoughtful design and genuine creativity.",
     workUrl: "https://www.instagram.com/vemos.vamos/",
