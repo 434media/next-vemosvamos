@@ -1,15 +1,12 @@
-import HeroSection from "./components/hero-section"
-import CollectionSection from "./components/inspo-content"
-import AboutSection from "./components/what-is-vemos"
-import AnimatedSections from "./components/three-pillars"
+import NewLandingPage from "./components/hero-section"
+import WhyItMattersSection from "./components/whyitmatters"
 
 
 export default function Home() {
   return (
     <main>
-      <HeroSection />
-      <AboutSection />
-      <AnimatedSections />
+      <NewLandingPage />
+      <WhyItMattersSection />
     </main>
   )
 }

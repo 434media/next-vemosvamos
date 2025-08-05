@@ -2,36 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer base {
+  @font-face {
+    font-family: 'Inter';
+    src: url('/fonts/Inter-Regular.woff2') format('woff2'),
+         url('/fonts/Inter-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
 
+  @font-face {
+    font-family: 'TexGyreTermes';
+    src: url('/fonts/texgyretermes-regular.woff2') format('woff2'),
+         url('/fonts/texgyretermes-regular.woff') format('woff'),
+         url('/fonts/texgyretermes-regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
 
-@font-face {
-  font-family: 'TexGyreTermes'; /* This is the name you'll use in your CSS */
-  src: url('/fonts/texgyretermes-regular.woff2') format('woff2'),
-       url('/fonts/texgyretermes-regular.woff') format('woff'),
-       url('/fonts/texgyretermes-regular.ttf') format('truetype');
-  font-weight: normal; /* Adjust if you have different weights like bold */
-  font-style: normal;  /* Adjust if you have italic versions */
-  /* You might also add font-display: swap; for better performance */
-}
-
-/* If you have bold or italic versions, define them separately: */
-@font-face {
-  font-family: 'TexGyreTermes';
-  src: url('/fonts/texgyretermes-bold.woff2') format('woff2'),
-       url('/fonts/texgyretermes-bold.woff') format('woff'),
-       url('/fonts/texgyretermes-bold.ttf') format('truetype');
-  font-weight: bold;
-  font-style: normal;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  @font-face {
+    font-family: 'TexGyreTermes';
+    src: url('/fonts/texgyretermes-bold.woff2') format('woff2'),
+         url('/fonts/texgyretermes-bold.woff') format('woff'),
+         url('/fonts/texgyretermes-bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
   }
 }
+
 
 @layer base {
   :root {

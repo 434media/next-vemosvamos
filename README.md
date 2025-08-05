@@ -14,6 +14,9 @@ pnpm dev
 bun dev
 
 npm install -D @tailwindcss/postcss
+npm install react-icons
+npm install @next/font
+
 
 ```
 

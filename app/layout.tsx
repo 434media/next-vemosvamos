@@ -1,16 +1,12 @@
-import { Noto_Serif, Noto_Serif_JP } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/footer";
+import Navbar from "./components/Navbar";
 
-const notoSerif = Noto_Serif({
-  weight: "300",
-  style: "italic",
+const inter = Inter({
   subsets: ["latin"],
-});
-
-const notoSerifJP = Noto_Serif_JP({
-  weight: "200",
-  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata = {
@@ -24,11 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`flex flex-col min-h-screen overflow-x-hidden ${notoSerif.className}`}>
-        <main className={`${notoSerifJP.className} flex-grow`}>
-          {children}
-        </main>
+    <html lang="en" className={`scroll-smooth ${inter.variable}`}>
+      <body className="flex flex-col min-h-screen overflow-x-hidden font-sans antialiased">
+        <Navbar />
+        <main className="flex-grow pt-16">{children}</main>
         <Footer />
       </body>
     </html>
