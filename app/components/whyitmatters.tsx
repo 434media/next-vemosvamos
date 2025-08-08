@@ -89,7 +89,7 @@ export default function WhyItMattersSection() {
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               U.S. Latinos hold{" "}
-              <AnimatedNumber value={2.4} prefix="$" suffix="T" /> in consumer
+              <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " /> in consumer
               spending power.
             </p>
             <motion.div

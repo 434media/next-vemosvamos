@@ -1,7 +1,9 @@
 "use client";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -15,14 +17,23 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top Navigation Bar */}
-      <div className="fixed top-0 left-0 w-full h-16 bg-black bg-opacity-80 text-white z-50 flex items-center justify-between px-6 shadow-md">
-        {/* Logo */}
-        <div className="text-xl font-bold italic">LOGO</div>
+      {/* === TOP NAVBAR === */}
+      <div className="fixed top-0 left-0 w-full h-16 bg-[#7b0000] text-white z-50 flex items-center justify-between px-6">
+        {/* === LOGO === */}
+        <div className="flex items-center space-x-2">
+          <Image
+            src="/images/suckerlogo.png"
+            alt="Logo"
+            width={30}
+            height={40}
+            className="object-contain"
+            style={{ transform: "rotate(35deg)" }}
+          />
+        </div>
 
-        {/* Hamburger / Close Icon */}
+        {/* === HAMBURGER ICON === */}
         <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() => setIsMenuOpen((prev) => !prev)}
           className="relative w-8 h-8 text-white focus:outline-none z-50"
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         >
@@ -44,7 +55,7 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Animated Side Menu */}
+      {/* === SLIDE-IN MENU === */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
@@ -52,7 +63,7 @@ export default function Navbar() {
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: "100%", opacity: 0 }}
             transition={{ type: "spring", stiffness: 80, damping: 20 }}
-            className="fixed top-16 right-0 w-64 h-screen bg-black bg-opacity-95 text-white z-40 shadow-lg flex flex-col items-center justify-center"
+            className="fixed top-16 right-0 w-64 h-screen bg-[#7b0000] text-white z-40 shadow-lg flex flex-col items-start px-6 pt-10"
           >
             {navigation.map((item, index) => (
               <motion.div
@@ -63,10 +74,11 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className="block text-white text-2xl my-4"
                   onClick={() => setIsMenuOpen(false)}
+                  className="group relative block text-white text-xl font-bold uppercase my-4 text-left"
                 >
-                  {item.name}
+                  <span>{item.name}</span>
+                  <span className="absolute left-0 -bottom-1 h-[2px] w-full bg-white scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-100 transition-transform transition-opacity duration-300 origin-left" />
                 </Link>
               </motion.div>
             ))}
@@ -74,7 +86,7 @@ export default function Navbar() {
         )}
       </AnimatePresence>
 
-      {/* Overlay background */}
+      {/* === OVERLAY BACKGROUND === */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div

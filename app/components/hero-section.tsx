@@ -1,17 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import WhoWeReach from "./three-pillars";
 
 export default function NewLandingPage() {
+  const scrollRef = useRef(null);
+
+  // Get scroll progress and map it to motion values
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start start", "end end"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300]); // move down
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 360]); // full rotation
+
   return (
-    <div className="relative w-full overflow-x-hidden">
-      {/* HERO SECTION FIXED IN VIEW */}
-      <section 
+    <div ref={scrollRef} className="relative w-full overflow-x-hidden">
+      {/* === HERO SECTION FIXED IN VIEW === */}
+      <section
         className="
           fixed 
-          topy-15
           left-0 
           h-screen 
           w-full 
@@ -22,12 +33,12 @@ export default function NewLandingPage() {
           justify-center 
           overflow-hidden 
           z-0
-          pt-26   
+          pt-26
         "
       >
-        {/* TOP LEFT TEXT */}
+        {/* === TOP LEFT TEXT === */}
         <motion.div
-          className="absolute top-6 left-6 text-red-700 font-inter uppercase text-base md:text-lg tracking-wide"
+          className="absolute top-6 left-6 font-inter uppercase text-base md:text-lg tracking-wide text-red-700 text-left"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
@@ -35,7 +46,7 @@ export default function NewLandingPage() {
           A Multicultural Brand Studio
         </motion.div>
 
-        {/* TOP RIGHT TEXT */}
+        {/* === TOP RIGHT TEXT === */}
         <motion.div
           className="absolute top-6 right-6 text-red-700 font-inter uppercase text-base md:text-lg tracking-wide text-right"
           initial={{ opacity: 0, y: -10 }}
@@ -45,17 +56,9 @@ export default function NewLandingPage() {
           Powered by 434 Media
         </motion.div>
 
-        {/* MAIN IMAGE */}
+        {/* === MAIN IMAGE === */}
         <motion.div
-          className="
-            relative 
-            w-full 
-            h-full 
-            flex 
-            items-center 
-            justify-center 
-            overflow-hidden
-          "
+          className="relative w-full h-full flex items-center justify-center overflow-hidden"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -66,24 +69,15 @@ export default function NewLandingPage() {
             fill
             priority
             className="object-contain object-center drop-shadow-lg"
-            style={{ 
-              transform: "scale(0.85)", 
-              top: "20px"               
+            style={{
+              transform: "scale(0.85)",
+              top: "20px",
             }}
           />
 
-          {/* SECONDARY IMAGE */}
+          {/* === SECONDARY IMAGE === */}
           <motion.div
-            className="
-              absolute 
-              right-[400px] 
-              top-[65%] 
-              -translate-y-1/2 
-              w-[300px] 
-              md:w-[350px] 
-              lg:w-[400px] 
-              z-20
-            "
+            className="absolute right-[370px] top-[65%] -translate-y-1/2 w-[300px] md:w-[350px] lg:w-[400px] z-20"
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
@@ -97,14 +91,44 @@ export default function NewLandingPage() {
             />
           </motion.div>
         </motion.div>
+
+        {/* === SCROLL-RESPONSIVE DICE IMAGE (RIGHT SIDE) === */}
+        <motion.div
+          style={{ y, rotate, width: 260, height: 260 }}
+          className="absolute right-[5px] top-[250px] z-30"
+        >
+          <Image
+            src="/images/dice1.png"
+            alt="Dice Right"
+            fill
+            className="object-contain drop-shadow-lg"
+          />
+        </motion.div>
+
+{/* === FLICKERING STARS IMAGE (LEFT SIDE) === */}
+<motion.div
+  className="absolute left-10 top-[500px] z-30 w-[260px] h-[300px] animate-sparkle"
+>
+  <Image
+    src="/images/stars.png"
+    alt="Sparkling Stars"
+    fill
+    className="object-contain drop-shadow-lg"
+  />
+</motion.div>
+
+
+
+
+
       </section>
 
-      {/* SPACER to allow scrolling */}
+      {/* === SPACER to allow scrolling === */}
       <div className="h-screen"></div>
 
-      {/* OVERLAPPING SECTION */}
+      {/* === OVERLAPPING SECTION === */}
       <section className="relative bg-white rounded-t-[40px] shadow-2xl">
-      <div className="relative w-full">
+        <div className="relative w-full">
           <WhoWeReach />
         </div>
       </section>

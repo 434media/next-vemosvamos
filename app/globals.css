@@ -13,10 +13,12 @@
     @apply font-sans antialiased;
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-start-rgb));
-    cursor: url(https://ani.cursors-4u.net/nature/nat-11/nat1058.cur), auto;
+    
+    cursor: url("/Dice.cur"), auto;
+
     font-family: var(--font-inter), sans-serif !important;
   }
-
+  
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-inter), sans-serif !important;
     font-weight: 600;
@@ -28,4 +30,11 @@
     font-weight: 300;
     opacity: 0.8;
   }
+
+  /* Custom text shadow for hover effect */
+.hover\:text-shadow:hover {
+  text-shadow: 0px 6px 15px rgba(255, 0, 0, 0.5);
 }
+
+}
+

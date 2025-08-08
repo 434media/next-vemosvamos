@@ -2,45 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import OurTeam from "./ourteam";
 
 export default function AboutHero() {
-  const textLines = [
-    "FEMALE-LED",
-    "Authentically bicultural",
-    "Deeply embedded network",
-  ];
-
-  const [displayedText, setDisplayedText] = useState(["", "", ""]);
-
-  useEffect(() => {
-    let lineIndex = 0;
-    let charIndex = 0;
-
-    const typeNextChar = () => {
-      if (lineIndex < textLines.length) {
-        if (charIndex <= textLines[lineIndex].length) {
-          setDisplayedText((prev) => {
-            const newText = [...prev];
-            newText[lineIndex] = textLines[lineIndex].slice(0, charIndex);
-            return newText;
-          });
-          charIndex++;
-          setTimeout(typeNextChar, 80); // typing speed
-        } else {
-          lineIndex++;
-          charIndex = 0;
-          setTimeout(typeNextChar, 300); // delay before next line
-        }
-      }
-    };
-
-    typeNextChar();
-  }, []);
-
   return (
     <div className="relative w-full overflow-x-hidden">
-      {/* HERO SECTION FIXED IN VIEW */}
+      {/* HERO SECTION */}
       <section
         className="
           fixed
@@ -78,17 +45,9 @@ export default function AboutHero() {
           Powered by 434 Media
         </motion.div>
 
-        {/* MAIN IMAGE with adjustable settings */}
+        {/* MAIN IMAGE */}
         <motion.div
-          className="
-            relative
-            w-full
-            h-full
-            flex
-            items-center
-            justify-center
-            overflow-hidden
-          "
+          className="relative w-full h-full flex items-center justify-center overflow-hidden"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
@@ -100,62 +59,58 @@ export default function AboutHero() {
             priority
             className="object-contain object-center drop-shadow-lg"
             style={{
-              transform: "scale(1.09)", // ✅ Adjust scale
-              top: "-50px",          // ✅ Adjust vertical positioning
-              left: "0px",           // ✅ Adjust horizontal positioning
+              transform: "scale(1.09)",
+              top: "-50px",
+              left: "0px",
             }}
           />
         </motion.div>
 
-        {/* CENTER-LEFT TYPING TEXT */}
-        <motion.div
-  className="absolute right-[18%] top-[65%] -translate-y-1/2 text-red-600 font-inter text-3xl md:text-5xl font-extrabold leading-relaxed md:leading-[1.4] text-left"
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
+        {/* CENTER-RIGHT FADE-IN FROM RIGHT TEXT BLOCK */}
+<motion.div
+  className="absolute right-[20%] top-[57%] -translate-y-1/2 text-red-600 font-inter text-2xl md:text-5xl font-extrabold leading-relaxed md:leading-[1.4] text-left uppercase"
+  initial={{ opacity: 0, x: 50 }} // Start 50px to the right
+  animate={{ opacity: 1, x: 0 }}   // Animate to normal position
   transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
-  style={{
-    maxWidth: "40%", // Adjustable width
-  }}
+  style={{ maxWidth: "none" }}
 >
-  {displayedText.map((line, index) => (
-    <div key={index}>{line}</div>
-  ))}
+  <div>FEMALE-LED</div>
+  <div>Authentically bicultural </div>
+  <div>Deeply embedded network</div>
 </motion.div>
 
 
-        {/* OPTIONAL SECONDARY IMAGE */}
+        {/* NEW IMAGE - WRESTLECAT (BOTTOM RIGHT, ADJUSTABLE) */}
         <motion.div
-          className="
-            absolute
-            right-[400px]
-            top-[65%]
-            -translate-y-1/2
-            w-[300px]
-            md:w-[350px]
-            lg:w-[400px]
-            z-20
-          "
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+          className="absolute z-20"
+          style={{
+            right: "5%",
+            bottom: "20%",
+            width: "250px",
+            height: "auto",
+          }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
         >
-          {/* Optional second image */}
+          <Image
+            src="/images/wrestlecat.png"
+            alt="Wrestle Cat"
+            width={500}
+            height={500}
+            className="object-contain drop-shadow-lg"
+            style={{ transform: "scale(3)" }}
+          />
         </motion.div>
       </section>
 
       {/* SPACER */}
       <div className="h-screen"></div>
 
-      {/* OVERLAPPING SECTION */}
-      <section className="relative bg-white rounded-t-[40px] shadow-2xl">
-        <div className="relative w-full px-8 py-16">
-          <h2 className="text-4xl md:text-5xl font-extrabold text-red-700 uppercase">
-            About 434 Media
-          </h2>
-          <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-3xl">
-            At 434 Media, we’re redefining multicultural branding by creating authentic,
-            impactful connections that go beyond translation—we build cultural bridges.
-          </p>
+      {/* TEAM SECTION */}
+      <section className="relative bg-white rounded-t-[40px] shadow-2xl z-10">
+        <div className="relative w-full">
+          <OurTeam />
         </div>
       </section>
     </div>
