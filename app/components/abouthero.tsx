@@ -16,18 +16,19 @@ export default function AboutHero() {
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
-      <section className="relative w-full h-[60vh] md:h-screen -mb-16 md:mb-0 mt-16 bg-[#eeebe3] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-[100vh] md:h-screen -mt-24 md:mt-10 bg-[#eeebe3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/images/whywerediff.png"
             alt="Why We're Different"
             fill
             priority
-            className="object-contain md:object-cover object-center"
+            className="object-contain md:object-cover object-center scale-[1.00] sm:scale-[1.06] md:scale-100"
           />
         </div>
 
-        <div className="hidden md:block absolute bottom-16 right-8 lg:right-12 z-10 max-w-md lg:max-w-lg">
+  {/* Desktop Text */}
+  <div className="hidden md:block absolute bottom-16 right-8 lg:right-12 z-10 max-w-md lg:max-w-lg">
           <div className="space-y-3 lg:space-y-4 text-right">
             <motion.div
               ref={text1Ref}
@@ -67,7 +68,42 @@ export default function AboutHero() {
           </div>
         </div>
 
-        <div className="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-transparent pointer-events-none" />
+        {/* Mobile Text Overlay */}
+        <div className="md:hidden absolute bottom-20 left-0 right-0 px-5 z-20">
+          <div className="space-y-3 text-center">
+            <motion.div
+              className="text-red-600 font-inter"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.1 }}
+            >
+              <div className="text-3xl font-black uppercase leading-none tracking-tight drop-shadow-md">
+                FEMALE-LED
+              </div>
+            </motion.div>
+            <motion.div
+              className="text-red-600 font-inter"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.25 }}
+            >
+              <div className="text-lg font-bold uppercase leading-tight tracking-wide drop-shadow-md">
+                Authentically bicultural
+              </div>
+            </motion.div>
+            <motion.div
+              className="text-red-600 font-inter"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+            >
+              <div className="text-lg font-bold uppercase leading-tight tracking-wide drop-shadow-md">
+                Deeply embedded network
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
       </section>
     </div>
   )

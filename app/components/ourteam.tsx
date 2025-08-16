@@ -66,11 +66,11 @@ export default function OurTeam() {
       </div>
 
       {/* CREAM SECTION - Enhanced scroll experience */}
-      <div className="w-full bg-[#eeebe3] py-12 md:py-20 px-4 md:px-8 relative z-10 overflow-hidden min-h-screen flex items-center">
-        <div className="flex flex-col lg:flex-row w-full justify-center items-center gap-12 lg:gap-20 max-w-[95vw] mx-auto">
+      <div className="w-full bg-[#eeebe3] py-10 md:py-20 px-3 sm:px-4 md:px-8 relative z-10 overflow-hidden min-h-screen flex items-center">
+        <div className="flex flex-col lg:flex-row w-full justify-center items-center gap-10 lg:gap-20 max-w-[100vw] mx-auto">
           {/* TEAM IMAGE - Maximized size and impact */}
           <motion.div
-            className="relative w-full max-w-none lg:w-[70vw]"
+            className="relative w-full max-w-none lg:w-[70vw] -mx-6 sm:mx-0"
             initial={{ opacity: 0, x: -100, scale: 0.8 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.1 }}
@@ -88,13 +88,13 @@ export default function OurTeam() {
               width={2300}
               height={600}
               priority
-              className="w-full h-auto object-contain drop-shadow-2xl"
+              className="w-[140%] sm:w-full max-w-none h-auto object-contain drop-shadow-2xl -ml-12 md:ml-0"
             />
           </motion.div>
 
           {/* BRAIN IMAGE - Larger size and enhanced animations */}
           <motion.div
-            className="relative w-full max-w-none lg:w-[45vw]"
+            className="relative w-full max-w-none lg:w-[45vw] -mx-4 sm:mx-0"
             initial={{ opacity: 0, x: 100, rotate: -8, scale: 0.7 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.1 }}
@@ -116,7 +116,7 @@ export default function OurTeam() {
               width={1500}
               height={450}
               priority
-              className="w-full h-auto object-contain drop-shadow-2xl"
+              className="w-[130%] sm:w-full max-w-none h-auto object-contain drop-shadow-2xl -ml-10 md:ml-0"
             />
           </motion.div>
         </div>
