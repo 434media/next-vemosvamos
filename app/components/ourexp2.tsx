@@ -6,12 +6,12 @@ export default function RedIdentityPage() {
   return (
     <>
       {/* 🔴 RED BLOCK */}
-      <div className="w-full bg-[#ca0013] relative overflow-hidden min-h-[420px] md:min-h-screen flex items-center">
+      <div className="w-full bg-[#ca0013] relative overflow-hidden min-h-[520px] md:min-h-screen flex items-center pt-8 pb-10 md:pt-0 md:pb-0">
         {/* Overlay Hand Image (absolute so text can span full width) */}
         {/* Desktop Hand */}
         <motion.div
-          className="hidden md:block absolute top-1/2 -translate-y-1/2 right-[3vw] z-10 pointer-events-none select-none"
-          style={{ width: 'clamp(320px,32vw,620px)', aspectRatio: '1/1' }}
+          className="hidden md:block absolute top-[54%] -translate-y-1/2 right-[3vw] z-10 pointer-events-none select-none"
+          style={{ width: 'clamp(320px,30vw,600px)', aspectRatio: '1/1', maxHeight: 'min(78vh,620px)' }}
           initial={{ opacity: 0, scale: 0.55, rotate: -12, x: 160 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0, x: 0 }}
           viewport={{ once: false, amount: 0.25 }}
@@ -22,8 +22,8 @@ export default function RedIdentityPage() {
         </motion.div>
         {/* Mobile Hand (smaller, subtle behind text) */}
         <motion.div
-          className="md:hidden absolute -bottom-12 right-0 z-10 opacity-85 pointer-events-none select-none"
-          style={{ width: 'min(50vw,240px)', aspectRatio: '1/1' }}
+          className="md:hidden absolute bottom-2 right-2 z-10 opacity-85 pointer-events-none select-none"
+          style={{ width: 'min(48vw,220px)', aspectRatio: '1/1' }}
           initial={{ opacity: 0, scale: 0.65, rotate: -10, y: 40, x: 40 }}
           whileInView={{ opacity: 0.9, scale: 1, rotate: 0, y: 0, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -33,11 +33,11 @@ export default function RedIdentityPage() {
         </motion.div>
 
         {/* Text Block */}
-        <div className="w-full relative z-20 px-4 md:px-[5vw] py-14 md:py-24">
+  <div className="w-full relative z-20 px-4 md:px-[5vw] py-10 md:py-24">
           {/* Optional gradient to improve legibility where image overlaps */}
           <div className="pointer-events-none absolute inset-0 md:bg-gradient-to-r from-[#ca0013] via-[#ca0013]/70 to-[#ca0013]/0" aria-hidden="true" />
           <motion.h2
-            className="relative text-white font-inter font-black uppercase tracking-tight leading-[1.05] text-center md:text-center text-[clamp(2rem,4vw+1rem,6rem)] w-full"
+            className="relative text-white font-inter font-black uppercase tracking-tight leading-[1.02] md:leading-[1.05] text-center md:text-center text-[clamp(1.9rem,4vw+0.9rem,5.8rem)] max-w-[70ch] mx-auto"
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}

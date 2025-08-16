@@ -41,7 +41,7 @@ export default function ContentHubHero() {
             width={900}
             height={700}
             priority
-      className="object-contain w-full h-auto max-h-[45vh] sm:max-h-[50vh] md:max-h-[60vh] drop-shadow-lg"
+      className="object-contain w-full h-auto max-h-[38vh] sm:max-h-[44vh] md:max-h-[60vh] drop-shadow-lg"
           />
         </div>
       </motion.div>
@@ -66,7 +66,7 @@ export default function ContentHubHero() {
     </div>
     {/* FULL-HEIGHT NEWSPAPER (Desktop) */}
     <motion.div
-      className="hidden md:block absolute inset-y-0 right-0 w-[50vw] max-w-[1200px] min-w-[560px] -mr-[4vw]"
+      className="hidden md:block absolute inset-y-0 right-0 w-[50vw] max-w-[1200px] min-w-[560px] -ml-[8vw]"
       initial={{ opacity: 0, scale: 0.85, x: 160 }}
       whileInView={{ opacity: 1, scale: 1, x: 0 }}
       viewport={{ once: true, amount: 0.25 }}
