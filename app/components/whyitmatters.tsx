@@ -1,11 +1,17 @@
 "use client";
 
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
 // Animated number utility
-function AnimatedNumber({ value, suffix = "", prefix = "" }) {
+type AnimatedNumberProps = {
+  value: number;
+  suffix?: string;
+  prefix?: string;
+};
+
+function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps) {
   const controls = useAnimation();
   const ref = useRef(null);
   const [display, setDisplay] = useState(0);
@@ -13,17 +19,36 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }) {
 
   useEffect(() => {
     if (isInView) {
-      controls.start({ num: value });
+      let start = 0;
+      const duration = 1500;
+      const startTime = performance.now();
+
+      function animateNumber(currentTime: number) {
+        const elapsed = currentTime - startTime;
+        if (elapsed < duration) {
+          const progress = Math.min(elapsed / duration, 1);
+          const currentValue = Math.round(start + (value - start) * progress);
+          setDisplay(currentValue);
+          requestAnimationFrame(animateNumber);
+        } else {
+          setDisplay(value);
+        }
+      }
+
+      requestAnimationFrame(animateNumber);
     }
-  }, [isInView]);
+  }, [isInView, value]);
 
   return (
-    <motion.span
+      <motion.span
       ref={ref}
-      initial={{ num: 0 }}
+      initial={{}}
       animate={controls}
       transition={{ duration: 1.5, ease: "easeOut" }}
-      onUpdate={(latest) => setDisplay(latest.num.toFixed(0))}
+      onUpdate={(latest) => {
+        const num = typeof latest.num === "number" ? latest.num : Number(latest.num);
+        setDisplay(!isNaN(num) ? Math.round(num) : value);
+      }}
       className="inline-block text-5xl md:text-6xl font-extrabold text-red-700"
     >
       {prefix}
