@@ -21,8 +21,9 @@ export default function WhoWeReach() {
         relative w-full bg-[#ca0013]
         flex flex-col items-center justify-center
         text-white overflow-hidden z-30
-        min-h-[55vh] md:min-h-[90vh] lg:min-h-screen
+        min-h-[75vh] md:min-h-[90vh] lg:min-h-screen
         py-10 md:py-16 lg:py-20
+        -mt-10 md:mt-0
       "
     >
       {/* MAIN IMAGE */}

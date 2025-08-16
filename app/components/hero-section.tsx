@@ -19,11 +19,11 @@ export default function NewLandingPage() {
     <div ref={scrollRef} className="relative w-full overflow-x-hidden">
       {/* === HERO SECTION FIXED IN VIEW === */}
       <section
-        className="fixed left-0 h-screen sm:h-screen w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden z-0 px-4 sm:px-6"
+        className="fixed top-0 left-0 h-screen w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden z-10 px-4 sm:px-6"
       >
-    <div className="absolute top-[14%] left-0 right-0 flex justify-center sm:hidden px-4 z-10">
+        <div className="absolute top-[10%] left-0 right-0 flex justify-center md:hidden px-4 z-10">
           <motion.div
-      className="w-[78vw] max-w-[440px]"
+            className="w-[78vw] max-w-[440px]"
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -40,7 +40,7 @@ export default function NewLandingPage() {
 
         {/* === MAIN IMAGE === */}
         <motion.div
-          className="relative w-full h-full flex items-center justify-center overflow-visible md:pt-16"
+          className="relative w-full h-full flex items-center justify-center overflow-visible md:pt-24"
           initial={{ opacity: 0, y: 60, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -50,7 +50,7 @@ export default function NewLandingPage() {
             alt="Vemos Vamos"
             fill
             priority
-            className="object-contain sm:object-cover object-center drop-shadow-lg scale-[1.38] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] -translate-y-1"
+            className="md:mt-10 object-contain sm:object-cover object-center drop-shadow-lg scale-[1.38] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] -translate-y-1"
           />
 
           {/* Mobile dice (moved inside main image container to keep proximity) */}
@@ -64,7 +64,7 @@ export default function NewLandingPage() {
           </motion.div>
 
           <motion.div
-            className="absolute right-2 sm:right-4 md:right-8 lg:right-12 xl:right-16 bottom-[10%] sm:bottom-[10%] md:bottom-[8%] w-[80px] sm:w-[160px] md:w-[220px] lg:w-[280px] xl:w-[320px] z-20 hidden sm:block"
+            className="absolute right-2 sm:right-4 md:right-8 lg:right-12 xl:right-16 bottom-[10%] sm:bottom-[10%] md:bottom-[4%] w-[80px] sm:w-[160px] md:w-[220px] lg:w-[280px] xl:w-[320px] z-20 hidden sm:block"
             initial={{ opacity: 0, x: 80, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -102,7 +102,7 @@ export default function NewLandingPage() {
       </section>
 
       {/* === SPACER to allow scrolling === */}
-      <div className="h-screen sm:h-screen"></div>
+      <div className="h-screen"></div>
     </div>
   )
 }
