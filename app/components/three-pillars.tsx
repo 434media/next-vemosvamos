@@ -50,7 +50,7 @@ export default function WhoWeReach() {
       </motion.div>
 
       {/* CITY IMAGE AS FULL-WIDTH BACKGROUND AT BOTTOM */}
-      <div className="absolute bottom-0 left-0 w-full h-32 sm:h-40 md:h-48 lg:h-64 xl:h-80 z-0">
+      <div className="absolute bottom-0 left-0 w-full h-80 md:h-96 z-0">
         <Image
           src="/images/cityblack.png"
           alt="City Skyline"

@@ -53,6 +53,16 @@ export default function NewLandingPage() {
             className="object-contain sm:object-cover object-center drop-shadow-lg scale-[1.28] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] translate-y-1"
           />
 
+          {/* Mobile dice (moved inside main image container to keep proximity) */}
+          <motion.div
+            className="absolute top-[24%] right-[clamp(4px,2vw,18px)] z-30 w-[clamp(72px,26vw,112px)] h-[clamp(72px,26vw,112px)] sm:hidden"
+            initial={{ opacity: 0, rotate: -28, scale: 0.6, y: -16 }}
+            animate={{ opacity: 1, rotate: 0, scale: 1, y: 0 }}
+            transition={{ duration: 1.15, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
+          >
+            <Image src="/images/dice1.png" alt="Decorative Dice" fill className="object-contain drop-shadow-lg pointer-events-none select-none" />
+          </motion.div>
+
           <motion.div
             className="absolute right-2 sm:right-4 md:right-8 lg:right-12 xl:right-16 bottom-[10%] sm:bottom-[10%] md:bottom-[8%] w-[80px] sm:w-[160px] md:w-[220px] lg:w-[280px] xl:w-[320px] z-20 hidden sm:block"
             initial={{ opacity: 0, x: 80, scale: 0.8 }}
@@ -72,15 +82,6 @@ export default function NewLandingPage() {
         {/* === SCROLL-RESPONSIVE DICE IMAGE (RIGHT SIDE) === */}
         <motion.div
           className="absolute right-1 sm:right-2 md:right-[5px] top-[140px] sm:top-[220px] md:top-[250px] z-30 w-[80px] h-[80px] sm:w-[180px] sm:h-[180px] md:w-[260px] md:h-[260px] hidden sm:block"
-          initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
-          animate={{ opacity: 1, rotate: 0, scale: 1 }}
-          transition={{ duration: 2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <Image src="/images/dice1.png" alt="Dice Right" fill className="object-contain drop-shadow-lg" />
-        </motion.div>
-        {/* Mobile dice with full animations */}
-        <motion.div
-          className="absolute right-2 top-[120px] z-30 w-[120px] h-[120px] sm:hidden"
           initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
           animate={{ opacity: 1, rotate: 0, scale: 1 }}
           transition={{ duration: 2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
