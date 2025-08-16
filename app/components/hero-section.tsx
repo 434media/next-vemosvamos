@@ -40,7 +40,7 @@ export default function NewLandingPage() {
 
         {/* === MAIN IMAGE === */}
         <motion.div
-          className="relative w-full h-full flex items-center justify-center overflow-visible pt-6 sm:pt-16"
+          className="relative w-full h-full flex items-center justify-center overflow-visible md:pt-16"
           initial={{ opacity: 0, y: 60, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
