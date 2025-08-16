@@ -21,9 +21,9 @@ export default function NewLandingPage() {
       <section
         className="fixed left-0 h-screen sm:h-screen w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden z-0 px-4 sm:px-6"
       >
-        <div className="absolute top-4 left-0 right-0 flex justify-center sm:hidden px-4 z-10">
+    <div className="absolute top-[14%] left-0 right-0 flex justify-center sm:hidden px-4 z-10">
           <motion.div
-            className="w-[68vw] max-w-[360px]"
+      className="w-[78vw] max-w-[440px]"
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -50,7 +50,7 @@ export default function NewLandingPage() {
             alt="Vemos Vamos"
             fill
             priority
-            className="object-contain sm:object-cover object-center drop-shadow-lg scale-[1.28] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] translate-y-1"
+            className="object-contain sm:object-cover object-center drop-shadow-lg scale-[1.38] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] -translate-y-1"
           />
 
           {/* Mobile dice (moved inside main image container to keep proximity) */}
