@@ -34,14 +34,14 @@ export default function ContentHubHero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: 'easeOut' }}
       >
-    <div className="relative w-full max-w-[680px] md:max-w-[720px]">
+        <div className="relative w-full max-w-[680px] md:max-w-[720px]">
           <Image
             src="/images/ourexpertice.png"
             alt="Our Expertise"
             width={900}
             height={700}
             priority
-      className="object-contain w-full h-auto max-h-[38vh] sm:max-h-[44vh] md:max-h-[60vh] drop-shadow-lg"
+            className="object-contain w-full h-auto max-h-[38vh] sm:max-h-[44vh] md:max-h-[60vh] drop-shadow-lg"
           />
         </div>
       </motion.div>
