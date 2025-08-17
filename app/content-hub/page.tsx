@@ -8,7 +8,7 @@ export default function ContentHubPage() {
     <main>
       <ContentHubHero />
       {/* Mobile Newspaper Separator */}
-      <div className="md:hidden relative w-full h-[65vh] -mt-72 overflow-hidden z-10">
+      <div className="md:hidden relative w-full h-[65vh] -mt-80 overflow-hidden z-10">
         <div className="absolute inset-0">
           <img
             src="/images/newspaper.png"
