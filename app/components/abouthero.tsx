@@ -11,7 +11,7 @@ export default function AboutHero() {
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
-      <section className="relative w-full h-screen -mb-40 -mt-24 md:mt-10 md:mb-0 bg-[#eeebe3] flex items-center justify-center overflow-hidden">
+      <section className="relative w-full h-screen -mb-52 -mt-40 md:mt-10 md:mb-0 bg-[#eeebe3] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
           <Image
             src="/images/whywerediff.png"
