@@ -9,12 +9,8 @@ export default function ContactPage() {
     <div className="relative w-full overflow-x-hidden">
       <ContactHero />
 
-
-      {/* SPACER - pushes next section down */}
-      <div className="h-screen"></div>
-
-      {/* OVERLAPPING SECTION */}
-      <section className="relative bg-white rounded-t-[40px] shadow-2xl z-10">
+  {/* OVERLAPPING SECTION - smooth transition after hero, no negative margin */}
+  <section className="relative bg-white rounded-t-[40px] shadow-2xl z-10 mt-0 md:mt-0">
         <div className="relative w-full">
           <Partnerships />
           <Listo />
