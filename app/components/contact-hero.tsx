@@ -12,7 +12,7 @@ export default function ContactHero() {
 
       {/* MAIN IMAGE - desktop: larger and top-aligned, mobile: top */}
       <motion.div
-        className="relative w-full h-full flex items-center justify-center md:justify-start overflow-hidden md:-mt-32 md:ml-32"
+        className="relative w-full h-full flex items-center justify-center md:justify-start overflow-hidden mt-24 md:-mt-32 md:ml-32"
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -43,7 +43,7 @@ export default function ContactHero() {
 
       {/* Floating little V (larger one) - mobile smaller, lower right */}
       <motion.div
-        className="absolute z-20 w-[220px] bottom-2 right-6 md:w-[190px] md:bottom-8 md:right-20"
+        className="absolute z-20 w-[220px] bottom-16 right-6 md:w-[190px] md:bottom-8 md:right-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
@@ -64,7 +64,7 @@ export default function ContactHero() {
 
       {/* Floating big V (smaller one) - mobile smaller, lower right */}
       <motion.div
-        className="absolute z-20 w-[180px] bottom-0 -right-4 md:w-[170px] md:bottom-4 md:right-8"
+        className="absolute z-20 w-[180px] bottom-16 -right-4 md:w-[170px] md:bottom-4 md:right-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
