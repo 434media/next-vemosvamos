@@ -20,7 +20,7 @@ export default function ContentHubHero() {
   }
 
   return (
-    <div className="relative w-full overflow-hidden pt-10 md:pt-0 -mb-12 md:mb-0">
+    <div className="relative w-full overflow-hidden pt-10 md:pt-0 -mb-32 md:mb-0">
       {/* HERO SECTION */}
       <section className="relative h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
         {/* FLEX CONTAINER */}
@@ -134,7 +134,7 @@ export default function ContentHubHero() {
 
           {/* MOBILE PAPERLADY IMAGE - Maximized right side */}
           <motion.div
-            className="block md:hidden absolute bottom-24 right-0 w-full h-full"
+            className="block md:hidden absolute bottom-30 right-0 w-full h-full"
             initial={{ opacity: 0, scale: 0.85, x: 40 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -142,11 +142,11 @@ export default function ContentHubHero() {
           >
             <div className="relative h-full w-full">
               <Image
-                src="/images/paperlady.png"
+                src="/images/newspaper.png"
                 alt="Illustrated Newspaper"
                 fill
                 priority
-                className="object-cover drop-shadow-2xl"
+                className="object-cover object-right drop-shadow-2xl ml-24"
               />
             </div>
           </motion.div>
