@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function ContactHero() {
   return (
     <section
-      className="relative h-[84vh] w-full bg-[#eeebe3] flex flex-col items-center justify-center md:items-start md:justify-start overflow-hidden z-10 pt-8 md:pt-28 mt-0"
+      className="relative h-[80vh] w-full bg-[#eeebe3] flex flex-col items-center justify-center md:items-start md:justify-start overflow-hidden z-10 pt-8 md:pt-28 mt-0"
     >
       {/* Top texts removed per request */}
 
