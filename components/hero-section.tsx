@@ -25,13 +25,13 @@ export default function NewLandingPage() {
   return (
     <div ref={scrollRef} className="relative w-full overflow-x-hidden">
       <section
-        className="relative w-full h-screen bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6"
+        className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 h-screen"
         role="banner"
         aria-label="Hero section"
       >
         {/* === MAIN IMAGE === */}
         <motion.div
-          className="relative w-full h-full flex items-center justify-center overflow-visible md:pt-24 mb-10 md:mb-0"
+          className="relative w-full h-full flex items-center justify-center overflow-visible md:pt-24 md:mb-0"
           initial={{ opacity: 0, y: 60, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -67,7 +67,8 @@ export default function NewLandingPage() {
           </motion.div>
         </motion.div>
 
-        <div className="absolute bottom-[8%] left-0 right-0 flex flex-col items-center md:hidden px-4 z-10 space-y-4">
+        {/* === MOBILE CONTENT === */}
+        <div className="absolute bottom-[2%] left-0 right-0 flex flex-col items-center md:hidden px-4 z-10 space-y-2">
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
