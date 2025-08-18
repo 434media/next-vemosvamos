@@ -17,7 +17,7 @@ export default function WhoWeReach() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[60vh] md:min-h-[85vh] lg:min-h-screen py-8 md:py-16"
+      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[50vh] md:min-h-[85vh] lg:min-h-screen py-8 md:py-16"
       aria-label="Our mission statement"
     >
       <motion.div
@@ -26,13 +26,13 @@ export default function WhoWeReach() {
         transition={{ duration: 1, ease: "easeOut" }}
         className="relative z-10 w-full max-w-7xl flex items-center justify-center px-4 md:px-8 mb-8 md:mb-12"
       >
-        <h1 className="font-black text-center leading-[0.9] md:leading-tight tracking-tighter text-white drop-shadow-2xl">
+        <h1 className="font-black text-center leading-[0.9] md:leading-tight tracking-tight text-white drop-shadow-2xl">
           {/* Mobile breakpoints */}
-          <span className="block md:hidden text-4xl">
+          <span className="block md:hidden text-4xl text-balance tracking-tighter">
             WE CREATE FOR THE AUDIENCE THAT LIVES IN TWO WORLDS AND BELONGS TO BOTH.
           </span>
           {/* Desktop breakpoints */}
-          <span className="hidden md:block text-4xl lg:text-6xl xl:text-7xl md:mt-16">
+          <span className="hidden md:block text-5xl lg:text-6xl xl:text-7xl md:mt-16">
             WE CREATE FOR THE AUDIENCE
             <br />
             THAT LIVES IN TWO WORLDS
