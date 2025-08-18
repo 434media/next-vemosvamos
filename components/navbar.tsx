@@ -38,7 +38,7 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
             <MotionLink href="/" className="flex items-center h-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <motion.div whileHover={{ rotate: [0, -10, 10, -10, 0] }} transition={{ duration: 0.5 }}>
                 <Image
-                  src="/images/plane.png"
+                  src="/images/cherrycur.png"
                   alt="Vemos Vamos Logo"
                   width={80}
                   height={80}
