@@ -68,7 +68,7 @@ export default function NewLandingPage() {
         </motion.div>
 
         {/* === MOBILE CONTENT === */}
-        <div className="absolute bottom-16 left-0 right-0 flex flex-col items-center md:hidden px-4 z-10 space-y-2">
+        <div className="absolute bottom-32 left-0 right-0 flex flex-col items-center md:hidden px-4 z-10 space-y-2">
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
