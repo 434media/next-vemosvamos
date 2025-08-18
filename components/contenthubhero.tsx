@@ -22,7 +22,7 @@ export default function ContentHubHero() {
   return (
     <div className="relative w-full overflow-hidden pt-10 md:pt-0">
       {/* HERO SECTION */}
-      <section className="relative h-[calc(100vh-8rem)] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
+      <section className="relative h-[82vh] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           {/* LEFT CONTENT (Text) */}
