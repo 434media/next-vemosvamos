@@ -146,7 +146,7 @@ export default function ContentHubHero() {
                 alt="Illustrated Newspaper"
                 fill
                 priority
-                className="object-cover object-right drop-shadow-2xl ml-24"
+                className="object-cover object-right drop-shadow-2xl ml-60"
               />
             </div>
           </motion.div>
