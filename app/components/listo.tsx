@@ -77,8 +77,8 @@ export default function Listo() {
               </button>
               {/* Vemos Vamos CTA message */}
               <div className="mb-6 text-center">
-                <h2 className="text-2xl font-bold text-[#ca0013]">Stay Connected with Vemos Vamos</h2>
-                <p className="text-base text-[#222] mt-2">Sign up for our newsletter and be the first to see new opportunities, stories, and resources for bicultural families.</p>
+                <h2 className="text-2xl font-bold text-[#ca0013]">Stay Connected</h2>
+                <p className="text-base text-[#222] mt-2">Sign up for our newsletter and explore our bi-cultural resources.</p>
               </div>
               <div className="mt-8">
                 <div className="[&_*:is(input,button)]:bg-[#f5f5f5] [&_*:is(input,button)]:text-[#ca0013] [&_*:is(input,button)]:border-[#ca0013] [&_*:is(input,button)]:placeholder-[#ca0013]/60 [&_*:is(.bg-white\/10)]:bg-[#f5f5f5] [&_*:is(.text-white)]:text-[#222] [&_*:is(.text-white\/80)]:text-[#ca0013] [&_*:is(.border-white\/20)]:border-[#ca0013]">
