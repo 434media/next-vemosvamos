@@ -1,42 +1,38 @@
-"use client";
+"use client"
 
-import { motion } from "motion/react";
-import Image from "next/image";
+import { motion } from "motion/react"
+import Image from "next/image"
 
 const offerings = [
   {
     title: "Branded Content Production",
-    description:
-      "High-impact, short-form video and photo tailored to culture-driven campaigns.",
+    description: "High-impact, short-form video and photo tailored to culture-driven campaigns.",
     align: "left",
     delay: 0,
   },
   {
     title: "Community Activations",
-    description:
-      "Weekly monologues + carousels on marketing + entrepreneurship insights.",
+    description: "Weekly monologues + carousels on marketing + entrepreneurship insights.",
     align: "left",
     delay: 0.2,
   },
   {
     title: "Bilingual Brand Development",
-    description:
-      "Visual identity, messaging, and content strategy.",
+    description: "Visual identity, messaging, and content strategy.",
     align: "right",
     delay: 0.4,
   },
   {
     title: "Cultural Insights & Trends",
-    description:
-      "Real-time Gen Z Latino insights to shape brand decisions and creative direction.",
+    description: "Real-time Gen Z Latino insights to shape brand decisions and creative direction.",
     align: "right",
     delay: 0.6,
   },
-];
+]
 
 export default function Partnerships() {
   return (
-    <section className="w-full bg-[#ca0013] py-14 md:py-24 px-4 md:px-10 relative overflow-hidden">
+    <section id="partnerships" className="w-full bg-[#ca0013] py-14 md:py-24 px-4 md:px-10 relative overflow-hidden">
       {/* SECTION HEADER */}
       <div className="text-center mb-16">
         <motion.h2
@@ -65,13 +61,7 @@ export default function Partnerships() {
         whileInView={{ opacity: 1, rotate: 20, scale: 1.18 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <Image
-          src="/images/flower.png"
-          alt="Flower"
-          width={800}
-          height={400}
-          className="object-contain opacity-80"
-        />
+        <Image src="/images/flower.png" alt="Flower" width={800} height={400} className="object-contain opacity-80" />
       </motion.div>
 
       <motion.div
@@ -81,20 +71,13 @@ export default function Partnerships() {
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, ease: "easeOut" }}
       >
-        <Image
-          src="/images/flower.png"
-          alt="Flower"
-          width={180}
-          height={90}
-          className="object-contain opacity-80"
-        />
+        <Image src="/images/flower.png" alt="Flower" width={180} height={90} className="object-contain opacity-80" />
       </motion.div>
 
-
       {/* === TWO COLUMN LAYOUT === */}
-  <div className="relative grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 md:gap-x-16 md:gap-y-20 w-full z-10">
+      <div className="relative grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-12 md:gap-x-16 md:gap-y-20 w-full z-10">
         {/* LEFT COLUMN */}
-  <div className="flex flex-col gap-12 md:gap-20 text-left">
+        <div className="flex flex-col gap-12 md:gap-20 text-left">
           {offerings
             .filter((item) => item.align === "left")
             .map((item) => (
@@ -130,7 +113,7 @@ export default function Partnerships() {
         </div>
 
         {/* RIGHT COLUMN */}
-  <div className="flex flex-col gap-12 md:gap-20 text-right">
+        <div className="flex flex-col gap-12 md:gap-20 text-right">
           {offerings
             .filter((item) => item.align === "right")
             .map((item) => (
@@ -166,5 +149,5 @@ export default function Partnerships() {
         </div>
       </div>
     </section>
-  );
+  )
 }
