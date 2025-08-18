@@ -23,7 +23,7 @@ export default function NewLandingPage() {
   }
 
   return (
-    <div ref={scrollRef} className="relative w-full overflow-x-hidden">
+    <div ref={scrollRef} className="relative w-full overflow-x-hidden -mt-16 md:mt-0">
       <section
         className="relative w-full h-screen bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6"
         role="banner"
