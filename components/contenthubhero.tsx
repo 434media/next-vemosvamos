@@ -20,13 +20,13 @@ export default function ContentHubHero() {
   }
 
   return (
-    <div className="relative w-full overflow-visible md:overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       {/* HERO SECTION */}
-      <section className="relative h-screen w-full bg-[#eeebe3] overflow-visible pt-20 md:pt-24 flex">
+      <section className="relative h-[400px] md:h-screen w-full bg-[#eeebe3] pt-16 md:pt-24 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           {/* LEFT CONTENT (Text) */}
-          <div className="w-full md:w-1/2 flex flex-col relative z-10 h-full">
+          <div className="w-full md:w-1/2 flex flex-col relative z-10 h-full mt-6 md:mt-0">
             <div className="w-full flex items-start md:items-center justify-start gap-4 md:gap-6 relative h-full">
               <motion.div
                 className="relative flex-1 flex items-start md:items-center justify-start h-full mt-6 md:mt-0"
@@ -134,7 +134,7 @@ export default function ContentHubHero() {
 
           {/* MOBILE PAPERLADY IMAGE - Maximized right side */}
           <motion.div
-            className="block md:hidden absolute top-0 right-0 w-full h-full"
+            className="block md:hidden absolute bottom-0 right-0 w-full h-full"
             initial={{ opacity: 0, scale: 0.85, x: 40 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
