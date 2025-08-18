@@ -1,8 +1,8 @@
 "use client";
 
-import Partnerships from "../components/oppfor";
-import Listo from "../components/listo";
-import ContactHero from "../components/contact-hero";
+import Partnerships from "../../components/oppfor";
+import Listo from "../../components/listo";
+import ContactHero from "../../components/contact-hero";
 
 export default function ContactPage() {
   return (

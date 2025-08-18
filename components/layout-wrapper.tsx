@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Navbar } from "./Navbar"
+import { Navbar } from "./navbar"
 import { MobileMenu } from "./mobile-menu"
 import { Footer } from "./footer"
 import { AnimatePresence } from "motion/react"

@@ -1,7 +1,7 @@
 "use client"
 
-import ContentHubHero from "../components/contenthubhero"
-import RedIdentityPage from "../components/ourexp2"
+import ContentHubHero from "../../components/contenthubhero"
+import RedIdentityPage from "../../components/ourexp2"
 
 export default function ContentHubPage() {
   return (

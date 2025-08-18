@@ -1,7 +1,7 @@
 "use client"
 import Head from "next/head"
-import NewLandingPage from "./components/hero-section"
-import WhoWeReach from "./components/three-pillars"
+import NewLandingPage from "../components/hero-section"
+import WhoWeReach from "../components/three-pillars"
 
 export default function Home() {
   return (
