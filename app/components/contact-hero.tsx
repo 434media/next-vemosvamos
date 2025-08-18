@@ -6,10 +6,8 @@ import Image from "next/image";
 export default function ContactHero() {
   return (
     <section
-      className="relative h-[80vh] w-full bg-[#eeebe3] flex flex-col items-center justify-center md:items-start md:justify-start overflow-hidden z-10 pt-8 md:pt-28 mt-0"
+      className="relative h-[80vh] md:h-[96vh] w-full bg-[#eeebe3] flex flex-col items-center justify-center md:items-start md:justify-start overflow-hidden z-10 pt-8 md:pt-28 mt-0"
     >
-      {/* Top texts removed per request */}
-
       {/* MAIN IMAGE - desktop: larger and top-aligned, mobile: top */}
       <motion.div
         className="relative w-full h-full flex items-center justify-center md:justify-start overflow-hidden mt-10 mb-4 md:-mt-32 md:ml-32"
