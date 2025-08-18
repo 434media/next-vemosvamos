@@ -20,9 +20,9 @@ export default function ContentHubHero() {
   }
 
   return (
-    <div className="relative w-full overflow-hidden pt-10 md:pt-0 -mb-32 md:mb-0">
+    <div className="relative w-full overflow-hidden pt-10 md:pt-0">
       {/* HERO SECTION */}
-      <section className="relative h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
+      <section className="relative h-[calc(100vh-8rem)] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           {/* LEFT CONTENT (Text) */}
@@ -131,29 +131,9 @@ export default function ContentHubHero() {
               </motion.div>
             </div>
           </div>
-
-          {/* MOBILE PAPERLADY IMAGE - Maximized right side */}
+          {/* PAPERLADY IMAGE - Visible on all screens, fits mobile height */}
           <motion.div
-            className="block md:hidden absolute bottom-30 right-0 w-full h-full"
-            initial={{ opacity: 0, scale: 0.85, x: 40 }}
-            whileInView={{ opacity: 1, scale: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.25 }}
-            transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.3 }}
-          >
-            <div className="relative h-full w-full">
-              <Image
-                src="/images/newspaper.png"
-                alt="Illustrated Newspaper"
-                fill
-                priority
-                className="object-cover object-right drop-shadow-2xl ml-60"
-              />
-            </div>
-          </motion.div>
-
-          {/* DESKTOP PAPERLADY IMAGE - Maximized right side */}
-          <motion.div
-            className="hidden md:block absolute bottom-0 right-0 w-1/2 h-full"
+            className="absolute bottom-0 right-0 w-full h-[80vh] md:w-1/2 md:h-full"
             initial={{ opacity: 0, scale: 0.85, x: 160 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -165,7 +145,7 @@ export default function ContentHubHero() {
                 alt="Illustrated Newspaper"
                 fill
                 priority
-                className="object-cover drop-shadow-2xl"
+                className="object-cover md:object-right drop-shadow-2xl"
               />
             </div>
           </motion.div>
