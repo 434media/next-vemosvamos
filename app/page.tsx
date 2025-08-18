@@ -2,6 +2,7 @@
 import Head from "next/head"
 import NewLandingPage from "../components/hero-section"
 import WhoWeReach from "../components/three-pillars"
+import WhyItMattersSection from "../components/why-it-matters"
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
         <section className="relative bg-white rounded-t-[40px] shadow-2xl">
           <WhoWeReach />
         </section>
+        <WhyItMattersSection />
       </div>
     </>
   )

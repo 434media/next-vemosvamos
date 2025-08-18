@@ -1,53 +1,52 @@
-"use client";
+"use client"
 
-import { motion, useAnimation, useInView } from "motion/react";
-import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
+import { motion, useAnimation, useInView } from "motion/react"
+import { useState, useEffect, useRef } from "react"
 
 // Animated number utility
 type AnimatedNumberProps = {
-  value: number;
-  suffix?: string;
-  prefix?: string;
-};
+  value: number
+  suffix?: string
+  prefix?: string
+}
 
 function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps) {
-  const controls = useAnimation();
-  const ref = useRef(null);
-  const [display, setDisplay] = useState(0);
-  const isInView = useInView(ref, { once: true });
+  const controls = useAnimation()
+  const ref = useRef(null)
+  const [display, setDisplay] = useState(0)
+  const isInView = useInView(ref, { once: true })
 
   useEffect(() => {
     if (isInView) {
-      let start = 0;
-      const duration = 1500;
-      const startTime = performance.now();
+      const start = 0
+      const duration = 1500
+      const startTime = performance.now()
 
       function animateNumber(currentTime: number) {
-        const elapsed = currentTime - startTime;
+        const elapsed = currentTime - startTime
         if (elapsed < duration) {
-          const progress = Math.min(elapsed / duration, 1);
-          const currentValue = Math.round(start + (value - start) * progress);
-          setDisplay(currentValue);
-          requestAnimationFrame(animateNumber);
+          const progress = Math.min(elapsed / duration, 1)
+          const currentValue = Math.round(start + (value - start) * progress)
+          setDisplay(currentValue)
+          requestAnimationFrame(animateNumber)
         } else {
-          setDisplay(value);
+          setDisplay(value)
         }
       }
 
-      requestAnimationFrame(animateNumber);
+      requestAnimationFrame(animateNumber)
     }
-  }, [isInView, value]);
+  }, [isInView, value])
 
   return (
-      <motion.span
+    <motion.span
       ref={ref}
       initial={{}}
       animate={controls}
       transition={{ duration: 1.5, ease: "easeOut" }}
       onUpdate={(latest) => {
-        const num = typeof latest.num === "number" ? latest.num : Number(latest.num);
-        setDisplay(!isNaN(num) ? Math.round(num) : value);
+        const num = typeof latest.num === "number" ? latest.num : Number(latest.num)
+        setDisplay(!isNaN(num) ? Math.round(num) : value)
       }}
       className="inline-block text-5xl md:text-6xl font-extrabold text-red-700"
     >
@@ -55,34 +54,35 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps
       {display}
       {suffix}
     </motion.span>
-  );
+  )
 }
 
 export default function WhyItMattersSection() {
-  const sectionRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null)
 
   return (
     <section
       ref={sectionRef}
+      id="why-it-matters"
       className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-start px-4 py-16 md:py-20 overflow-hidden"
     >
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-10">
-        {/* LEFT COLUMN – Image + Video */}
+        {/* LEFT COLUMN – Header Text + Video */}
         <div className="flex flex-col md:w-1/2 items-start gap-8">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
+            className="w-full"
           >
-            <Image
-              src="/images/whyitmatters.png"
-              alt="Why it matters visual"
-              width={600}
-              height={400}
-              className="w-full h-auto object-contain"
-              priority
-            />
+            <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tighter text-[#ca0013] drop-shadow-sm">
+              WHY IT
+              <br />
+              MATTERS
+              <br />
+              NOW
+            </h2>
           </motion.div>
 
           <motion.div
@@ -113,9 +113,8 @@ export default function WhyItMattersSection() {
             viewport={{ once: true }}
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
-              U.S. Latinos hold{" "}
-              <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " /> in consumer
-              spending power.
+              U.S. Latinos hold <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " /> in consumer spending
+              power.
             </p>
             <motion.div
               className="mt-4 h-[4px] bg-red-700 origin-left"
@@ -125,9 +124,7 @@ export default function WhyItMattersSection() {
               viewport={{ once: true }}
               style={{ transformOrigin: "left" }}
             />
-            <p className="mt-2 text-xs uppercase font-bold text-red-700">
-              NielsenIQ 2024
-            </p>
+            <p className="mt-2 text-xs uppercase font-bold text-red-700">NielsenIQ 2024</p>
           </motion.div>
 
           {/* STAT 2 */}
@@ -138,9 +135,8 @@ export default function WhyItMattersSection() {
             viewport={{ once: true }}
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
-              <AnimatedNumber value={1} /> in{" "}
-              <AnimatedNumber value={5} /> Americans is Latino – the fastest
-              growing population in the U.S.
+              <AnimatedNumber value={1} /> in <AnimatedNumber value={5} /> Americans is Latino – the fastest growing
+              population in the U.S.
             </p>
             <motion.div
               className="mt-4 h-[4px] bg-red-600 origin-left"
@@ -150,9 +146,7 @@ export default function WhyItMattersSection() {
               viewport={{ once: true }}
               style={{ transformOrigin: "left" }}
             />
-            <p className="mt-2 text-xs uppercase font-bold text-red-700">
-              US Census 2023
-            </p>
+            <p className="mt-2 text-xs uppercase font-bold text-red-700">US Census 2023</p>
           </motion.div>
 
           {/* STAT 3 */}
@@ -163,8 +157,7 @@ export default function WhyItMattersSection() {
             viewport={{ once: true }}
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
-              <AnimatedNumber value={55} suffix="%" /> of Gen Z Latinos consume
-              bilingual content daily
+              <AnimatedNumber value={55} suffix="%" /> of Gen Z Latinos consume bilingual content daily
             </p>
             <motion.div
               className="mt-4 h-[4px] bg-red-700 origin-left"
@@ -174,12 +167,10 @@ export default function WhyItMattersSection() {
               viewport={{ once: true }}
               style={{ transformOrigin: "left" }}
             />
-            <p className="mt-2 text-xs uppercase font-bold text-red-700">
-              MRI Simmons
-            </p>
+            <p className="mt-2 text-xs uppercase font-bold text-red-700">MRI Simmons</p>
           </motion.div>
         </div>
       </div>
     </section>
-  );
+  )
 }

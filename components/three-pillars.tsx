@@ -17,40 +17,40 @@ export default function WhoWeReach() {
   return (
     <section
       ref={sectionRef}
-      className="
-        relative w-full bg-[#ca0013]
-        flex flex-col items-center justify-center
-        text-white overflow-hidden z-30
-        min-h-[75vh] md:min-h-[90vh] lg:min-h-screen
-        py-10 md:py-16 lg:py-20
-        -mt-10 md:mt-0
-      "
+      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-center md:justify-start text-white overflow-hidden z-30 min-h-[70vh] md:min-h-[85vh] lg:min-h-screen py-8 md:py-16"
+      aria-label="Our mission statement"
     >
-      {/* MAIN IMAGE */}
       <motion.div
         initial={{ opacity: 0, y: 50, scale: 0.96 }}
         animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
-        transition={{ duration: 1, ease: 'easeOut' }}
-        className="relative z-10 w-full max-w-7xl flex items-center justify-center px-4 sm:px-6 md:px-8 mb-6 sm:mb-10 lg:mb-12"
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative z-10 w-full max-w-7xl flex items-center justify-center px-4 md:px-8 mb-8 md:mb-12"
       >
-        <Image
-          src="/images/wecreatewhite.png"
-          alt="We Create"
-          width={1400}
-          height={900}
-          priority
-          className="object-contain drop-shadow-lg w-full h-auto max-h-[50vh] sm:max-h-[52vh] md:max-h-[55vh] lg:max-h-[58vh] xl:max-h-[60vh]"
-        />
+        <h1 className="font-black text-center leading-[0.9] md:leading-tight tracking-tight text-white drop-shadow-2xl">
+          {/* Mobile breakpoints */}
+          <span className="block md:hidden text-4xl">
+            WE CREATE FOR THE AUDIENCE THAT LIVES IN TWO WORLDS AND BELONGS TO BOTH.
+          </span>
+          {/* Desktop breakpoints */}
+          <span className="hidden md:block text-4xl lg:text-6xl xl:text-7xl md:mt-16">
+            WE CREATE FOR THE AUDIENCE
+            <br />
+            THAT LIVES IN TWO WORLDS
+            <br />
+            AND BELONGS TO BOTH.
+          </span>
+        </h1>
       </motion.div>
 
       {/* BACKGROUND CITY + GRADIENT */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-[50vh] sm:h-[42vh] md:h-[36vh] lg:h-[34vh] xl:h-[33vh] z-0">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-[45vh] md:h-[40vh] z-0">
         <Image
           src="/images/cityblack.png"
-          alt="City Skyline"
+          alt="City skyline background decoration"
           fill
           className="object-cover object-bottom opacity-70 sm:opacity-75"
           priority
+          sizes="100vw"
         />
       </div>
     </section>
