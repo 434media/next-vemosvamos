@@ -22,7 +22,7 @@ export default function ContentHubHero() {
   return (
     <div className="relative w-full overflow-hidden">
       {/* HERO SECTION */}
-      <section className="relative h-[400px] md:h-screen w-full bg-[#eeebe3] pt-16 md:pt-24 flex">
+      <section className="relative h-screen w-full bg-[#eeebe3] pt-16 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           {/* LEFT CONTENT (Text) */}
@@ -57,9 +57,9 @@ export default function ContentHubHero() {
                     INCLUDES
                   </motion.h1>
 
-                  <div className="relative z-10 w-full mt-4 md:mt-6">
+                  <div className="relative z-10 w-full mt-8 md:mt-6 space-y-4 md:space-y-2">
                     <motion.div
-                      className="relative z-10 text-red-600 font-inter font-extrabold uppercase space-y-1 md:space-y-2 text-left w-full"
+                      className="relative z-10 text-red-600 font-inter font-extrabold uppercase space-y-4 md:space-y-2 text-left w-full"
                       variants={containerVariants}
                       initial="hidden"
                       whileInView="visible"
@@ -75,15 +75,15 @@ export default function ContentHubHero() {
                           <div className="w-full h-full bg-[#eeebe3] rounded-lg"></div>
                         </div>
                       </motion.h2>
-                      <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}>
+                      <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}>
                         <Link
-                          href="/content-hub#red-block"
-                          className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 hover:text-[#ca0013] hover:translate-x-1"
+                          href="/content-hub#cream-block"
+                          className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 hover:text-[#ca0013] hover:translate-x-1 bg-white/90 md:bg-transparent px-4 py-3 md:px-0 md:py-0 rounded-lg md:rounded-none border border-gray-200/30 md:border-none backdrop-blur-sm md:backdrop-blur-none"
                         >
                           <span className="touch-manipulation">
-                            <span className="block md:inline">Full‑Stack Creative</span>{" "}
+                            <span className="block md:inline">Brand Integration &</span>{" "}
                             <span className="inline-flex items-center gap-1">
-                              <span>Production</span>
+                              <span>Partnership Design</span>
                               <svg
                                 className="inline-flex w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
                                 fill="currentColor"
@@ -100,15 +100,15 @@ export default function ContentHubHero() {
                           </span>
                         </Link>
                       </motion.div>
-                      <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}>
+                      <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}>
                         <Link
-                          href="/content-hub#cream-block"
-                          className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 hover:text-[#ca0013] hover:translate-x-1"
+                          href="/content-hub#red-block"
+                          className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 text-white md:text-red-600 hover:text-[#ca0013] hover:translate-x-1 bg-[#ca0013]/90 md:bg-transparent px-4 py-3 md:px-0 md:py-0 rounded-lg md:rounded-none border border-gray-200/30 md:border-none backdrop-blur-sm md:backdrop-blur-none"
                         >
                           <span className="touch-manipulation">
-                            <span className="block md:inline">Brand Integration &</span>{" "}
+                            <span className="block md:inline">Full‑Stack Creative</span>{" "}
                             <span className="inline-flex items-center gap-1">
-                              <span>Partnership Design</span>
+                              <span>Production</span>
                               <svg
                                 className="inline-flex w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
                                 fill="currentColor"
@@ -153,7 +153,7 @@ export default function ContentHubHero() {
 
           {/* DESKTOP PAPERLADY IMAGE - Maximized right side */}
           <motion.div
-            className="hidden md:block absolute top-0 right-0 w-1/2 h-full"
+            className="hidden md:block absolute bottom-0 right-0 w-1/2 h-full"
             initial={{ opacity: 0, scale: 0.85, x: 160 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}

@@ -16,7 +16,7 @@ export default function RedIdentityPage() {
         <div className="w-full relative z-20 px-4 md:px-6">
           <motion.h1
             id="red-block-heading"
-            className="relative text-white font-black uppercase tracking-tighter md:tracking-tight leading-[0.95] text-left md:text-center text-[clamp(1.75rem,4.5vw+0.5rem,4.5rem)] mx-auto"
+            className="text-2xl relative text-white font-black uppercase tracking-tighter md:tracking-tight leading-[0.95] text-left md:text-center md:text-[clamp(1.75rem,4.5vw+0.5rem,4.5rem)] mx-auto"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
