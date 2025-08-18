@@ -8,7 +8,7 @@ export default function ContactHero() {
   return (
     <div className="relative w-full overflow-hidden">
       {/* HERO SECTION */}
-      <section className="relative h-[72vh] md:h-screen w-full bg-[#eeebe3] pt-24 flex">
+      <section className="relative h-[78vh] md:h-screen w-full bg-[#eeebe3] pt-24 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           <motion.div
@@ -63,7 +63,7 @@ export default function ContactHero() {
         </div>
 
         <motion.div
-          className="absolute z-20 bottom-8 right-4 md:bottom-8 md:right-20"
+          className="absolute z-20 bottom-24 right-4 md:bottom-8 md:right-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
