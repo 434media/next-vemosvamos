@@ -8,104 +8,117 @@ export default function AboutHero() {
   return (
     <div className="relative w-full overflow-x-hidden">
       {/* HERO SECTION */}
-      <section
-        className="
-          fixed
-          topy-15
-          left-0
-          h-screen
-          w-full
-          bg-[#eeebe3]
-          flex
-          flex-col
-          items-center
-          justify-center
-          overflow-hidden
-          z-0
-          pt-24
-        "
-      >
-        {/* TOP LEFT TEXT */}
+      <section className="fixed inset-0 bg-[#eeebe3] overflow-hidden z-0">
+        {/* Corner labels (stay absolute) */}
         <motion.div
-          className="absolute top-6 left-6 text-red-700 font-inter uppercase text-base md:text-lg tracking-wide"
+          className="absolute top-4 left-4 md:top-6 md:left-6 text-red-700 font-inter uppercase text-sm md:text-lg tracking-wide"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
           A Multicultural Brand Studio
         </motion.div>
-
-        {/* TOP RIGHT TEXT */}
         <motion.div
-          className="absolute top-6 right-6 text-red-700 font-inter uppercase text-base md:text-lg tracking-wide text-right"
+          className="absolute top-4 right-4 md:top-6 md:right-6 text-red-700 font-inter uppercase text-sm md:text-lg tracking-wide text-right"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
         >
           Powered by 434 Media
         </motion.div>
 
-        {/* MAIN IMAGE */}
-        <motion.div
-          className="relative w-full h-full flex items-center justify-center overflow-hidden"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          <Image
-            src="/images/whywerediff.png"
-            alt="Why We're Different"
-            fill
-            priority
-            className="object-contain object-center drop-shadow-lg"
-            style={{
-              transform: "scale(1.09)",
-              top: "-50px",
-              left: "0px",
-            }}
-          />
-        </motion.div>
+        {/* FLEX COLUMN LAYOUT */}
+        <div className="relative h-full w-full flex flex-col items-center justify-center px-4 pt-20 md:pt-24 gap-6 md:gap-8">
+          {/* Headline */}
+          <motion.h1
+            className="
+              text-red-700 font-inter font-extrabold uppercase leading-none text-center
+              tracking-[-0.06em]
+              w-full
+              text-[clamp(2rem,12vw,20rem)]
+            "
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+          >
+            WHY WE’RE DIFFERENT
+          </motion.h1>
 
-        {/* CENTER-RIGHT FADE-IN FROM RIGHT TEXT BLOCK */}
+          {/* Three-line block: centered on sm/md; shifts left on lg+ */}
+          <motion.div
+            className="
+              text-red-600 font-inter font-extrabold uppercase
+              tracking-wide leading-snug md:leading-relaxed
+              text-center lg:text-left
+              text-[clamp(1rem,3.2vw,2rem)]
+              max-w-[36ch]
+              self-center
+              lg:self-start lg:ml-[35%]
+            "
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
+          >
+            <div>Female-Led</div>
+            <div>Authentically Bicultural</div>
+            <div>Deeply Embedded Network</div>
+          </motion.div>
+        </div>
+
+        {/* Corner images (scale with clamp, stay pinned) */}
+        {/* LADYTHINK — Bottom Left */}
 <motion.div
-  className="absolute right-[20%] top-[57%] -translate-y-1/2 text-red-600 font-inter text-2xl md:text-5xl font-extrabold leading-relaxed md:leading-[1.4] text-left uppercase"
-  initial={{ opacity: 0, x: 50 }} // Start 50px to the right
-  animate={{ opacity: 1, x: 0 }}   // Animate to normal position
-  transition={{ duration: 1, ease: "easeOut", delay: 0.8 }}
-  style={{ maxWidth: "none" }}
+  className="
+    absolute z-10 pointer-events-none
+    left-[2%] bottom-[3%]
+    w-[clamp(260px,50vw,600px)]     /* ⬆️ bigger on mobile (min 260, 50vw) */
+    md:w-[clamp(280px,38vw,640px)]  /* ⬇️ slightly smaller cap on md */
+    lg:w-[clamp(240px,30vw,560px)]  /* ⬇️ even smaller on large screens */
+  "
+  initial={{ opacity: 0, scale: 0.97 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.45 }}
 >
-  <div>FEMALE-LED</div>
-  <div>Authentically bicultural </div>
-  <div>Deeply embedded network</div>
+  <Image
+    src="/images/ladythink.png"
+    alt="Thinking Lady"
+    width={1600}
+    height={1600}
+    className="object-contain w-full h-auto drop-shadow-lg"
+    sizes="(max-width: 768px) 70vw, (max-width: 1024px) 38vw, 30vw"
+  />
 </motion.div>
 
 
-        {/* NEW IMAGE - WRESTLECAT (BOTTOM RIGHT, ADJUSTABLE) */}
-        <motion.div
-          className="absolute z-20"
-          style={{
-            right: "5%",
-            bottom: "20%",
-            width: "250px",
-            height: "auto",
-          }}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut", delay: 1 }}
-        >
-          <Image
-            src="/images/wrestlecat.png"
-            alt="Wrestle Cat"
-            width={500}
-            height={500}
-            className="object-contain drop-shadow-lg"
-            style={{ transform: "scale(3)" }}
-          />
-        </motion.div>
+{/* WRESTLECAT — Bottom Right */}
+<motion.div
+  className="
+    absolute z-10 pointer-events-none
+    right-[-9%] bottom-[0%]
+    w-[clamp(240px,40vw,820px)]          /* cat scaled up a lot more */
+    md:w-[clamp(320px,46vw,880px)]
+    lg:w-[clamp(280px,38vw,820px)]
+  "
+  initial={{ opacity: 0, scale: 0.97 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.85, ease: 'easeOut', delay: 0.55 }}
+>
+  <Image
+    src="/images/wrestlecat.png"
+    alt="Wrestle Cat"
+    width={1700}
+    height={1700}
+    className="object-contain w-full h-auto drop-shadow-lg"
+    sizes="(max-width: 768px) 65vw, (max-width: 1024px) 46vw, 38vw"
+  />
+</motion.div>
+
+
+
       </section>
 
       {/* SPACER */}
-      <div className="h-screen"></div>
+      <div className="h-screen" />
 
       {/* TEAM SECTION */}
       <section className="relative bg-white rounded-t-[40px] shadow-2xl z-10">
