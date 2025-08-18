@@ -17,7 +17,7 @@ export default function WhoWeReach() {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[50vh] md:min-h-[85vh] lg:min-h-screen py-8 md:py-16"
+      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[40vh] md:min-h-[85vh] lg:min-h-screen py-8 md:py-16"
       aria-label="Our mission statement"
     >
       <motion.div

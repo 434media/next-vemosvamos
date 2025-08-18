@@ -23,7 +23,7 @@ export default function NewLandingPage() {
   }
 
   return (
-    <div ref={scrollRef} className="relative w-full overflow-x-hidden -mt-16 md:mt-0">
+    <div ref={scrollRef} className="relative w-full overflow-x-hidden">
       <section
         className="relative w-full h-screen bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6"
         role="banner"
@@ -44,23 +44,6 @@ export default function NewLandingPage() {
             className="md:mt-10 object-contain sm:object-cover object-center drop-shadow-lg scale-[1.38] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] -translate-y-1"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 85vw"
           />
-
-          {/* Mobile dice */}
-          <motion.div
-            className="absolute top-[24%] right-[clamp(4px,2vw,18px)] z-30 w-[clamp(72px,26vw,112px)] h-[clamp(72px,26vw,112px)] sm:hidden"
-            initial={{ opacity: 0, rotate: -28, scale: 0.6, y: -16 }}
-            animate={{ opacity: 1, rotate: 0, scale: 1, y: 0 }}
-            transition={{ duration: 1.15, delay: 0.45, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <Image
-              src="/images/dice1.png"
-              alt="Decorative dice element"
-              fill
-              className="object-contain drop-shadow-lg pointer-events-none select-none"
-              sizes="(max-width: 640px) 112px, 0px"
-            />
-          </motion.div>
-
           <motion.div
             className="absolute right-2 sm:right-4 md:right-8 lg:right-12 xl:right-16 bottom-[10%] sm:bottom-[10%] md:bottom-[4%] z-20 hidden sm:block"
             initial={{ opacity: 0, x: 80, scale: 0.8 }}
@@ -97,32 +80,52 @@ export default function NewLandingPage() {
             </h2>
           </motion.div>
 
-          <motion.button
-            onClick={scrollToWhyItMatters}
-            className="bg-[#ca0013] text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#a00010] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            aria-label="Navigate to Why It Matters section"
-          >
-            <span>Why It Matters</span>
-          </motion.button>
+          <div className="relative flex items-center justify-center w-full">
+            {/* Star on the left */}
+            <motion.div
+              className="absolute left-0 bottom-0 z-30"
+              initial={{ opacity: 0, scale: 0.5 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <Image
+                src="/images/stars.png"
+                alt="Decorative sparkling stars"
+                width={80}
+                height={80}
+                className="object-contain"
+                sizes="80px"
+              />
+            </motion.div>
 
-          <motion.div
-            className="absolute left-0 bottom-4 z-30 md:hidden"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <Image
-              src="/images/stars.png"
-              alt="Decorative sparkling stars"
-              width={112}
-              height={112}
-              className="object-contain"
-              sizes="(max-width: 640px) 112px, 0px"
-            />
-          </motion.div>
+            {/* Button in the center */}
+            <motion.button
+              onClick={scrollToWhyItMatters}
+              className="bg-[#ca0013] text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#a00010] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+              aria-label="Navigate to Why It Matters section"
+            >
+              <span>Why It Matters</span>
+            </motion.button>
+
+            {/* Dice on the right */}
+            <motion.div
+              className="absolute right-0 bottom-0 z-30 w-[80px] h-[80px]"
+              initial={{ opacity: 0, rotate: -28, scale: 0.6 }}
+              animate={{ opacity: 1, rotate: 0, scale: 1 }}
+              transition={{ duration: 1.15, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+            >
+              <Image
+                src="/images/dice1.png"
+                alt="Decorative dice element"
+                fill
+                className="object-contain drop-shadow-lg pointer-events-none select-none"
+                sizes="80px"
+              />
+            </motion.div>
+          </div>
         </div>
 
         {/* === SCROLL-RESPONSIVE DICE IMAGE (RIGHT SIDE) === */}

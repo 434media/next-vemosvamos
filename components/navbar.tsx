@@ -1,6 +1,6 @@
 "use client"
 
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import Image from "next/image"
@@ -30,19 +30,24 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-[#eeebe3]/90 backdrop-blur-md" : "bg-[#eeebe3]"
+          scrolled ? "bg-[#ca0013]/90 backdrop-blur-md" : "bg-[#ca0013]"
         }`}
       >
         <nav className="container mx-auto px-4">
           <div className="flex justify-between items-center h-[80px] md:h-[76px]">
-            <MotionLink href="/" className="flex items-center h-full" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <MotionLink
+              href="/"
+              className="flex items-center h-full"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <motion.div whileHover={{ rotate: [0, -10, 10, -10, 0] }} transition={{ duration: 0.5 }}>
                 <Image
-                  src="/images/cherrycur.png"
+                  src="/images/dice1.png"
                   alt="Vemos Vamos Logo"
                   width={80}
                   height={80}
-                  className="w-20 h-20 md:w-16 md:h-16 object-contain"
+                  className="w-24 h-24 object-contain invert"
                 />
               </motion.div>
             </MotionLink>
