@@ -62,7 +62,7 @@ export default function OurTeam() {
   return (
     <section className="relative w-full min-h-screen bg-[#eeebe3]">
       <motion.div
-        className="absolute top-55 -right-15 md:-top-52 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
+        className="absolute top-75 -right-15 md:-top-52 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
         initial={{ opacity: 0, scale: 0.6, rotate: -15, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -87,7 +87,7 @@ export default function OurTeam() {
       </motion.div>
 
       {/* RED BLOCK (TOP SECTION) - Enhanced with hero text */}
-      <div className="w-full bg-[#ca0013] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-[5vw] py-12 md:py-16 px-4 md:px-[5vw] relative z-5 min-h-[60vh] md:min-h-[50vh]">
+      <div className="w-full h-[50vh] bg-[#ca0013] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-[5vw] py-12 md:py-16 px-4 md:px-[5vw] relative z-5 min-h-[40vh] md:min-h-[50vh]">
         <motion.div
           className="relative w-full md:w-[40vw] flex justify-center md:justify-start"
           initial={{ opacity: 0, y: -50, scale: 0.8 }}
