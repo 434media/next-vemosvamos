@@ -2,41 +2,44 @@
 
 import { motion } from "motion/react"
 import Image from "next/image"
-
-const offerings = [
-  {
-    title: "Branded Content Production",
-    description: "High-impact, short-form video and photo tailored to culture-driven campaigns.",
-    align: "left",
-    delay: 0,
-  },
-  {
-    title: "Community Activations",
-    description: "Weekly monologues + carousels on marketing + entrepreneurship insights.",
-    align: "left",
-    delay: 0.2,
-  },
-  {
-    title: "Bilingual Brand Development",
-    description: "Visual identity, messaging, social media management, and content strategy.",
-    align: "right",
-    delay: 0.4,
-  },
-  {
-    title: "Cultural Insights & Trends",
-    description: "Real-time Gen Z Latino insights to shape brand decisions and creative direction.",
-    align: "right",
-    delay: 0.6,
-  },
-]
+import { useLanguage } from "@/lib/language-context"
 
 export default function Partnerships() {
+  const { t } = useLanguage()
+
+  const offerings = [
+    {
+      titleKey: "partnerships.brandedContent.title",
+      descriptionKey: "partnerships.brandedContent.description",
+      align: "left" as const,
+      delay: 0,
+    },
+    {
+      titleKey: "partnerships.communityActivations.title",
+      descriptionKey: "partnerships.communityActivations.description",
+      align: "left" as const,
+      delay: 0.2,
+    },
+    {
+      titleKey: "partnerships.bilingualBrand.title",
+      descriptionKey: "partnerships.bilingualBrand.description",
+      align: "right" as const,
+      delay: 0.4,
+    },
+    {
+      titleKey: "partnerships.culturalInsights.title",
+      descriptionKey: "partnerships.culturalInsights.description",
+      align: "right" as const,
+      delay: 0.6,
+    },
+  ]
+
   return (
     <section id="partnerships" className="w-full bg-[#ca0013] py-14 md:py-24 px-4 md:px-10 relative overflow-visible">
       {/* === FLOWER IMAGE - TRANSITION ELEMENT === */}
       {/* Desktop: top left, extending out */}
       <motion.div
-        className="hidden md:block absolute -top-40 right-4 z-20 pointer-events-none"
+        className="hidden md:block absolute -top-48 right-4 z-20 pointer-events-none"
         initial={{ opacity: 0, rotate: -15, scale: 0.8 }}
         whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
@@ -79,7 +82,7 @@ export default function Partnerships() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          What We Offer
+          {t("partnerships.title")}
         </motion.h2>
         <motion.div
           className="mx-auto h-1 bg-white w-16 md:w-32 rounded-full"
@@ -98,7 +101,7 @@ export default function Partnerships() {
             .filter((item) => item.align === "left")
             .map((item) => (
               <motion.article
-                key={item.title}
+                key={item.titleKey}
                 className="text-white"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -106,7 +109,7 @@ export default function Partnerships() {
                 transition={{ duration: 0.6, delay: item.delay }}
               >
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase font-inter tracking-tight leading-tight mb-3">
-                  {item.title}
+                  {t(item.titleKey)}
                 </h3>
 
                 <motion.div
@@ -122,7 +125,7 @@ export default function Partnerships() {
                 />
 
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-4 font-medium uppercase max-w-md leading-relaxed">
-                  {item.description}
+                  {t(item.descriptionKey)}
                 </p>
               </motion.article>
             ))}
@@ -134,7 +137,7 @@ export default function Partnerships() {
             .filter((item) => item.align === "right")
             .map((item) => (
               <motion.article
-                key={item.title}
+                key={item.titleKey}
                 className="text-white"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +145,7 @@ export default function Partnerships() {
                 transition={{ duration: 0.6, delay: item.delay }}
               >
                 <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase font-inter tracking-tight leading-tight mb-3">
-                  {item.title}
+                  {t(item.titleKey)}
                 </h3>
 
                 <motion.div
@@ -158,7 +161,7 @@ export default function Partnerships() {
                 />
 
                 <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-4 font-medium uppercase max-w-md ml-auto leading-relaxed">
-                  {item.description}
+                  {t(item.descriptionKey)}
                 </p>
               </motion.article>
             ))}

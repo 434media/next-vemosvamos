@@ -3,8 +3,10 @@
 import { motion, useScroll, useTransform } from "motion/react"
 import { useRef } from "react"
 import Image from "next/image"
+import { useLanguage } from "../lib/language-context"
 
 export default function NewLandingPage() {
+  const { t } = useLanguage()
   const scrollRef = useRef(null)
 
   // Get scroll progress and map it to motion values
@@ -52,16 +54,15 @@ export default function NewLandingPage() {
           >
             <div className="text-right relative">
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 font-serif leading-tight drop-shadow-lg cursor-pointer transition-colors duration-300 hover:text-[#ca0013] relative group"
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:max-w-lg md:mr-6 md:leading-[0.8] md:tracking-tighter font-black text-gray-900 font-serif leading-tight drop-shadow-lg cursor-pointer transition-colors duration-300 hover:text-[#ca0013] relative group"
                 onClick={scrollToWhyItMatters}
                 role="button"
                 tabIndex={0}
                 onKeyDown={(e) => e.key === "Enter" && scrollToWhyItMatters()}
                 aria-label="Navigate to Why It Matters section"
               >
-                Bicultural Media for
-                <br />a New Generation
-                <div className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
+                {t("hero.title")}
+                <div className="absolute -bottom-2 -right-16 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
               </h2>
             </div>
           </motion.div>
@@ -76,8 +77,7 @@ export default function NewLandingPage() {
             transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <h2 className="text-3xl font-bold text-gray-900 font-serif leading-tight drop-shadow-sm">
-              Bicultural Media for
-              <br />a New Generation
+              {t("hero.title")}
             </h2>
           </motion.div>
 
@@ -108,7 +108,7 @@ export default function NewLandingPage() {
               transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
               aria-label="Navigate to Why It Matters section"
             >
-              <span>Why It Matters</span>
+              <span>{t("matters.title")}</span>
             </motion.button>
 
             {/* Dice on the right */}

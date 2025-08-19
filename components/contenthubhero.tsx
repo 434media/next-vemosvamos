@@ -3,8 +3,11 @@
 import { motion } from "motion/react"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "../lib/language-context"
 
 export default function ContentHubHero() {
+  const { t } = useLanguage()
+
   const containerVariants = {
     hidden: {},
     visible: {
@@ -50,11 +53,14 @@ export default function ContentHubHero() {
                       delay: 0.2,
                     }}
                   >
-                    OUR
-                    <br />
-                    EXPERTISE
-                    <br />
-                    INCLUDES
+                    {t("ourExpertiseIncludes")
+                      .split("\n")
+                      .map((line, index) => (
+                        <span key={index}>
+                          {line}
+                          {index < t("ourExpertiseIncludes").split("\n").length - 1 && <br />}
+                        </span>
+                      ))}
                   </motion.h1>
 
                   <div className="relative z-10 w-full mt-8 md:mt-6 space-y-4 md:space-y-2">
@@ -70,7 +76,7 @@ export default function ContentHubHero() {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight font-black relative inline-block"
                       >
-                        <span className="relative z-10 py-2 text-lg">Bilingual Storytelling</span>
+                        <span className="relative z-10 py-2">{t("bilingualStorytelling")}</span>
                       </motion.h2>
                       <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}>
                         <Link
@@ -78,9 +84,9 @@ export default function ContentHubHero() {
                           className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 hover:text-[#ca0013] hover:translate-x-1 bg-white/90 md:bg-transparent px-4 py-3 md:px-0 md:py-0 rounded-lg md:rounded-none border border-gray-200/30 md:border-none backdrop-blur-sm md:backdrop-blur-none"
                         >
                           <span className="touch-manipulation">
-                            <span className="block md:inline">Brand Integration &</span>{" "}
+                            <span className="block md:inline">{t("brandIntegration")}</span>{" "}
                             <span className="inline-flex items-center gap-1">
-                              <span>Partnership Design</span>
+                              <span>{t("partnershipDesign")}</span>
                               <svg
                                 className="inline-flex w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
                                 fill="currentColor"
@@ -103,9 +109,9 @@ export default function ContentHubHero() {
                           className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 text-white md:text-red-600 hover:text-[#ca0013] hover:translate-x-1 bg-[#ca0013]/90 md:bg-transparent px-4 py-3 md:px-0 md:py-0 rounded-lg md:rounded-none border border-gray-200/30 md:border-none backdrop-blur-sm md:backdrop-blur-none"
                         >
                           <span className="touch-manipulation">
-                            <span className="block md:inline">Full‑Stack Creative</span>{" "}
+                            <span className="block md:inline">{t("fullStackCreative")}</span>{" "}
                             <span className="inline-flex items-center gap-1">
-                              <span>Production</span>
+                              <span>{t("production")}</span>
                               <svg
                                 className="inline-flex w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
                                 fill="currentColor"
@@ -130,7 +136,7 @@ export default function ContentHubHero() {
           </div>
           {/* PAPERLADY IMAGE - Visible on all screens, fits mobile height */}
           <motion.div
-            className="absolute bottom-0 right-0 w-full h-[80vh] md:w-full md:h-full"
+            className="absolute bottom-0 right-0 w-full h-[80vh] md:h-full"
             initial={{ opacity: 0, scale: 0.85, x: 160 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -142,7 +148,7 @@ export default function ContentHubHero() {
                 alt="Illustrated Newspaper"
                 fill
                 priority
-                className="object-cover object-center drop-shadow-2xl"
+                className="object-cover"
               />
             </div>
           </motion.div>

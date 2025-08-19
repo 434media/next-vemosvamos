@@ -3,6 +3,7 @@
 import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
+import { useLanguage } from "@/lib/language-context"
 
 // Extend the Window interface to include the turnstile property
 declare global {
@@ -18,7 +19,7 @@ declare global {
 const isDevelopment = process.env.NODE_ENV === "development"
 
 interface NewsletterProps {
-  currentLanguage: "en" | "es"
+  currentLanguage?: "en" | "es"
 }
 
 export function Newsletter({ currentLanguage }: NewsletterProps) {
@@ -29,23 +30,8 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
   const turnstileRef = useRef<HTMLDivElement>(null)
   const [turnstileWidget, setTurnstileWidget] = useState<string | null>(null)
 
-  // Language content
-  const content = {
-    en: {
-      emailPlaceholder: "Enter your email",
-      subscribe: "Subscribe",
-      subscribing: "Subscribing...",
-      successMessage: "Thanks for subscribing! Check your email to confirm.",
-      errorPrefix: "An error occurred:",
-    },
-    es: {
-      emailPlaceholder: "Ingresa tu correo electrónico",
-      subscribe: "Suscribirse",
-      subscribing: "Suscribiendo...",
-      successMessage: "¡Gracias por suscribirte! Revisa tu correo para confirmar.",
-      errorPrefix: "Ocurrió un error:",
-    },
-  }
+  const { t, language } = useLanguage()
+  const activeLanguage = currentLanguage || language
 
   useEffect(() => {
     if (!isDevelopment && !window.turnstile) {
@@ -106,7 +92,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
       if (response.ok) {
         setEmail("")
         setIsSuccess(true)
-        setTimeout(() => setIsSuccess(false), 5000) // Reset success state after 5 seconds
+        setTimeout(() => setIsSuccess(false), 5000)
         if (!isDevelopment && turnstileWidget) {
           if (window.turnstile) {
             window.turnstile.reset(turnstileWidget)
@@ -118,7 +104,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
     } catch (error) {
       console.error("Error subscribing to newsletter:", error)
       setError(
-        `${content[currentLanguage].errorPrefix} ${error instanceof Error ? error.message : String(error)}. Please try again.`,
+        `${t("newsletter.errorPrefix")} ${error instanceof Error ? error.message : String(error)}. Please try again.`,
       )
     } finally {
       setIsSubmitting(false)
@@ -149,7 +135,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder={content[currentLanguage].emailPlaceholder}
+                placeholder={t("newsletter.emailPlaceholder")}
                 className="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-white/50 text-lg"
               />
             </div>
@@ -159,7 +145,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
               disabled={isSubmitting}
               className="w-full px-6 py-3 bg-white text-[#EE2D24] rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#EE2D24] text-lg font-semibold"
             >
-              {isSubmitting ? content[currentLanguage].subscribing : content[currentLanguage].subscribe}
+              {isSubmitting ? t("newsletter.subscribing") : t("newsletter.subscribe")}
             </button>
             {error && <p className="text-white/80 text-sm">{error}</p>}
           </motion.form>
@@ -170,7 +156,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
             animate={{ opacity: 1, scale: 1 }}
             className="bg-white/10 text-white px-4 py-3 rounded-lg border border-white/20"
           >
-            {content[currentLanguage].successMessage}
+            {t("newsletter.successMessage")}
           </motion.div>
         )}
       </AnimatePresence>

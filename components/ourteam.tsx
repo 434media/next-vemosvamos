@@ -1,9 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import Image from "next/image"
 import { useState } from "react"
 import { X } from "lucide-react"
+import { useLanguage } from "../lib/language-context"
 
 const LinkedinIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -58,11 +59,12 @@ const teamMembers = [
 
 export default function OurTeam() {
   const [selectedMember, setSelectedMember] = useState<(typeof teamMembers)[0] | null>(null)
+  const { t } = useLanguage()
 
   return (
-    <section className="relative w-full min-h-screen bg-[#eeebe3]">
+    <section className="relative w-full bg-[#eeebe3]">
       <motion.div
-        className="absolute top-65 -right-15 md:-top-52 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
+        className="absolute bottom-4 right-4 md:-top-57 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
         initial={{ opacity: 0, scale: 0.6, rotate: -15, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -87,7 +89,7 @@ export default function OurTeam() {
       </motion.div>
 
       {/* RED BLOCK (TOP SECTION) - Enhanced with hero text */}
-      <div className="w-full h-[50vh] bg-[#ca0013] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-[5vw] py-12 md:py-16 px-4 md:px-[5vw] relative z-5 min-h-[40vh] md:min-h-[50vh]">
+      <div className="w-full bg-[#ca0013] flex flex-col md:flex-row justify-center items-center gap-8 md:gap-[5vw] py-12 md:py-16 px-4 md:px-[6vw] relative z-5 min-h-[60vh] md:min-h-[50vh]">
         <motion.div
           className="relative w-full md:w-[40vw] flex justify-center md:justify-start"
           initial={{ opacity: 0, y: -50, scale: 0.8 }}
@@ -105,33 +107,41 @@ export default function OurTeam() {
             role="heading"
             aria-level={1}
           >
-            OUR
-            <br />
-            TEAM
+            {t("ourTeam")
+              .split(" ")
+              .map((word, index) => (
+                <span key={index}>
+                  {word}
+                  {index === 0 && <br />}
+                </span>
+              ))}
           </h1>
         </motion.div>
 
-        <div className="relative max-w-lg md:max-w-[40vw]">
+        <div className="relative max-w-xl md:max-w-[60vw]">
           <motion.div
-            className="text-white font-inter font-black text-3xl md:text-4xl lg:text-5xl leading-tight md:leading-tight tracking-tight uppercase text-center md:text-left relative z-20"
+            className="text-white font-inter font-black text-3xl md:text-4xl lg:text-7xl leading-tight md:leading-[0.9] tracking-tight uppercase text-center md:text-left relative z-20"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.3 }}
           >
             <span className="block md:hidden">
-              Cultural relevance,
-              <br />
-              Audience trust, and
-              <br />
-              Creative quality.
+              {t("culturalRelevanceMobile")
+                .split("\n")
+                .map((line, index) => (
+                  <span key={index}>
+                    {line}
+                    {index < t("culturalRelevanceMobile").split("\n").length - 1 && <br />}
+                  </span>
+                ))}
             </span>
-            <span className="hidden md:block">Cultural relevance, Audience trust, and Creative quality.</span>
+            <span className="hidden md:block">{t("culturalRelevance")}</span>
           </motion.div>
         </div>
       </div>
 
-      <div className="w-full bg-[#eeebe3] py-8 md:py-12 px-4 md:px-8 relative z-10 overflow-hidden">
+      <div className="w-full bg-[#eeebe3] py-8 md:py-12 px-4 md:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Team Grid */}
           <motion.div

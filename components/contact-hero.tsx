@@ -3,8 +3,11 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
+import { useLanguage } from "@/lib/language-context"
 
 export default function ContactHero() {
+  const { t } = useLanguage()
+
   return (
     <div className="relative w-full overflow-hidden">
       {/* HERO SECTION */}
@@ -50,13 +53,13 @@ export default function ContactHero() {
                   ease: [0.25, 0.46, 0.45, 0.94],
                   delay: 0.2,
                 }}
-                aria-label="Opportunities for partnerships"
+                aria-label={`${t("contact.hero.opportunities")} ${t("contact.hero.for")} ${t("contact.hero.partnerships")}`}
               >
-                OPPORTUNITIES
+                {t("contact.hero.opportunities")}
                 <br />
-                FOR
+                {t("contact.hero.for")}
                 <br />
-                PARTNERSHIPS
+                {t("contact.hero.partnerships")}
               </motion.h1>
             </motion.div>
           </div>
@@ -71,7 +74,7 @@ export default function ContactHero() {
           <Link
             href="#partnerships"
             className="group relative block w-[220px] md:w-[400px] cursor-pointer transition-transform duration-300 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-500/50 rounded-lg"
-            aria-label="Go to partnerships section"
+            aria-label={t("contact.hero.goToPartnerships")}
           >
             <motion.div
               animate={{ y: [0, -10, 0], rotate: [-6, -8, -6] }}

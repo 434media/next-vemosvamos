@@ -1,14 +1,17 @@
 "use client"
 import Image from "next/image"
 import { motion } from "motion/react"
+import { useLanguage } from "../lib/language-context"
 
 export default function RedIdentityPage() {
+  const { t } = useLanguage()
+
   return (
     <>
       {/* 🔴 RED BLOCK */}
       <section
         id="red-block"
-        className="w-full bg-[#ca0013] relative overflow-hidden md:min-h-[70vh] flex items-center py-6"
+        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[50vh] md:min-h-[70vh] max-h-[80vh] flex items-center py-4"
         role="region"
         aria-labelledby="red-block-heading"
       >
@@ -16,14 +19,13 @@ export default function RedIdentityPage() {
         <div className="w-full relative z-20 px-4 md:px-6">
           <motion.h1
             id="red-block-heading"
-            className="text-2xl relative text-white font-black uppercase tracking-tighter md:tracking-tight leading-[0.95] text-left md:text-center md:text-[clamp(1.75rem,4.5vw+0.5rem,4.5rem)] mx-auto"
+            className="relative text-white text-left text-3xl font-black uppercase tracking-tighter leading-[0.95] md:text-center md:text-[clamp(1.75rem,4.5vw+0.5rem,4.5rem)] mx-auto"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
           >
-            We partner with brands to define and express their identity in ways that foster genuine connections with
-            Latinx audiences visually, verbally, and culturally.
+            {t("partnershipStatement")}
           </motion.h1>
         </div>
       </section>
@@ -51,14 +53,12 @@ export default function RedIdentityPage() {
                 fontSize: "clamp(3rem, 8vw + 1rem, 12rem)",
               }}
             >
-              ACTIVE
-              <br />
-              PRODUCTIONS
+              <span className="block">{t("activeProductions").replace("\n", " ")}</span>
             </h1>
           </motion.div>
 
           {/* LOWER CONTENT AREA */}
-          <div className="relative w-full">
+          <div className="relative w-full flex-1">
             <div className="relative lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-12">
               {/* TEXT COLUMN */}
               <div className="relative z-20 lg:col-span-7 xl:col-span-7 space-y-8 md:space-y-12 pr-4 xl:pr-8">
@@ -71,7 +71,7 @@ export default function RedIdentityPage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    Series 1: Stay Local, Look Deeper
+                    {t("series1Title")}
                   </motion.h2>
                   <motion.div
                     className="h-1 bg-red-700 w-24"
@@ -88,8 +88,7 @@ export default function RedIdentityPage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                   >
-                    Weekly 1–2 min "Come With Me" videos designed to build trust through local insight + community
-                    presence.
+                    {t("series1Description")}
                   </motion.p>
                 </div>
 
@@ -102,7 +101,7 @@ export default function RedIdentityPage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    Series 2: Creator Tips W/Vemos Vamos
+                    {t("series2Title")}
                   </motion.h2>
                   <motion.div
                     className="h-1 bg-red-700 w-24"
@@ -119,7 +118,7 @@ export default function RedIdentityPage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                   >
-                    Weekly monologues + carousels on marketing + entrepreneurship insights.
+                    {t("series2Description")}
                   </motion.p>
                 </div>
 
@@ -132,7 +131,7 @@ export default function RedIdentityPage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                   >
-                    Series 3: Vamos A Experimentar
+                    {t("series3Title")}
                   </motion.h2>
                   <motion.div
                     className="h-1 bg-red-700 w-24"
@@ -149,14 +148,14 @@ export default function RedIdentityPage() {
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                   >
-                    A bi-weekly series with creators for rapid innovation and real-time cultural relevance.
+                    {t("series3Description")}
                   </motion.p>
                 </div>
               </div>
 
               {/* DESKTOP MEDIA COLUMN */}
               <motion.div
-                className="hidden lg:block lg:col-span-5 xl:col-span-5 relative -ml-24 xl:-ml-32"
+                className="hidden lg:block lg:col-span-5 xl:col-span-5 relative md:-ml-32"
                 initial={{ opacity: 0, x: 80, scale: 0.95 }}
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.25 }}

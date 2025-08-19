@@ -1,9 +1,9 @@
 "use client"
 
-import { motion, useAnimation, useInView } from "motion/react"
+import { motion, useInView } from "motion/react"
 import { useState, useEffect, useRef } from "react"
+import { useLanguage } from "../lib/language-context"
 
-// Animated number utility
 type AnimatedNumberProps = {
   value: number
   suffix?: string
@@ -11,22 +11,26 @@ type AnimatedNumberProps = {
 }
 
 function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps) {
-  const controls = useAnimation()
   const ref = useRef(null)
   const [display, setDisplay] = useState(0)
-  const isInView = useInView(ref, { once: true })
+  const isInView = useInView(ref, { once: true, margin: "-10%" })
 
   useEffect(() => {
     if (isInView) {
       const start = 0
-      const duration = 1500
+      const duration = 2000 // Increased duration for smoother animation
       const startTime = performance.now()
+
+      function easeOutCubic(t: number): number {
+        return 1 - Math.pow(1 - t, 3)
+      }
 
       function animateNumber(currentTime: number) {
         const elapsed = currentTime - startTime
         if (elapsed < duration) {
           const progress = Math.min(elapsed / duration, 1)
-          const currentValue = Math.round(start + (value - start) * progress)
+          const easedProgress = easeOutCubic(progress)
+          const currentValue = Math.round(start + (value - start) * easedProgress)
           setDisplay(currentValue)
           requestAnimationFrame(animateNumber)
         } else {
@@ -41,12 +45,12 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps
   return (
     <motion.span
       ref={ref}
-      initial={{}}
-      animate={controls}
-      transition={{ duration: 1.5, ease: "easeOut" }}
-      onUpdate={(latest) => {
-        const num = typeof latest.num === "number" ? latest.num : Number(latest.num)
-        setDisplay(!isNaN(num) ? Math.round(num) : value)
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94], // Custom bezier curve for smoother entrance
+        delay: 0.1,
       }}
       className="inline-block text-5xl md:text-6xl font-extrabold text-red-700"
     >
@@ -58,6 +62,7 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps
 }
 
 export default function WhyItMattersSection() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
 
   return (
@@ -72,24 +77,20 @@ export default function WhyItMattersSection() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="w-full"
           >
             <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.85] tracking-tighter text-[#ca0013] drop-shadow-sm">
-              WHY IT
-              <br />
-              MATTERS
-              <br />
-              NOW
+              {t("matters.titleFull")}
             </h2>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, margin: "-10%" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
             className="w-full"
           >
             <video
@@ -107,67 +108,91 @@ export default function WhyItMattersSection() {
         <div className="w-full md:w-1/2 flex flex-col gap-y-12 text-red-700">
           {/* STAT 1 */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.2,
+              ease: [0.25, 0.46, 0.45, 0.94], // Smoother easing curve
+            }}
+            viewport={{ once: true, margin: "-10%" }}
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
-              U.S. Latinos hold <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " /> in consumer spending
-              power.
+              {t("stats.spending")} <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " />{" "}
+              {t("stats.spendingText")}
             </p>
             <motion.div
               className="mt-4 h-[4px] bg-red-700 origin-left"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-              viewport={{ once: true }}
+              transition={{
+                duration: 1.2,
+                delay: 0.6,
+                ease: [0.25, 0.46, 0.45, 0.94], // Smoother line animation
+              }}
+              viewport={{ once: true, margin: "-10%" }}
               style={{ transformOrigin: "left" }}
             />
-            <p className="mt-2 text-xs uppercase font-bold text-red-700">NielsenIQ 2024</p>
+            <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.spendingSource")}</p>
           </motion.div>
 
           {/* STAT 2 */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.3,
+              ease: [0.25, 0.46, 0.45, 0.94],
+            }}
+            viewport={{ once: true, margin: "-10%" }}
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
-              <AnimatedNumber value={1} /> in <AnimatedNumber value={5} /> Americans is Latino – the fastest growing
-              population in the U.S.
+              <AnimatedNumber value={1} /> {t("stats.population")} <AnimatedNumber value={5} />{" "}
+              {t("stats.populationText")}
             </p>
             <motion.div
               className="mt-4 h-[4px] bg-red-600 origin-left"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              viewport={{ once: true }}
+              transition={{
+                duration: 1.2,
+                delay: 0.7,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              viewport={{ once: true, margin: "-10%" }}
               style={{ transformOrigin: "left" }}
             />
-            <p className="mt-2 text-xs uppercase font-bold text-red-700">US Census 2023</p>
+            <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.populationSource")}</p>
           </motion.div>
 
           {/* STAT 3 */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.4,
+              ease: [0.25, 0.46, 0.45, 0.94],
+            }}
+            viewport={{ once: true, margin: "-10%" }}
           >
             <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
-              <AnimatedNumber value={55} suffix="%" /> of Gen Z Latinos consume bilingual content daily
+              <AnimatedNumber value={55} suffix="%" /> {t("stats.content")}
             </p>
             <motion.div
               className="mt-4 h-[4px] bg-red-700 origin-left"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
-              transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
+              transition={{
+                duration: 1.2,
+                delay: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              viewport={{ once: true, margin: "-10%" }}
               style={{ transformOrigin: "left" }}
             />
-            <p className="mt-2 text-xs uppercase font-bold text-red-700">MRI Simmons</p>
+            <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.contentSource")}</p>
           </motion.div>
         </div>
       </div>

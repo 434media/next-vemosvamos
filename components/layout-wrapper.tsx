@@ -7,6 +7,7 @@ import { Navbar } from "./navbar"
 import { MobileMenu } from "./mobile-menu"
 import { Footer } from "./footer"
 import { AnimatePresence } from "motion/react"
+import { LanguageProvider } from "../lib/language-context"
 
 interface LayoutWrapperProps {
   children: React.ReactNode
@@ -24,11 +25,11 @@ export function LayoutWrapper({ children }: LayoutWrapperProps) {
   }
 
   return (
-    <>
+    <LanguageProvider>
       <Navbar onOpenMenu={handleOpenMenu} />
       <AnimatePresence>{isMobileMenuOpen && <MobileMenu onClose={handleCloseMenu} />}</AnimatePresence>
       <main className="min-h-screen">{children}</main>
       <Footer />
-    </>
+    </LanguageProvider>
   )
 }

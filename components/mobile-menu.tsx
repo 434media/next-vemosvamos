@@ -1,9 +1,11 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import Link from "next/link"
 import "remixicon/fonts/remixicon.css"
+import { useLanguage } from "../lib/language-context"
+import { LanguageToggle } from "./language-toggle"
 
 interface MobileMenuProps {
   onClose: () => void
@@ -16,13 +18,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
   const [isMobile, setIsMobile] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
-  // Language content
-  const content = {
-    letsConnect: "Let's Connect",
-    followUs: "FOLLOW US",
-    getInTouch: "VEMOS VAMOS NEWSLETTER",
-    contactDescription: "Fill out the form below and we'll get back to you soon.",
-  }
+  const { t } = useLanguage()
 
   useEffect(() => {
     const checkMobile = () => {
@@ -132,9 +128,9 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
   ]
 
   const pageLinks = [
-    { name: "WHY WE'RE DIFFERENT", href: "/about" },
-    { name: "CONTENT HUB", href: "/content-hub" },
-    { name: "CONNECT WITH US", href: "/contact" },
+    { name: t("menu.whyDifferent"), href: "/about" },
+    { name: t("menu.contentHub"), href: "/content-hub" },
+    { name: t("menu.connectWithUs"), href: "/contact" },
   ]
 
   return (
@@ -173,14 +169,19 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
           </motion.svg>
         </Link>
-        <motion.button
-          onClick={onClose}
-          className="text-white/80 hover:text-[#ca0013] transition-colors"
-          whileHover={{ scale: 1.1, rotate: 90 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <i className="ri-close-line text-2xl md:text-3xl" />
-        </motion.button>
+
+        <div className="flex items-center space-x-4">
+          <LanguageToggle />
+          <motion.button
+            onClick={onClose}
+            className="text-white/80 hover:text-[#ca0013] transition-colors"
+            whileHover={{ scale: 1.1, rotate: 90 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label={t("common.close")}
+          >
+            <i className="ri-close-line text-2xl md:text-3xl" />
+          </motion.button>
+        </div>
       </motion.div>
 
       <div className="flex-1 overflow-y-auto overflow-x-hidden relative z-10">
@@ -299,7 +300,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                       className="w-full"
                     >
                       <motion.h2
-                        className="text-xl md:text-2xl lg:text-3xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer"
+                        className="text-2xl md:text-3xl lg:text-4xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer"
                         whileHover={{
                           textShadow: [
                             "0 0 10px rgba(202, 0, 19, 0.5)",

@@ -3,15 +3,17 @@
 import { motion } from "motion/react"
 import Image from "next/image"
 import { useState } from "react"
-import { X } from "lucide-react" // Added Lucide React X icon import
+import { X } from "lucide-react"
 import { Newsletter } from "./newsletter"
+import { useLanguage } from "@/lib/language-context"
 
 export default function Listo() {
   const [showModal, setShowModal] = useState(false)
+  const { t, language } = useLanguage()
 
   return (
     <section
-      className="relative w-full h-[70vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
+      className="relative w-full min-h-screen bg-[#eee3d2] overflow-hidden"
       role="banner"
       aria-label="Listo newsletter signup section"
     >
@@ -54,9 +56,9 @@ export default function Listo() {
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
                 onClick={() => setShowModal(true)}
-                aria-label="Open newsletter signup"
+                aria-label={t("listo.openNewsletterSignup")}
               >
-                Join Our Newsletter
+                {t("listo.joinNewsletter")}
               </motion.button>
             </div>
           </div>
@@ -100,16 +102,16 @@ export default function Listo() {
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
                   onClick={() => setShowModal(true)}
-                  aria-label="Open newsletter signup"
+                  aria-label={t("listo.openNewsletterSignup")}
                 >
-                  Join Newsletter
+                  {t("listo.joinNewsletterMobile")}
                 </motion.button>
               </div>
             </motion.div>
           </div>
 
           {/* Car image for mobile */}
-          <div className="absolute left-1/2 bottom-70 -translate-x-1/2 z-20 w-full">
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 z-20 w-full">
             <Image
               src="/images/car.png"
               alt="Vintage car decoration"
@@ -157,7 +159,7 @@ export default function Listo() {
                   e.stopPropagation()
                   setShowModal(false)
                 }}
-                aria-label="Close newsletter signup"
+                aria-label={t("listo.closeNewsletterSignup")}
               >
                 <X size={20} className="md:w-6 md:h-6" />
               </button>
@@ -170,7 +172,7 @@ export default function Listo() {
                   transition={{ delay: 0.5 }}
                 >
                   <p className="text-[#ca0013] text-base md:text-lg lg:text-xl font-bold uppercase tracking-wide leading-relaxed">
-                    Stay connected with bi-cultural resources and partnership opportunities
+                    {t("listo.stayConnected")}
                   </p>
                 </motion.div>
 
@@ -182,7 +184,7 @@ export default function Listo() {
                   transition={{ delay: 0.6 }}
                 >
                   <div className="[&_*:is(input)]:bg-white [&_*:is(input)]:text-[#ca0013] [&_*:is(input)]:border-[#ca0013] [&_*:is(input)]:placeholder-[#ca0013]/60 [&_*:is(input)]:focus:ring-[#ca0013] [&_*:is(button)]:bg-[#ca0013] [&_*:is(button)]:text-[#eee3d2] [&_*:is(button)]:border-[#ca0013] [&_*:is(button)]:hover:bg-[#a80010] [&_*:is(.bg-white\/10)]:bg-white [&_*:is(.text-white)]:text-[#ca0013] [&_*:is(.text-white\/80)]:text-[#ca0013]/80 [&_*:is(.border-white\/20)]:border-[#ca0013]/20">
-                    <Newsletter currentLanguage="en" />
+                    <Newsletter currentLanguage={language} />
                   </div>
                 </motion.div>
               </div>
