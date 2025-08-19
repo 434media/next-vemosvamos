@@ -109,7 +109,7 @@ export default function Listo() {
           </div>
 
           {/* Car image for mobile */}
-          <div className="absolute left-1/2 bottom-50 -translate-x-1/2 z-20 w-full">
+          <div className="absolute left-1/2 bottom-70 -translate-x-1/2 z-20 w-full">
             <Image
               src="/images/car.png"
               alt="Vintage car decoration"

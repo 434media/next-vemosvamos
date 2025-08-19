@@ -29,7 +29,7 @@ export default function ContactHero() {
             </div>
           </motion.div>
 
-          <div className="absolute top-2 md:top-2 right-9 w-full md:w-1/2 h-full flex flex-col justify-start items-end md:items-start pr-2  z-10">
+          <div className="absolute top-2 md:top-4 right-9 md:right-0 w-full md:w-1/2 h-full flex flex-col justify-start items-end pr-2 z-10">
             <motion.div
               className="relative"
               initial={{ opacity: 0, y: 40 }}
@@ -63,7 +63,7 @@ export default function ContactHero() {
         </div>
 
         <motion.div
-          className="absolute z-20 bottom-50 right-4 md:bottom-8 md:right-20"
+          className="absolute z-20 bottom-80 right-4 md:bottom-8 md:right-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
