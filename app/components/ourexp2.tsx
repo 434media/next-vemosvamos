@@ -7,44 +7,41 @@ import { motion } from "framer-motion";
 export default function RedIdentityPage() {
   return (
     <>
-      {/* 🔴 RED BLOCK */}
+      {/* RED BLOCK with background hand */}
       <div
-        className="w-full bg-[#ca0013] flex items-center justify-between px-8"
+        className="
+          relative w-full
+          flex items-center justify-center
+          px-6 md:px-10
+        "
         style={{
           height: "50vh",
-          paddingTop: "5rem",
-          paddingBottom: "5rem",
+          backgroundColor: "#ca0013",
+          backgroundImage: "url('/images/hand.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "right center",   // adjust if you want it more centered
+          backgroundSize: "cover",              // fills the red area
         }}
       >
-        {/* TEXT BLOCK */}
+        {/* Optional subtle overlay to keep text readable on light areas */}
+        <div className="absolute inset-0 pointer-events-none bg-gradient-to-l from-[#ca0013]/20 to-[#ca0013]/60" />
+
         <motion.p
-          className="text-white font-extrabold text-3xl md:text-4xl lg:text-5xl text-center leading-snug font-inter uppercase mx-auto"
-          style={{ maxWidth: "800px", width: "100%" }}
+          className="
+            relative z-10
+            text-white font-extrabold font-inter uppercase
+            text-2xl md:text-4xl lg:text-5xl
+            text-center leading-snug
+            max-w-[900px] px-2
+          "
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          We partner with brands to define and express their identity in ways that foster genuine connections with Latinx audiences visually, verbally, and culturally.
+          We partner with brands to define and express their identity in ways that
+          foster genuine connections with Latinx audiences visually, verbally, and culturally.
         </motion.p>
-
-        {/* HAND IMAGE — right side */}
-        <div
-          className="relative"
-          style={{
-            width: "185px",
-            height: "200px",
-            transform: "scale(4.33) translateX(-63px)",
-          }}
-        >
-          <Image
-            src="/images/hand.png"
-            alt="Hand Illustration"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
       </div>
 
       {/* 🟤 CREAM BLOCK WITH IMAGE AND TEXT */}
