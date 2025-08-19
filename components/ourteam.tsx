@@ -2,12 +2,67 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
+import { useState } from "react"
+import { X } from "lucide-react"
+
+const LinkedinIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+  </svg>
+)
+
+const teamMembers = [
+  {
+    id: 1,
+    name: "Stacy Carrizales",
+    title: "Creative Director",
+    image: "/images/team-profile.jpg",
+    linkedin: "https://linkedin.com/in/stacycarrizales",
+  },
+  {
+    id: 2,
+    name: "Diana Garcia",
+    title: "Graphic Design",
+    image: "/images/team-profile.jpg",
+    linkedin: "https://linkedin.com/in/",
+  },
+  {
+    id: 3,
+    name: "Arely Reyes",
+    title: "Digital Marketing",
+    image: "/images/team-profile.jpg",
+    linkedin: "https://linkedin.com/in/",
+  },
+  {
+    id: 4,
+    name: "Camille Rivera",
+    title: "Web Developer",
+    image: "/images/team-profile.jpg",
+    linkedin: "https://linkedin.com/in/",
+  },
+  {
+    id: 5,
+    name: "Marcos Resendez",
+    title: "Founder / CEO",
+    image: "/images/team-profile.jpg",
+    linkedin: "https://linkedin.com/in/",
+  },
+  {
+    id: 6,
+    name: "Barbara Carreon",
+    title: "VP Business Development",
+    image: "/images/team-profile.jpg",
+    linkedin: "https://linkedin.com/in/",
+  },
+]
 
 export default function OurTeam() {
+  const [selectedMember, setSelectedMember] = useState<(typeof teamMembers)[0] | null>(null)
+
   return (
     <section className="relative w-full min-h-screen bg-[#eeebe3]">
       <motion.div
-        className="absolute top-53 -right-15 md:top-40 md:right-16 lg:-right-13 lg:-top-70 w-52 h-52 md:w-80 md:h-80 lg:w-96 lg:h-96 z-10"
+        className="absolute top-55 -right-15 md:-top-52 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
         initial={{ opacity: 0, scale: 0.6, rotate: -15, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
@@ -23,7 +78,12 @@ export default function OurTeam() {
           transition: { duration: 0.4 },
         }}
       >
-        <Image src="/images/wrestlecat.png" alt="Wrestle Cat" fill className="object-contain md:object-cover drop-shadow-2xl" />
+        <Image
+          src="/images/wrestlecat.png"
+          alt="Wrestle Cat"
+          fill
+          className="object-contain md:object-cover drop-shadow-2xl"
+        />
       </motion.div>
 
       {/* RED BLOCK (TOP SECTION) - Enhanced with hero text */}
@@ -71,62 +131,135 @@ export default function OurTeam() {
         </div>
       </div>
 
-      {/* CREAM SECTION - Enhanced scroll experience */}
-      <div className="w-full bg-[#eeebe3] py-10 md:py-20 px-3 sm:px-4 md:px-8 relative z-10 overflow-hidden min-h-screen flex items-center">
-        <div className="flex flex-col lg:flex-row w-full justify-center items-center gap-10 lg:gap-20 max-w-[100vw] mx-auto">
-          {/* TEAM IMAGE - Maximized size and impact */}
+      <div className="w-full bg-[#eeebe3] py-8 md:py-12 px-4 md:px-8 relative z-10 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          {/* Team Grid */}
           <motion.div
-            className="relative w-full max-w-none lg:w-[70vw] -mx-6 sm:mx-0"
-            initial={{ opacity: 0, x: -100, scale: 0.8 }}
-            whileInView={{ opacity: 1, x: 0, scale: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{
-              duration: 1.5,
-              ease: "easeOut",
-              delay: 0.2,
-              scale: { type: "spring", stiffness: 100, damping: 15 },
-            }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
+            className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Image
-              src="/images/ourteamppl.png"
-              alt="Our Team Members"
-              width={2300}
-              height={600}
-              priority
-              className="w-[140%] sm:w-full max-w-none h-auto object-contain drop-shadow-2xl -ml-12 md:ml-0"
-            />
+            {teamMembers.map((member, index) => (
+              <motion.button
+                key={member.id}
+                className="relative aspect-square rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 15,
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setSelectedMember(member)}
+                aria-label={`View ${member.name}'s profile`}
+              >
+                <Image
+                  src={member.image || "/placeholder.svg"}
+                  alt={`${member.name} - ${member.title}`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <h3 className="font-bold text-sm md:text-base">{member.name}</h3>
+                    <p className="text-xs md:text-sm opacity-90">{member.title}</p>
+                  </div>
+                </div>
+              </motion.button>
+            ))}
           </motion.div>
 
-          {/* BRAIN IMAGE - Larger size and enhanced animations */}
+          {/* Brain Image - Full width at bottom */}
           <motion.div
-            className="relative w-full max-w-none lg:w-[45vw] -mx-4 sm:mx-0"
-            initial={{ opacity: 0, x: 100, rotate: -8, scale: 0.7 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0, scale: 1 }}
+            className="relative w-full"
+            initial={{ opacity: 0, y: 100, scale: 0.8 }}
+            whileInView={{ opacity: 1, y: 0, scale: 1 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{
-              duration: 1.8,
+              duration: 1.2,
               ease: "easeOut",
-              delay: 0.5,
-              scale: { type: "spring", stiffness: 120, damping: 18 },
+              delay: 0.3,
+              scale: { type: "spring", stiffness: 100, damping: 15 },
             }}
             whileHover={{
-              scale: 1.05,
-              rotate: 2,
+              scale: 1.02,
               transition: { duration: 0.4 },
             }}
           >
-            <Image
-              src="/images/brain.png"
-              alt="Hands and Brain"
-              width={1500}
-              height={450}
-              priority
-              className="w-[130%] sm:w-full max-w-none h-auto object-contain drop-shadow-2xl -ml-10 md:ml-0"
+            <video
+              src="/images/hebvideo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-auto object-contain md:object-cover md:max-w-3xl md:mx-auto rounded-lg"
+              aria-label="Team showcase video"
             />
           </motion.div>
         </div>
       </div>
+
+      {selectedMember && (
+        <motion.div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setSelectedMember(null)}
+        >
+          <motion.div
+            className="bg-[#eee3d2] rounded-2xl p-6 md:p-8 max-w-md w-full mx-4 relative"
+            initial={{ scale: 0.8, opacity: 0, y: 50 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.8, opacity: 0, y: 50 }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedMember(null)}
+              className="absolute top-4 right-4 p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-opacity-50"
+              aria-label="Close modal"
+            >
+              <X size={20} className="text-[#ca0013]" />
+            </button>
+
+            <div className="text-center">
+              <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+                <Image
+                  src={selectedMember.image || "/placeholder.svg"}
+                  alt={`${selectedMember.name} - ${selectedMember.title}`}
+                  fill
+                  className="object-cover"
+                  sizes="128px"
+                />
+              </div>
+
+              <h2 className="text-2xl md:text-3xl font-bold text-[#ca0013] mb-2">{selectedMember.name}</h2>
+              <p className="text-lg md:text-xl text-gray-700 mb-6 font-medium">{selectedMember.title}</p>
+
+              <div className="flex justify-center">
+                <a
+                  href={selectedMember.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3 bg-[#ca0013] text-white rounded-full hover:bg-[#a00010] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-opacity-50"
+                  aria-label={`Visit ${selectedMember.name}'s LinkedIn profile`}
+                >
+                  <LinkedinIcon />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   )
 }
