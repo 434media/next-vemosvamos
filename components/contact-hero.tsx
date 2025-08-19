@@ -29,7 +29,7 @@ export default function ContactHero() {
             </div>
           </motion.div>
 
-          <div className="absolute top-0 right-0 w-full md:w-1/2 h-full flex flex-col justify-start items-end pr-2 md:pr-8 z-10">
+          <div className="absolute top-2 md:top-4 right-0 w-full md:w-1/2 h-full flex flex-col justify-start items-end pr-2 md:pr-8 z-10">
             <motion.div
               className="relative"
               initial={{ opacity: 0, y: 40 }}

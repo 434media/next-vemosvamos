@@ -11,7 +11,7 @@ export default function Listo() {
 
   return (
     <section
-      className="relative w-full h-[82vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
+      className="relative w-full h-[70vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
       role="banner"
       aria-label="Listo newsletter signup section"
     >
