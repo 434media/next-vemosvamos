@@ -7,25 +7,21 @@ import { motion } from "framer-motion";
 export default function RedIdentityPage() {
   return (
     <>
-      {/* RED BLOCK with background hand */}
+      {/* RED BLOCK with responsive background hand */}
       <div
         className="
           relative w-full
           flex items-center justify-center
           px-6 md:px-10
-        "
-        style={{
-          height: "50vh",
-          backgroundColor: "#ca0013",
-          backgroundImage: "url('/images/hand.png')",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "right center",   // adjust if you want it more centered
-          backgroundSize: "cover",              // fills the red area
-        }}
+          bg-[#ca0013]
+          bg-[url('/images/hand.png')]
+          bg-no-repeat
+          bg-right bg-cover           /* fill on small/med */
+          xl:bg-contain xl:bg-right   /* show more hand on large/XL */
+          "
+        style={{ minHeight: "50vh" }}
       >
-        {/* Optional subtle overlay to keep text readable on light areas */}
         <div className="absolute inset-0 pointer-events-none bg-gradient-to-l from-[#ca0013]/20 to-[#ca0013]/60" />
-
         <motion.p
           className="
             relative z-10
