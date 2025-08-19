@@ -70,10 +70,7 @@ export default function ContentHubHero() {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight font-black relative inline-block"
                       >
-                        <span className="relative z-10 py-2 bg-[#eeebe3]">Bilingual Storytelling</span>
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#ca0013] via-red-500 to-[#ca0013] p-[2px] rounded-lg">
-                          <div className="w-full h-full bg-[#eeebe3] rounded-lg"></div>
-                        </div>
+                        <span className="relative z-10 py-2 text-lg">Bilingual Storytelling</span>
                       </motion.h2>
                       <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}>
                         <Link
@@ -133,7 +130,7 @@ export default function ContentHubHero() {
           </div>
           {/* PAPERLADY IMAGE - Visible on all screens, fits mobile height */}
           <motion.div
-            className="absolute bottom-0 right-0 w-full h-[80vh] md:w-1/2 md:h-full"
+            className="absolute bottom-0 right-0 w-full h-[80vh] md:w-full md:h-full"
             initial={{ opacity: 0, scale: 0.85, x: 160 }}
             whileInView={{ opacity: 1, scale: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -141,11 +138,11 @@ export default function ContentHubHero() {
           >
             <div className="relative h-full w-full">
               <Image
-                src="/images/paperlady.png"
+                src="/images/crumple.jpg"
                 alt="Illustrated Newspaper"
                 fill
                 priority
-                className="object-cover md:object-right drop-shadow-2xl"
+                className="object-cover object-center drop-shadow-2xl"
               />
             </div>
           </motion.div>

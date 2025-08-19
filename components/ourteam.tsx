@@ -62,7 +62,7 @@ export default function OurTeam() {
   return (
     <section className="relative w-full min-h-screen bg-[#eeebe3]">
       <motion.div
-        className="absolute top-70 -right-15 md:-top-52 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
+        className="absolute top-65 -right-15 md:-top-52 md:-right-10 w-52 h-52 md:w-80 md:h-80 z-10"
         initial={{ opacity: 0, scale: 0.6, rotate: -15, y: 50 }}
         whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
         viewport={{ once: false, margin: "-100px" }}
