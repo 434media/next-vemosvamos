@@ -57,7 +57,7 @@ export default function Partnerships() {
 
       {/* Mobile: top left, extending out */}
       <motion.div
-        className="md:hidden absolute -top-20 -right-24 z-20 pointer-events-none"
+        className="md:hidden absolute -top-28 -right-24 z-20 pointer-events-none"
         initial={{ opacity: 0, rotate: -10, scale: 0.8 }}
         whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}

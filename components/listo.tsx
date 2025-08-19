@@ -77,7 +77,7 @@ export default function Listo() {
         </div>
 
         {/* Mobile Layout */}
-        <div className="md:hidden flex flex-col w-full min-h-screen relative">
+        <div className="md:hidden flex flex-col w-full h-screen relative">
           <div className="flex justify-center pt-8 px-4 z-30 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
