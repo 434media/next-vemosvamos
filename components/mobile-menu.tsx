@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import "remixicon/fonts/remixicon.css"
 
@@ -146,10 +146,10 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
       transition={{ type: "tween", ease: "easeInOut", duration: 0.4 }}
       style={{
         background: `
-          radial-gradient(circle at 20% 20%, #8b000060 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, #ffc85760 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, #2a9d8f60 0%, transparent 50%),
-          radial-gradient(circle at 20% 80%, #26465360 0%, transparent 50%)
+          radial-gradient(circle at 20% 20%, #ca001360 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, #ca001340 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, #ca001320 0%, transparent 50%),
+          radial-gradient(circle at 20% 80%, #ca001310 0%, transparent 50%)
         `,
         backgroundColor: "#1A1A1A",
       }}
@@ -175,7 +175,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
         </Link>
         <motion.button
           onClick={onClose}
-          className="text-white/80 hover:text-white transition-colors"
+          className="text-white/80 hover:text-[#ca0013] transition-colors"
           whileHover={{ scale: 1.1, rotate: 90 }}
           whileTap={{ scale: 0.9 }}
         >
@@ -197,7 +197,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                   transition={{ duration: 0.5 }}
                 >
                   <motion.div
-                    className="w-16 h-16 border-4 border-t-white border-r-transparent border-b-transparent border-l-transparent rounded-full"
+                    className="w-16 h-16 border-4 border-t-[#ca0013] border-r-transparent border-b-transparent border-l-transparent rounded-full"
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
                   />
@@ -219,7 +219,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                   <p className="text-white/80 mb-4">Unable to load video content</p>
                   <button
                     onClick={retryVideo}
-                    className="px-6 py-2 bg-white text-[#8b0000] rounded-full hover:bg-white/90 transition-colors font-medium"
+                    className="px-6 py-2 bg-[#ca0013] text-white rounded-full hover:bg-[#ca0013]/90 transition-colors font-medium"
                   >
                     Retry
                   </button>
@@ -266,8 +266,8 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                     onClick={togglePlayPause}
                   >
                     <motion.div
-                      className="w-20 h-20 flex items-center justify-center bg-white/20 backdrop-blur-sm rounded-full"
-                      whileHover={{ scale: 1.1, backgroundColor: "rgba(255, 255, 255, 0.3)" }}
+                      className="w-20 h-20 flex items-center justify-center bg-[#ca0013]/30 backdrop-blur-sm rounded-full"
+                      whileHover={{ scale: 1.1, backgroundColor: "rgba(202, 0, 19, 0.5)" }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <svg className="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
@@ -299,12 +299,12 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                       className="w-full"
                     >
                       <motion.h2
-                        className="text-xl md:text-2xl lg:text-3xl font-bold text-white w-full py-2 md:py-3 hover:bg-white/10 rounded-lg transition-all duration-300 cursor-pointer"
+                        className="text-xl md:text-2xl lg:text-3xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer"
                         whileHover={{
                           textShadow: [
-                            "0 0 10px rgba(255, 199, 87, 0.5)",
-                            "0 0 20px rgba(255, 199, 87, 0.8)",
-                            "0 0 30px rgba(255, 199, 87, 1)",
+                            "0 0 10px rgba(202, 0, 19, 0.5)",
+                            "0 0 20px rgba(202, 0, 19, 0.8)",
+                            "0 0 30px rgba(202, 0, 19, 1)",
                           ],
                         }}
                         transition={{
@@ -339,7 +339,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                       className="w-full"
                     >
                       <motion.h2
-                        className="text-xl md:text-2xl lg:text-3xl font-bold text-white w-full py-2 md:py-3 hover:bg-white/10 rounded-lg transition-all duration-300 cursor-pointer flex items-center justify-center space-x-3"
+                        className="text-xl md:text-2xl lg:text-3xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer flex items-center justify-center space-x-3"
                         whileHover={{
                           textShadow: [`0 0 10px ${link.color}80`, `0 0 20px ${link.color}`, `0 0 30px ${link.color}`],
                         }}
