@@ -18,7 +18,7 @@ const offerings = [
   },
   {
     title: "Bilingual Brand Development",
-    description: "Visual identity, messaging, and content strategy.",
+    description: "Visual identity, messaging, social media management, and content strategy.",
     align: "right",
     delay: 0.4,
   },
