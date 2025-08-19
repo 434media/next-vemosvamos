@@ -8,7 +8,7 @@ export default function ContactHero() {
   return (
     <div className="relative w-full overflow-hidden">
       {/* HERO SECTION */}
-      <section className="relative h-[82vh] md:h-screen w-full bg-[#eeebe3] pt-24 flex">
+      <section className="relative h-[80vh] md:h-screen w-full bg-[#eeebe3] pt-24 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           <motion.div
