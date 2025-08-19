@@ -167,7 +167,7 @@ export default function OurTeam() {
                   className="object-cover"
                   sizes="(max-width: 768px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#ca0013]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <div className="absolute bottom-4 left-4 right-4 text-white">
                     <h3 className="font-bold text-sm md:text-base">{member.name}</h3>
                     <p className="text-xs md:text-sm opacity-90">{member.title}</p>
