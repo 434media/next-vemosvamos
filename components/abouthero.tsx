@@ -27,13 +27,13 @@ export default function AboutHero() {
           />
         </div>
 
-        <div className="relative w-full md:w-1/2 h-full flex flex-col justify-start items-end md:items-start px-4 md:px-8 py-4 md:py-0 order-1 md:order-2 z-10">
+        <div className="relative w-full md:w-1/2 h-full flex flex-col justify-start items-end md:items-start px-4 md:px-8 order-1 md:order-2 z-10">
           <motion.h1
             ref={h1Ref}
             initial={{ opacity: 0, y: 40 }}
             animate={h1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:mt-32 text-7xl md:text-8xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tigter text-[#ca0013] text-right md:text-left mb-4 md:mb-12 drop-shadow-lg md:drop-shadow-none"
+            className="md:mt-32 text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tigter text-[#ca0013] text-right md:text-left mb-4 md:mb-12 drop-shadow-lg md:drop-shadow-none"
             style={{ color: "#ca0013" }}
           >
             {t("about.title")

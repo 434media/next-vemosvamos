@@ -17,42 +17,42 @@ const teamMembers = [
     id: 1,
     name: "Stacy Carrizales",
     title: "Creative Director",
-    image: "/images/team-profile.jpg",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-stacy.png",
     linkedin: "https://linkedin.com/in/stacycarrizales",
   },
   {
     id: 2,
     name: "Diana Garcia",
     title: "Graphic Design",
-    image: "/images/team-profile.jpg",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-diana.png",
     linkedin: "https://linkedin.com/in/",
   },
   {
     id: 3,
     name: "Arely Reyes",
     title: "Digital Marketing",
-    image: "/images/team-profile.jpg",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-arely.png",
     linkedin: "https://linkedin.com/in/",
   },
-  {
+  /*   {
     id: 4,
     name: "Camille Rivera",
     title: "Web Developer",
-    image: "/images/team-profile.jpg",
+    image: "/images/cherrycur.png",
     linkedin: "https://linkedin.com/in/",
-  },
+  }, */
   {
     id: 5,
-    name: "Marcos Resendez",
-    title: "Founder / CEO",
-    image: "/images/team-profile.jpg",
+    name: "Barbara Carreon",
+    title: "VP Business Development",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-barb.png",
     linkedin: "https://linkedin.com/in/",
   },
   {
     id: 6,
-    name: "Barbara Carreon",
-    title: "VP Business Development",
-    image: "/images/team-profile.jpg",
+    name: "Marcos Resendez",
+    title: "Founder / CEO",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-marcos.png",
     linkedin: "https://linkedin.com/in/",
   },
 ]
@@ -143,51 +143,101 @@ export default function OurTeam() {
 
       <div className="w-full bg-[#eeebe3] py-8 md:py-12 px-4 md:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          {/* Team Grid */}
+          {/* Team Introduction Message */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12"
+            className="max-w-4xl mx-auto mb-12 md:mb-16 text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <Image
+              src="/images/brain.png"
+              alt="Team Introduction"
+              width={600}
+              height={400}
+              className="mx-auto mb-6 object-cover"
+            />
+            <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed tracking-tight text-neutral-800 font-semibold px-4 md:px-8">
+              {t("team.intro")
+                .split(
+                  /(\b70 years\b|\bbilingual storytelling\b|\bdesign\b|\bcommunity-driven marketing\b|\bmeaningful brand experiences\b|\bLatinx culture\b|\b70 años\b|\bnarrativa bilingüe\b|\bdiseño\b|\bmarketing impulsado por la comunidad\b|\bexperiencias de marca significativas\b|\bcultura Latinx\b)/g,
+                )
+                .map((part, index) => {
+                  const isHighlighted = [
+                    "70 years",
+                    "bilingual storytelling",
+                    "design",
+                    "community-driven marketing",
+                    "meaningful brand experiences",
+                    "Latinx culture",
+                    "70 años",
+                    "narrativa bilingüe",
+                    "diseño",
+                    "marketing impulsado por la comunidad",
+                    "experiencias de marca significativas",
+                    "cultura Latinx",
+                  ].includes(part)
+
+                  return isHighlighted ? (
+                    <span key={index} className="font-bold text-[#ca0013]">
+                      {part}
+                    </span>
+                  ) : (
+                    part
+                  )
+                })}
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="mb-8 md:mb-12"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            {teamMembers.map((member, index) => (
-              <motion.button
-                key={member.id}
-                className="relative aspect-square rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.6,
-                  delay: index * 0.1,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setSelectedMember(member)}
-                aria-label={`View ${member.name}'s profile`}
-              >
-                <Image
-                  src={member.image || "/placeholder.svg"}
-                  alt={`${member.name} - ${member.title}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#ca0013]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4 text-white">
-                    <h3 className="font-bold text-sm md:text-base">{member.name}</h3>
-                    <p className="text-xs md:text-sm opacity-90">{member.title}</p>
-                  </div>
-                </div>
-              </motion.button>
-            ))}
+            <div className="overflow-x-auto pb-4">
+              <div className="flex gap-4 md:gap-6 min-w-max md:justify-center">
+                {teamMembers.map((member, index) => (
+                  <motion.button
+                    key={member.id}
+                    className="relative w-48 h-48 md:w-80 md:h-80 flex-shrink-0 rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.6,
+                      delay: index * 0.1,
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                    }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedMember(member)}
+                    aria-label={`View ${member.name}'s profile`}
+                  >
+                    <Image
+                      src={member.image || "/placeholder.svg"}
+                      alt={`${member.name} - ${member.title}`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 192px, 320px"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#ca0013]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <h3 className="font-bold text-sm md:text-base">{member.name}</h3>
+                        <p className="text-xs md:text-sm opacity-90">{member.title}</p>
+                      </div>
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          {/* Brain Image - Full width at bottom */}
+          {/* Video Asset */}
           <motion.div
             className="relative w-full"
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
@@ -242,18 +292,18 @@ export default function OurTeam() {
             </button>
 
             <div className="text-center">
-              <div className="relative w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden">
+              <div className="relative w-48 h-48 rounded-lg mx-auto mb-6 overflow-hidden">
                 <Image
                   src={selectedMember.image || "/placeholder.svg"}
                   alt={`${selectedMember.name} - ${selectedMember.title}`}
                   fill
                   className="object-cover"
-                  sizes="128px"
+                  sizes="192px"
                 />
               </div>
 
               <h2 className="text-2xl md:text-3xl font-bold text-[#ca0013] mb-2">{selectedMember.name}</h2>
-              <p className="text-lg md:text-xl text-gray-700 mb-6 font-medium">{selectedMember.title}</p>
+              <p className="text-lg md:text-xl text-neutral-700 mb-6 font-medium">{selectedMember.title}</p>
 
               <div className="flex justify-center">
                 <a

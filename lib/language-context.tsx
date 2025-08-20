@@ -23,7 +23,7 @@ const translations = {
     "nav.menu": "Menu",
 
     // Mobile Menu
-    "menu.whyDifferent": "WHY WE'RE DIFFERENT",
+    "menu.whyDifferent": "MEET THE TEAM",
     "menu.contentHub": "CONTENT HUB",
     "menu.connectWithUs": "CONNECT WITH US",
     "menu.followUs": "FOLLOW US",
@@ -47,7 +47,7 @@ const translations = {
 
     // Why It Matters
     "matters.title": "Why It Matters",
-    "matters.titleFull": "WHY IT\nMATTERS\nNOW",
+    "matters.titleFull": "WHY IT\nMATTERS\n",
     "matters.subtitle": "Building bridges between cultures and opportunities",
     "matters.stat1": "U.S. Latinos hold $2.4 Trillion in consumer spending power.",
     "matters.stat2": "1 in 5 Americans is Latino – the fastest growing population in the U.S.",
@@ -134,6 +134,8 @@ const translations = {
     ourTeam: "OUR TEAM",
     culturalRelevance: "Cultural relevance, Audience trust, and Creative quality.",
     culturalRelevanceMobile: "Cultural relevance,\nAudience trust, and\nCreative quality.",
+    "team.intro":
+      "Bringing together 70 years of combined expertise in bilingual storytelling, design, and community-driven marketing, our team crafts meaningful brand experiences deeply rooted in Latinx culture.",
 
     // Experience/Active Productions
     partnershipStatement:
@@ -163,7 +165,7 @@ const translations = {
     "nav.menu": "Menú",
 
     // Mobile Menu
-    "menu.whyDifferent": "POR QUÉ SOMOS ÚNICOS",
+    "menu.whyDifferent": "CONOCE AL EQUIPO",
     "menu.contentHub": "CENTRO DE CONTENIDO",
     "menu.connectWithUs": "CONÉCTATE",
     "menu.followUs": "SÍGUENOS",
@@ -173,7 +175,7 @@ const translations = {
     "menu.contactDescription": "Completa el formulario y te responderemos pronto.",
 
     // Hero Section
-    "hero.title": "Medios Biculturales\nNueva Generación",
+    "hero.title": "Periodismo Para\nUna Nueva Generación Bicultura",
     "hero.subtitle": "Empoderando emprendedores bilingües con comunidad y recursos",
     "hero.cta": "Únete a Nosotros",
     "hero.learnMore": "Saber Más",
@@ -187,24 +189,24 @@ const translations = {
 
     // Why It Matters
     "matters.title": "Por Qué Importa",
-    "matters.titleFull": "POR QUÉ\nIMPORTA\nAHORA",
+    "matters.titleFull": "POR QUÉ\nIMPORTA?\n",
     "matters.subtitle": "Construyendo puentes entre culturas y oportunidades",
-    "matters.stat1": "Latinos de EE.UU. tienen $2.4 billones en poder de compra.",
-    "matters.stat2": "1 de cada 5 estadounidenses es latino: población de más rápido crecimiento.",
+    "matters.stat1": "Latinos de EE.UU. tienen $2.4 trillion en poder adquisitivo.",
+    "matters.stat2": "1 de cada 5 estadounidenses es latino: la población más rápida en crecimiento.",
     "matters.stat3": "55% de latinos Gen Z consumen contenido bilingüe diariamente",
 
     "stats.spending": "Latinos de EE.UU. tienen",
-    "stats.spendingText": "en poder de compra.",
+    "stats.spendingText": "en poder adquisitivo.",
     "stats.spendingSource": "NielsenIQ 2024",
     "stats.population": "de cada",
-    "stats.populationText": "estadounidenses es latino – población de más rápido crecimiento en EE.UU.",
+    "stats.populationText": "estadounidenses es latino – la población más rápida en crecimiento en EE.UU.",
     "stats.populationSource": "Censo EE.UU. 2023",
     "stats.content": "de latinos Gen Z consumen contenido bilingüe diariamente",
     "stats.contentSource": "MRI Simmons",
 
     // Contact Hero
     "contact.hero.opportunities": "OPORTUNIDADES",
-    "contact.hero.for": "DE",
+    "contact.hero.for": "PARA FORMAR",
     "contact.hero.partnerships": "ALIANZAS",
     "contact.hero.goToPartnerships": "Ir a la sección de alianzas",
 
@@ -227,18 +229,18 @@ const translations = {
     "listo.joinNewsletterMobile": "Únete al Boletín",
     "listo.openNewsletterSignup": "Abrir registro de boletín",
     "listo.closeNewsletterSignup": "Cerrar registro de boletín",
-    "listo.stayConnected": "Mantente conectado con recursos biculturales y oportunidades de alianza",
+    "listo.stayConnected": "Mantente conectado y recibe acceso a recursos biculturales",
 
     // Newsletter
     "newsletter.title": "Mantente Conectado",
     "newsletter.subtitle": "Recibe las últimas actualizaciones e insights",
     "newsletter.placeholder": "Ingresa tu email",
-    "newsletter.submit": "Suscribirse",
+    "newsletter.submit": "Subscríbete",
     "newsletter.success": "¡Gracias por suscribirte!",
     "newsletter.error": "Algo salió mal. Por favor intenta de nuevo.",
     // Newsletter Form
     "newsletter.emailPlaceholder": "Ingresa tu correo electrónico",
-    "newsletter.subscribe": "Suscribirse",
+    "newsletter.subscribe": "Subscríbete",
     "newsletter.subscribing": "Suscribiendo...",
     "newsletter.successMessage": "¡Gracias por suscribirte! Revisa tu correo para confirmar.",
     "newsletter.errorPrefix": "Ocurrió un error:",
@@ -249,7 +251,7 @@ const translations = {
     "footer.terms": "Términos de Servicio",
 
     // About Page
-    "about.title": "PORQUÉ SOMOS ÚNICOS",
+    "about.title": "POR QUÉ SOMOS ÚNICOS",
     "about.description":
       "Somos una plataforma bilingüe que fomenta el éxito empresarial a través de la comunidad, recursos y soluciones innovadoras.",
     "about.femaleLed": "LIDERADO POR MUJERES",
@@ -273,8 +275,10 @@ const translations = {
 
     // Our Team
     ourTeam: "NUESTRO EQUIPO",
-    culturalRelevance: "Relevancia cultural, Confianza de audiencia y Calidad creativa.",
-    culturalRelevanceMobile: "Relevancia cultural,\nConfianza de audiencia y\nCalidad creativa.",
+    culturalRelevance: "Relevancia cultural, calidad creativa y una audiencia que confía en nosotros.",
+    culturalRelevanceMobile: "Relevancia cultural,\ncalidad creativa y\nuna audiencia que confía en nosotros.",
+    "team.intro":
+      "Reuniendo 70 años de experiencia combinada en narrativa bilingüe, diseño y marketing impulsado por la comunidad, nuestro equipo crea experiencias de marca significativas profundamente arraigadas en la cultura Latinx.",
 
     // Experience/Active Productions
     partnershipStatement:
@@ -290,7 +294,7 @@ const translations = {
       "Una serie quincenal con creadores para innovación rápida y relevancia cultural en tiempo real.",
 
     // Content Hub Hero
-    ourExpertiseIncludes: "NUESTRA\nEXPERIENCIA\nINCLUYE",
+    ourExpertiseIncludes: "NUESTRS\nESPECIALIDADES\n",
     bilingualStorytelling: "Narrativa Bilingüe",
     brandIntegration: "Integración de Marca &",
     partnershipDesign: "Diseño de Alianzas",

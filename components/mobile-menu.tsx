@@ -128,8 +128,8 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
   ]
 
   const pageLinks = [
-    { name: t("menu.whyDifferent"), href: "/about" },
     { name: t("menu.contentHub"), href: "/content-hub" },
+    { name: t("menu.whyDifferent"), href: "/about" },
     { name: t("menu.connectWithUs"), href: "/contact" },
   ]
 
@@ -300,7 +300,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                       className="w-full"
                     >
                       <motion.h2
-                        className="text-2xl md:text-3xl lg:text-4xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer"
+                        className="text-3xl md:text-5xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer"
                         whileHover={{
                           textShadow: [
                             "0 0 10px rgba(202, 0, 19, 0.5)",
@@ -330,18 +330,21 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
               >
-                <div className="flex flex-col items-center space-y-2 md:space-y-3">
+                <div className="flex justify-center items-center space-x-6 md:space-x-8">
                   {socialLinks.map((link, index) => (
                     <motion.div
                       key={link.name}
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                      className="w-full"
                     >
-                      <motion.h2
-                        className="text-xl md:text-2xl lg:text-3xl font-bold text-white w-full py-2 md:py-3 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300 cursor-pointer flex items-center justify-center space-x-3"
+                      <motion.a
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300"
                         whileHover={{
+                          scale: 1.2,
                           textShadow: [`0 0 10px ${link.color}80`, `0 0 20px ${link.color}`, `0 0 30px ${link.color}`],
                         }}
                         transition={{
@@ -349,16 +352,8 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                           ease: "easeInOut",
                         }}
                       >
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center space-x-3 w-full h-full"
-                        >
-                          <i className={`${link.icon} text-xl md:text-2xl`} style={{ color: link.color }}></i>
-                          <span>{link.name.toUpperCase()}</span>
-                        </a>
-                      </motion.h2>
+                        <i className={`${link.icon} text-5xl md:text-7xl`} style={{ color: link.color }}></i>
+                      </motion.a>
                     </motion.div>
                   ))}
                 </div>

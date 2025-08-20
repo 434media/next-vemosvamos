@@ -119,8 +119,8 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
                     src="/images/logotilt.png"
                     alt="Vemos Vamos Menu"
                     fill
-                    className="object-cover transition-all duration-300 group-hover:brightness-110"
-                    sizes="48px"
+                    className="object-cover transition-all duration-300 group-hover:brightness-110 scale-200 -ml-2.5 mt-2.5"
+                    sizes="80px"
                     priority
                   />
                 </motion.div>
