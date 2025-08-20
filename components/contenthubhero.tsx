@@ -25,7 +25,7 @@ export default function ContentHubHero() {
   return (
     <div className="relative w-full overflow-hidden pt-10 md:pt-0">
       {/* HERO SECTION */}
-      <section className="relative h-[82vh] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
+      <section className="relative h-[78vh] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           {/* LEFT CONTENT (Text) */}
@@ -148,9 +148,38 @@ export default function ContentHubHero() {
                 alt="Illustrated Newspaper"
                 fill
                 priority
-                className="object-cover"
+                className="object-cover md:object-right drop-shadow-2xl"
               />
             </div>
+          </motion.div>
+
+          <motion.div
+            className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20"
+            initial={{
+              opacity: 0,
+              x: -200,
+              y: 50,
+              rotate: -15,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+              y: 0,
+              rotate: 0,
+            }}
+            transition={{
+              duration: 2,
+              ease: [0.25, 0.46, 0.45, 0.94],
+              delay: 1.5,
+            }}
+          >
+            <Image
+              src="/images/plane.png"
+              alt="Paper airplane"
+              width={150}
+              height={150}
+              className="w-full h-auto drop-shadow-lg"
+            />
           </motion.div>
         </div>
       </section>
