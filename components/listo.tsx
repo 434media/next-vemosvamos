@@ -13,7 +13,7 @@ export default function Listo() {
 
   return (
     <section
-      className="relative w-full min-h-screen bg-[#eee3d2] overflow-hidden"
+      className="relative w-full h-[85vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
       role="banner"
       aria-label="Listo newsletter signup section"
     >
@@ -91,11 +91,11 @@ export default function Listo() {
                 alt="Listo logo"
                 width={700}
                 height={500}
-                className="object-contain w-[95vw] h-auto max-w-[400px] drop-shadow-2xl"
+                className="object-contain w-[65vw] h-auto max-w-[400px] drop-shadow-2xl"
                 priority
               />
 
-              <div className="absolute -bottom-16 right-0">
+              <div className="absolute -bottom-16 right-15">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -111,7 +111,7 @@ export default function Listo() {
           </div>
 
           {/* Car image for mobile */}
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 z-20 w-full">
+          <div className="absolute left-1/2 bottom-24 -translate-x-1/2 z-20 w-full">
             <Image
               src="/images/car.png"
               alt="Vintage car decoration"
