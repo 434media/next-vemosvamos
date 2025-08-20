@@ -13,7 +13,7 @@ export default function Listo() {
 
   return (
     <section
-      className="relative w-full h-[85vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
+      className="relative w-full h-[75vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
       role="banner"
       aria-label="Listo newsletter signup section"
     >
@@ -111,7 +111,7 @@ export default function Listo() {
           </div>
 
           {/* Car image for mobile */}
-          <div className="absolute left-1/2 bottom-24 -translate-x-1/2 z-20 w-full">
+          <div className="absolute left-1/2 bottom-32 -translate-x-1/2 z-20 w-full">
             <Image
               src="/images/car.png"
               alt="Vintage car decoration"
