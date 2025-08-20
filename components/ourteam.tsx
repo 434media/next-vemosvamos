@@ -18,42 +18,42 @@ const teamMembers = [
     name: "Stacy Carrizales",
     title: "Creative Director",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-stacy.png",
-    linkedin: "https://linkedin.com/in/stacycarrizales",
+    linkedin: "https://www.linkedin.com/in/stacycarrizales/",
   },
   {
     id: 2,
     name: "Diana Garcia",
     title: "Graphic Design",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-diana.png",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/dianagrc/",
   },
   {
     id: 3,
     name: "Arely Reyes",
     title: "Digital Marketing",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-arely.png",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/arely-reyes/",
   },
-  /*   {
+    {
     id: 4,
     name: "Camille Rivera",
     title: "Web Developer",
-    image: "/images/cherrycur.png",
-    linkedin: "https://linkedin.com/in/",
-  }, */
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/team-camille.png",
+    linkedin: "https://www.linkedin.com/in/camille-louise-rivera/",
+  },
   {
     id: 5,
     name: "Barbara Carreon",
     title: "VP Business Development",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-barb.png",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/barbara-c-6299ba1/",
   },
   {
     id: 6,
     name: "Marcos Resendez",
     title: "Founder / CEO",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-marcos.png",
-    linkedin: "https://linkedin.com/in/",
+    linkedin: "https://www.linkedin.com/in/marcosresendez/",
   },
 ]
 
