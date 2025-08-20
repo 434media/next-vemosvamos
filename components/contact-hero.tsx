@@ -66,7 +66,7 @@ export default function ContactHero() {
         </div>
 
         <motion.div
-          className="absolute z-20 bottom-80 right-4 md:bottom-8 md:right-10"
+          className="absolute z-20 bottom-76 right-4 md:bottom-8 md:right-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}

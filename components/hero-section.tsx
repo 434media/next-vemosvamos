@@ -62,7 +62,7 @@ export default function NewLandingPage() {
                 aria-label="Navigate to Why It Matters section"
               >
                 {t("hero.title")}
-                <div className="absolute -bottom-2 -right-16 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
+                <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
               </h2>
             </div>
           </motion.div>
@@ -82,20 +82,18 @@ export default function NewLandingPage() {
           </motion.div>
 
           <div className="relative flex items-center justify-center w-full">
-            {/* Star on the left */}
             <motion.div
-              className="absolute left-0 bottom-0 z-30"
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.2, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="absolute left-0 w-[120px] h-[120px] -translate-x-4"
+              initial={{ opacity: 0, x: -60, scale: 0.7 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ duration: 1.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <Image
                 src="/images/stars.png"
                 alt="Decorative sparkling stars"
-                width={80}
-                height={80}
-                className="object-contain"
-                sizes="80px"
+                fill
+                className="object-contain drop-shadow-lg animate-sparkle"
+                sizes="120px"
               />
             </motion.div>
 
@@ -111,19 +109,18 @@ export default function NewLandingPage() {
               <span>{t("matters.title")}</span>
             </motion.button>
 
-            {/* Dice on the right */}
             <motion.div
-              className="absolute right-0 bottom-0 z-30 w-[80px] h-[80px]"
-              initial={{ opacity: 0, rotate: -28, scale: 0.6 }}
+              className="absolute right-0 w-[120px] h-[120px] translate-x-4"
+              initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
               animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              transition={{ duration: 1.15, delay: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
               <Image
                 src="/images/dice1.png"
                 alt="Decorative dice element"
                 fill
-                className="object-contain drop-shadow-lg pointer-events-none select-none"
-                sizes="80px"
+                className="object-contain drop-shadow-lg"
+                sizes="120px"
               />
             </motion.div>
           </div>
