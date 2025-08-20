@@ -39,7 +39,7 @@ export default function ContentHubHero() {
               >
                 <div className="relative w-full max-w-[600px] md:max-w-full h-full flex flex-col justify-start md:justify-center">
                   <motion.h1
-                    className="font-inter font-black uppercase leading-[0.8] tracking-tighter text-6xl md:text-7xl lg:text-8xl xl:text-[9rem] 2xl:text-[10rem]"
+                    className="font-inter font-black uppercase leading-[0.8] tracking-tighter text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] 2xl:text-[10rem]"
                     style={{
                       color: "#ca0013",
                       lineHeight: "0.75",

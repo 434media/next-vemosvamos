@@ -33,17 +33,22 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 40 }}
             animate={h1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:mt-32 text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tigter text-[#ca0013] text-right md:text-left mb-4 md:mb-12 drop-shadow-lg md:drop-shadow-none"
+            className="md:mt-32 mt-2 text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[1.0] tracking-tigter text-[#ca0013] text-right md:text-left mb-4 md:mb-12 drop-shadow-lg md:drop-shadow-none"
             style={{ color: "#ca0013" }}
           >
-            {t("about.title")
-              .split(" ")
-              .map((word, index) => (
-                <span key={index}>
-                  {word}
-                  {index < t("about.title").split(" ").length - 1 && <br />}
-                </span>
-              ))}
+            {(() => {
+              const words = t("about.title").split(" ")
+              const firstLine = words.slice(0, 2).join(" ")
+              const secondLine = words.slice(2).join(" ")
+
+              return (
+                <>
+                  {firstLine}
+                  {secondLine && <br />}
+                  {secondLine}
+                </>
+              )
+            })()}
           </motion.h1>
 
           <motion.div

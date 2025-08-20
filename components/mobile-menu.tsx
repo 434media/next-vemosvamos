@@ -282,7 +282,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
           </div>
 
           <div className="flex-1 lg:w-1/2 lg:order-1 p-3 md:p-4 lg:p-6">
-            <div className="h-full flex flex-col justify-center max-w-md mx-auto lg:max-w-none space-y-6 md:space-y-8">
+            <div className="h-full flex flex-col justify-center max-w-md mx-auto lg:max-w-none space-y-6 md:space-y-8 -mt-6 md:mt-0">
               {/* Page Links Section */}
               <motion.div
                 className="text-center"

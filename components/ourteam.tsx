@@ -158,7 +158,7 @@ export default function OurTeam() {
               height={400}
               className="mx-auto mb-6 object-cover"
             />
-            <p className="text-xl md:text-2xl lg:text-3xl leading-relaxed tracking-tight text-neutral-800 font-semibold px-4 md:px-8">
+            <p className="text-xl md:text-2xl lg:text-3xl md:leading-relaxed tracking-tight text-neutral-800 font-semibold px-4 md:px-8">
               {t("team.intro")
                 .split(
                   /(\b70 years\b|\bbilingual storytelling\b|\bdesign\b|\bcommunity-driven marketing\b|\bmeaningful brand experiences\b|\bLatinx culture\b|\b70 años\b|\bnarrativa bilingüe\b|\bdiseño\b|\bmarketing impulsado por la comunidad\b|\bexperiencias de marca significativas\b|\bcultura Latinx\b)/g,

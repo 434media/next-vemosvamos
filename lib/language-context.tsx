@@ -103,7 +103,7 @@ const translations = {
     "newsletter.errorPrefix": "An error occurred:",
 
     // Footer
-    "footer.copyright": "© 2024 Vemos Vamos. All rights reserved.",
+    "footer.copyright": "© 2025 Vemos Vamos. All rights reserved.",
     "footer.privacy": "Privacy Policy",
     "footer.terms": "Terms of Service",
 
@@ -246,7 +246,7 @@ const translations = {
     "newsletter.errorPrefix": "Ocurrió un error:",
 
     // Footer
-    "footer.copyright": "© 2024 Vemos Vamos. Todos los derechos reservados.",
+    "footer.copyright": "© 2025 Vemos Vamos. Todos los derechos reservados.",
     "footer.privacy": "Política de Privacidad",
     "footer.terms": "Términos de Servicio",
 
