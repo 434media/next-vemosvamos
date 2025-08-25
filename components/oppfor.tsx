@@ -3,9 +3,30 @@
 import { motion } from "motion/react"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
+import { useState, useEffect } from "react"
 
 export default function Partnerships() {
   const { t } = useLanguage()
+
+  // Track scroll progress (0 at top, 1 at bottom)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      const documentHeight = document.documentElement.scrollHeight
+      // Clamp progress between 0 and 1
+      const progress = Math.min(
+        1,
+        Math.max(0, scrollY / (documentHeight - windowHeight))
+      )
+      setScrollProgress(progress)
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    handleScroll() // initialize on mount
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   const offerings = [
     {
@@ -42,11 +63,20 @@ export default function Partnerships() {
       {/* === FLOWER IMAGE - TRANSITION ELEMENT === */}
       {/* Desktop: top left, extending out */}
       <motion.div
-        className="hidden md:block absolute -top-32 md:-top-36 lg:-top-40 xl:-top-48 right-2 md:right-3 lg:right-4 xl:right-6 z-20 pointer-events-none"
-        initial={{ opacity: 0, rotate: -15, scale: 0.8 }}
-        whileInView={{ opacity: 1, rotate: 0, scale: 1 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="hidden md:block absolute -top-32 md:-top-36 lg:-top-40 xl:-top-48 right-2 md:-right-20 z-20 pointer-events-none"
+        initial={{ opacity: 0, rotate: -15, scale: 0.8, x: "-40vw" }}
+        animate={{
+          opacity: 1,
+          rotate: 0,
+          scale: 1,
+          // Interpolate x from -40vw (left, offscreen) to 0 (center) to 100vw (right, offscreen)
+          x: scrollProgress < 0.05
+            ? "-40vw" // Enter from left when near top
+            : scrollProgress > 0.95
+            ? "100vw" // Exit right when near bottom
+            : "0vw", // Stay in center
+        }}
+        transition={{ type: "spring", stiffness: 60, damping: 20 }}
       >
         <Image
           src="/images/flower.png"

@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll } from "motion/react"
+import { motion, useScroll } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
 import { useLanguage } from "../lib/language-context"
@@ -23,7 +23,7 @@ export default function NewLandingPage() {
   }
 
   return (
-    <div ref={scrollRef} className="relative w-full overflow-x-hidden xs:-mt-12 md:mt-1.5">
+    <div ref={scrollRef} className="relative w-full overflow-x-hidden xs:-mt-10 md:mt-1.5">
       <section
         className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
                    px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
@@ -38,7 +38,7 @@ export default function NewLandingPage() {
             alt="Hero background for desktop"
             fill
             priority
-            className="object-cover w-full h-full scale-100"
+            className="object-cover w-full h-full scale-99"
             sizes="(max-width: 767px) 0vw, 100vw"
           />
         </div>
@@ -80,7 +80,7 @@ export default function NewLandingPage() {
                 aria-label="Navigate to Why It Matters section"
               >
                 {t("hero.title")}
-                <div className="absolute -bottom-2 md:left-10 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
+                <div className="absolute -bottom-2 md:left-16 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
               </h2>
             </div>
           </motion.div>
@@ -105,7 +105,7 @@ export default function NewLandingPage() {
 
             {/* Mobile Marquee - Below image */}
             <motion.div
-              className="absolute xs:bottom-14 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
+              className="absolute xs:bottom-0 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
                          py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg border-t-4 border-white/20 w-screen -ml-4 xs:-ml-4 sm:-ml-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
@@ -124,8 +124,13 @@ export default function NewLandingPage() {
                   {Array.from({ length: 8 }).map((_, index) => (
                     <span
                       key={index}
-                      className="text-white font-bold text-xl xs:text-2xl sm:text-3xl font-serif 
-                                 drop-shadow-lg mx-8 tracking-wide"
+                      className="text-white font-black text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif 
+                                 drop-shadow-2xl mx-8 tracking-wide text-shadow-lg
+                                 [text-shadow:_2px_2px_4px_rgba(0,0,0,0.8),_0_0_20px_rgba(255,255,255,0.3)]"
+                      style={{
+                        textShadow:
+                          "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.1)",
+                      }}
                     >
                       {t("hero.title")}
                     </span>

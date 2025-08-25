@@ -41,8 +41,8 @@ export default function Listo() {
 
       <div className="relative z-10 w-full min-h-full flex flex-col">
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full h-full relative md:-mt-12">
-          <div className="absolute top-4 md:top-6 lg:top-8 xl:top-8 left-170 -translate-x-1/2 z-30">
+        <div className="hidden md:flex w-full h-full relative md:-mt-16">
+          <div className="absolute top-4 md:top-6 left-170 -translate-x-1/2 z-30">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -54,17 +54,17 @@ export default function Listo() {
                 alt="Listo logo"
                 width={400}
                 height={300}
-                className="object-contain w-[300px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-auto drop-shadow-2xl scale-70"
+                className="object-contain w-[300px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-auto drop-shadow-2xl scale-55"
                 priority
               />
             </motion.div>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center md:-mt-10 ">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-6 md:px-7 lg:px-8 xl:px-10 py-3 md:py-3.5 lg:py-4 xl:py-5 text-base md:text-lg lg:text-xl xl:text-2xl rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
+                className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-6 py-3 text-base md:text-lg rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
                 onClick={() => setShowModal(true)}
                 aria-label={t("listo.openNewsletterSignup")}
               >

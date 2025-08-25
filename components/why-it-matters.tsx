@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "motion/react"
+import { motion, useInView } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import { useLanguage } from "../lib/language-context"
 
@@ -52,7 +52,7 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps
         ease: [0.25, 0.46, 0.45, 0.94], // Custom bezier curve for smoother entrance
         delay: 0.1,
       }}
-      className="inline-block text-5xl md:text-6xl font-extrabold text-red-700"
+      className="inline-block text-3xl md:text-5xl lg:text-6xl font-extrabold text-red-700"
     >
       {prefix}
       {display}
@@ -69,7 +69,7 @@ export default function WhyItMattersSection() {
     <section
       ref={sectionRef}
       id="why-it-matters"
-      className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-start px-4 py-16 md:py-20 overflow-hidden"
+      className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-start px-4 py-20 md:py-24 min-h-screen"
     >
       <div className="w-full max-w-7xl flex flex-col md:flex-row gap-10">
         {/* LEFT COLUMN – Header Text + Video */}
@@ -105,7 +105,7 @@ export default function WhyItMattersSection() {
         </div>
 
         {/* RIGHT COLUMN – Stats */}
-        <div className="w-full md:w-1/2 flex flex-col gap-y-12 text-red-700">
+        <div className="w-full md:w-1/2 flex flex-col gap-y-8 xs:gap-y-10 md:gap-y-12 text-red-700">
           {/* STAT 1 */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -113,25 +113,25 @@ export default function WhyItMattersSection() {
             transition={{
               duration: 0.8,
               delay: 0.2,
-              ease: [0.25, 0.46, 0.45, 0.94], // Smoother easing curve
+              ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, margin: "-20%" }}
           >
-            <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               {t("stats.spending")} <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " />{" "}
               {t("stats.spendingText")}
             </p>
             <motion.div
-              className="mt-4 h-[4px] bg-red-700 origin-left"
+              className="mt-4 h-[8px] md:h-[4px] bg-red-700 origin-left w-full"
               initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
+              animate={{ scaleX: 1 }}
               transition={{
                 duration: 1.2,
-                delay: 0.6,
-                ease: [0.25, 0.46, 0.45, 0.94], // Smoother line animation
+                delay: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              viewport={{ once: true, margin: "-10%" }}
               style={{ transformOrigin: "left" }}
+              onAnimationStart={() => console.log("[v0] Stat 1 underline animation started")}
             />
             <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.spendingSource")}</p>
           </motion.div>
@@ -145,23 +145,23 @@ export default function WhyItMattersSection() {
               delay: 0.3,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, margin: "-20%" }}
           >
-            <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               <AnimatedNumber value={1} /> {t("stats.population")} <AnimatedNumber value={5} />{" "}
               {t("stats.populationText")}
             </p>
             <motion.div
-              className="mt-4 h-[4px] bg-red-600 origin-left"
+              className="mt-4 h-[8px] md:h-[4px] bg-red-600 origin-left w-full"
               initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
+              animate={{ scaleX: 1 }}
               transition={{
                 duration: 1.2,
-                delay: 0.7,
+                delay: 1.1,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              viewport={{ once: true, margin: "-10%" }}
               style={{ transformOrigin: "left" }}
+              onAnimationStart={() => console.log("[v0] Stat 2 underline animation started")}
             />
             <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.populationSource")}</p>
           </motion.div>
@@ -175,22 +175,22 @@ export default function WhyItMattersSection() {
               delay: 0.4,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            viewport={{ once: true, margin: "-10%" }}
+            viewport={{ once: true, margin: "-20%" }}
           >
-            <p className="text-3xl md:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               <AnimatedNumber value={55} suffix="%" /> {t("stats.content")}
             </p>
             <motion.div
-              className="mt-4 h-[4px] bg-red-700 origin-left"
+              className="mt-4 h-[8px] md:h-[4px] bg-red-700 origin-left w-full"
               initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
+              animate={{ scaleX: 1 }}
               transition={{
                 duration: 1.2,
-                delay: 0.8,
+                delay: 1.4,
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
-              viewport={{ once: true, margin: "-10%" }}
               style={{ transformOrigin: "left" }}
+              onAnimationStart={() => console.log("[v0] Stat 3 underline animation started")}
             />
             <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.contentSource")}</p>
           </motion.div>

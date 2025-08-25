@@ -35,7 +35,7 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
         }`}
       >
         <nav className="w-full max-w-none px-4 sm:px-6 md:px-8">
-          <div className="flex justify-between items-center h-[80px] md:h-[76px] w-full">
+          <div className="flex justify-between items-center h-[60px] md:h-[76px] w-full">
             <MotionLink
               href="/"
               className="flex items-center h-full flex-shrink-0"
