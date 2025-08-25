@@ -11,7 +11,7 @@ export default function RedIdentityPage() {
       {/* 🔴 RED BLOCK */}
       <section
         id="red-block"
-        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[60vh] xs:min-h-[50vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center py-2 xs:py-3 sm:py-4 md:py-6 lg:py-8"
+        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[42vh] xs:min-h-[40vh] sm:min-h-[45vh] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center py-2 xs:py-3 sm:py-4 md:py-6 lg:py-8"
         role="region"
         aria-labelledby="red-block-heading"
       >
