@@ -25,7 +25,7 @@ export default function ContentHubHero() {
   return (
     <div className="relative w-full overflow-hidden pt-10 md:pt-0">
       {/* HERO SECTION */}
-      <section className="relative h-[78vh] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
+      <section className="relative xs:h-[60vh] h-[78vh] md:h-screen w-full bg-[#eeebe3] pt-32 md:pt-16 flex">
         {/* FLEX CONTAINER */}
         <div className="relative w-full mx-auto px-4 md:px-6 flex flex-col md:flex-row h-full max-w-none">
           {/* LEFT CONTENT (Text) */}
@@ -74,7 +74,7 @@ export default function ContentHubHero() {
                       <motion.h2
                         variants={lineVariants}
                         transition={{ duration: 0.6, ease: "easeOut" }}
-                        className="text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight font-black relative inline-block"
+                        className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 text-white md:text-red-600 hover:text-[#ca0013] hover:translate-x-1 bg-[#ca0013]/90 md:bg-transparent px-4 py-3 md:px-0 md:py-0 rounded-lg md:rounded-none border border-gray-200/30 md:border-none backdrop-blur-sm md:backdrop-blur-none"
                       >
                         <span className="relative z-10 py-2">{t("bilingualStorytelling")}</span>
                       </motion.h2>
