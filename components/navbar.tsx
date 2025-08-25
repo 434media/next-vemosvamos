@@ -34,11 +34,11 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
           scrolled ? "bg-[#ca0013]/90 backdrop-blur-md" : "bg-[#ca0013]"
         }`}
       >
-        <nav className="container mx-auto md:px-4">
-          <div className="flex justify-between items-center h-[80px] md:h-[76px]">
+        <nav className="w-full max-w-none px-4 sm:px-6 md:px-8">
+          <div className="flex justify-between items-center h-[80px] md:h-[76px] w-full">
             <MotionLink
               href="/"
-              className="flex items-center h-full"
+              className="flex items-center h-full flex-shrink-0"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -48,16 +48,16 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
                   alt="Vemos Vamos Logo"
                   width={80}
                   height={80}
-                  className="w-24 h-24 object-contain invert"
+                  className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain invert"
                 />
               </motion.div>
             </MotionLink>
 
-            <div className="flex items-center gap-0">
+            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
               <LanguageToggle />
 
               <motion.button
-                className="relative w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-2 overflow-hidden group shrink-0"
+                className="relative w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center p-2 overflow-hidden group flex-shrink-0"
                 onClick={onOpenMenu}
                 whileHover={{
                   scale: 1.15,
