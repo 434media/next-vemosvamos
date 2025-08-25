@@ -110,7 +110,7 @@ export default function ContentHubHero() {
               </motion.div>
             </div>
           </div>
-          {/* PAPERLADY IMAGE - Visible on all screens, fits mobile height */}
+          {/* IMAGE - Visible on all screens, fits mobile height */}
           <motion.div
             className="absolute bottom-0 right-0 w-full h-[80vh] md:h-full"
             initial={{ opacity: 0, scale: 0.85, x: 160 }}
@@ -154,7 +154,7 @@ export default function ContentHubHero() {
               alt="Paper airplane"
               width={250}
               height={250}
-              className="w-48 h-48 md:w-60 md:h-60 lg:w-64 lg:h-64 drop-shadow-lg object-contain md:object-cover"
+              className="w-48 h-48 md:w-60 md:h-60 lg:w-64 lg:h-64 drop-shadow-lg object-cover"
             />
           </motion.div>
         </div>
