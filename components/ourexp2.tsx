@@ -11,15 +11,15 @@ export default function RedIdentityPage() {
       {/* 🔴 RED BLOCK */}
       <section
         id="red-block"
-        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[50vh] md:min-h-[70vh] max-h-[80vh] flex items-center py-4"
+        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center py-2 xs:py-3 sm:py-4 md:py-6 lg:py-8"
         role="region"
         aria-labelledby="red-block-heading"
       >
         {/* Text Block - Made full width with minimal padding */}
-        <div className="w-full relative z-20 px-4 md:px-6">
+        <div className="w-full relative z-20 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-12">
           <motion.h1
             id="red-block-heading"
-            className="relative text-white text-left text-3xl font-black uppercase tracking-tighter leading-[0.95] md:text-center md:text-[clamp(1.75rem,4.5vw+0.5rem,4.5rem)] mx-auto"
+            className="relative text-white text-left xs:text-center sm:text-center text-2xl xs:text-3xl sm:text-4xl md:text-[clamp(2rem,4.5vw+0.5rem,4.5rem)] lg:text-[clamp(2.5rem,5vw+0.5rem,5.5rem)] xl:text-[clamp(3rem,6vw+0.5rem,7rem)] font-black uppercase tracking-tighter leading-[0.95] mx-auto"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -33,13 +33,13 @@ export default function RedIdentityPage() {
       {/* 🟤 CREAM BLOCK */}
       <section
         id="cream-block"
-        className="w-full bg-[#eeebe3] relative overflow-visible min-h-screen"
+        className="w-full bg-[#eeebe3] relative overflow-hidden min-h-[90vh] xs:min-h-[95vh] sm:min-h-screen md:min-h-[105vh] lg:min-h-[110vh] xl:min-h-[120vh]"
         role="region"
         aria-labelledby="cream-block-heading"
       >
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
+        <div className="max-w-7xl mx-auto px-4 md:px-0 py-6 xs:py-7 sm:py-8 md:py-10 lg:py-12 xl:py-16">
           <motion.div
-            className="relative w-full mb-8"
+            className="relative w-full mb-6 xs:mb-7 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -50,7 +50,7 @@ export default function RedIdentityPage() {
               className="font-black uppercase tracking-tighter leading-[0.85] text-left"
               style={{
                 color: "#ca0013",
-                fontSize: "clamp(3rem, 8vw + 1rem, 12rem)",
+                fontSize: "clamp(2.5rem, 6vw + 0.5rem, 8rem)",
               }}
             >
               <span className="block">{t("activeProductions").replace("\n", " ")}</span>
@@ -59,13 +59,13 @@ export default function RedIdentityPage() {
 
           {/* LOWER CONTENT AREA */}
           <div className="relative w-full flex-1">
-            <div className="relative lg:grid lg:grid-cols-12 lg:gap-8 xl:gap-12">
+            <div className="relative md:grid md:grid-cols-12 lg:grid-cols-12 md:gap-6 lg:gap-8 xl:gap-12">
               {/* TEXT COLUMN */}
-              <div className="relative z-20 lg:col-span-7 xl:col-span-7 space-y-8 md:space-y-12 pr-4 xl:pr-8">
+              <div className="relative z-20 md:col-span-7 lg:col-span-7 xl:col-span-7 space-y-6 xs:space-y-7 sm:space-y-8 md:space-y-10 lg:space-y-12 xl:space-y-16 pr-0 md:pr-4 lg:pr-6 xl:pr-8">
                 {/* SERIES 1 */}
-                <div className="space-y-4">
+                <div className="space-y-3 xs:space-y-4 sm:space-y-4 md:space-y-5">
                   <motion.h2
-                    className="text-red-700 font-black uppercase tracking-tight leading-[1.05] text-[clamp(1.5rem,3.2vw,2.8rem)]"
+                    className="text-red-700 font-black uppercase tracking-tight leading-[1.05] text-xl xs:text-2xl sm:text-[clamp(1.5rem,3.2vw,2.8rem)] md:text-[clamp(1.8rem,3.5vw,3.2rem)] lg:text-[clamp(2rem,3.8vw,3.5rem)] xl:text-[clamp(2.2rem,4vw,4rem)]"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -74,7 +74,7 @@ export default function RedIdentityPage() {
                     {t("series1Title")}
                   </motion.h2>
                   <motion.div
-                    className="h-1 bg-red-700 w-24"
+                    className="h-1 bg-red-700 w-16 xs:w-20 sm:w-24 md:w-28 lg:w-32"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     style={{ transformOrigin: "left" }}
@@ -82,7 +82,7 @@ export default function RedIdentityPage() {
                     transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
                   />
                   <motion.p
-                    className="text-red-800 font-semibold leading-relaxed text-[clamp(1rem,1rem+0.3vw,1.25rem)] max-w-xl"
+                    className="text-red-800 font-semibold leading-relaxed text-sm xs:text-base sm:text-[clamp(1rem,1rem+0.3vw,1.25rem)] md:text-[clamp(1.1rem,1.1rem+0.3vw,1.4rem)] lg:text-[clamp(1.2rem,1.2rem+0.3vw,1.5rem)] xl:text-[clamp(1.3rem,1.3rem+0.3vw,1.6rem)] max-w-xl"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -93,9 +93,9 @@ export default function RedIdentityPage() {
                 </div>
 
                 {/* SERIES 2 */}
-                <div className="space-y-4">
+                <div className="space-y-3 xs:space-y-4 sm:space-y-4 md:space-y-5">
                   <motion.h2
-                    className="text-red-700 font-black uppercase tracking-tight leading-[1.05] text-[clamp(1.5rem,3.2vw,2.8rem)]"
+                    className="text-red-700 font-black uppercase tracking-tight leading-[1.05] text-xl xs:text-2xl sm:text-[clamp(1.5rem,3.2vw,2.8rem)] md:text-[clamp(1.8rem,3.5vw,3.2rem)] lg:text-[clamp(2rem,3.8vw,3.5rem)] xl:text-[clamp(2.2rem,4vw,4rem)]"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -104,7 +104,7 @@ export default function RedIdentityPage() {
                     {t("series2Title")}
                   </motion.h2>
                   <motion.div
-                    className="h-1 bg-red-700 w-24"
+                    className="h-1 bg-red-700 w-16 xs:w-20 sm:w-24 md:w-28 lg:w-32"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     style={{ transformOrigin: "left" }}
@@ -112,7 +112,7 @@ export default function RedIdentityPage() {
                     transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
                   />
                   <motion.p
-                    className="text-red-800 font-semibold leading-relaxed text-[clamp(1rem,1rem+0.3vw,1.25rem)] max-w-xl"
+                    className="text-red-800 font-semibold leading-relaxed text-sm xs:text-base sm:text-[clamp(1rem,1rem+0.3vw,1.25rem)] md:text-[clamp(1.1rem,1.1rem+0.3vw,1.4rem)] lg:text-[clamp(1.2rem,1.2rem+0.3vw,1.5rem)] xl:text-[clamp(1.3rem,1.3rem+0.3vw,1.6rem)] max-w-xl"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -123,9 +123,9 @@ export default function RedIdentityPage() {
                 </div>
 
                 {/* SERIES 3 */}
-                <div className="space-y-4">
+                <div className="space-y-3 xs:space-y-4 sm:space-y-4 md:space-y-5">
                   <motion.h2
-                    className="text-red-700 font-black uppercase tracking-tight leading-[1.05] text-[clamp(1.5rem,3.2vw,2.8rem)]"
+                    className="text-red-700 font-black uppercase tracking-tight leading-[1.05] text-xl xs:text-2xl sm:text-[clamp(1.5rem,3.2vw,2.8rem)] md:text-[clamp(1.8rem,3.5vw,3.2rem)] lg:text-[clamp(2rem,3.8vw,3.5rem)] xl:text-[clamp(2.2rem,4vw,4rem)]"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -134,7 +134,7 @@ export default function RedIdentityPage() {
                     {t("series3Title")}
                   </motion.h2>
                   <motion.div
-                    className="h-1 bg-red-700 w-24"
+                    className="h-1 bg-red-700 w-16 xs:w-20 sm:w-24 md:w-28 lg:w-32"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     style={{ transformOrigin: "left" }}
@@ -142,7 +142,7 @@ export default function RedIdentityPage() {
                     transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
                   />
                   <motion.p
-                    className="text-red-800 font-semibold leading-relaxed text-[clamp(1rem,1rem+0.3vw,1.25rem)] max-w-xl"
+                    className="text-red-800 font-semibold leading-relaxed text-sm xs:text-base sm:text-[clamp(1rem,1rem+0.3vw,1.25rem)] md:text-[clamp(1.1rem,1.1rem+0.3vw,1.4rem)] lg:text-[clamp(1.2rem,1.2rem+0.3vw,1.5rem)] xl:text-[clamp(1.3rem,1.3rem+0.3vw,1.6rem)] max-w-xl"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -155,7 +155,7 @@ export default function RedIdentityPage() {
 
               {/* DESKTOP MEDIA COLUMN */}
               <motion.div
-                className="hidden lg:block lg:col-span-5 xl:col-span-5 relative"
+                className="hidden md:block md:col-span-5 lg:col-span-5 xl:col-span-5 relative"
                 initial={{ opacity: 0, x: 80, scale: 0.95 }}
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.25 }}
@@ -171,9 +171,8 @@ export default function RedIdentityPage() {
                     className="w-full h-full object-cover rounded-lg"
                     aria-label="Content creation video showcase"
                   />
-                  <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#eeebe3] via-[#eeebe3]/60 to-transparent" />
                   <motion.div
-                    className="absolute -bottom-16 md:top-55 w-80 h-80 xl:w-full xl:h-full"
+                    className="absolute -bottom-12 xs:-bottom-14 sm:-bottom-16 md:top-75 w-64 h-64 xs:w-72 xs:h-72 sm:w-80 sm:h-80 md:w-full md:h-full lg:w-full lg:h-full xl:w-full xl:h-full"
                     initial={{ opacity: 0, y: 40, rotate: -6 }}
                     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
@@ -184,7 +183,7 @@ export default function RedIdentityPage() {
                       alt="Microphone illustration"
                       fill
                       className="object-contain drop-shadow-2xl"
-                      sizes="(max-width: 1024px) 0px, (max-width: 1280px) 256px, 320px"
+                      sizes="(max-width: 768px) 0px, (max-width: 1024px) 256px, (max-width: 1280px) 320px, 384px"
                     />
                   </motion.div>
                 </div>
@@ -192,7 +191,7 @@ export default function RedIdentityPage() {
             </div>
 
             {/* MOBILE MEDIA STACK */}
-            <div className="lg:hidden mt-8 space-y-0 pb-0">
+            <div className="md:hidden mt-6 xs:mt-7 sm:mt-8 space-y-0 pb-0">
               <motion.div
                 className="w-full relative overflow-hidden rounded-lg"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -211,7 +210,7 @@ export default function RedIdentityPage() {
                 />
               </motion.div>
               <motion.div
-                className="relative mx-auto w-[min(90%,450px)] aspect-square -mt-32"
+                className="relative mx-auto w-[min(85%,400px)] xs:w-[min(88%,420px)] sm:w-[min(90%,450px)] aspect-square -mt-28 xs:-mt-30 sm:-mt-32"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -222,7 +221,7 @@ export default function RedIdentityPage() {
                   alt="Microphone illustration"
                   fill
                   className="object-contain drop-shadow-xl"
-                  sizes="(max-width: 1024px) 90vw, 0px"
+                  sizes="(max-width: 768px) 90vw, 0px"
                 />
               </motion.div>
             </div>
