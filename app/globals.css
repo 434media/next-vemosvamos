@@ -5,6 +5,13 @@
   --font-serif: var(--font-playfair), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
+  /* Adding custom breakpoints for xs, sm (mobile), md, lg (tablet/laptop), xl (TV) */
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+
   --color-background: 0 0% 100%;
   --color-foreground: 0 0% 3.9%;
   --color-card: 0 0% 100%;
@@ -74,8 +81,19 @@
     color: rgb(var(--foreground-rgb));
     background: rgb(var(--background-start-rgb));
     cursor: url("/Dice.cur"), auto;
+    /* Maximize viewport usage and minimize whitespace */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
   }
 
+  /* Ensure full viewport usage across all screen sizes */
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Mobile-first responsive typography and spacing */
   h1,
   h2,
   h3,
@@ -85,17 +103,67 @@
     font-family: var(--font-sans);
     font-weight: 600;
     letter-spacing: -0.025em;
+    margin: 0;
+    line-height: 1.2;
   }
 
   p {
     font-family: var(--font-sans);
     font-weight: 300;
     opacity: 0.8;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Responsive container classes for maximum viewport usage */
+  .container-mobile {
+    width: 100%;
+    padding: 0 1rem;
+    max-width: 100vw;
+  }
+
+  .container-tablet {
+    width: 100%;
+    padding: 0 2rem;
+    max-width: 100vw;
+  }
+
+  .container-desktop {
+    width: 100%;
+    padding: 0 3rem;
+    max-width: 100vw;
+  }
+
+  .container-tv {
+    width: 100%;
+    padding: 0 4rem;
+    max-width: 100vw;
   }
 
   /* Custom text shadow for hover effect */
   .hover\:text-shadow:hover {
     text-shadow: 0px 6px 15px rgba(255, 0, 0, 0.5);
+  }
+
+  /* Responsive spacing utilities to minimize dead space */
+  .spacing-mobile {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .spacing-tablet {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .spacing-desktop {
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .spacing-tv {
+    padding: 3rem;
+    gap: 3rem;
   }
 }
 

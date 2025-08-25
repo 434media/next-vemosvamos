@@ -5,7 +5,7 @@ import OurTeam from "../../components/ourteam"
 
 export default function AboutPage() {
   return (
-    <main className="relative overflow-hidden">
+    <main className="relative overflow-hidden w-full min-h-screen">
       <AboutHero />
       <OurTeam />
     </main>

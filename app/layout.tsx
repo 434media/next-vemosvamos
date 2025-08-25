@@ -89,7 +89,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased bg-[#eeebe3]">
+      <body className="font-sans antialiased bg-[#eeebe3] w-full min-h-screen m-0 p-0 overflow-x-hidden">
         <Suspense fallback={<div>Loading...</div>}>
           <LayoutWrapper>{children}</LayoutWrapper>
         </Suspense>

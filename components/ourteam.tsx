@@ -17,14 +17,14 @@ const teamMembers = [
     id: 1,
     name: "Stacy Carrizales",
     title: "Creative Director",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-stacy.png",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/stacy-team",
     linkedin: "https://www.linkedin.com/in/stacycarrizales/",
   },
   {
     id: 2,
     name: "Diana Garcia",
     title: "Graphic Design",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-diana.png",
+    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/diana-team",
     linkedin: "https://www.linkedin.com/in/dianagrc/",
   },
   {

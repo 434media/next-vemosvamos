@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "motion/react"
+import { motion, useScroll } from "motion/react"
 import { useRef } from "react"
 import Image from "next/image"
 import { useLanguage } from "../lib/language-context"
@@ -8,14 +8,6 @@ import { useLanguage } from "../lib/language-context"
 export default function NewLandingPage() {
   const { t } = useLanguage()
   const scrollRef = useRef(null)
-
-  // Get scroll progress and map it to motion values
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start start", "end end"],
-  })
-
-  const starsY = useTransform(scrollYProgress, [0, 1], [0, -200])
 
   const scrollToWhyItMatters = () => {
     const element = document.getElementById("why-it-matters")
@@ -27,34 +19,57 @@ export default function NewLandingPage() {
   return (
     <div ref={scrollRef} className="relative w-full overflow-x-hidden">
       <section
-        className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 h-screen -mt-24 md:mt-0"
+        /* Updated responsive classes using new breakpoint system for maximum viewport usage */
+        className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
+                   px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 md:mt-16 
+                   h-screen min-h-[100vh]"
         role="banner"
         aria-label="Hero section"
       >
-        {/* === MAIN IMAGE === */}
-        <motion.div
-          className="relative w-full h-full flex items-center justify-center overflow-visible md:pt-24 md:mb-0"
-          initial={{ opacity: 0, y: 60, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
+        {/* Desktop Hero Background */}
+        <div className="absolute inset-0 hidden md:block lg:block xl:block">
           <Image
-            src="/images/vemosvamos.png"
-            alt="Vemos Vamos brand logo and visual identity"
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/hero-desktop"
+            alt="Hero background for desktop"
             fill
             priority
-            className="md:mt-10 object-contain sm:object-cover object-center drop-shadow-lg scale-[1.38] sm:scale-100 md:scale-[0.96] lg:scale-[0.9] xl:scale-[0.85] -translate-y-1"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 85vw"
+            className="object-cover w-full h-full"
+            sizes="(max-width: 767px) 0vw, 100vw"
           />
+        </div>
+
+        {/* Mobile Hero Background */}
+        <div className="absolute inset-0 xs:block sm:block md:hidden">
+          <Image
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/hero-mobile"
+            alt="Hero background for mobile"
+            fill
+            priority
+            className="object-cover w-full h-full"
+            sizes="(max-width: 767px) 100vw, 0vw"
+          />
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+          {/* Desktop Content */}
           <motion.div
-            className="absolute right-2 sm:right-4 md:right-8 lg:right-12 xl:right-16 bottom-[10%] sm:bottom-[10%] md:bottom-[4%] z-20 hidden sm:block"
+            /* Updated positioning and spacing for new breakpoint system to maximize viewport usage */
+            className="absolute right-2 xs:right-4 sm:right-6 md:right-8 lg:right-12 xl:right-20 
+                       bottom-[10%] xs:bottom-[12%] sm:bottom-[10%] md:bottom-[8%] lg:bottom-[6%] xl:bottom-[12%] 
+                       z-20 hidden sm:hidden md:block"
             initial={{ opacity: 0, x: 80, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ duration: 1.5, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div className="text-right relative">
               <h2
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:max-w-lg md:mr-6 md:leading-[0.8] md:tracking-tighter font-black text-gray-900 font-serif leading-tight drop-shadow-lg cursor-pointer transition-colors duration-300 hover:text-[#ca0013] relative group"
+                /* Updated responsive typography for new breakpoint system */
+                className="text-2xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:max-w-lg
+                           md:leading-[0.8] lg:leading-[0.75] xl:leading-[0.7] 
+                           md:tracking-tighter lg:tracking-tighter xl:tracking-tighter 
+                           font-black text-gray-900 font-serif leading-tight drop-shadow-lg 
+                           cursor-pointer transition-colors duration-300 hover:text-[#ca0013] relative group"
                 onClick={scrollToWhyItMatters}
                 role="button"
                 tabIndex={0}
@@ -66,41 +81,30 @@ export default function NewLandingPage() {
               </h2>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* === MOBILE CONTENT === */}
-        <div className="absolute bottom-32 left-0 right-0 flex flex-col items-center md:hidden px-4 z-10 space-y-2">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+          {/* Mobile Content */}
+          <div
+            className="absolute bottom-24 xs:bottom-32 sm:bottom-32 left-0 right-0 flex flex-col items-center md:hidden 
+                          px-4 xs:px-6 sm:px-8 z-10 space-y-4 xs:space-y-5 sm:space-y-6"
           >
-            <h2 className="text-3xl font-bold text-gray-900 font-serif leading-tight drop-shadow-sm">
-              {t("hero.title")}
-            </h2>
-          </motion.div>
-
-          <div className="relative flex items-center justify-center w-full">
             <motion.div
-              className="absolute left-0 w-[120px] h-[120px] -translate-x-4"
-              initial={{ opacity: 0, x: -60, scale: 0.7 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ duration: 1.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="text-center w-full"
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <Image
-                src="/images/stars.png"
-                alt="Decorative sparkling stars"
-                fill
-                className="object-contain drop-shadow-lg animate-sparkle"
-                sizes="120px"
-              />
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 font-serif leading-tight drop-shadow-sm">
+                {t("hero.title")}
+              </h2>
             </motion.div>
 
-            {/* Button in the center */}
             <motion.button
               onClick={scrollToWhyItMatters}
-              className="bg-[#ca0013] text-white px-6 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#a00010] transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
+              /* Updated button sizing for responsive breakpoints */
+              className="bg-[#ca0013] text-white px-6 xs:px-7 sm:px-8 py-3 xs:py-4 sm:py-4 
+                         rounded-lg font-semibold text-lg xs:text-xl sm:text-xl 
+                         shadow-lg hover:bg-[#a00010] transition-colors duration-300 
+                         focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -108,56 +112,8 @@ export default function NewLandingPage() {
             >
               <span>{t("matters.title")}</span>
             </motion.button>
-
-            <motion.div
-              className="absolute right-0 w-[120px] h-[120px] translate-x-4"
-              initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
-              animate={{ opacity: 1, rotate: 0, scale: 1 }}
-              transition={{ duration: 2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-            >
-              <Image
-                src="/images/dice1.png"
-                alt="Decorative dice element"
-                fill
-                className="object-contain drop-shadow-lg"
-                sizes="120px"
-              />
-            </motion.div>
           </div>
         </div>
-
-        {/* === SCROLL-RESPONSIVE DICE IMAGE (RIGHT SIDE) === */}
-        <motion.div
-          className="absolute right-1 sm:right-2 md:right-[5px] top-[140px] sm:top-[220px] md:top-[250px] z-30 w-[80px] h-[80px] sm:w-[180px] sm:h-[180px] md:w-[260px] md:h-[260px] hidden sm:block"
-          initial={{ opacity: 0, rotate: -45, scale: 0.5 }}
-          animate={{ opacity: 1, rotate: 0, scale: 1 }}
-          transition={{ duration: 2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <Image
-            src="/images/dice1.png"
-            alt="Decorative dice element"
-            fill
-            className="object-contain drop-shadow-lg"
-            sizes="(min-width: 1024px) 260px, (min-width: 768px) 180px, 80px"
-          />
-        </motion.div>
-
-        {/* === FLICKERING STARS IMAGE (LEFT SIDE - DESKTOP ONLY) === */}
-        <motion.div
-          className="absolute left-2 sm:left-8 md:left-12 lg:left-16 top-[310px] sm:top-[380px] md:top-[420px] lg:top-[450px] z-30 w-[110px] h-[130px] sm:w-[140px] sm:h-[170px] md:w-[200px] md:h-[240px] lg:w-[240px] lg:h-[280px] animate-sparkle hidden sm:block"
-          style={{ y: starsY }}
-          initial={{ opacity: 0, x: -60, scale: 0.7 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 1.8, delay: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          <Image
-            src="/images/stars.png"
-            alt="Decorative sparkling stars"
-            fill
-            className="object-contain drop-shadow-lg"
-            sizes="(min-width: 1024px) 240px, (min-width: 768px) 200px, (min-width: 640px) 140px, 110px"
-          />
-        </motion.div>
       </section>
     </div>
   )

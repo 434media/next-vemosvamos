@@ -176,9 +176,9 @@ export default function ContentHubHero() {
             <Image
               src="/images/plane.png"
               alt="Paper airplane"
-              width={150}
-              height={150}
-              className="w-full h-auto drop-shadow-lg"
+              width={250}
+              height={250}
+              className="w-48 h-48 md:w-60 md:h-60 lg:w-64 lg:h-64 drop-shadow-lg object-contain md:object-cover"
             />
           </motion.div>
         </div>

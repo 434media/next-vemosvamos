@@ -26,11 +26,11 @@ export default function Home() {
         </script>
       </Head>
 
-      <div className="relative min-h-screen">
-        <div className="">
+      <div className="relative min-h-screen w-full overflow-x-hidden">
+        <div className="w-full">
           <NewLandingPage />
         </div>
-        <section className="relative bg-white rounded-t-[40px] shadow-2xl">
+        <section className="relative bg-white rounded-t-[40px] shadow-2xl w-full">
           <WhoWeReach />
         </section>
         <WhyItMattersSection />

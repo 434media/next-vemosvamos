@@ -62,10 +62,10 @@ export function LanguageToggle() {
         }}
       >
         <img
-          src={language === "en" ? "/images/guitar.svg" : "/images/maracas.svg"}
+          src={language === "en" ? "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/chat-bubble" : "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/boxing-glove"}
           alt=""
-          className={`w-8 h-8 object-contain transition-all duration-500 ${
-            language === "en" ? "drop-shadow-sm" : "drop-shadow-sm"
+          className={`w-full h-auto object-contain transition-all duration-500 ${
+            language === "en" ? "drop-shadow-sm scale-125 -ml-1" : "drop-shadow-sm scale-200"
           }`}
           style={{
             filter:

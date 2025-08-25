@@ -34,7 +34,7 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
           scrolled ? "bg-[#ca0013]/90 backdrop-blur-md" : "bg-[#ca0013]"
         }`}
       >
-        <nav className="container mx-auto px-4">
+        <nav className="container mx-auto md:px-4">
           <div className="flex justify-between items-center h-[80px] md:h-[76px]">
             <MotionLink
               href="/"
@@ -53,7 +53,7 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
               </motion.div>
             </MotionLink>
 
-            <div className="flex items-center">
+            <div className="flex items-center gap-0">
               <LanguageToggle />
 
               <motion.button

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion } from "motion/react"
+import { motion } from "framer-motion"
 import Link from "next/link"
 import "remixicon/fonts/remixicon.css"
 import { useLanguage } from "../lib/language-context"
@@ -114,16 +114,16 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
       color: "#E1306C",
     },
     {
-      name: "LinkedIn",
-      icon: "ri-linkedin-fill",
-      url: "https://www.linkedin.com/company/vemosvamos/",
-      color: "#0077B5",
-    },
-    {
       name: "Facebook",
       icon: "ri-facebook-fill",
       url: "https://www.facebook.com/vemosvamos",
       color: "#1877F2",
+    },
+    {
+      name: "LinkedIn",
+      icon: "ri-linkedin-fill",
+      url: "https://www.linkedin.com/company/vemosvamos/",
+      color: "#0077B5",
     },
   ]
 
@@ -186,7 +186,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
 
       <div className="flex-1 overflow-y-auto overflow-x-hidden relative z-10">
         <div className="h-full flex flex-col lg:flex-row">
-          <div className="w-full lg:w-1/2 lg:order-2">
+          <div className="w-full lg:w-7/10 lg:order-2">
             <div className="relative h-48 md:h-64 lg:h-full lg:min-h-[400px]">
               {/* Loading state */}
               {!isVideoLoaded && !isVideoError && (
@@ -281,7 +281,7 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
             </div>
           </div>
 
-          <div className="flex-1 lg:w-1/2 lg:order-1 p-3 md:p-4 lg:p-6">
+          <div className="flex-1 lg:w-3/10 lg:order-1 p-3 md:p-4 lg:p-6">
             <div className="h-full flex flex-col justify-center max-w-md mx-auto lg:max-w-none space-y-6 md:space-y-8 -mt-6 md:mt-0">
               {/* Page Links Section */}
               <motion.div
