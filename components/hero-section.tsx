@@ -27,7 +27,7 @@ export default function NewLandingPage() {
       <section
         className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
                    px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
-                   h-screen min-h-[100vh] mt-10 md:mt-16"
+                   h-screen min-h-[100vh] mt-8 md:mt-16"
         role="banner"
         aria-label="Hero section"
       >
@@ -67,7 +67,7 @@ export default function NewLandingPage() {
           >
             <div className="text-right relative">
               <h2
-                className="text-2xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:max-w-lg
+                className="text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-5xl md:max-w-lg
                            md:mr-6 lg:mr-8 xl:mr-12 
                            md:leading-[0.8] lg:leading-[0.75] xl:leading-[0.7] 
                            md:tracking-tighter lg:tracking-tighter xl:tracking-tighter 
@@ -87,7 +87,7 @@ export default function NewLandingPage() {
 
           <div
             className="absolute inset-0 flex flex-col items-center justify-center md:hidden 
-                          px-4 xs:px-6 sm:px-8 z-10 space-y-4 xs:space-y-5 sm:space-y-6"
+                          px-4 xs:px-6 sm:px-8 z-10 space-y-4 xs:space-y-5 sm:space-y-6 mt-24"
           >
             <motion.div
               className="text-center w-full"
@@ -95,7 +95,7 @@ export default function NewLandingPage() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl font-bold text-gray-900 font-serif leading-tight drop-shadow-sm">
+              <h2 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 font-serif leading-tight drop-shadow-sm">
                 {t("hero.title")}
               </h2>
             </motion.div>
