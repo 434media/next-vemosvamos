@@ -23,7 +23,7 @@ export default function NewLandingPage() {
   }
 
   return (
-    <div ref={scrollRef} className="relative w-full overflow-x-hidden">
+    <div ref={scrollRef} className="relative w-full overflow-x-hidden xs:-mt-10">
       <section
         className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
                    px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
@@ -105,7 +105,7 @@ export default function NewLandingPage() {
 
             {/* Mobile Marquee - Below image */}
             <motion.div
-              className="absolute xs:bottom-10 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
+              className="absolute xs:bottom-12 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
                          py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg border-t-4 border-white/20 w-screen -ml-4 xs:-ml-4 sm:-ml-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
