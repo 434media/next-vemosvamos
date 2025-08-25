@@ -87,18 +87,6 @@ export default function ContentHubHero() {
                             <span className="block md:inline">{t("brandIntegration")}</span>{" "}
                             <span className="inline-flex items-center gap-1">
                               <span>{t("partnershipDesign")}</span>
-                              <svg
-                                className="inline-flex w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                aria-hidden="true"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
                             </span>
                           </span>
                         </Link>
@@ -112,18 +100,6 @@ export default function ContentHubHero() {
                             <span className="block md:inline">{t("fullStackCreative")}</span>{" "}
                             <span className="inline-flex items-center gap-1">
                               <span>{t("production")}</span>
-                              <svg
-                                className="inline-flex w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                                aria-hidden="true"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
                             </span>
                           </span>
                         </Link>

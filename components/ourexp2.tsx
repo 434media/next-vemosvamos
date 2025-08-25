@@ -155,7 +155,7 @@ export default function RedIdentityPage() {
 
               {/* DESKTOP MEDIA COLUMN */}
               <motion.div
-                className="hidden lg:block lg:col-span-5 xl:col-span-5 relative md:-ml-32"
+                className="hidden lg:block lg:col-span-5 xl:col-span-5 relative"
                 initial={{ opacity: 0, x: 80, scale: 0.95 }}
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.25 }}
@@ -163,17 +163,17 @@ export default function RedIdentityPage() {
               >
                 <div className="absolute inset-0">
                   <video
-                    src="/images/content.mp4"
+                    src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/Pitch+Deck.mp4"
                     autoPlay
                     muted
                     loop
                     playsInline
-                    className="w-full h-full object-cover object-left rounded-lg"
+                    className="w-full h-full object-cover rounded-lg"
                     aria-label="Content creation video showcase"
                   />
                   <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#eeebe3] via-[#eeebe3]/60 to-transparent" />
                   <motion.div
-                    className="absolute -bottom-16 left-48 xl:left-56 w-64 h-64 xl:w-80 xl:h-80"
+                    className="absolute -bottom-16 md:top-55 w-80 h-80 xl:w-full xl:h-full"
                     initial={{ opacity: 0, y: 40, rotate: -6 }}
                     whileInView={{ opacity: 1, y: 0, rotate: 0 }}
                     viewport={{ once: true, amount: 0.3 }}
