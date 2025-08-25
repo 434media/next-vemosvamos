@@ -31,8 +31,8 @@ export default function Listo() {
 
       <div className="relative z-10 w-full min-h-full flex flex-col">
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full h-full">
-          <div className="absolute top-4 md:top-6 lg:top-8 xl:top-12 right-4 md:right-6 lg:right-8 xl:right-12 z-30">
+        <div className="hidden md:flex w-full h-full relative md:-mt-16">
+          <div className="absolute top-4 md:top-6 lg:top-8 xl:top-8 left-170 -translate-x-1/2 z-30">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -42,14 +42,14 @@ export default function Listo() {
               <Image
                 src="/images/listo.png"
                 alt="Listo logo"
-                width={600}
-                height={400}
-                className="object-contain w-[600px] md:w-[700px] lg:w-[800px] xl:w-[900px] h-auto drop-shadow-2xl"
+                width={400}
+                height={300}
+                className="object-contain w-[300px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-auto drop-shadow-2xl scale-65"
                 priority
               />
             </motion.div>
 
-            <div className="flex justify-center mt-4 md:mt-5 lg:mt-6 xl:mt-8">
+            <div className="flex justify-center">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -62,18 +62,6 @@ export default function Listo() {
               </motion.button>
             </div>
           </div>
-
-          {/* Car image for desktop */}
-          <div className="absolute left-0 bottom-0 z-20 w-[65vw] md:w-[68vw] lg:w-[70vw] xl:w-[72vw] h-auto">
-            <Image
-              src="/images/car.png"
-              alt="Vintage car decoration"
-              width={1800}
-              height={600}
-              className="w-full h-auto"
-              sizes="72vw"
-            />
-          </div>
         </div>
 
         {/* Mobile Layout */}
@@ -84,18 +72,18 @@ export default function Listo() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: true, amount: 0.3 }}
-              className="relative"
+              className="relative xs:-mt-12"
             >
               <Image
                 src="/images/listo.png"
                 alt="Listo logo"
-                width={700}
-                height={500}
-                className="object-contain w-[85vw] xs:w-[90vw] sm:w-[95vw] h-auto max-w-[320px] xs:max-w-[360px] sm:max-w-[400px] drop-shadow-2xl"
+                width={500}
+                height={350}
+                className="object-contain w-[60vw] xs:w-[65vw] sm:w-[70vw] h-auto max-w-[240px] xs:max-w-[280px] sm:max-w-[320px] drop-shadow-2xl scale-60"
                 priority
               />
 
-              <div className="absolute -bottom-12 xs:-bottom-14 sm:-bottom-16 right-0">
+              <div className="absolute -bottom-12 xs:-bottom-8 sm:-bottom-16 xs:right-10">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -108,18 +96,6 @@ export default function Listo() {
                 </motion.button>
               </div>
             </motion.div>
-          </div>
-
-          {/* Car image for mobile */}
-          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 z-20 w-full">
-            <Image
-              src="/images/car.png"
-              alt="Vintage car decoration"
-              width={900}
-              height={400}
-              className="w-full h-auto"
-              sizes="100vw"
-            />
           </div>
         </div>
       </div>
@@ -183,7 +159,7 @@ export default function Listo() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                 >
-                  <div className="[&_*:is(input)]:bg-white [&_*:is(input)]:text-[#ca0013] [&_*:is(input)]:border-[#ca0013] [&_*:is(input)]:placeholder-[#ca0013]/60 [&_*:is(input)]:focus:ring-[#ca0013] [&_*:is(button)]:bg-[#ca0013] [&_*:is(button)]:text-[#eee3d2] [&_*:is(button)]:border-[#ca0013] [&_*:is(button)]:hover:bg-[#a80010] [&_*:is(.bg-white\/10)]:bg-white [&_*:is(.text-white)]:text-[#ca0013] [&_*:is(.text-white\/80)]:text-[#ca0013]/80 [&_*:is(.border-white\/20)]:border-[#ca0013]/20">
+                  <div className="[&_*:is(input)]:bg-white [&_*:is(input)]:text-[#ca0013] [&_*:is(input)]:border-[#ca0013] [&_*:is(input)]:placeholder-[#ca0013]/60 [&_*:is(button)]:bg-[#ca0013] [&_*:is(button)]:text-[#eee3d2] [&_*:is(button)]:border-[#ca0013] [&_*:is(button)]:hover:bg-[#a80010] [&_*:is(.bg-white\/10)]:bg-white [&_*:is(.text-white)]:text-[#ca0013] [&_*:is(.text-white\/80)]:text-[#ca0013]/80 [&_*:is(.border-white\/20)]:border-[#ca0013]/20">
                     <Newsletter currentLanguage={language} />
                   </div>
                 </motion.div>
