@@ -13,7 +13,7 @@ export default function Listo() {
 
   return (
     <section
-      className="relative w-full h-[75vh] md:min-h-screen bg-[#eee3d2] overflow-hidden"
+      className="relative w-full min-h-[60vh] xs:min-h-[70vh] sm:min-h-[80vh] md:min-h-[85vh] lg:min-h-screen xl:min-h-[90vh] bg-[#eee3d2] overflow-hidden"
       role="banner"
       aria-label="Listo newsletter signup section"
     >
@@ -29,10 +29,10 @@ export default function Listo() {
         />
       </div>
 
-      <div className="relative z-10 w-full min-h-screen flex flex-col">
+      <div className="relative z-10 w-full min-h-full flex flex-col">
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full h-screen">
-          <div className="absolute top-8 right-8 z-30">
+        <div className="hidden md:flex w-full h-full">
+          <div className="absolute top-4 md:top-6 lg:top-8 xl:top-12 right-4 md:right-6 lg:right-8 xl:right-12 z-30">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -44,17 +44,17 @@ export default function Listo() {
                 alt="Listo logo"
                 width={600}
                 height={400}
-                className="object-contain w-[900px] h-auto drop-shadow-2xl"
+                className="object-contain w-[600px] md:w-[700px] lg:w-[800px] xl:w-[900px] h-auto drop-shadow-2xl"
                 priority
               />
             </motion.div>
 
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-center mt-4 md:mt-5 lg:mt-6 xl:mt-8">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
+                className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-6 md:px-7 lg:px-8 xl:px-10 py-3 md:py-3.5 lg:py-4 xl:py-5 text-base md:text-lg lg:text-xl xl:text-2xl rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
                 onClick={() => setShowModal(true)}
                 aria-label={t("listo.openNewsletterSignup")}
               >
@@ -64,21 +64,21 @@ export default function Listo() {
           </div>
 
           {/* Car image for desktop */}
-          <div className="absolute left-0 bottom-0 z-20 w-[70vw] h-auto">
+          <div className="absolute left-0 bottom-0 z-20 w-[65vw] md:w-[68vw] lg:w-[70vw] xl:w-[72vw] h-auto">
             <Image
               src="/images/car.png"
               alt="Vintage car decoration"
               width={1800}
               height={600}
               className="w-full h-auto"
-              sizes="70vw"
+              sizes="72vw"
             />
           </div>
         </div>
 
         {/* Mobile Layout */}
-        <div className="md:hidden flex flex-col w-full h-screen relative">
-          <div className="flex justify-center pt-8 px-4 z-30 relative">
+        <div className="md:hidden flex flex-col w-full min-h-full relative">
+          <div className="flex justify-center pt-6 xs:pt-8 sm:pt-10 px-3 xs:px-4 sm:px-6 z-30 relative">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -91,16 +91,16 @@ export default function Listo() {
                 alt="Listo logo"
                 width={700}
                 height={500}
-                className="object-contain w-[65vw] h-auto max-w-[400px] drop-shadow-2xl"
+                className="object-contain w-[85vw] xs:w-[90vw] sm:w-[95vw] h-auto max-w-[320px] xs:max-w-[360px] sm:max-w-[400px] drop-shadow-2xl"
                 priority
               />
 
-              <div className="absolute -bottom-16 right-15">
+              <div className="absolute -bottom-12 xs:-bottom-14 sm:-bottom-16 right-0">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                  className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-6 py-3 text-base rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
+                  className="bg-[#ca0013] text-white font-bold uppercase tracking-wide px-4 xs:px-5 sm:px-6 py-2.5 xs:py-3 sm:py-3.5 text-sm xs:text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30"
                   onClick={() => setShowModal(true)}
                   aria-label={t("listo.openNewsletterSignup")}
                 >
@@ -111,7 +111,7 @@ export default function Listo() {
           </div>
 
           {/* Car image for mobile */}
-          <div className="absolute left-1/2 bottom-32 -translate-x-1/2 z-20 w-full">
+          <div className="absolute left-1/2 bottom-0 -translate-x-1/2 z-20 w-full">
             <Image
               src="/images/car.png"
               alt="Vintage car decoration"
