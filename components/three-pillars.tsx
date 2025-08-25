@@ -19,30 +19,32 @@ export default function WhoWeReach() {
   return (
     <section
       ref={sectionRef}
-      className="-mt-10 md:mt-0 relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[40vh] md:min-h-[65vh] py-8 md:py-16"
+      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[75vh] xl:min-h-[80vh] py-4 sm:py-6 md:py-12 lg:py-16 xl:py-20"
       aria-label="Our mission statement"
     >
       <motion.div
         initial={{ opacity: 0, y: 50, scale: 0.96 }}
         animate={isVisible ? { opacity: 1, y: 0, scale: 1 } : {}}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-6xl flex items-center justify-center px-4 md:px-8 mb-8 md:mb-12"
+        className="relative z-10 w-full max-w-7xl flex items-center justify-center px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12 mb-6 sm:mb-8 md:mb-10 lg:mb-12 xl:mb-16"
       >
         <h1 className="font-black text-center leading-[0.8] tracking-tight text-white drop-shadow-2xl">
-          {/* Mobile breakpoints */}
-          <span className="block md:hidden text-3xl sm:text-4xl">{t("pillars.content")}</span>
-          {/* Desktop breakpoints */}
-          <span className="hidden md:block text-5xl lg:text-7xl">{t("pillars.content")}</span>
+          {/* Mobile: xs, sm */}
+          <span className="block md:hidden text-3xl sm:text-5xl">{t("pillars.content")}</span>
+          {/* Tablet/Laptop: md, lg */}
+          <span className="hidden md:block lg:hidden text-6xl">{t("pillars.content")}</span>
+          {/* Desktop/TV: xl */}
+          <span className="hidden lg:block text-7xl xl:text-8xl">{t("pillars.content")}</span>
         </h1>
       </motion.div>
 
       {/* BACKGROUND CITY + GRADIENT */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-[50vh] md:h-[40vh] z-0">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-[60vh] sm:h-[65vh] md:h-[50vh] lg:h-[45vh] xl:h-[40vh] z-0">
         <Image
           src="/images/cityblack.png"
           alt="City skyline background decoration"
           fill
-          className="object-cover object-bottom opacity-70 sm:opacity-75"
+          className="object-cover object-bottom opacity-70 sm:opacity-75 md:opacity-80"
           priority
           sizes="100vw"
         />

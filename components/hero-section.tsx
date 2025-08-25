@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useScroll } from "motion/react"
+import { motion, useScroll } from "framer-motion"
 import { useRef } from "react"
 import Image from "next/image"
 import { useLanguage } from "../lib/language-context"
@@ -27,7 +27,7 @@ export default function NewLandingPage() {
       <section
         className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
                    px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
-                   h-screen min-h-[100vh] mt-8 md:mt-16"
+                   h-screen min-h-[100vh] md:mt-16"
         role="banner"
         aria-label="Hero section"
       >
@@ -85,34 +85,54 @@ export default function NewLandingPage() {
             </div>
           </motion.div>
 
-          <div
-            className="absolute inset-0 flex flex-col items-center justify-center md:hidden 
-                          px-4 xs:px-6 sm:px-8 z-10 space-y-4 xs:space-y-5 sm:space-y-6 mt-24"
-          >
+          <div className="absolute inset-0 flex flex-col md:hidden z-10">
+            {/* Mobile Button - Centered */}
+            <div className="flex-1 flex items-center justify-center px-4 xs:px-6 sm:px-8 xs:mt-16">
+              <motion.button
+                onClick={scrollToWhyItMatters}
+                className="bg-[#ca0013] text-white px-6 xs:px-7 sm:px-8 py-3 xs:py-4 sm:py-4 
+                           rounded-lg font-semibold text-lg xs:text-xl sm:text-xl 
+                           shadow-lg hover:bg-[#a00010] transition-colors duration-300 
+                           focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                aria-label="Navigate to Why It Matters section"
+              >
+                <span>{t("matters.title")}</span>
+              </motion.button>
+            </div>
+
+            {/* Mobile Marquee - Below image */}
             <motion.div
-              className="text-center w-full"
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
+              className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
+                         py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg border-t-4 border-white/20 w-screen -ml-4 xs:-ml-4 sm:-ml-6"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
             >
-              <h2 className="text-lg xs:text-xl sm:text-2xl font-bold text-gray-900 font-serif leading-tight drop-shadow-sm">
-                {t("hero.title")}
-              </h2>
+              <div className="relative">
+                <motion.div
+                  className="flex whitespace-nowrap"
+                  animate={{ x: [0, -2000] }}
+                  transition={{
+                    duration: 30,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "linear",
+                  }}
+                >
+                  {Array.from({ length: 8 }).map((_, index) => (
+                    <span
+                      key={index}
+                      className="text-white font-bold text-xl xs:text-2xl sm:text-3xl font-serif 
+                                 drop-shadow-lg mx-8 tracking-wide"
+                    >
+                      {t("hero.title")}
+                    </span>
+                  ))}
+                </motion.div>
+              </div>
             </motion.div>
-
-            <motion.button
-              onClick={scrollToWhyItMatters}
-              className="bg-[#ca0013] text-white px-6 xs:px-7 sm:px-8 py-3 xs:py-4 sm:py-4 
-                         rounded-lg font-semibold text-lg xs:text-xl sm:text-xl 
-                         shadow-lg hover:bg-[#a00010] transition-colors duration-300 
-                         focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-              aria-label="Navigate to Why It Matters section"
-            >
-              <span>{t("matters.title")}</span>
-            </motion.button>
           </div>
         </div>
       </section>
