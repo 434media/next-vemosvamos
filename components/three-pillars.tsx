@@ -19,7 +19,7 @@ export default function WhoWeReach() {
   return (
     <section
       ref={sectionRef}
-      className="xs:-mt-10 relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[75vh] xl:min-h-[80vh] py-4 sm:py-6 md:py-12 lg:py-16 xl:py-20"
+      className="relative w-full bg-[#ca0013] flex flex-col items-center justify-start text-white overflow-hidden z-30 min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] lg:min-h-[75vh] xl:min-h-[80vh] py-4 sm:py-6 md:py-12 lg:py-16 xl:py-20"
       aria-label="Our mission statement"
     >
       <motion.div
@@ -39,7 +39,7 @@ export default function WhoWeReach() {
       </motion.div>
 
       {/* BACKGROUND CITY + GRADIENT */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-[60vh] sm:h-[65vh] md:h-[50vh] lg:h-[45vh] xl:h-[40vh] z-0">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 w-full h-[40vh] sm:h-[45vh] md:h-[50vh] lg:h-[45vh] xl:h-[40vh] z-0">
         <Image
           src="/images/cityblack.png"
           alt="City skyline background decoration"
