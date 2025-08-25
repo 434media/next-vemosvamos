@@ -14,26 +14,26 @@ export default function AboutHero() {
   const h1InView = useInView(h1Ref, { once: true, margin: "-10%" })
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden mt-24 md:mt-0">
-      <section className="relative w-full h-[95vh] md:h-screen md:mb-0 bg-[#eeebe3] flex flex-col md:flex-row overflow-hidden">
-        <div className="absolute md:relative w-full md:w-1/2 h-full order-2 md:order-1 mt-16 md:mt-0">
+    <div ref={containerRef} className="relative w-full overflow-hidden mt-16 xs:mt-20 sm:mt-24 md:mt-0">
+      <section className="relative w-full min-h-[90vh] xs:min-h-[95vh] sm:min-h-[95vh] md:min-h-screen lg:min-h-screen xl:min-h-[85vh] bg-[#eeebe3] flex flex-col md:flex-row overflow-hidden">
+        <div className="absolute md:relative w-full md:w-1/2 h-full md:h-auto md:min-h-full order-2 md:order-1 mt-12 xs:mt-14 sm:mt-16 md:mt-0">
           <Image
             src="/images/about-hero.png"
             alt="Why We're Different - About Us"
             fill
             priority
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, 50vw"
             className="object-cover object-center md:object-left"
           />
         </div>
 
-        <div className="relative w-full md:w-1/2 h-full flex flex-col justify-start items-end md:items-start px-4 md:px-8 order-1 md:order-2 z-10">
+        <div className="relative w-full md:w-1/2 h-full flex flex-col justify-start items-end md:items-start px-3 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 order-1 md:order-2 z-10">
           <motion.h1
             ref={h1Ref}
             initial={{ opacity: 0, y: 40 }}
             animate={h1InView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:mt-32 mt-2 text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[1.0] tracking-tigter text-[#ca0013] text-right md:text-left mb-4 md:mb-12 drop-shadow-lg md:drop-shadow-none"
+            className="mt-1 xs:mt-2 sm:mt-2 md:mt-24 lg:mt-32 xl:mt-40 text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black uppercase leading-[0.9] xs:leading-[0.95] sm:leading-[1.0] tracking-tighter text-[#ca0013] text-right md:text-left mb-3 xs:mb-4 sm:mb-6 md:mb-8 lg:mb-12 xl:mb-16 drop-shadow-lg md:drop-shadow-none"
             style={{ color: "#ca0013" }}
           >
             {(() => {
@@ -56,15 +56,15 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={textInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-            className="space-y-2 md:space-y-3 lg:space-y-4 text-right md:text-left text-[#ca0013] font-inter max-w-xs md:max-w-md lg:max-w-lg bg-white/80 md:bg-transparent p-3 md:p-0 rounded-lg md:rounded-none backdrop-blur-sm md:backdrop-blur-none"
+            className="space-y-1 xs:space-y-2 sm:space-y-3 md:space-y-3 lg:space-y-4 xl:space-y-6 text-right md:text-left text-[#ca0013] font-inter max-w-xs xs:max-w-sm sm:max-w-md md:max-w-md lg:max-w-lg xl:max-w-xl bg-white/80 md:bg-transparent p-2 xs:p-3 sm:p-4 md:p-0 rounded-lg md:rounded-none backdrop-blur-sm md:backdrop-blur-none"
           >
-            <div className="text-xl md:text-2xl lg:text-4xl font-black uppercase leading-tight tracking-tight">
+            <div className="text-lg xs:text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-black uppercase leading-tight tracking-tight">
               {t("about.femaleLed")}
             </div>
-            <div className="text-base md:text-lg lg:text-2xl font-bold uppercase leading-tight tracking-wide">
+            <div className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold uppercase leading-tight tracking-wide">
               {t("about.bicultural")}
             </div>
-            <div className="text-base md:text-lg lg:text-2xl font-bold uppercase leading-tight tracking-wide">
+            <div className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold uppercase leading-tight tracking-wide">
               {t("about.network")}
             </div>
           </motion.div>
