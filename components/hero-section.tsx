@@ -38,7 +38,7 @@ export default function NewLandingPage() {
             alt="Hero background for desktop"
             fill
             priority
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full scale-100"
             sizes="(max-width: 767px) 0vw, 100vw"
           />
         </div>
@@ -49,7 +49,7 @@ export default function NewLandingPage() {
             alt="Hero background for mobile"
             fill
             priority
-            className="object-contain w-full h-full"
+            className="object-contain w-full h-full xs:scale-110"
             sizes="(max-width: 767px) 100vw, 0vw"
           />
         </div>
@@ -58,7 +58,7 @@ export default function NewLandingPage() {
         <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
           {/* Desktop Content */}
           <motion.div
-            className="absolute right-2 xs:right-4 sm:right-6 md:right-8 lg:right-12 xl:right-20 
+            className="absolute right-2 xs:right-4 sm:right-6 md:right-8 lg:right-12 xl:right-10 
                        bottom-[10%] xs:bottom-[12%] sm:bottom-[10%] md:bottom-[8%] lg:bottom-[6%] xl:bottom-[12%] 
                        z-20 hidden sm:hidden md:block"
             initial={{ opacity: 0, x: 80, scale: 0.8 }}
@@ -80,7 +80,7 @@ export default function NewLandingPage() {
                 aria-label="Navigate to Why It Matters section"
               >
                 {t("hero.title")}
-                <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
+                <div className="absolute -bottom-2 md:left-10 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
               </h2>
             </div>
           </motion.div>
@@ -105,7 +105,7 @@ export default function NewLandingPage() {
 
             {/* Mobile Marquee - Below image */}
             <motion.div
-              className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
+              className="absolute xs:bottom-10 left-0 right-0 bg-gradient-to-r from-[#ca0013] via-rose-600 to-[#ca0013] 
                          py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg border-t-4 border-white/20 w-screen -ml-4 xs:-ml-4 sm:-ml-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
