@@ -9,6 +9,12 @@ export default function NewLandingPage() {
   const { t } = useLanguage()
   const scrollRef = useRef(null)
 
+  // Get scroll progress and map it to motion values
+  const { scrollYProgress } = useScroll({
+    target: scrollRef,
+    offset: ["start start", "end end"],
+  })
+
   const scrollToWhyItMatters = () => {
     const element = document.getElementById("why-it-matters")
     if (element) {
@@ -19,10 +25,9 @@ export default function NewLandingPage() {
   return (
     <div ref={scrollRef} className="relative w-full overflow-x-hidden">
       <section
-        /* Updated responsive classes using new breakpoint system for maximum viewport usage */
         className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
-                   px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 md:mt-16 
-                   h-screen min-h-[100vh]"
+                   px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
+                   h-screen min-h-[100vh] mt-10 md:mt-16"
         role="banner"
         aria-label="Hero section"
       >
@@ -38,14 +43,13 @@ export default function NewLandingPage() {
           />
         </div>
 
-        {/* Mobile Hero Background */}
         <div className="absolute inset-0 xs:block sm:block md:hidden">
           <Image
             src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/hero-mobile"
             alt="Hero background for mobile"
             fill
             priority
-            className="object-cover w-full h-full"
+            className="object-contain w-full h-full"
             sizes="(max-width: 767px) 100vw, 0vw"
           />
         </div>
@@ -54,7 +58,6 @@ export default function NewLandingPage() {
         <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
           {/* Desktop Content */}
           <motion.div
-            /* Updated positioning and spacing for new breakpoint system to maximize viewport usage */
             className="absolute right-2 xs:right-4 sm:right-6 md:right-8 lg:right-12 xl:right-20 
                        bottom-[10%] xs:bottom-[12%] sm:bottom-[10%] md:bottom-[8%] lg:bottom-[6%] xl:bottom-[12%] 
                        z-20 hidden sm:hidden md:block"
@@ -64,8 +67,8 @@ export default function NewLandingPage() {
           >
             <div className="text-right relative">
               <h2
-                /* Updated responsive typography for new breakpoint system */
                 className="text-2xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-5xl md:max-w-lg
+                           md:mr-6 lg:mr-8 xl:mr-12 
                            md:leading-[0.8] lg:leading-[0.75] xl:leading-[0.7] 
                            md:tracking-tighter lg:tracking-tighter xl:tracking-tighter 
                            font-black text-gray-900 font-serif leading-tight drop-shadow-lg 
@@ -82,9 +85,8 @@ export default function NewLandingPage() {
             </div>
           </motion.div>
 
-          {/* Mobile Content */}
           <div
-            className="absolute bottom-24 xs:bottom-32 sm:bottom-32 left-0 right-0 flex flex-col items-center md:hidden 
+            className="absolute inset-0 flex flex-col items-center justify-center md:hidden 
                           px-4 xs:px-6 sm:px-8 z-10 space-y-4 xs:space-y-5 sm:space-y-6"
           >
             <motion.div
@@ -100,7 +102,6 @@ export default function NewLandingPage() {
 
             <motion.button
               onClick={scrollToWhyItMatters}
-              /* Updated button sizing for responsive breakpoints */
               className="bg-[#ca0013] text-white px-6 xs:px-7 sm:px-8 py-3 xs:py-4 sm:py-4 
                          rounded-lg font-semibold text-lg xs:text-xl sm:text-xl 
                          shadow-lg hover:bg-[#a00010] transition-colors duration-300 
