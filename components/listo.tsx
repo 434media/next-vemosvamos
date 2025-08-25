@@ -29,9 +29,19 @@ export default function Listo() {
         />
       </div>
 
+      <div className="lg:hidden absolute bottom-0 left-0 z-20 w-[70%] h-[60%] xs:w-[75%] xs:h-[65%] sm:w-[70%] sm:h-[60%] md:w-[65%] md:h-[60%] lg:w-[70%] lg:h-[65%] xl:w-[75%] xl:h-[70%]">
+        <Image
+          src="/images/car.png"
+          alt="Vintage car"
+          fill
+          className="object-contain object-bottom-left drop-shadow-lg"
+          sizes="(max-width: 768px) 75vw, 70vw"
+        />
+      </div>
+
       <div className="relative z-10 w-full min-h-full flex flex-col">
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full h-full relative md:-mt-16">
+        <div className="hidden md:flex w-full h-full relative md:-mt-12">
           <div className="absolute top-4 md:top-6 lg:top-8 xl:top-8 left-170 -translate-x-1/2 z-30">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
@@ -44,7 +54,7 @@ export default function Listo() {
                 alt="Listo logo"
                 width={400}
                 height={300}
-                className="object-contain w-[300px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-auto drop-shadow-2xl scale-65"
+                className="object-contain w-[300px] md:w-[350px] lg:w-[400px] xl:w-[450px] h-auto drop-shadow-2xl scale-70"
                 priority
               />
             </motion.div>
