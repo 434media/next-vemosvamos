@@ -58,7 +58,7 @@ export default function RedIdentityPage() {
           </motion.div>
 
           {/* LOWER CONTENT AREA */}
-          <div className="relative w-full flex-1">
+          <div className="relative w-full flex-1 xs:-mb-16 md:mb-0">
             <div className="relative md:grid md:grid-cols-12 lg:grid-cols-12 md:gap-6 lg:gap-8 xl:gap-12">
               {/* TEXT COLUMN */}
               <div className="relative z-20 md:col-span-7 lg:col-span-7 xl:col-span-7 space-y-6 xs:space-y-7 sm:space-y-8 md:space-y-10 lg:space-y-12 xl:space-y-16 pr-0 md:pr-4 lg:pr-6 xl:pr-8">
