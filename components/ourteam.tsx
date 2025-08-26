@@ -28,6 +28,7 @@ const teamMembers = [
     id: 1,
     name: "Stacy Carrizales",
     title: "Creative Director",
+    description: "Leading brand vision and creative strategy with over 8 years of experience.",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/stacy-team",
     linkedin: "https://www.linkedin.com/in/stacycarrizales/",
     instagram: "https://www.instagram.com/strawberry.stacyy/",
@@ -36,6 +37,7 @@ const teamMembers = [
     id: 2,
     name: "Diana Garcia",
     title: "Graphic Design",
+    description: "Diana García is a bilingual brand strategist, creative director, and Owner of Veintidós Studios (22 Studios).",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/diana-team",
     linkedin: "https://www.linkedin.com/in/dianagrc/",
   },
@@ -43,6 +45,7 @@ const teamMembers = [
     id: 3,
     name: "Arely Reyes",
     title: "Digital Marketing",
+    description: "First-generation Mexican-American rooted in faith, culture, and service, passionate about using creativity to uplift communities and tell meaningful stories.",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-arely.png",
     linkedin: "https://www.linkedin.com/in/arely-reyes/",
     instagram: "https://www.instagram.com/reyes.arely_/",
@@ -51,6 +54,7 @@ const teamMembers = [
     id: 4,
     name: "Camille Rivera",
     title: "Web Developer",
+    description: "Creative software engineer with a focus on user-experience, loves building responsive, full-stack web applications.",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/team-camille.png",
     linkedin: "https://www.linkedin.com/in/camille-louise-rivera/",
   },
@@ -58,6 +62,7 @@ const teamMembers = [
     id: 5,
     name: "Barbara Carreon",
     title: "VP Business Development",
+    description: "Helping connect brands to opportunities for growth by leveraging strategic insights, creative solutions, and targeted marketing approaches to drive success.",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-barb.png",
     linkedin: "https://www.linkedin.com/in/barbara-c-6299ba1/",
   },
@@ -65,6 +70,7 @@ const teamMembers = [
     id: 6,
     name: "Marcos Resendez",
     title: "Founder / CEO",
+    description: "Visionary leader with a passion for innovation and creativity.",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-marcos.png",
     linkedin: "https://www.linkedin.com/in/marcosresendez/",
   },
@@ -362,7 +368,8 @@ export default function OurTeam() {
               </div>
 
               <h2 className="text-2xl md:text-3xl font-bold text-[#ca0013] mb-2">{selectedMember.name}</h2>
-              <p className="text-lg md:text-xl text-neutral-700 mb-6 font-medium">{selectedMember.title}</p>
+              <p className="text-lg md:text-xl text-neutral-700 mb-2 font-medium">{selectedMember.title}</p>
+              <p className="text-base md:text-lg text-neutral-800 mb-2">{selectedMember.description}</p>
 
               <div className="flex justify-center gap-3">
                 <a
