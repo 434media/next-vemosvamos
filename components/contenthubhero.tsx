@@ -130,7 +130,7 @@ export default function ContentHubHero() {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 xs:-right-4"
+            className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 xs:-right-20"
             initial={{
               opacity: 0,
               x: 200,
