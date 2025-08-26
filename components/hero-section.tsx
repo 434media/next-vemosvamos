@@ -106,7 +106,7 @@ export default function NewLandingPage() {
             {/* Mobile Marquee - Below image */}
             <motion.div
               className="absolute xs:bottom-12 left-0 right-0 bg-[#ca0013] 
-                         py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg border-t-4 border-white/20 w-screen -ml-4 xs:-ml-4 sm:-ml-6"
+                         py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg w-screen -ml-4 xs:-ml-4 sm:-ml-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
