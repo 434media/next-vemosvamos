@@ -210,7 +210,7 @@ export default function RedIdentityPage() {
                 />
               </motion.div>
               <motion.div
-                className="relative mx-auto w-[min(85%,400px)] xs:w-[min(88%,420px)] sm:w-[min(90%,450px)] aspect-square -mt-28 xs:-mt-30 sm:-mt-32"
+                className="relative mx-auto w-[min(85%,400px)] xs:w-[min(88%,420px)] sm:w-[min(90%,450px)] aspect-square -mt-56 xs:-mt-52 sm:-mt-60"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
