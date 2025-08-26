@@ -25,7 +25,7 @@ const translations = {
     // Mobile Menu
     "menu.whyDifferent": "MEET THE TEAM",
     "menu.contentHub": "CONTENT HUB",
-    "menu.connectWithUs": "CONNECT WITH US",
+    "menu.connectWithUs": "CONNECT",
     "menu.followUs": "FOLLOW US",
     "menu.newsletter": "VEMOS VAMOS NEWSLETTER",
     "menu.letsConnect": "Let's Connect",
