@@ -130,7 +130,7 @@ export default function ContentHubHero() {
           </motion.div>
 
           <motion.div
-            className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20"
+            className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 xs:-right-4"
             initial={{
               opacity: 0,
               x: -200,
@@ -154,7 +154,7 @@ export default function ContentHubHero() {
               alt="Paper airplane"
               width={250}
               height={250}
-              className="w-48 h-48 md:w-60 md:h-60 lg:w-96 lg:h-96 drop-shadow-lg object-contain md:object-cover"
+              className="w-52 h-52 xs:w-44 xs:h-44 md:w-60 md:h-60 lg:w-96 lg:h-96 drop-shadow-lg object-contain xs:object-cover md:object-cover"
             />
           </motion.div>
         </div>
