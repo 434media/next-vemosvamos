@@ -249,9 +249,9 @@ export default function OurTeam() {
         </div>
       </div>
 
-      <div className="w-full bg-[#ca0013] flex flex-col md:flex-row justify-center items-center gap-4 xs:gap-6 sm:gap-8 md:gap-[5vw] lg:gap-[6vw] xl:gap-[7vw] py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-2 xs:px-4 sm:px-4 md:px-[6vw] lg:px-[8vw] xl:px-[10vw] relative z-5 min-h-[50vh] xs:min-h-[55vh] sm:min-h-[60vh] md:min-h-[50vh] lg:min-h-[60vh] xl:min-h-[70vh]">
+      <div className="w-full bg-[#ca0013] flex flex-col md:flex-row justify-center items-center gap-4 xs:gap-6 sm:gap-8 md:gap-[5vw] lg:gap-[6vw] xl:gap-[7vw] py-8 xs:py-10 sm:py-12 md:py-16 lg:py-20 xl:py-24 px-2 xs:px-4 sm:px-4 md:px-[6vw] lg:px-[8vw] xl:px-[10vw] relative z-5 min-h-[42vh] xs:min-h-[40vh] sm:min-h-[45vh] md:min-h-[50vh] lg:min-h-[60vh] xl:min-h-[70vh]">
         <motion.div
-          className="absolute bottom-4 right-4 xs:bottom-0 xs:-right-4 sm:bottom-4 sm:right-4 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12 xl:bottom-16 xl:right-16 w-32 h-32 xs:w-40 xs:h-40 sm:w-52 sm:h-52 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] z-10"
+          className="absolute bottom-4 right-4 xs:bottom-0 xs:-right-4 sm:bottom-4 sm:right-4 md:bottom-8 md:right-8 lg:bottom-12 lg:right-12 xl:-bottom-16 xl:-right-20 w-32 h-32 xs:w-40 xs:h-40 sm:w-52 sm:h-52 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] z-10"
           initial={{ opacity: 0, scale: 0.6, rotate: -15, y: 50 }}
           whileInView={{ opacity: 1, scale: 1, rotate: 0, y: 0 }}
           viewport={{ once: false, margin: "-100px" }}
@@ -271,7 +271,7 @@ export default function OurTeam() {
             src="/images/wrestlecat.png"
             alt="Wrestle Cat"
             fill
-            className="object-cover md:object-cover drop-shadow-2xl"
+            className="object-cover md:object-contain drop-shadow-2xl"
           />
         </motion.div>
 
@@ -287,7 +287,7 @@ export default function OurTeam() {
           }}
         >
           <h1
-            className="text-white font-black text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] leading-[0.9] tracking-tighter text-center md:text-left drop-shadow-lg"
+            className="text-white font-black text-4xl xs:text-5xl sm:text-7xl md:text-8xl lg:text-9xl leading-[0.9] tracking-tighter text-center md:text-left drop-shadow-lg"
             style={{ color: "#ffffff" }}
             role="heading"
             aria-level={1}
@@ -305,7 +305,7 @@ export default function OurTeam() {
 
         <div className="relative max-w-xl md:max-w-[60vw]">
           <motion.div
-            className="text-white font-inter font-black text-xl xs:text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl leading-tight md:leading-[0.9] tracking-tight uppercase text-center md:text-left relative z-20"
+            className="text-white font-inter font-black text-xl xs:text-2xl sm:text-3xl md:text-5xl leading-tight md:leading-[0.9] tracking-tight uppercase text-center md:text-left relative z-20"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
