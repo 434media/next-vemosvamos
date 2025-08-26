@@ -42,7 +42,7 @@ export default function Listo() {
       <div className="relative z-10 w-full min-h-full flex flex-col">
         {/* Desktop Layout */}
         <div className="hidden md:flex w-full h-full relative md:-mt-16">
-          <div className="absolute top-4 md:top-6 left-170 -translate-x-1/2 z-30">
+          <div className="absolute top-4 md:top-8 left-170 -translate-x-1/2 z-30">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}

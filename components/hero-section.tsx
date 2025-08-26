@@ -38,7 +38,7 @@ export default function NewLandingPage() {
             alt="Hero background for desktop"
             fill
             priority
-            className="object-cover w-full h-full scale-99"
+            className="object-cover w-full h-full"
             sizes="(max-width: 767px) 0vw, 100vw"
           />
         </div>

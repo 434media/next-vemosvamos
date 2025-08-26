@@ -76,7 +76,7 @@ export default function ContentHubHero() {
                         transition={{ duration: 0.6, ease: "easeOut" }}
                         className="group inline-flex items-center gap-2 text-base md:text-xl lg:text-2xl xl:text-3xl leading-tight tracking-tight transition-all duration-300 text-white md:text-red-600 hover:text-[#ca0013] bg-[#ca0013]/90 md:bg-transparent px-4 py-3 md:px-0 md:py-0 rounded-lg md:rounded-none border border-gray-200/30 md:border-none backdrop-blur-sm md:backdrop-blur-none"
                       >
-                        <span className="relative z-10 py-2">{t("bilingualStorytelling")}</span>
+                        <span className="font-extrabold">{t("bilingualStorytelling")}</span>
                       </motion.h2>
                       <motion.div variants={lineVariants} transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}>
                         <Link
@@ -133,9 +133,9 @@ export default function ContentHubHero() {
             className="absolute bottom-8 right-8 md:bottom-12 md:right-12 z-20 xs:-right-4"
             initial={{
               opacity: 0,
-              x: -200,
-              y: 50,
-              rotate: -15,
+              x: 200,
+              y: 0,
+              rotate: 0,
             }}
             animate={{
               opacity: 1,
@@ -144,17 +144,17 @@ export default function ContentHubHero() {
               rotate: 0,
             }}
             transition={{
-              duration: 2,
+              duration: 1.2,
               ease: [0.25, 0.46, 0.45, 0.94],
-              delay: 1.5,
+              delay: 0.5,
             }}
           >
             <Image
               src="/images/plane.png"
               alt="Paper airplane"
-              width={250}
-              height={250}
-              className="w-52 h-52 xs:w-44 xs:h-44 md:w-60 md:h-60 lg:w-96 lg:h-96 drop-shadow-lg object-contain xs:object-cover md:object-cover"
+              width={400}
+              height={400}
+              className="w-80 h-80 xs:w-72 xs:h-72 md:w-[28rem] md:h-[28rem] lg:w-[32rem] lg:h-[32rem] drop-shadow-lg object-contain xs:object-cover md:object-cover"
             />
           </motion.div>
         </div>

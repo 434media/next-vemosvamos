@@ -11,7 +11,7 @@ export default function RedIdentityPage() {
       {/* 🔴 RED BLOCK */}
       <section
         id="red-block"
-        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[42vh] xs:min-h-[40vh] sm:min-h-[45vh] md:min-h-[75vh] lg:min-h-[80vh] xl:min-h-[85vh] flex items-center py-2 xs:py-3 sm:py-4 md:py-6 lg:py-8"
+        className="w-full bg-[#ca0013] relative overflow-hidden min-h-[42vh] xs:min-h-[35vh] sm:min-h-[45vh] md:min-h-[65vh] flex items-center py-2 xs:py-3 sm:py-4 md:py-6 lg:py-8"
         role="region"
         aria-labelledby="red-block-heading"
       >
@@ -19,7 +19,7 @@ export default function RedIdentityPage() {
         <div className="w-full relative z-20 px-3 xs:px-4 sm:px-5 md:px-6 lg:px-8 xl:px-12">
           <motion.h1
             id="red-block-heading"
-            className="relative text-white text-left xs:text-center sm:text-center text-2xl xs:text-3xl sm:text-4xl md:text-[clamp(2rem,4.5vw+0.5rem,4.5rem)] lg:text-[clamp(2.5rem,5vw+0.5rem,5.5rem)] xl:text-[clamp(3rem,6vw+0.5rem,7rem)] font-black uppercase tracking-tighter leading-[0.95] mx-auto"
+            className="relative text-white text-left text-2xl xs:text-2xl sm:text-3xl md:text-[clamp(2rem,4.5vw+0.5rem,4.5rem)] font-black uppercase tracking-tighter leading-[0.95] mx-auto"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
