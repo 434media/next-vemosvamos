@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
+import { motion, useInView } from "motion/react"
 import { useState, useEffect, useRef } from "react"
 import { useLanguage } from "../lib/language-context"
 
@@ -122,7 +122,7 @@ export default function WhyItMattersSection() {
               {t("stats.spendingText")}
             </p>
             <motion.div
-              className="mt-4 h-[8px] md:h-[4px] bg-red-700 origin-left w-full"
+              className="xs:px-0.5 mt-4 h-[8px] md:h-[4px] bg-red-700 origin-left w-full"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{
@@ -145,9 +145,9 @@ export default function WhyItMattersSection() {
               delay: 0.3,
               ease: [0.25, 0.46, 0.45, 0.94],
             }}
-            viewport={{ once: true, margin: "-20%" }}
+            viewport={{ once: true, margin: "20%" }}
           >
-            <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="xs:px-0.5 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               <AnimatedNumber value={1} /> {t("stats.population")} <AnimatedNumber value={5} />{" "}
               {t("stats.populationText")}
             </p>
@@ -161,7 +161,7 @@ export default function WhyItMattersSection() {
                 ease: [0.25, 0.46, 0.45, 0.94],
               }}
               style={{ transformOrigin: "left" }}
-              onAnimationStart={() => console.log("[v0] Stat 2 underline animation started")}
+              onAnimationStart={() => console.log("Stat 2 underline animation started")}
             />
             <p className="mt-2 text-xs uppercase font-bold text-red-700">{t("stats.populationSource")}</p>
           </motion.div>
@@ -177,7 +177,7 @@ export default function WhyItMattersSection() {
             }}
             viewport={{ once: true, margin: "-20%" }}
           >
-            <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="xs:px-0.5 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               <AnimatedNumber value={55} suffix="%" /> {t("stats.content")}
             </p>
             <motion.div
