@@ -39,7 +39,7 @@ export default function ContentHubHero() {
               >
                 <div className="relative w-full max-w-[600px] md:max-w-full h-full flex flex-col justify-start md:justify-center">
                   <motion.h1
-                    className="font-inter font-black uppercase leading-[0.8] tracking-tighter text-5xl md:text-7xl lg:text-8xl xl:text-[9rem] 2xl:text-[10rem]"
+                    className="font-inter font-black uppercase leading-[0.8] tracking-tighter text-5xl md:text-7xl lg:text-8xl xl:text-[7.3rem]"
                     style={{
                       color: "#ca0013",
                       lineHeight: "0.75",
@@ -53,14 +53,7 @@ export default function ContentHubHero() {
                       delay: 0.2,
                     }}
                   >
-                    {t("ourExpertiseIncludes")
-                      .split("\n")
-                      .map((line, index) => (
-                        <span key={index}>
-                          {line}
-                          {index < t("ourExpertiseIncludes").split("\n").length - 1 && <br />}
-                        </span>
-                      ))}
+                    {t("ourExpertiseIncludes")}
                   </motion.h1>
 
                   <div className="relative z-10 w-full mt-8 md:mt-6 space-y-4 md:space-y-2">

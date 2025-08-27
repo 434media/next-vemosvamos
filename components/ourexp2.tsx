@@ -53,7 +53,7 @@ export default function RedIdentityPage() {
                 fontSize: "clamp(2.5rem, 6vw + 0.5rem, 8rem)",
               }}
             >
-              <span className="block">{t("activeProductions").replace("\n", " ")}</span>
+              <span className="block">{t("activeProductions")}</span>
             </h1>
           </motion.div>
 
