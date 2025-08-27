@@ -33,7 +33,7 @@ const translations = {
     "menu.contactDescription": "Fill out the form below and we'll get back to you soon.",
 
     // Hero Section
-    "hero.title": "Bicultural Media for\na New Generation",
+    "hero.title": "Bicultural Media for a New Generation",
     "hero.subtitle": "Empowering bilingual entrepreneurs with community and resources",
     "hero.cta": "Join Our Community",
     "hero.learnMore": "Learn More",
@@ -47,7 +47,7 @@ const translations = {
 
     // Why It Matters
     "matters.title": "Why It Matters",
-    "matters.titleFull": "WHY IT\nMATTERS\n",
+    "matters.titleFull": "WHY IT MATTERS ",
     "matters.subtitle": "Building bridges between cultures and opportunities",
     "matters.stat1": "U.S. Latinos hold $2.4 Trillion in consumer spending power.",
     "matters.stat2": "1 in 5 Americans is Latino – the fastest growing population in the U.S.",
@@ -133,14 +133,14 @@ const translations = {
     // Our Team
     ourTeam: "OUR TEAM",
     culturalRelevance: "Cultural relevance, Audience trust, and Creative quality.",
-    culturalRelevanceMobile: "Cultural relevance,\nAudience trust, and\nCreative quality.",
+    culturalRelevanceMobile: "Cultural relevance, Audience trust, and Creative quality.",
     "team.intro":
       "Bringing together 70 years of combined expertise in bilingual storytelling, design, and community-driven marketing, our team crafts meaningful brand experiences deeply rooted in Latinx culture.",
 
     // Experience/Active Productions
     partnershipStatement:
       "We partner with brands to define and express their identity in ways that foster genuine connections with Latinx audiences visually, verbally, and culturally.",
-    activeProductions: "ACTIVE\nPRODUCTIONS",
+    activeProductions: "ACTIVE PRODUCTIONS",
     series1Title: "Series 1: Stay Local, Look Deeper",
     series1Description:
       'Weekly 1–2 min "Come With Me" videos designed to build trust through local insight + community presence.',
@@ -150,7 +150,7 @@ const translations = {
     series3Description: "A bi-weekly series with creators for rapid innovation and real-time cultural relevance.",
 
     // Content Hub Hero
-    ourExpertiseIncludes: "OUR\nEXPERTISE\nINCLUDES",
+    ourExpertiseIncludes: "OUR EXPERTISE INCLUDES",
     bilingualStorytelling: "Bilingual Storytelling",
     brandIntegration: "Brand Integration &",
     partnershipDesign: "Partnership Design",
@@ -175,7 +175,7 @@ const translations = {
     "menu.contactDescription": "Completa el formulario y te responderemos pronto.",
 
     // Hero Section
-    "hero.title": "Periodismo Para\nUna Nueva Generación Bicultura",
+    "hero.title": "Periodismo Para Una Nueva Generación Bicultural",
     "hero.subtitle": "Empoderando emprendedores bilingües con comunidad y recursos",
     "hero.cta": "Únete a Nosotros",
     "hero.learnMore": "Saber Más",
@@ -189,7 +189,7 @@ const translations = {
 
     // Why It Matters
     "matters.title": "Por Qué Importa",
-    "matters.titleFull": "POR QUÉ\nIMPORTA?\n",
+    "matters.titleFull": "POR QUÉ IMPORTA? ",
     "matters.subtitle": "Construyendo puentes entre culturas y oportunidades",
     "matters.stat1": "Latinos de EE.UU. tienen $2.4 trillion en poder adquisitivo.",
     "matters.stat2": "1 de cada 5 estadounidenses es latino: la población más rápida en crecimiento.",
@@ -276,14 +276,14 @@ const translations = {
     // Our Team
     ourTeam: "NUESTRO EQUIPO",
     culturalRelevance: "Relevancia cultural, calidad creativa y una audiencia que confía en nosotros.",
-    culturalRelevanceMobile: "Relevancia cultural,\ncalidad creativa y\nuna audiencia que confía en nosotros.",
+    culturalRelevanceMobile: "Relevancia cultural, calidad creativa y una audiencia que confía en nosotros.",
     "team.intro":
       "Reuniendo 70 años de experiencia combinada en narrativa bilingüe, diseño y marketing impulsado por la comunidad, nuestro equipo crea experiencias de marca significativas profundamente arraigadas en la cultura Latinx.",
 
     // Experience/Active Productions
     partnershipStatement:
       "Nos asociamos con marcas para definir y expresar su identidad de maneras que fomenten conexiones genuinas con audiencias Latinx visual, verbal y culturalmente.",
-    activeProductions: "PRODUCCIONES\nACTIVAS",
+    activeProductions: "PRODUCCIONES ACTIVAS",
     series1Title: "Serie 1: Mantente Local, Mira Más Profundo",
     series1Description:
       'Videos semanales de 1-2 min "Ven Conmigo" diseñados para generar confianza a través de perspectiva local + presencia comunitaria.',
@@ -294,7 +294,7 @@ const translations = {
       "Una serie quincenal con creadores para innovación rápida y relevancia cultural en tiempo real.",
 
     // Content Hub Hero
-    ourExpertiseIncludes: "NUESTRS\nESPECIALIDADES\n",
+    ourExpertiseIncludes: "NUESTRS ESPECIALIDADES ",
     bilingualStorytelling: "Narrativa Bilingüe",
     brandIntegration: "Integración de Marca &",
     partnershipDesign: "Diseño de Alianzas",
