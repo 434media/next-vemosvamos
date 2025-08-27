@@ -1,19 +1,23 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import "remixicon/fonts/remixicon.css"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
+import { LayoutWrapper } from "../components/layout-wrapper"
+import { Suspense } from "react"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const playfair = Playfair_Display({
   subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
 })
 
 export const metadata: Metadata = {
@@ -84,9 +88,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="font-sans bg-vvBackground text-vvText antialiased">
-        {children}
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <body className="font-sans antialiased bg-[#eeebe3] w-full min-h-screen m-0 p-0 overflow-x-hidden">
+        <Suspense fallback={<div>Loading...</div>}>
+          <LayoutWrapper>{children}</LayoutWrapper>
+        </Suspense>
         <Analytics />
 
         {/* Google Analytics */}
