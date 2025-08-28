@@ -117,12 +117,12 @@ export default function WhyItMattersSection() {
             }}
             viewport={{ once: true, margin: "-20%" }}
           >
-            <p className="text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="xs:px-2 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               {t("stats.spending")} <AnimatedNumber value={2} prefix="$" suffix=".4  Trillion " />{" "}
               {t("stats.spendingText")}
             </p>
             <motion.div
-              className="xs:px-1 mt-4 h-[8px] md:h-[4px] bg-red-700 origin-left w-full"
+              className="mt-4 h-[8px] md:h-[4px] bg-red-700 origin-left w-full"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{
@@ -147,7 +147,7 @@ export default function WhyItMattersSection() {
             }}
             viewport={{ once: true, margin: "20%" }}
           >
-            <p className="xs:px-1 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="xs:px-2 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               <AnimatedNumber value={1} /> {t("stats.population")} <AnimatedNumber value={5} />{" "}
               {t("stats.populationText")}
             </p>
@@ -177,7 +177,7 @@ export default function WhyItMattersSection() {
             }}
             viewport={{ once: true, margin: "-20%" }}
           >
-            <p className="xs:px-1 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
+            <p className="xs:px-2 text-2xl xs:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase leading-tight tracking-tight">
               <AnimatedNumber value={55} suffix="%" /> {t("stats.content")}
             </p>
             <motion.div
