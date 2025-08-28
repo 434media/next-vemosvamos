@@ -18,7 +18,7 @@ function AnimatedNumber({ value, suffix = "", prefix = "" }: AnimatedNumberProps
   useEffect(() => {
     if (isInView) {
       const start = 0
-      const duration = 2000 // Increased duration for smoother animation
+      const duration = 2000 // Increase duration for smoother animation
       const startTime = performance.now()
 
       function easeOutCubic(t: number): number {
