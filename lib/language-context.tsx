@@ -90,7 +90,7 @@ const translations = {
 
     // Newsletter
     "newsletter.title": "Stay Connected",
-    "newsletter.subtitle": "Get the latest updates and insights",
+    "newsletter.subtitle": "WE CREATE FOR THE AUDIENCE THAT LIVES IN TWO WORLDS AND BELONGS TO BOTH.",
     "newsletter.placeholder": "Enter your email",
     "newsletter.submit": "Subscribe",
     "newsletter.success": "Thank you for subscribing!",
@@ -229,11 +229,11 @@ const translations = {
     "listo.joinNewsletterMobile": "Únete al Boletín",
     "listo.openNewsletterSignup": "Abrir registro de boletín",
     "listo.closeNewsletterSignup": "Cerrar registro de boletín",
-    "listo.stayConnected": "Mantente conectado y recibe acceso a recursos biculturales",
+    "listo.stayConnected": "Mantente conectado con recursos biculturales y oportunidades de alianza",
 
     // Newsletter
     "newsletter.title": "Mantente Conectado",
-    "newsletter.subtitle": "Recibe las últimas actualizaciones e insights",
+    "newsletter.subtitle": "CREAMOS PARA QUIENES VIVEN EN DOS MUNDOS Y PERTENECEN A AMBOS.",
     "newsletter.placeholder": "Ingresa tu email",
     "newsletter.submit": "Subscríbete",
     "newsletter.success": "¡Gracias por suscribirte!",
@@ -294,7 +294,7 @@ const translations = {
       "Una serie quincenal con creadores para innovación rápida y relevancia cultural en tiempo real.",
 
     // Content Hub Hero
-    ourExpertiseIncludes: "NUESTRS ESPECIALIDADES ",
+    ourExpertiseIncludes: "NUESTRAS ESPECIALIDADES ",
     bilingualStorytelling: "Narrativa Bilingüe",
     brandIntegration: "Integración de Marca &",
     partnershipDesign: "Diseño de Alianzas",

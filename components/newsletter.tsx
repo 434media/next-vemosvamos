@@ -4,6 +4,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useLanguage } from "@/lib/language-context"
+import Image from "next/image"
 
 // Extend the Window interface to include the turnstile property
 declare global {
@@ -112,54 +113,71 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
   }
 
   return (
-    <div className="w-full">
-      <AnimatePresence mode="wait">
-        {!isSuccess ? (
-          <motion.form
-            key="subscribe-form"
-            className="space-y-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            onSubmit={handleSubmit}
-          >
-            <div>
-              <label htmlFor="email" className="sr-only">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder={t("newsletter.emailPlaceholder")}
-                className="w-full px-4 py-3 bg-white/10 rounded-lg border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-white/50 text-lg"
-              />
-            </div>
-            {!isDevelopment && <div ref={turnstileRef} data-size="flexible" className="w-full" />}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full px-6 py-3 bg-white text-[#EE2D24] rounded-lg hover:bg-white/90 transition-colors disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#EE2D24] text-lg font-semibold"
-            >
-              {isSubmitting ? t("newsletter.subscribing") : t("newsletter.subscribe")}
-            </button>
-            {error && <p className="text-white/80 text-sm">{error}</p>}
-          </motion.form>
-        ) : (
-          <motion.div
-            key="success"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="bg-white/10 text-white px-4 py-3 rounded-lg border border-white/20"
-          >
-            {t("newsletter.successMessage")}
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <div className="w-full max-w-md mx-auto h-[500px]">
+      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden h-full" style={{ aspectRatio: "4/5" }}>
+        <div className="relative h-2/5 w-full">
+          <Image
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/about-hero.png"
+            alt="VEMOS VAMOS Newsletter"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="h-3/5 p-6 flex flex-col justify-between bg-gradient-to-br from-[#EE2D24] to-[#C41E3A]">
+          <div className="text-center mb-4">
+            <h3 className="text-xl font-bold text-white mb-2">{t("newsletter.title")}</h3>
+            <p className="text-white/90 text-sm">{t("newsletter.subtitle")}</p>
+          </div>
+          <AnimatePresence mode="wait">
+            {!isSuccess ? (
+              <motion.form
+                key="subscribe-form"
+                className="space-y-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                onSubmit={handleSubmit}
+              >
+                <div>
+                  <label htmlFor="email" className="sr-only">
+                    Email address
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="email"
+                    required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t("newsletter.emailPlaceholder")}
+                    className="w-full px-4 py-3 bg-white/20 rounded-lg border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-white/70 text-sm backdrop-blur-sm"
+                  />
+                </div>
+                {!isDevelopment && <div ref={turnstileRef} data-size="flexible" className="w-full" />}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full px-6 py-3 bg-white text-[#EE2D24] rounded-lg hover:bg-white/90 transition-all duration-200 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-[#EE2D24] text-sm font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  {isSubmitting ? t("newsletter.subscribing") : t("newsletter.subscribe")}
+                </button>
+                {error && <p className="text-white/90 text-xs text-center">{error}</p>}
+              </motion.form>
+            ) : (
+              <motion.div
+                key="success"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="bg-white/20 text-white px-4 py-3 rounded-lg border border-white/30 backdrop-blur-sm text-center"
+              >
+                <p className="text-sm">{t("newsletter.successMessage")}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
     </div>
   )
 }
