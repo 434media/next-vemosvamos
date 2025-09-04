@@ -89,7 +89,7 @@ export async function POST(request: Request) {
         {
           email_address: email,
           status: "subscribed",
-          tags: ["web-vemosvamos"],
+          tags: ["web-vemosvamos", "web-newsletter-signup"],
         },
         {
           auth: {
