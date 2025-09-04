@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { X } from "lucide-react"
 import { Newsletter } from "./newsletter"
 import { useLanguage } from "@/lib/language-context"
@@ -10,6 +10,19 @@ import { useLanguage } from "@/lib/language-context"
 export default function Listo() {
   const [showModal, setShowModal] = useState(false)
   const { t, language } = useLanguage()
+
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [showModal])
 
   return (
     <section
@@ -132,32 +145,33 @@ export default function Listo() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            onClick={(e) => e.stopPropagation()}
           >
-              {/* Background pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#ca0013] to-transparent"></div>
-              </div>
+            {/* Background pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#ca0013] to-transparent"></div>
+            </div>
 
-              <button
-                className="absolute top-8 -right-2 md:top-2 md:right-20 text-[#ca0013] hover:text-[#a80010] bg-white rounded-full border-2 border-[#ca0013] w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30 transition-all duration-200 z-20"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  setShowModal(false)
-                }}
-                aria-label={t("listo.closeNewsletterSignup")}
-              >
-                <X size={20} className="md:w-6 md:h-6" />
-              </button>
+            <button
+              className="absolute top-8 -right-2 md:top-6 md:right-24 text-[#ca0013] hover:text-[#a80010] bg-white rounded-full border-2 border-[#ca0013] w-8 h-8 md:w-10 md:h-10 flex items-center justify-center shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#ca0013]/30 transition-all duration-200 z-20"
+              onClick={(e) => {
+                e.stopPropagation()
+                setShowModal(false)
+              }}
+              aria-label={t("listo.closeNewsletterSignup")}
+            >
+              <X size={20} className="md:w-6 md:h-6" />
+            </button>
 
-                {/* Newsletter Form */}
-                <motion.div
-                  className="mt-6 md:mt-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                >
-                  <Newsletter currentLanguage={language} />
-                </motion.div>
+            {/* Newsletter Form */}
+            <motion.div
+              className="mt-6 md:mt-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              <Newsletter currentLanguage={language} />
+            </motion.div>
           </motion.div>
         </motion.div>
       )}
