@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Inter, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import "remixicon/fonts/remixicon.css"
@@ -20,16 +20,30 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 })
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#eeebe3" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
+  ],
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vemosvamos.com"),
   title: {
-    default: "Vemos Vamos - Your Bilingual Community for Entrepreneurial Success",
+    default: "Vemos Vamos - Bicultural Media for a New Generation | Multicultural Brand Studio",
     template: "%s | Vemos Vamos",
   },
   description:
-    "Vemos Vamos is a bilingual platform fostering entrepreneurial success through community, resources, and innovative solutions.",
+    "Vemos Vamos is a bicultural media platform and multicultural brand studio fostering entrepreneurial success through community, resources, and innovative solutions for the new generation.",
   keywords: [
     "Vemos Vamos",
+    "bicultural media",
+    "multicultural brand studio",
     "bilingual",
     "entrepreneurship",
     "community",
@@ -37,48 +51,98 @@ export const metadata: Metadata = {
     "innovation",
     "Spanish",
     "English",
+    "Latino entrepreneurs",
+    "Hispanic business",
+    "434 Media",
+    "new generation",
+    "cultural diversity",
+    "brand development",
+    "media production",
   ],
-  authors: [{ name: "Vemos Vamos Team" }],
+  authors: [{ name: "Vemos Vamos Team" }, { name: "434 Media" }],
   creator: "Vemos Vamos",
-  publisher: "Vemos Vamos",
+  publisher: "434 Media",
+  category: "Business",
+  classification: "Media & Entertainment",
+  referrer: "origin-when-cross-origin",
+  verification: {
+    google: "your-google-site-verification-code",
+    yandex: "your-yandex-verification-code",
+    yahoo: "your-yahoo-verification-code",
+    other: {
+      "msvalidate.01": "your-bing-verification-code",
+    },
+  },
+  alternates: {
+    canonical: "https://www.vemosvamos.com",
+    languages: {
+      "en-US": "https://www.vemosvamos.com",
+      "es-ES": "https://www.vemosvamos.com/es",
+      "es-MX": "https://www.vemosvamos.com/es-mx",
+    },
+  },
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: "Vemos Vamos - Bilingual Entrepreneurial Community",
-    description: "Join Vemos Vamos for bilingual resources and community support in your entrepreneurial journey.",
+    title: "Vemos Vamos - Bicultural Media for a New Generation",
+    description:
+      "Join Vemos Vamos, the multicultural brand studio powered by 434 Media, for bicultural resources and community support in your entrepreneurial journey.",
     url: "https://www.vemosvamos.com",
     siteName: "Vemos Vamos",
     images: [
       {
-        url: "https://www.vemosvamos.com/og-image.jpg",
+        url: "/opengraph-image.png",
         width: 1200,
         height: 630,
-        alt: "Vemos Vamos - Bilingual Entrepreneurial Community",
+        alt: "Vemos Vamos - Bicultural Media for a New Generation",
+        type: "image/png",
       },
     ],
     locale: "en_US",
+    alternateLocale: ["es_ES", "es_MX"],
     type: "website",
+    countryName: "United States",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vemos Vamos - Bilingual Entrepreneurial Success",
-    description: "Empowering bilingual entrepreneurs with community and resources.",
-    images: ["https://www.vemosvamos.com/twitter-image.jpg"],
+    site: "@vemosvamos",
     creator: "@vemosvamos",
+    title: "Vemos Vamos - Bicultural Media for a New Generation",
+    description:
+      "Empowering bicultural entrepreneurs with community and resources through our multicultural brand studio.",
+    images: ["/opengraph-image.png"],
   },
+  appleWebApp: {
+    capable: true,
+    title: "Vemos Vamos",
+    statusBarStyle: "default",
+  },
+  applicationName: "Vemos Vamos",
+  generator: "Next.js",
+  manifest: "/manifest.json",
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#dc2626" }],
   },
 }
 
@@ -89,6 +153,96 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Structured Data for Organization */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": "https://www.vemosvamos.com/#organization",
+              name: "Vemos Vamos",
+              alternateName: "434 Media",
+              url: "https://www.vemosvamos.com",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://www.vemosvamos.com/opengraph-image.png",
+                width: 1200,
+                height: 630,
+              },
+              image: "https://www.vemosvamos.com/opengraph-image.png",
+              description:
+                "Bicultural media platform and multicultural brand studio fostering entrepreneurial success for a new generation.",
+              foundingDate: "2024",
+              founder: {
+                "@type": "Organization",
+                name: "434 Media",
+              },
+              sameAs: [
+                "https://www.instagram.com/vemos.vamos/",
+                "https://www.linkedin.com/company/vemosvamos/",
+                "https://www.facebook.com/vemosvamos",
+                "https://twitter.com/vemosvamos",
+              ],
+              contactPoint: {
+                "@type": "ContactPoint",
+                contactType: "customer service",
+                availableLanguage: ["English", "Spanish"],
+              },
+              areaServed: {
+                "@type": "Country",
+                name: "United States",
+              },
+              knowsAbout: [
+                "Entrepreneurship",
+                "Multicultural Marketing",
+                "Bilingual Content",
+                "Brand Development",
+                "Media Production",
+                "Community Building",
+              ],
+            }),
+          }}
+        />
+
+        {/* Website Schema */}
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://www.vemosvamos.com/#website",
+              url: "https://www.vemosvamos.com",
+              name: "Vemos Vamos",
+              description: "Bicultural Media for a New Generation",
+              publisher: {
+                "@id": "https://www.vemosvamos.com/#organization",
+              },
+              inLanguage: ["en-US", "es-ES"],
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: "https://www.vemosvamos.com/search?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }),
+          }}
+        />
+      </head>
       <body className="font-sans antialiased bg-[#eeebe3] w-full min-h-screen m-0 p-0 overflow-x-hidden">
         <Suspense fallback={<div>Loading...</div>}>
           <LayoutWrapper>{children}</LayoutWrapper>
@@ -102,7 +256,12 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-V4H0TMWFEC');
+            gtag('config', 'G-V4H0TMWFEC', {
+              page_title: document.title,
+              page_location: window.location.href,
+              content_group1: 'Bicultural Media',
+              content_group2: 'Entrepreneurship'
+            });
           `}
         </Script>
 

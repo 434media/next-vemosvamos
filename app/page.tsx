@@ -1,40 +1,18 @@
 "use client"
-import Head from "next/head"
 import NewLandingPage from "../components/hero-section"
 import WhoWeReach from "../components/three-pillars"
 import WhyItMattersSection from "../components/why-it-matters"
 
 export default function Home() {
   return (
-    <>
-      <Head>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "Vemos Vamos",
-            url: "https://www.vemosvamos.com",
-            logo: "https://www.vemosvamos.com/logo.png",
-            sameAs: [
-              "https://www.instagram.com/vemos.vamos/",
-              "https://www.linkedin.com/company/vemosvamos/",
-              "https://www.facebook.com/vemosvamos",
-            ],
-            description:
-              "Vemos Vamos is a bilingual platform fostering entrepreneurial success through community, resources, and innovative solutions.",
-          })}
-        </script>
-      </Head>
-
-      <div className="relative min-h-screen w-full overflow-x-hidden">
-        <div className="w-full">
-          <NewLandingPage />
-        </div>
-        <section className="relative bg-white rounded-t-[40px] shadow-2xl w-full">
-          <WhoWeReach />
-        </section>
-        <WhyItMattersSection />
+    <div className="relative min-h-screen w-full overflow-x-hidden">
+      <div className="w-full">
+        <NewLandingPage />
       </div>
-    </>
+      <section className="relative bg-white rounded-t-[40px] shadow-2xl w-full">
+        <WhoWeReach />
+      </section>
+      <WhyItMattersSection />
+    </div>
   )
 }
