@@ -89,8 +89,8 @@ const translations = {
     "listo.stayConnected": "Stay connected with bi-cultural resources and partnership opportunities",
 
     // Newsletter
-    "newsletter.title": "Stay Connected",
-    "newsletter.subtitle": "WE CREATE FOR THE AUDIENCE THAT LIVES IN TWO WORLDS AND BELONGS TO BOTH.",
+    "newsletter.title": "Join the Vemos Vamos newsletter",
+    "newsletter.subtitle": "Get the latest updates and insights",
     "newsletter.placeholder": "Enter your email",
     "newsletter.submit": "Subscribe",
     "newsletter.success": "Thank you for subscribing!",
@@ -101,6 +101,10 @@ const translations = {
     "newsletter.subscribing": "Subscribing...",
     "newsletter.successMessage": "Thanks for subscribing! Check your email to confirm.",
     "newsletter.errorPrefix": "An error occurred:",
+    "newsletter.errorEmpty": "Please enter your email address",
+    "newsletter.errorInvalid": "Please enter a valid email address",
+    "newsletter.errorGeneral": "Something went wrong. Please try again.",
+    "newsletter.description": "We create for the audience that lives in two worlds and belongs to both",
 
     // Footer
     "footer.copyright": "© 2025 Vemos Vamos. All rights reserved.",
@@ -232,8 +236,8 @@ const translations = {
     "listo.stayConnected": "Mantente conectado con recursos biculturales y oportunidades de alianza",
 
     // Newsletter
-    "newsletter.title": "Mantente Conectado",
-    "newsletter.subtitle": "CREAMOS PARA QUIENES VIVEN EN DOS MUNDOS Y PERTENECEN A AMBOS.",
+    "newsletter.title": "Únete al boletín de Vemos Vamos",
+    "newsletter.subtitle": "Recibe las últimas actualizaciones e insights",
     "newsletter.placeholder": "Ingresa tu email",
     "newsletter.submit": "Subscríbete",
     "newsletter.success": "¡Gracias por suscribirte!",
@@ -244,6 +248,10 @@ const translations = {
     "newsletter.subscribing": "Suscribiendo...",
     "newsletter.successMessage": "¡Gracias por suscribirte! Revisa tu correo para confirmar.",
     "newsletter.errorPrefix": "Ocurrió un error:",
+    "newsletter.errorEmpty": "Por favor ingresa tu correo electrónico",
+    "newsletter.errorInvalid": "Por favor ingresa un correo electrónico válido",
+    "newsletter.errorGeneral": "Algo salió mal. Por favor intenta de nuevo.",
+    "newsletter.description": "Creamos para la audiencia que vive en dos mundos y pertenece a ambos",
 
     // Footer
     "footer.copyright": "© 2025 Vemos Vamos. Todos los derechos reservados.",
