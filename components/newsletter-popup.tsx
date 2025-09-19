@@ -147,7 +147,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
 
               <div className="relative z-10">
                 {/* Header */}
-                <div className="text-center mb-8">
+                <div className="text-center mb-8 mt-16 md:mt-0">
                   <motion.div
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
