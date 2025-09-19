@@ -154,7 +154,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
                     transition={{ delay: 0.1 }}
                     className="mb-6"
                   >
-                    <h2 className="text-3xl lg:text-4xl font-black text-[#ca0013] group-hover:text-white tracking-wider uppercase transition-colors duration-500 font-serif">
+                    <h2 className="text-4xl font-black text-[#ca0013] group-hover:text-white tracking-wider uppercase transition-colors duration-500 font-serif">
                       {t("newsletter.title")}
                     </h2>
                   </motion.div>
@@ -165,7 +165,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <p className="text-lg text-gray-800 group-hover:text-white leading-relaxed font-semibold tracking-wide transition-colors duration-500">
+                    <p className="text-xl md:text-lg text-gray-800 group-hover:text-white leading-relaxed font-semibold tracking-wide transition-colors duration-500">
                       {t("newsletter.description")}
                     </p>
                   </motion.div>
