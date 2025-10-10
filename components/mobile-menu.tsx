@@ -1,8 +1,9 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 import Link from "next/link"
+import Image from "next/image"
 import "remixicon/fonts/remixicon.css"
 import { useLanguage } from "../lib/language-context"
 import { LanguageToggle } from "./language-toggle"
@@ -111,26 +112,24 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
       name: "Instagram",
       icon: "ri-instagram-line",
       url: "https://www.instagram.com/vemos.vamos/",
-      color: "#E1306C",
     },
     {
       name: "Facebook",
       icon: "ri-facebook-fill",
       url: "https://www.facebook.com/vemosvamos",
-      color: "#1877F2",
     },
     {
       name: "LinkedIn",
       icon: "ri-linkedin-fill",
       url: "https://www.linkedin.com/company/vemosvamos/",
-      color: "#0077B5",
     },
   ]
 
   const pageLinks = [
     { name: t("menu.contentHub"), href: "/content-hub" },
     { name: t("menu.whyDifferent"), href: "/about" },
-    { name: t("menu.connectWithUs"), href: "/contact" },
+    { name: t("menu.partnerships"), href: "/partnerships" },
+    { name: t("menu.connectWithUs"), href: "/connect" },
   ]
 
   return (
@@ -157,17 +156,16 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <Link href="/" onClick={onClose} className="text-white hover:text-white/80 transition-colors">
-          <span className="sr-only">Vemos Vamos</span>
-          <motion.svg
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            className="w-8 h-8 md:w-10 md:h-10"
-            whileHover={{ scale: 1.1, rotate: [0, -10, 10, -10, 0] }}
-            transition={{ duration: 0.5 }}
-          >
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-          </motion.svg>
+        <Link href="/" onClick={onClose} className="flex items-center h-full flex-shrink-0">
+          <motion.div whileHover={{ rotate: [0, -10, 10, -10, 0] }} transition={{ duration: 0.5 }}>
+            <Image
+              src="/images/dice1.png"
+              alt="Vemos Vamos Logo"
+              width={80}
+              height={80}
+              className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain invert"
+            />
+          </motion.div>
         </Link>
 
         <div className="flex items-center space-x-4">
@@ -342,17 +340,11 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 hover:bg-[#ca0013]/20 rounded-lg transition-all duration-300"
-                        whileHover={{
-                          scale: 1.2,
-                          textShadow: [`0 0 10px ${link.color}80`, `0 0 20px ${link.color}`, `0 0 30px ${link.color}`],
-                        }}
-                        transition={{
-                          duration: 0.3,
-                          ease: "easeInOut",
-                        }}
+                        className="text-white/80 hover:text-[#ca0013] transition-colors flex items-center justify-center w-14 h-14 md:w-16 md:h-16"
+                        whileHover={{ scale: 1.2 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                       >
-                        <i className={`${link.icon} text-5xl md:text-7xl`} style={{ color: link.color }}></i>
+                        <i className={`${link.icon} text-5xl md:text-7xl`}></i>
                       </motion.a>
                     </motion.div>
                   ))}

@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { motion } from "motion/react"
 import Image from "next/image"
 import { useState } from "react"
@@ -8,13 +10,9 @@ import { useLanguage } from "../lib/language-context"
 
 const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="currentColor" {...props}>
-      <path
-        fill="#0A66C2"
-        d="M403 6.999c19.166 0 37.835.223 56.496-.06 18.962-.289 35.613 15.707 35.59 35.532-.162 139.493-.04 278.986-.154 418.479-.011 14.552-7.835 24.787-20.514 31.039-4.094 2.018-9.16 2.886-13.782 2.891-139.826.147-279.652.16-419.478.072-18.453-.011-34.16-15.292-34.16-34.222.003-139.826.057-279.652-.069-419.478C6.913 24.067 23.002 6.87 41.519 6.9c120.327.195 240.654.1 361.481.099M351 317.5v104.196h71c0-2.095.026-3.891-.004-5.686-.832-49.538 1.611-99.1-1.81-148.631-1.412-20.454-5.928-39.546-18.172-56.181-7.78-10.571-18.732-17.006-31.04-21.196-8.639-2.94-17.567-3.48-26.623-4.298-15.955-1.443-30.985.112-45.163 7.729-11.385 6.116-21.446 13.763-28.408 24.973-.922 1.485-2.609 2.495-5.002 4.704v-32.824h-67.411v231.453h69.466c.091-1.358.233-2.48.233-3.601.007-36.83-.2-73.66.132-110.486.086-9.484 1.133-19.102 3.05-28.388 1.971-9.547 5.746-18.48 14.358-24.624 10.636-7.589 22.675-8.944 34.805-7.324 8.528 1.14 16.657 4.876 21.686 12.969 6.338 10.198 8.358 21.543 8.872 33.222.337 7.65.043 15.328.031 23.993M109.5 422.001h41.195V190.398H80.308V422H109.5M80.957 94.554c-8.338 13.917-8.66 27.942-.667 42.134 10.004 17.763 34.572 26.555 54.839 15.374 17.646-9.735 27.599-33.004 17.035-53.907-7.261-14.37-19.006-21.894-34.234-22.893-15.295-1.004-27.759 5.791-36.973 19.292z"
-      />
-      <path
-        d="M351 317c.012-8.165.306-15.843-.03-23.493-.515-11.679-2.535-23.024-8.873-33.222-5.03-8.093-13.158-11.83-21.686-12.969-12.13-1.62-24.17-.265-34.805 7.324-8.612 6.144-12.387 15.077-14.358 24.624-1.917 9.286-2.964 18.904-3.05 28.388-.331 36.826-.125 73.657-.132 110.486 0 1.121-.142 2.243-.233 3.601h-69.466V190.286h67.411v32.824c2.393-2.21 4.08-3.22 5.002-4.704 6.962-11.21 17.023-18.857 28.408-24.973 14.178-7.617 29.208-9.172 45.163-7.73 9.056.82 17.984 1.36 26.622 4.3 12.309 4.189 23.26 10.624 31.04 21.195 12.245 16.635 16.761 35.727 18.174 56.18 3.42 49.532.977 99.094 1.81 148.632.03 1.795.003 3.591.003 5.686h-71V317zM109 422.001H80.308V190.398h70.387V422H109zM81.2 94.275c8.971-13.222 21.435-20.017 36.73-19.013 15.228.999 26.973 8.523 34.234 22.893 10.564 20.903.61 44.172-17.035 53.907-20.267 11.18-44.835 2.39-54.839-15.374-7.993-14.192-7.671-28.217.91-42.413z"
-      />
+    <path
+      d="M351 317c.012-8.165.306-15.843-.03-23.493-.515-11.679-2.535-23.024-8.873-33.222-5.03-8.093-13.158-11.83-21.686-12.969-12.13-1.62-24.17-.265-34.805 7.324-8.612 6.144-12.387 15.077-14.358 24.624-1.917 9.286-2.964 18.904-3.05 28.388-.331 36.826-.125 73.657-.132 110.486 0 1.121-.142 2.243-.233 3.601h-69.466V190.286h67.411v32.824c2.393-2.21 4.08-3.22 5.002-4.704 6.962-11.21 17.023-18.857 28.408-24.973 14.178-7.617 29.208-9.172 45.163-7.73 9.056.82 17.984 1.36 26.622 4.3 12.309 4.189 23.26 10.624 31.04 21.195 12.245 16.635 16.761 35.727 18.174 56.18 3.42 49.532.977 99.094 1.81 148.632.03 1.795.003 3.591.003 5.686h-71V317zM109 422.001H80.308V190.398h70.387V422H109zM81.2 94.275c8.971-13.222 21.435-20.017 36.73-19.013 15.228.999 26.973 8.523 34.234 22.893 10.564 20.903.61 44.172-17.035 53.907-20.267 11.18-44.835 2.39-54.839-15.374-7.993-14.192-7.671-28.217.91-42.413z"
+    />
   </svg>
 )
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -27,8 +25,8 @@ const teamMembers = [
   {
     id: 1,
     name: "Stacy Carrizales",
-    title: "Creative Director",
-    description: "Leading brand vision and creative strategy with over 8 years of experience.",
+    titleKey: "team.member1.title",
+    descriptionKey: "team.member1.description",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/stacy-team",
     linkedin: "https://www.linkedin.com/in/stacycarrizales/",
     instagram: "https://www.instagram.com/strawberry.stacyy/",
@@ -36,16 +34,16 @@ const teamMembers = [
   {
     id: 2,
     name: "Diana Garcia",
-    title: "Graphic Design",
-    description: "Diana García is a bilingual brand strategist, creative director, and Owner of Veintidós Studios (22 Studios).",
+    titleKey: "team.member2.title",
+    descriptionKey: "team.member2.description",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/diana-team",
     linkedin: "https://www.linkedin.com/in/dianagrc/",
   },
   {
     id: 3,
     name: "Arely Reyes",
-    title: "Digital Marketing",
-    description: "First-generation Mexican-American rooted in faith, culture, and service, passionate about using creativity to uplift communities and tell meaningful stories.",
+    titleKey: "team.member3.title",
+    descriptionKey: "team.member3.description",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-arely.png",
     linkedin: "https://www.linkedin.com/in/arely-reyes/",
     instagram: "https://www.instagram.com/reyes.arely_/",
@@ -53,24 +51,24 @@ const teamMembers = [
   {
     id: 4,
     name: "Camille Rivera",
-    title: "Web Developer",
-    description: "Creative software engineer with a focus on user-experience, loves building responsive, full-stack web applications.",
+    titleKey: "team.member4.title",
+    descriptionKey: "team.member4.description",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/team-camille.png",
     linkedin: "https://www.linkedin.com/in/camille-louise-rivera/",
   },
   {
     id: 5,
     name: "Barbara Carreon",
-    title: "VP Business Development",
-    description: "Helping connect brands to opportunities for growth by leveraging strategic insights, creative solutions, and targeted marketing approaches to drive success.",
+    titleKey: "team.member5.title",
+    descriptionKey: "team.member5.description",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-barb.png",
     linkedin: "https://www.linkedin.com/in/barbara-c-6299ba1/",
   },
   {
     id: 6,
     name: "Marcos Resendez",
-    title: "Founder / CEO",
-    description: "Visionary leader with a passion for innovation and creativity.",
+    titleKey: "team.member6.title",
+    descriptionKey: "team.member6.description",
     image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-marcos.png",
     linkedin: "https://www.linkedin.com/in/marcosresendez/",
   },
@@ -166,7 +164,7 @@ export default function OurTeam() {
                         {teamMembers.map((member, index) => (
                           <motion.button
                             key={member.id}
-                            className="relative w-32 h-32 xs:w-40 xs:h-40 sm:w-48 sm:h-48 flex-shrink-0 rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
+                            className="relative w-40 h-40 xs:w-48 xs:h-48 sm:w-56 sm:h-56 flex-shrink-0 rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
@@ -177,22 +175,21 @@ export default function OurTeam() {
                               stiffness: 100,
                               damping: 15,
                             }}
-                            whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             onClick={() => setSelectedMember(member)}
                             aria-label={`View ${member.name}'s profile`}
                           >
                             <Image
                               src={member.image || "/placeholder.svg"}
-                              alt={`${member.name} - ${member.title}`}
+                              alt={`${member.name} - ${t(member.titleKey)}`}
                               fill
                               className="object-cover"
-                              sizes="(max-width: 480px) 128px, (max-width: 640px) 160px, (max-width: 768px) 192px, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                              sizes="(max-width: 480px) 160px, (max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#ca0013]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
                               <div className="absolute bottom-2 xs:bottom-3 sm:bottom-4 left-2 xs:left-3 sm:left-4 right-2 xs:right-3 sm:right-4 text-white">
                                 <h3 className="font-bold text-xs xs:text-sm sm:text-sm">{member.name}</h3>
-                                <p className="text-[10px] xs:text-xs sm:text-xs opacity-90">{member.title}</p>
+                                <p className="text-[10px] xs:text-xs sm:text-xs opacity-90">{t(member.titleKey)}</p>
                               </div>
                             </div>
                           </motion.button>
@@ -216,7 +213,7 @@ export default function OurTeam() {
                     {teamMembers.map((member, index) => (
                       <motion.button
                         key={member.id}
-                        className="relative w-full h-48 lg:h-56 xl:h-64 rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
+                        className="relative w-full h-56 lg:h-64 xl:h-72 rounded-lg overflow-hidden bg-transparent hover:bg-white/10 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-[#ca0013] focus:ring-opacity-50"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
@@ -227,14 +224,13 @@ export default function OurTeam() {
                           stiffness: 100,
                           damping: 15,
                         }}
-                        whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => setSelectedMember(member)}
                         aria-label={`View ${member.name}'s profile`}
                       >
                         <Image
                           src={member.image || "/placeholder.svg"}
-                          alt={`${member.name} - ${member.title}`}
+                          alt={`${member.name} - ${t(member.titleKey)}`}
                           fill
                           className="object-cover"
                           sizes="(max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
@@ -242,7 +238,7 @@ export default function OurTeam() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#ca0013]/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
                           <div className="absolute bottom-4 left-4 right-4 text-white">
                             <h3 className="font-bold text-base lg:text-lg xl:text-xl">{member.name}</h3>
-                            <p className="text-sm lg:text-base xl:text-lg opacity-90">{member.title}</p>
+                            <p className="text-sm lg:text-base xl:text-lg opacity-90">{t(member.titleKey)}</p>
                           </div>
                         </div>
                       </motion.button>
@@ -283,7 +279,7 @@ export default function OurTeam() {
               <div className="relative w-48 h-48 rounded-lg mx-auto mb-6 overflow-hidden">
                 <Image
                   src={selectedMember.image || "/placeholder.svg"}
-                  alt={`${selectedMember.name} - ${selectedMember.title}`}
+                  alt={`${selectedMember.name} - ${t(selectedMember.titleKey)}`}
                   fill
                   className="object-cover"
                   sizes="192px"
@@ -291,8 +287,8 @@ export default function OurTeam() {
               </div>
 
               <h2 className="text-2xl md:text-3xl font-bold text-[#ca0013] mb-2">{selectedMember.name}</h2>
-              <p className="text-lg md:text-xl text-neutral-700 mb-2 font-medium">{selectedMember.title}</p>
-              <p className="text-base md:text-lg text-neutral-800 mb-2">{selectedMember.description}</p>
+              <p className="text-lg md:text-xl text-neutral-700 mb-2 font-medium">{t(selectedMember.titleKey)}</p>
+              <p className="text-base md:text-lg text-neutral-800 mb-2">{t(selectedMember.descriptionKey)}</p>
 
               <div className="flex justify-center gap-3">
                 <a
@@ -304,15 +300,17 @@ export default function OurTeam() {
                 >
                   <LinkedInIcon className="w-6 h-6" />
                 </a>
-                <a
-                  href={selectedMember.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-3 bg-[#ca0013] text-white rounded-full hover:bg-[#a00010] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-opacity-50"
-                  aria-label={`Visit ${selectedMember.name}'s Instagram profile`}
-                >
-                  <InstagramIcon className="w-6 h-6" />
-                </a>
+                {selectedMember.instagram && (
+                  <a
+                    href={selectedMember.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-[#ca0013] text-white rounded-full hover:bg-[#a00010] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-opacity-50"
+                    aria-label={`Visit ${selectedMember.name}'s Instagram profile`}
+                  >
+                    <InstagramIcon className="w-6 h-6" />
+                  </a>
+                )}
               </div>
             </div>
           </motion.div>
