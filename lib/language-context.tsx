@@ -105,7 +105,7 @@ const translations = {
     "newsletter.errorEmpty": "Please enter your email address",
     "newsletter.errorInvalid": "Please enter a valid email address",
     "newsletter.errorGeneral": "Something went wrong. Please try again.",
-    "newsletter.description": "we create for the audience that lives in two worlds and belongs to both",
+    "newsletter.description": "We create for the audience that lives in two worlds and belongs to both",
 
     // Footer
     "footer.copyright": "© 2025 Vemos Vamos. All rights reserved.",
@@ -129,7 +129,7 @@ const translations = {
     "contact.send": "Send Message",
 
     // Connect Form
-    "connect.form.title": "DROP US A NOTE!",
+    "connect.form.title": "Let's Collaborate Together!",
     "connect.form.subtitle": "Fill out the form below and our team will get back to you soon.",
     "connect.form.fullName": "Full Name*",
     "connect.form.email": "Email Address*",
@@ -311,7 +311,7 @@ const translations = {
     "contact.send": "Enviar Mensaje",
 
     // Connect Form
-    "connect.form.title": "¡DÉJANOS UN MENSAJE!",
+    "connect.form.title": "Colaboremos Juntos!",
     "connect.form.subtitle": "Completa el formulario y nuestro equipo te responderá pronto.",
     "connect.form.fullName": "Nombre Completo*",
     "connect.form.email": "Correo Electrónico*",
