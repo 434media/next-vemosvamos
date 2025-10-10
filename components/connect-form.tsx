@@ -21,6 +21,7 @@ export default function ConnectForm() {
     country: "",
     message: "",
   })
+  const [consentChecked, setConsentChecked] = useState(false)
   const turnstileRef = useRef<HTMLDivElement>(null)
   const [turnstileWidget, setTurnstileWidget] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -108,6 +109,7 @@ export default function ConnectForm() {
           country: "",
           message: "",
         })
+        setConsentChecked(false)
         if (!isDevelopment && turnstileWidget && window.turnstile) {
           window.turnstile.reset(turnstileWidget)
         }
@@ -285,13 +287,32 @@ export default function ConnectForm() {
                 </div>
               )}
 
+              {/* Consent Checkbox */}
+              <div className="flex items-start gap-3 py-2">
+                <input
+                  type="checkbox"
+                  id="consent"
+                  checked={consentChecked}
+                  onChange={(e) => setConsentChecked(e.target.checked)}
+                  required
+                  className="mt-1 h-5 w-5 rounded border-2 border-white bg-transparent checked:bg-white checked:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ca0013] cursor-pointer accent-white"
+                />
+                <label
+                  htmlFor="consent"
+                  className="text-white text-sm md:text-base leading-relaxed cursor-pointer"
+                  suppressHydrationWarning
+                >
+                  {t("connect.form.consent")}
+                </label>
+              </div>
+
               {/* Submit Button */}
               <motion.button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || !consentChecked}
                 className="w-full md:w-auto px-8 py-4 bg-white text-[#ca0013] font-bold uppercase text-lg rounded-full hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: consentChecked && !isSubmitting ? 1.05 : 1 }}
+                whileTap={{ scale: consentChecked && !isSubmitting ? 0.95 : 1 }}
               >
                 {isSubmitting ? t("connect.form.sending") : t("connect.form.send")}
               </motion.button>
