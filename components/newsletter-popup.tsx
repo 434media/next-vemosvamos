@@ -132,7 +132,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
             <div className="lg:w-1/2 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#ca0013]/20 z-10" />
               <Image
-                src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/about-hero.png"
+                src="/images/about-hero.png"
                 alt="Vemos Vamos Community"
                 fill
                 className="object-cover"
@@ -147,14 +147,14 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
 
               <div className="relative z-10">
                 {/* Header */}
-                <div className="text-center mb-8 mt-16 md:mt-0">
+                <div className="text-center mb-8">
                   <motion.div
                     initial={{ y: -20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.1 }}
                     className="mb-6"
                   >
-                    <h2 className="text-4xl font-black text-[#ca0013] group-hover:text-white tracking-wider uppercase transition-colors duration-500 font-serif">
+                    <h2 className="text-3xl lg:text-4xl font-black text-[#ca0013] group-hover:text-white tracking-wider uppercase transition-colors duration-500 font-serif">
                       {t("newsletter.title")}
                     </h2>
                   </motion.div>
@@ -165,7 +165,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.3 }}
                   >
-                    <p className="text-xl md:text-lg text-gray-800 group-hover:text-white leading-relaxed font-semibold tracking-wide transition-colors duration-500">
+                    <p className="text-lg text-gray-800 group-hover:text-white leading-relaxed font-semibold tracking-wide transition-colors duration-500">
                       {t("newsletter.description")}
                     </p>
                   </motion.div>
@@ -217,7 +217,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
                             transition={isSubmitting ? { duration: 1.5, repeat: Number.POSITIVE_INFINITY } : {}}
                             className="flex items-center justify-center"
                           >
-                            {isSubmitting ? t("newsletter.submitting") : t("newsletter.subscribe")}
+                            {isSubmitting ? t("newsletter.subscribing") : t("newsletter.subscribe")}
                           </motion.div>
                         </button>
                       </div>

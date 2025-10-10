@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useRef, useEffect } from "react"
-import { motion, useInView } from "motion/react"
+import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 
@@ -295,7 +295,8 @@ export default function ConnectForm() {
                   checked={consentChecked}
                   onChange={(e) => setConsentChecked(e.target.checked)}
                   required
-                  className="mt-1 h-5 w-5 rounded border-2 border-white bg-transparent checked:bg-white checked:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ca0013] cursor-pointer accent-white"
+                  className="mt-1 h-5 w-5 rounded border-2 border-white bg-transparent checked:bg-white checked:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ca0013] cursor-pointer appearance-none relative
+                    after:content-[''] after:absolute after:left-[5px] after:top-[1px] after:w-[6px] after:h-[10px] after:border-[#ca0013] after:border-r-2 after:border-b-2 after:rotate-45 after:opacity-0 checked:after:opacity-100 after:transition-opacity"
                 />
                 <label
                   htmlFor="consent"
