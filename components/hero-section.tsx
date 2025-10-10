@@ -27,7 +27,7 @@ export default function NewLandingPage() {
       <section
         className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
                    px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
-                   h-[85vh] xs:h-[90vh] sm:h-[95vh] md:h-screen min-h-[600px] md:min-h-[700px] -mt-10 md:mt-16"
+                   h-screen min-h-[100vh] -mt-10 md:mt-16"
         role="banner"
         aria-label="Hero section"
       >
@@ -38,19 +38,18 @@ export default function NewLandingPage() {
             alt="Hero background for desktop"
             fill
             priority
-            className="object-cover object-center w-full h-full"
+            className="object-cover w-full h-full"
             sizes="(max-width: 767px) 0vw, 100vw"
           />
         </div>
 
-        {/* Mobile Hero Background */}
         <div className="absolute inset-0 xs:block sm:block md:hidden">
           <Image
             src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/hero-mobile"
             alt="Hero background for mobile"
             fill
             priority
-            className="object-cover object-center w-full h-full"
+            className="object-contain w-full h-full xs:scale-110"
             sizes="(max-width: 767px) 100vw, 0vw"
           />
         </div>
@@ -106,7 +105,7 @@ export default function NewLandingPage() {
 
             {/* Mobile Marquee - Below image */}
             <motion.div
-              className="absolute bottom-0 left-0 right-0 bg-[#ca0013] 
+              className="absolute xs:bottom-13 left-0 right-0 bg-[#ca0013] 
                          py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg w-screen -ml-4 xs:-ml-4 sm:-ml-6"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}

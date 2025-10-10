@@ -174,6 +174,27 @@ const translations = {
       "Helping connect brands to opportunities for growth by leveraging strategic insights, creative solutions, and targeted marketing approaches to drive success.",
     "team.member6.title": "Founder / CEO",
     "team.member6.description": "Visionary leader with a passion for innovation and creativity.",
+
+    // Content Hub Hero translations
+    ourExpertiseIncludes: "OUR EXPERTISE INCLUDES",
+    bilingualStorytelling: "BILINGUAL STORYTELLING",
+    brandIntegration: "BRAND INTEGRATION +",
+    partnershipDesign: "PARTNERSHIP DESIGN",
+    fullStackCreative: "FULL-STACK CREATIVE",
+    production: "PRODUCTION",
+
+    // Our Exp2 translations
+    partnershipStatement: "WE PARTNER WITH BRANDS TO CREATE CULTURALLY RELEVANT CONTENT THAT RESONATES",
+    activeProductions: "ACTIVE PRODUCTIONS",
+    series1Title: "VEMOS VAMOS PODCAST",
+    series1Description:
+      "Weekly monologues + carousels on marketing + entrepreneurship insights. Hosted by Marcos Resendez, founder of Vemos Vamos.",
+    series2Title: "BICULTURAL BUSINESS SERIES",
+    series2Description:
+      "Short-form video series highlighting Latino entrepreneurs building businesses rooted in culture and community.",
+    series3Title: "BRAND SPOTLIGHT FEATURES",
+    series3Description:
+      "Collaborative content showcasing brands making an impact in Latino communities through authentic storytelling.",
   },
   es: {
     // Navbar
@@ -335,6 +356,27 @@ const translations = {
       "Ayudando a conectar marcas con oportunidades de crecimiento aprovechando insights estratégicos, soluciones creativas y enfoques de marketing dirigidos para impulsar el éxito.",
     "team.member6.title": "Fundador / CEO",
     "team.member6.description": "Líder visionario con pasión por la innovación y la creatividad.",
+
+    // Content Hub Hero translations in Spanish
+    ourExpertiseIncludes: "NUESTRA EXPERIENCIA INCLUYE",
+    bilingualStorytelling: "NARRATIVA BILINGÜE",
+    brandIntegration: "INTEGRACIÓN DE MARCA +",
+    partnershipDesign: "DISEÑO DE ALIANZAS",
+    fullStackCreative: "PRODUCCIÓN CREATIVA",
+    production: "COMPLETA",
+
+    // Our Exp2 translations in Spanish
+    partnershipStatement: "NOS ASOCIAMOS CON MARCAS PARA CREAR CONTENIDO CULTURALMENTE RELEVANTE QUE RESUENA",
+    activeProductions: "PRODUCCIONES ACTIVAS",
+    series1Title: "PODCAST VEMOS VAMOS",
+    series1Description:
+      "Monólogos semanales + carruseles sobre marketing e insights empresariales. Presentado por Marcos Resendez, fundador de Vemos Vamos.",
+    series2Title: "SERIE DE NEGOCIOS BICULTURALES",
+    series2Description:
+      "Serie de videos cortos destacando emprendedores latinos construyendo negocios arraigados en cultura y comunidad.",
+    series3Title: "DESTACADOS DE MARCAS",
+    series3Description:
+      "Contenido colaborativo mostrando marcas que impactan comunidades latinas a través de narrativa auténtica.",
   },
 }
 
