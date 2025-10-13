@@ -17,7 +17,7 @@ export function LanguageToggle() {
   return (
     <motion.button
       onClick={handleToggle}
-      className="relative w-12 h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-visible group shrink-0 mr-3"
+      className="relative w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center overflow-visible group flex-shrink-0"
       whileHover={{
         scale: 1.15,
         transition: { duration: 0.2 },
@@ -62,7 +62,11 @@ export function LanguageToggle() {
         }}
       >
         <img
-          src={language === "en" ? "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/chat-bubble" : "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/boxing-glove"}
+          src={
+            language === "en"
+              ? "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/chat-bubble"
+              : "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/boxing-glove"
+          }
           alt=""
           className={`w-full h-auto object-contain transition-all duration-500 ${
             language === "en" ? "drop-shadow-sm scale-125 -ml-1" : "drop-shadow-sm scale-200"

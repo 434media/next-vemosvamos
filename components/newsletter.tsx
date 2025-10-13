@@ -130,7 +130,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
         <div className="p-6 flex flex-col bg-gradient-to-br from-[#EE2D24] to-[#C41E3A]" style={{ height: "60%" }}>
           <div className="text-center mb-4 flex-shrink-0">
             <h3 className="text-xl font-bold text-white mb-2">{t("newsletter.title")}</h3>
-            <p className="text-white/90 text-sm">{t("newsletter.subtitle")}</p>
+            <p className="text-white/90 text-sm">{t("newsletter.description")}</p>
           </div>
           <div className="flex-1 flex flex-col justify-center">
             <AnimatePresence mode="wait">

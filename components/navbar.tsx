@@ -53,7 +53,7 @@ export function Navbar({ onOpenMenu }: NavbarProps) {
               </motion.div>
             </MotionLink>
 
-            <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <div className="flex items-center gap-3 flex-shrink-0">
               <LanguageToggle />
 
               <motion.button

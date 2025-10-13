@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 import { useState, useEffect } from "react"
 
-export default function Partnerships() {
+export default function Opportunities() {
   const { t } = useLanguage()
 
   // Track scroll progress (0 at top, 1 at bottom)

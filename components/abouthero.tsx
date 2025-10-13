@@ -15,8 +15,8 @@ export default function AboutHero() {
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden mt-16 xs:mt-20 sm:mt-24 md:mt-0">
-      <section className="relative w-full min-h-[90vh] xs:min-h-[95vh] sm:min-h-[95vh] md:min-h-screen lg:min-h-screen xl:min-h-[85vh] bg-[#eeebe3] flex flex-col md:flex-row overflow-hidden">
-        <div className="absolute md:relative w-full md:w-1/2 h-full md:h-auto md:min-h-full order-2 md:order-1 mt-12 xs:mt-14 sm:mt-16 md:mt-0">
+      <section className="relative w-full h-[85vh] xs:h-[90vh] sm:h-[92vh] md:h-screen lg:h-screen bg-[#eeebe3] flex flex-col md:flex-row overflow-hidden">
+        <div className="absolute md:relative w-full md:w-1/2 h-full order-2 md:order-1">
           <Image
             src="/images/about-hero.png"
             alt="Why We're Different - About Us"
@@ -56,15 +56,15 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={textInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-            className="space-y-1 xs:space-y-2 sm:space-y-3 md:space-y-3 lg:space-y-4 xl:space-y-6 text-right md:text-left text-[#ca0013] font-inter max-w-xs xs:max-w-sm sm:max-w-md md:max-w-md lg:max-w-lg xl:max-w-xl bg-white/80 md:bg-transparent p-2 xs:p-3 sm:p-4 md:p-0 rounded-lg md:rounded-none backdrop-blur-sm md:backdrop-blur-none"
+            className="md:-mt-6 flex flex-col gap-1 xs:gap-1.5 sm:gap-2 text-right md:text-left text-[#ca0013] font-inter max-w-xs xs:max-w-sm sm:max-w-md md:max-w-md lg:max-w-lg xl:max-w-xl bg-white/90 md:bg-transparent p-3 xs:p-4 sm:p-5 md:p-0 rounded-lg md:rounded-none backdrop-blur-sm md:backdrop-blur-none"
           >
-            <div className="text-lg xs:text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl font-black uppercase leading-tight tracking-tight">
+            <div className="text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-black uppercase leading-tight tracking-tight">
               {t("about.femaleLed")}
             </div>
-            <div className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold uppercase leading-tight tracking-wide">
+            <div className="text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-black uppercase leading-tight tracking-tight">
               {t("about.bicultural")}
             </div>
-            <div className="text-sm xs:text-base sm:text-lg md:text-lg lg:text-xl xl:text-2xl font-bold uppercase leading-tight tracking-wide">
+            <div className="text-base xs:text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl font-black uppercase leading-tight tracking-tight">
               {t("about.network")}
             </div>
           </motion.div>

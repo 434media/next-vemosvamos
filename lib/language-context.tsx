@@ -26,6 +26,7 @@ const translations = {
     "menu.whyDifferent": "MEET THE TEAM",
     "menu.contentHub": "CONTENT HUB",
     "menu.connectWithUs": "CONNECT",
+    "menu.partnerships": "PARTNERSHIPS",
     "menu.followUs": "FOLLOW US",
     "menu.newsletter": "VEMOS VAMOS NEWSLETTER",
     "menu.letsConnect": "Let's Connect",
@@ -89,8 +90,8 @@ const translations = {
     "listo.stayConnected": "Stay connected with bi-cultural resources and partnership opportunities",
 
     // Newsletter
-    "newsletter.title": "Stay Connected",
-    "newsletter.subtitle": "WE CREATE FOR THE AUDIENCE THAT LIVES IN TWO WORLDS AND BELONGS TO BOTH.",
+    "newsletter.title": "Join the Vemos Vamos newsletter",
+    "newsletter.subtitle": "Get the latest updates and insights",
     "newsletter.placeholder": "Enter your email",
     "newsletter.submit": "Subscribe",
     "newsletter.success": "Thank you for subscribing!",
@@ -101,6 +102,10 @@ const translations = {
     "newsletter.subscribing": "Subscribing...",
     "newsletter.successMessage": "Thanks for subscribing! Check your email to confirm.",
     "newsletter.errorPrefix": "An error occurred:",
+    "newsletter.errorEmpty": "Please enter your email address",
+    "newsletter.errorInvalid": "Please enter a valid email address",
+    "newsletter.errorGeneral": "Something went wrong. Please try again.",
+    "newsletter.description": "We create for the audience that lives in two worlds and belongs to both",
 
     // Footer
     "footer.copyright": "© 2025 Vemos Vamos. All rights reserved.",
@@ -123,6 +128,24 @@ const translations = {
     "contact.message": "Message",
     "contact.send": "Send Message",
 
+    // Connect Form
+    "connect.form.title": "Let's Collaborate Together!",
+    "connect.form.subtitle": "Fill out the form below and our team will get back to you soon.",
+    "connect.form.fullName": "Full Name*",
+    "connect.form.email": "Email Address*",
+    "connect.form.phone": "Phone Number",
+    "connect.form.company": "Company / Brand Name",
+    "connect.form.city": "City",
+    "connect.form.state": "State",
+    "connect.form.country": "Country",
+    "connect.form.message": "Tell us more about your idea or request*",
+    "connect.form.consent": "I agree to be contacted by the Vemos Vamos team regarding my request.",
+    "connect.form.send": "SEND MESSAGE",
+    "connect.form.sending": "SENDING...",
+    "connect.form.success": "Thank you for reaching out! We'll get back to you soon.",
+    "connect.form.errorTurnstile": "Please complete the security verification",
+    "connect.form.errorGeneral": "Something went wrong. Please try again.",
+
     // Common
     "common.loading": "Loading...",
     "common.error": "Error",
@@ -136,26 +159,43 @@ const translations = {
     culturalRelevanceMobile: "Cultural relevance, Audience trust, and Creative quality.",
     "team.intro":
       "Bringing together 70 years of combined expertise in bilingual storytelling, design, and community-driven marketing, our team crafts meaningful brand experiences deeply rooted in Latinx culture.",
+    "team.member1.title": "Creative Director",
+    "team.member1.description": "Leading brand vision and creative strategy with over 8 years of experience.",
+    "team.member2.title": "Graphic Design",
+    "team.member2.description":
+      "Diana García is a bilingual brand strategist, creative director, and Owner of Veintidós Studios (22 Studios).",
+    "team.member3.title": "Digital Marketing",
+    "team.member3.description":
+      "First-generation Mexican-American rooted in faith, culture, and service, passionate about using creativity to uplift communities and tell meaningful stories.",
+    "team.member4.title": "Web Developer",
+    "team.member4.description":
+      "Creative software engineer with a focus on user-experience, loves building responsive, full-stack web applications.",
+    "team.member5.title": "VP Business Development",
+    "team.member5.description":
+      "Helping connect brands to opportunities for growth by leveraging strategic insights, creative solutions, and targeted marketing approaches to drive success.",
+    "team.member6.title": "Founder / CEO",
+    "team.member6.description": "Visionary leader with a passion for innovation and creativity.",
 
-    // Experience/Active Productions
-    partnershipStatement:
-      "We partner with brands to define and express their identity in ways that foster genuine connections with Latinx audiences visually, verbally, and culturally.",
-    activeProductions: "ACTIVE PRODUCTIONS",
-    series1Title: "Series 1: Stay Local, Look Deeper",
-    series1Description:
-      'Weekly 1–2 min "Come With Me" videos designed to build trust through local insight + community presence.',
-    series2Title: "Series 2: Creator Tips W/Vemos Vamos",
-    series2Description: "Weekly monologues + carousels on marketing + entrepreneurship insights.",
-    series3Title: "Series 3: Vamos A Experimentar",
-    series3Description: "A bi-weekly series with creators for rapid innovation and real-time cultural relevance.",
-
-    // Content Hub Hero
+    // Content Hub Hero translations
     ourExpertiseIncludes: "OUR EXPERTISE INCLUDES",
-    bilingualStorytelling: "Bilingual Storytelling",
-    brandIntegration: "Brand Integration &",
-    partnershipDesign: "Partnership Design",
-    fullStackCreative: "Full‑Stack Creative",
-    production: "Production",
+    bilingualStorytelling: "BILINGUAL STORYTELLING",
+    brandIntegration: "BRAND INTEGRATION +",
+    partnershipDesign: "PARTNERSHIP DESIGN",
+    fullStackCreative: "FULL-STACK CREATIVE",
+    production: "PRODUCTION",
+
+    // Our Exp2 translations
+    partnershipStatement: "WE PARTNER WITH BRANDS TO CREATE CULTURALLY RELEVANT CONTENT THAT RESONATES",
+    activeProductions: "ACTIVE PRODUCTIONS",
+    series1Title: "VEMOS VAMOS PODCAST",
+    series1Description:
+      "Weekly monologues + carousels on marketing + entrepreneurship insights. Hosted by Marcos Resendez, founder of Vemos Vamos.",
+    series2Title: "BICULTURAL BUSINESS SERIES",
+    series2Description:
+      "Short-form video series highlighting Latino entrepreneurs building businesses rooted in culture and community.",
+    series3Title: "BRAND SPOTLIGHT FEATURES",
+    series3Description:
+      "Collaborative content showcasing brands making an impact in Latino communities through authentic storytelling.",
   },
   es: {
     // Navbar
@@ -168,11 +208,12 @@ const translations = {
     "menu.whyDifferent": "CONOCE AL EQUIPO",
     "menu.contentHub": "CENTRO DE CONTENIDO",
     "menu.connectWithUs": "CONÉCTATE",
+    "menu.partnerships": "ALIANZAS",
     "menu.followUs": "SÍGUENOS",
     "menu.newsletter": "BOLETÍN VEMOS VAMOS",
     "menu.letsConnect": "Conectemos",
     "menu.getInTouch": "BOLETÍN VEMOS VAMOS",
-    "menu.contactDescription": "Completa el formulario y te responderemos pronto.",
+    "menu.contactDescription": "Completa el formulario y nuestro equipo te responderá pronto.",
 
     // Hero Section
     "hero.title": "Periodismo Para Una Nueva Generación Bicultural",
@@ -232,9 +273,9 @@ const translations = {
     "listo.stayConnected": "Mantente conectado con recursos biculturales y oportunidades de alianza",
 
     // Newsletter
-    "newsletter.title": "Mantente Conectado",
-    "newsletter.subtitle": "CREAMOS PARA QUIENES VIVEN EN DOS MUNDOS Y PERTENECEN A AMBOS.",
-    "newsletter.placeholder": "Ingresa tu email",
+    "newsletter.title": "Únete al boletín de Vemos Vamos",
+    "newsletter.subtitle": "Recibe las últimas actualizaciones e insights",
+    "newsletter.placeholder": "Ingresa tu correo electrónico",
     "newsletter.submit": "Subscríbete",
     "newsletter.success": "¡Gracias por suscribirte!",
     "newsletter.error": "Algo salió mal. Por favor intenta de nuevo.",
@@ -244,6 +285,10 @@ const translations = {
     "newsletter.subscribing": "Suscribiendo...",
     "newsletter.successMessage": "¡Gracias por suscribirte! Revisa tu correo para confirmar.",
     "newsletter.errorPrefix": "Ocurrió un error:",
+    "newsletter.errorEmpty": "Por favor ingresa tu correo electrónico",
+    "newsletter.errorInvalid": "Por favor ingresa un correo electrónico válido",
+    "newsletter.errorGeneral": "Algo salió mal. Por favor intenta de nuevo.",
+    "newsletter.description": "creamos para la audiencia que vive en dos mundos y pertenece a ambos",
 
     // Footer
     "footer.copyright": "© 2025 Vemos Vamos. Todos los derechos reservados.",
@@ -266,6 +311,24 @@ const translations = {
     "contact.message": "Mensaje",
     "contact.send": "Enviar Mensaje",
 
+    // Connect Form
+    "connect.form.title": "Colaboremos Juntos!",
+    "connect.form.subtitle": "Completa el formulario y nuestro equipo te responderá pronto.",
+    "connect.form.fullName": "Nombre Completo*",
+    "connect.form.email": "Correo Electrónico*",
+    "connect.form.phone": "Número de Teléfono",
+    "connect.form.company": "Empresa / Nombre de Marca",
+    "connect.form.city": "Ciudad",
+    "connect.form.state": "Estado",
+    "connect.form.country": "País",
+    "connect.form.message": "Cuéntanos más sobre tu idea o solicitud*",
+    "connect.form.consent": "Acepto ser contactado por el equipo de Vemos Vamos con respecto a mi solicitud.",
+    "connect.form.send": "ENVIAR MENSAJE",
+    "connect.form.sending": "ENVIANDO...",
+    "connect.form.success": "¡Gracias por contactarnos! Te responderemos pronto.",
+    "connect.form.errorTurnstile": "Por favor completa la verificación de seguridad",
+    "connect.form.errorGeneral": "Algo salió mal. Por favor intenta de nuevo.",
+
     // Common
     "common.loading": "Cargando...",
     "common.error": "Error",
@@ -279,27 +342,43 @@ const translations = {
     culturalRelevanceMobile: "Relevancia cultural, calidad creativa y una audiencia que confía en nosotros.",
     "team.intro":
       "Reuniendo 70 años de experiencia combinada en narrativa bilingüe, diseño y marketing impulsado por la comunidad, nuestro equipo crea experiencias de marca significativas profundamente arraigadas en la cultura Latinx.",
+    "team.member1.title": "Directora Creativa",
+    "team.member1.description": "Liderando la visión de marca y estrategia creativa con más de 8 años de experiencia.",
+    "team.member2.title": "Diseño Gráfico",
+    "team.member2.description":
+      "Diana García es una estratega de marca bilingüe, directora creativa y propietaria de Veintidós Studios (22 Studios).",
+    "team.member3.title": "Marketing Digital",
+    "team.member3.description":
+      "Mexicana-americana de primera generación arraigada en la fe, la cultura y el servicio, apasionada por usar la creatividad para elevar comunidades y contar historias significativas.",
+    "team.member4.title": "Desarrolladora Web",
+    "team.member4.description":
+      "Ingeniera de software creativa con enfoque en experiencia de usuario, le encanta construir aplicaciones web responsivas y full-stack.",
+    "team.member5.title": "VP Desarrollo de Negocios",
+    "team.member5.description":
+      "Ayudando a conectar marcas con oportunidades de crecimiento aprovechando insights estratégicos, soluciones creativas y enfoques de marketing dirigidos para impulsar el éxito.",
+    "team.member6.title": "Fundador / CEO",
+    "team.member6.description": "Líder visionario con pasión por la innovación y la creatividad.",
 
-    // Experience/Active Productions
-    partnershipStatement:
-      "Nos asociamos con marcas para definir y expresar su identidad de maneras que fomenten conexiones genuinas con audiencias Latinx visual, verbal y culturalmente.",
+    // Content Hub Hero translations in Spanish
+    ourExpertiseIncludes: "NUESTRA EXPERIENCIA INCLUYE",
+    bilingualStorytelling: "NARRATIVA BILINGÜE",
+    brandIntegration: "INTEGRACIÓN DE MARCA +",
+    partnershipDesign: "DISEÑO DE ALIANZAS",
+    fullStackCreative: "PRODUCCIÓN CREATIVA",
+    production: "COMPLETA",
+
+    // Our Exp2 translations in Spanish
+    partnershipStatement: "NOS ASOCIAMOS CON MARCAS PARA CREAR CONTENIDO CULTURALMENTE RELEVANTE QUE RESUENA",
     activeProductions: "PRODUCCIONES ACTIVAS",
-    series1Title: "Serie 1: Mantente Local, Mira Más Profundo",
+    series1Title: "PODCAST VEMOS VAMOS",
     series1Description:
-      'Videos semanales de 1-2 min "Ven Conmigo" diseñados para generar confianza a través de perspectiva local + presencia comunitaria.',
-    series2Title: "Serie 2: Consejos de Creador con Vemos Vamos",
-    series2Description: "Monólogos semanales + carruseles sobre marketing e insights empresariales.",
-    series3Title: "Serie 3: Vamos A Experimentar",
+      "Monólogos semanales + carruseles sobre marketing e insights empresariales. Presentado por Marcos Resendez, fundador de Vemos Vamos.",
+    series2Title: "SERIE DE NEGOCIOS BICULTURALES",
+    series2Description:
+      "Serie de videos cortos destacando emprendedores latinos construyendo negocios arraigados en cultura y comunidad.",
+    series3Title: "DESTACADOS DE MARCAS",
     series3Description:
-      "Una serie quincenal con creadores para innovación rápida y relevancia cultural en tiempo real.",
-
-    // Content Hub Hero
-    ourExpertiseIncludes: "NUESTRAS ESPECIALIDADES ",
-    bilingualStorytelling: "Narrativa Bilingüe",
-    brandIntegration: "Integración de Marca &",
-    partnershipDesign: "Diseño de Alianzas",
-    fullStackCreative: "Producción Creativa",
-    production: "Completa",
+      "Contenido colaborativo mostrando marcas que impactan comunidades latinas a través de narrativa auténtica.",
   },
 }
 
