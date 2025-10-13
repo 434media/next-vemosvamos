@@ -127,7 +127,7 @@ export default function ConnectForm() {
   }
 
   return (
-    <section className="relative w-full min-h-screen bg-[#eeebe3] pt-16 md:pt-20">
+    <section className="relative w-full min-h-screen bg-[#eeebe3] pt-16 md:pt-0">
       <div className="relative w-full min-h-screen flex flex-col md:flex-row">
         {/* Left Side - Image */}
         <motion.div
