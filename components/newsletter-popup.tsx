@@ -141,7 +141,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
             </div>
 
             {/* Right Side - Newsletter Form */}
-            <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden group bg-[#eeebe3]">
+            <div className="mt-10 md:mt-0 lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden group bg-[#eeebe3]">
               {/* Background Animation */}
               <div className="absolute inset-0 bg-[#ca0013] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
 
