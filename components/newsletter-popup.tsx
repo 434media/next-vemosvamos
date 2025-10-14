@@ -8,6 +8,8 @@ import Image from "next/image"
 import { useLanguage } from "../lib/language-context"
 import { LanguageToggle } from "./language-toggle"
 
+const isDevelopment = process.env.NODE_ENV === "development"
+
 interface NewsletterPopupProps {
   showModal: boolean
   onClose: () => void
@@ -21,9 +23,39 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
   const [error, setError] = useState<string | null>(null)
   const formRef = useRef<HTMLFormElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+  const turnstileRef = useRef<HTMLDivElement>(null)
+  const [turnstileWidget, setTurnstileWidget] = useState<string | null>(null)
 
   // Email validation regex pattern
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+  useEffect(() => {
+    if (!isDevelopment && !window.turnstile && showModal) {
+      const script = document.createElement("script")
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"
+      script.async = true
+      script.defer = true
+      document.body.appendChild(script)
+
+      script.onload = () => {
+        if (window.turnstile && turnstileRef.current && !turnstileWidget) {
+          const widgetId = window.turnstile.render(turnstileRef.current, {
+            sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
+            callback: (token: string) => {
+              console.log("[v0] Turnstile token received:", token)
+            },
+          })
+          setTurnstileWidget(widgetId)
+        }
+      }
+
+      return () => {
+        if (document.body.contains(script)) {
+          document.body.removeChild(script)
+        }
+      }
+    }
+  }, [turnstileWidget, showModal])
 
   useEffect(() => {
     if (showModal) {
@@ -60,6 +92,21 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
       return
     }
 
+    let turnstileResponse = undefined
+
+    if (!isDevelopment) {
+      if (!window.turnstile || !turnstileWidget) {
+        setError("Security verification is not initialized. Please refresh the page.")
+        return
+      }
+
+      turnstileResponse = window.turnstile.getResponse(turnstileWidget)
+      if (!turnstileResponse) {
+        setError("Please complete the security verification.")
+        return
+      }
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -67,6 +114,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          ...(turnstileResponse && { "cf-turnstile-response": turnstileResponse }),
         },
         body: JSON.stringify({ email }),
       })
@@ -77,6 +125,9 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
         setEmail("")
         setIsSuccess(true)
         formRef.current?.reset()
+        if (!isDevelopment && turnstileWidget && window.turnstile) {
+          window.turnstile.reset(turnstileWidget)
+        }
 
         // Reset success state and close modal after 3 seconds
         setTimeout(() => {
@@ -89,6 +140,9 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
     } catch (error) {
       console.error("Error subscribing to newsletter:", error)
       setError(t("newsletter.errorGeneral"))
+      if (!isDevelopment && turnstileWidget && window.turnstile) {
+        window.turnstile.reset(turnstileWidget)
+      }
     } finally {
       setIsSubmitting(false)
     }
@@ -131,13 +185,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
             {/* Left Side - Image */}
             <div className="lg:w-1/2 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#ca0013]/20 z-10" />
-              <Image
-                src="/images/about-hero.png"
-                alt="Vemos Vamos Community"
-                fill
-                className="object-cover"
-                priority
-              />
+              <Image src="/images/about-hero.png" alt="Vemos Vamos Community" fill className="object-cover" priority />
             </div>
 
             {/* Right Side - Newsletter Form */}
@@ -203,6 +251,12 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
                           autoComplete="email"
                         />
                       </div>
+
+                      {!isDevelopment && (
+                        <div className="flex justify-center">
+                          <div ref={turnstileRef} data-size="flexible" className="w-full" />
+                        </div>
+                      )}
 
                       <div className="relative overflow-hidden group/button">
                         <div className="absolute inset-0 bg-white transform -translate-x-full group-hover/button:translate-x-0 transition-transform duration-500 ease-out" />

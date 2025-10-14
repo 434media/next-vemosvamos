@@ -131,7 +131,7 @@ export default function ConnectForm() {
       <div className="relative w-full min-h-screen flex flex-col md:flex-row">
         {/* Left Side - Image */}
         <motion.div
-          className="relative w-full md:w-1/2 h-[40vh] md:h-auto md:min-h-screen"
+          className="relative w-full md:w-1/2 h-[70vh] md:h-auto md:min-h-screen"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
