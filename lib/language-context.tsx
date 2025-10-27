@@ -196,6 +196,33 @@ const translations = {
     series3Title: "BRAND SPOTLIGHT FEATURES",
     series3Description:
       "Collaborative content showcasing brands making an impact in Latino communities through authentic storytelling.",
+
+    // Culture Deck
+    "culturedeck.title": "The Culture Deck",
+    "culturedeck.subtitle": "Creative strategy for those who play to win",
+    "culturedeck.description":
+      "Each issue delivers insights, trends, and creative thought leadership designed for bilingual founders, marketers, and brand builders who live and work between worlds.",
+    "culturedeck.filterLabel": "Filter by Card Type",
+    "culturedeck.clearFilters": "Clear Filters",
+    "culturedeck.allCards": "All Cards",
+    "culturedeck.readMore": "Read More",
+    "culturedeck.collapse": "Collapse",
+    "culturedeck.issueCount": "Issues",
+    "culturedeck.backToFeed": "Back to Feed",
+
+    // Card Types
+    "culturedeck.card.insight": "El Insight",
+    "culturedeck.card.insight.description": "Industry Insights",
+    "culturedeck.card.tendencia": "La Tendencia",
+    "culturedeck.card.tendencia.description": "Trends",
+    "culturedeck.card.movimiento": "El Movimiento",
+    "culturedeck.card.movimiento.description": "The Movement",
+    "culturedeck.card.flavor": "El Flavor",
+    "culturedeck.card.flavor.description": "Collabs We Love",
+    "culturedeck.card.takeaway": "El Takeaway",
+    "culturedeck.card.takeaway.description": "Playable Insight",
+    "culturedeck.card.podcast": "El Podcast",
+    "culturedeck.card.podcast.description": "Audio Series",
   },
   es: {
     // Navbar
@@ -379,6 +406,33 @@ const translations = {
     series3Title: "DESTACADOS DE MARCAS",
     series3Description:
       "Contenido colaborativo mostrando marcas que impactan comunidades latinas a través de narrativa auténtica.",
+
+    // Culture Deck
+    "culturedeck.title": "La Baraja Cultural",
+    "culturedeck.subtitle": "Estrategia creativa para quienes juegan para ganar",
+    "culturedeck.description":
+      "Cada edición ofrece insights, tendencias y liderazgo creativo diseñado para fundadores, marketers y constructores de marca bilingües que viven y trabajan entre dos mundos.",
+    "culturedeck.filterLabel": "Filtrar por Tipo de Carta",
+    "culturedeck.clearFilters": "Limpiar Filtros",
+    "culturedeck.allCards": "Todas las Cartas",
+    "culturedeck.readMore": "Leer Más",
+    "culturedeck.collapse": "Colapsar",
+    "culturedeck.issueCount": "Ediciones",
+    "culturedeck.backToFeed": "Volver al Feed",
+
+    // Card Types
+    "culturedeck.card.insight": "El Insight",
+    "culturedeck.card.insight.description": "Insights de la Industria",
+    "culturedeck.card.tendencia": "La Tendencia",
+    "culturedeck.card.tendencia.description": "Tendencias",
+    "culturedeck.card.movimiento": "El Movimiento",
+    "culturedeck.card.movimiento.description": "El Movimiento",
+    "culturedeck.card.flavor": "El Flavor",
+    "culturedeck.card.flavor.description": "Colaboraciones que Amamos",
+    "culturedeck.card.takeaway": "El Takeaway",
+    "culturedeck.card.takeaway.description": "Insight Accionable",
+    "culturedeck.card.podcast": "El Podcast",
+    "culturedeck.card.podcast.description": "Serie de Audio",
   },
 }
 
@@ -389,22 +443,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     // Load saved language from localStorage
     const savedLanguage = localStorage.getItem("vv-language") as Language
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
-      console.log("[v0] Loading saved language:", savedLanguage)
       setLanguage(savedLanguage)
     }
   }, [])
 
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "es" : "en"
-    console.log("[v0] Toggling language from", language, "to", newLanguage)
     setLanguage(newLanguage)
     localStorage.setItem("vv-language", newLanguage)
   }
 
   const t = (key: string): string => {
-    const translation = translations[language][key as keyof (typeof translations)["en"]] || key
-    console.log("[v0] Translating key:", key, "to:", translation, "for language:", language)
-    return translation
+    return translations[language][key as keyof (typeof translations)["en"]] || key
   }
 
   return <LanguageContext.Provider value={{ language, toggleLanguage, t }}>{children}</LanguageContext.Provider>

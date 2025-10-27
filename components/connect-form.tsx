@@ -137,7 +137,7 @@ export default function ConnectForm() {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <Image
-            src="/images/about-hero.png"
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/vemosinsights.jpg"
             alt="Connect with Vemos Vamos"
             fill
             priority
