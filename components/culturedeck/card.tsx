@@ -2,7 +2,15 @@
 
 import { motion, AnimatePresence } from "motion/react"
 import Link from "next/link"
-import type { CultureDeckArticle } from "../../data/culturedeck/articles"
+import type { CultureDeckArticle } from "../../lib/types/culturedeck"
+
+// Utility function to translate tags
+function translateTag(tag: string, t: (key: string) => string): string {
+  const tagKey = `tag.${tag}`
+  const translated = t(tagKey)
+  // If translation returns the key (not found), return original tag
+  return translated === tagKey ? tag : translated
+}
 
 interface CultureDeckCardProps {
   article: CultureDeckArticle
@@ -11,6 +19,9 @@ interface CultureDeckCardProps {
   onToggle: () => void
   index: number
   readMoreLabel: string
+  visitLinkLabel: string
+  authorLabel: string
+  t: (key: string) => string
   language: "en" | "es"
 }
 
@@ -21,6 +32,9 @@ export function CultureDeckCard({
   onToggle,
   index,
   readMoreLabel,
+  visitLinkLabel,
+  authorLabel,
+  t,
   language,
 }: CultureDeckCardProps) {
   return (
@@ -59,7 +73,7 @@ export function CultureDeckCard({
                   key={tag}
                   className="text-xs uppercase tracking-wider px-2 py-1 bg-[#1a1a1a]/10 text-[#1a1a1a] rounded"
                 >
-                  {tag}
+                  {translateTag(tag, t)}
                 </span>
               ))}
             </div>
@@ -97,7 +111,7 @@ export function CultureDeckCard({
 
               {article.author && (
                 <div className="mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">Author:</span>
+                  <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{authorLabel}:</span>
                   <span className="text-sm text-[#1a1a1a] ml-2">{article.author}</span>
                 </div>
               )}
@@ -119,7 +133,7 @@ export function CultureDeckCard({
                     className="inline-block px-6 py-2 border-2 border-[#ca0013] text-[#ca0013] rounded-full hover:bg-[#ca0013] hover:text-white transition-colors font-semibold text-sm uppercase tracking-wider"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    Visit Link
+                    {visitLinkLabel}
                   </a>
                 )}
               </div>

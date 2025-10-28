@@ -1,20 +1,32 @@
 import { notFound } from "next/navigation"
-import { getArticleBySlug, articles } from "../../../data/culturedeck/articles"
+import { getCultureDeckArticlesWithFallback, getArticleBySlugWithFallback } from "../../../lib/utils/culturedeck-fallback"
 import { CultureDeckArticleContent } from "../../../components/culturedeck/article-content"
 
 export async function generateStaticParams() {
-  return articles.map((article) => ({
-    slug: article.slug,
-  }))
+  try {
+    const articles = await getCultureDeckArticlesWithFallback()
+    return articles.map((article) => ({
+      slug: article.slug,
+    }))
+  } catch (error) {
+    console.error('Error generating static params for culture deck articles:', error)
+    return []
+  }
 }
 
 export default async function CultureDeckArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const article = getArticleBySlug(slug)
+  
+  try {
+    const article = await getArticleBySlugWithFallback(slug)
 
-  if (!article) {
+    if (!article) {
+      notFound()
+    }
+
+    return <CultureDeckArticleContent article={article} />
+  } catch (error) {
+    console.error(`Error fetching article with slug "${slug}":`, error)
     notFound()
   }
-
-  return <CultureDeckArticleContent article={article} />
 }

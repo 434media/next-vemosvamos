@@ -23,6 +23,22 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'placehold.co',
         pathname: '/**'
+      },
+      // Airtable CDN domains for Culture Deck images
+      {
+        protocol: 'https',
+        hostname: 'v5.airtableusercontent.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'dl.airtable.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'attachments.airtable.com',
+        pathname: '/**'
       }
     ],
   },  

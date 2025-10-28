@@ -209,6 +209,24 @@ const translations = {
     "culturedeck.collapse": "Collapse",
     "culturedeck.issueCount": "Issues",
     "culturedeck.backToFeed": "Back to Feed",
+    "culturedeck.visitLink": "Visit Link",
+    "culturedeck.visitExternalLink": "Visit External Link",
+    "culturedeck.author": "Author",
+    "culturedeck.by": "By",
+
+    // Tag translations
+    "tag.Marketing": "Marketing",
+    "tag.Bilingual": "Bilingual",
+    "tag.Gen Z": "Gen Z", 
+    "tag.Trends": "Trends",
+    "tag.Culture": "Culture",
+    "tag.Content Creation": "Content Creation",
+    "tag.Events": "Events",
+    "tag.Tech": "Tech",
+    "tag.Entrepreneurship": "Entrepreneurship",
+    "tag.Strategy": "Strategy",
+    "tag.Content": "Content",
+    "tag.Framework": "Framework",
 
     // Card Types
     "culturedeck.card.insight": "El Insight",
@@ -419,6 +437,24 @@ const translations = {
     "culturedeck.collapse": "Colapsar",
     "culturedeck.issueCount": "Ediciones",
     "culturedeck.backToFeed": "Volver al Feed",
+    "culturedeck.visitLink": "Visitar Enlace",
+    "culturedeck.visitExternalLink": "Visitar Enlace Externo",
+    "culturedeck.author": "Autor",
+    "culturedeck.by": "Por",
+
+    // Tag translations
+    "tag.Marketing": "Marketing",
+    "tag.Bilingual": "Bilingüe", 
+    "tag.Gen Z": "Generación Z",
+    "tag.Trends": "Tendencias",
+    "tag.Culture": "Cultura",
+    "tag.Content Creation": "Creación de Contenido",
+    "tag.Events": "Eventos",
+    "tag.Tech": "Tecnología",
+    "tag.Entrepreneurship": "Emprendimiento",
+    "tag.Strategy": "Estrategia", 
+    "tag.Content": "Contenido",
+    "tag.Framework": "Marco de Trabajo",
 
     // Card Types
     "culturedeck.card.insight": "El Insight",

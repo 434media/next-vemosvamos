@@ -4,7 +4,15 @@ import { motion } from "motion/react"
 import Link from "next/link"
 import Image from "next/image"
 import { useLanguage } from "../../lib/language-context"
-import type { CultureDeckArticle } from "../../data/culturedeck/articles"
+import type { CultureDeckArticle } from "../../lib/types/culturedeck"
+
+// Utility function to translate tags
+function translateTag(tag: string, t: (key: string) => string): string {
+  const tagKey = `tag.${tag}`
+  const translated = t(tagKey)
+  // If translation returns the key (not found), return original tag
+  return translated === tagKey ? tag : translated
+}
 
 interface CultureDeckArticleContentProps {
   article: CultureDeckArticle
@@ -75,7 +83,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
 
           {article.author && (
             <div className="flex items-center gap-2 text-sm text-[#1a1a1a]/60">
-              <span className="uppercase tracking-wider font-semibold">By</span>
+              <span className="uppercase tracking-wider font-semibold">{t("culturedeck.by")}</span>
               <span className="text-[#1a1a1a]">{article.author}</span>
             </div>
           )}
@@ -87,7 +95,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                   key={tag}
                   className="text-xs uppercase tracking-wider px-3 py-1 bg-[#1a1a1a]/10 text-[#1a1a1a] rounded-full"
                 >
-                  {tag}
+                  {translateTag(tag, t)}
                 </span>
               ))}
             </div>
@@ -113,7 +121,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                 rel="noopener noreferrer"
                 className="inline-block px-6 py-3 bg-[#ca0013] text-white rounded-full hover:bg-[#ca0013]/90 transition-colors font-semibold text-sm uppercase tracking-wider"
               >
-                Visit External Link
+                {t("culturedeck.visitExternalLink")}
               </a>
             </div>
           )}
