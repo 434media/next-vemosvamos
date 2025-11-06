@@ -273,6 +273,6 @@ export async function fetchAvailableCardTypes(): Promise<CardType[]> {
     return Array.from(types)
   } catch (error) {
     console.error('Error fetching available card types from Airtable:', error)
-    return ['insight', 'tendencia', 'movimiento', 'flavor', 'takeaway', 'podcast']
+    return ['el insight', 'la tendencia', 'el movimiento', 'el flavor', 'el takeaway', 'el podcast']
   }
 }

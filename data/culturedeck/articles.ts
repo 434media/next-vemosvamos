@@ -11,7 +11,7 @@ export const fallbackArticles: CultureDeckArticle[] = [
       en: "434 Crashes SASW 10th Year",
       es: "434 Se Estrella en SASW Año 10"
     },
-    type: "newsletter",
+    type: "la tendencia",
     summary: {
       en: "If SASW 2025 proved anything, it's that San Antonio has incredible momentum right now and it's fueled by those bold enough to imagine what's next.",
       es: "Si SASW 2025 demostró algo, es que San Antonio tiene un impulso increíble en este momento y está impulsado por aquellos lo suficientemente audaces como para imaginar lo que sigue."
@@ -123,14 +123,14 @@ export const fallbackArticles: CultureDeckArticle[] = [
       en: "The Road to RGVSW",
       es: "El Camino a RGVSW"
     },
-    type: "newsletter",
+    type: "el movimiento",
     summary: {
-      en: "If SASW 2025 proved anything, it's that San Antonio has incredible momentum right now and it's fueled by those bold enough to imagine what's next.",
-      es: "Si SASW 2025 demostró algo, es que San Antonio tiene un impulso increíble en este momento y está impulsado por aquellos lo suficientemente audaces como para imaginar lo que sigue."
+      en: "You can't tell meaningful stories from a distance which is why our team headed to Brownsville for RGV Startup Week 2025.",
+      es: "No puedes contar historias significativas desde la distancia, por eso nuestro equipo se dirigió a Brownsville para la Semana de Startups RGV 2025."
     },
     content: {
-      en: "San Antonio Startup Week showcased the city's growing tech ecosystem and entrepreneurial spirit.",
-      es: "La Semana de Startups de San Antonio mostró el creciente ecosistema tecnológico y espíritu empresarial de la ciudad."
+      en: "Whether it's SDOH work in the Valley, closing the digital gap with TechBloc, supporting ecosystem builders at Emerge and Rise, or sharing a message with a connected community — it all comes back to one thing: access.",
+      es: "Ya sea trabajo de SDOH en el Valle, cerrar la brecha digital con TechBloc, apoyar a los constructores de ecosistemas en Emerge and Rise, o compartir un mensaje con una comunidad conectada — todo se reduce a una cosa: acceso."
     },
     author: "Digital Canvas Team",
     tags: ["development", "Design", "technology"],
@@ -239,7 +239,7 @@ export const fallbackInsightArticles: CultureDeckArticle[] = [
       en: "The Rise of Bilingual Brand Storytelling",
       es: "El Auge de la Narrativa de Marca Bilingüe"
     },
-    type: "insight",
+    type: "el insight",
     summary: {
       en: "Brands that authentically integrate bilingual content see 3x higher engagement rates among Gen Z Latino audiences.",
       es: "Las marcas que integran auténticamente contenido bilingüe ven tasas de participación 3 veces más altas entre las audiencias latinas de la Generación Z."
@@ -262,7 +262,7 @@ export const allFallbackArticles: CultureDeckArticle[] = [
 ]
 
 // Export card types and topics for consistency
-export const cardTypes: CardType[] = ["newsletter", "insight", "tendencia", "movimiento", "flavor", "takeaway", "podcast"]
+export const cardTypes: CardType[] = ["el insight", "la tendencia", "el movimiento", "el flavor", "el takeaway", "el podcast"]
 export const topics = [
   "community",
   "Innovation", 

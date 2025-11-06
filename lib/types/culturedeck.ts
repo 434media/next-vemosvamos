@@ -1,4 +1,4 @@
-export type CardType = "newsletter" | "insight" | "tendencia" | "movimiento" | "flavor" | "takeaway" | "podcast"
+export type CardType = "el insight" | "la tendencia" | "el movimiento" | "el flavor" | "el takeaway" | "el podcast"
 
 export interface CultureDeckArticle {
   id: string

@@ -4,14 +4,9 @@ import type { CultureDeckArticle } from '../types/culturedeck'
 
 // Helper function to check if a newsletter article has complete content
 function isCompleteNewsletterArticle(article: CultureDeckArticle): boolean {
-  if (article.type !== 'newsletter') return true // Non-newsletter articles are considered complete
-  
-  // For newsletter articles, check if they have the essential content sections
-  return !!(
-    article.spotlights && article.spotlights.length > 0 &&
-    article.featuredPost &&
-    article.upcomingEvent
-  )
+  // All article types are now considered complete by default
+  // since we removed the newsletter type distinction
+  return true
 }
 
 // Helper function to find article by slug in local data

@@ -3,7 +3,7 @@
 import { motion } from "motion/react"
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
-import type { CardType } from "../../data/culturedeck/articles"
+import type { CardType } from "../../lib/types/culturedeck"
 
 interface CardTypeInfo {
   type: CardType | "all"
@@ -105,7 +105,7 @@ export function CultureDeckFilter({
         </div>
       </div>
 
-      <div className="hidden lg:grid grid-cols-7 gap-3">
+      <div className="hidden lg:grid grid-cols-4 xl:grid-cols-7 gap-3">
         {cardTypes.map((cardType) => (
           <motion.button
             key={cardType.type}

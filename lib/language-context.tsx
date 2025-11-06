@@ -243,6 +243,7 @@ const translations = {
 
     // Card Types
     "culturedeck.card.newsletter": "Newsletter",
+    "culturedeck.card.newsletter.description": "Monthly Updates",
     "culturedeck.card.insight": "El Insight",
     "culturedeck.card.insight.description": "Industry Insights",
     "culturedeck.card.tendencia": "La Tendencia",
@@ -485,6 +486,7 @@ const translations = {
 
     // Card Types
     "culturedeck.card.newsletter": "Newsletter",
+    "culturedeck.card.newsletter.description": "Actualizaciones Mensuales",
     "culturedeck.card.insight": "El Insight",
     "culturedeck.card.insight.description": "Insights de la Industria",
     "culturedeck.card.tendencia": "La Tendencia",

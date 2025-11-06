@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { AnimatePresence, motion } from "motion/react"
 import { useLanguage } from "../../lib/language-context"
 import type { CultureDeckArticle, CardType } from "../../lib/types/culturedeck"
@@ -18,7 +18,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
   const [selectedFilter, setSelectedFilter] = useState<CardType | "all">("all")
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set())
 
-  const cardTypes: { type: CardType | "all"; label: string; description: string; icon: string }[] = [
+    const cardTypes: { type: CardType | "all"; label: string; description: string; icon: string }[] = [
     {
       type: "all",
       label: t("culturedeck.allCards"),
@@ -26,45 +26,49 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
       icon: "🃏",
     },
     {
-      type: "insight",
+      type: "el insight",
       label: t("culturedeck.card.insight"),
       description: t("culturedeck.card.insight.description"),
-      icon: "🃏",
+      icon: "💡",
     },
     {
-      type: "tendencia",
+      type: "la tendencia",
       label: t("culturedeck.card.tendencia"),
       description: t("culturedeck.card.tendencia.description"),
       icon: "♣️",
     },
     {
-      type: "movimiento",
+      type: "el movimiento",
       label: t("culturedeck.card.movimiento"),
       description: t("culturedeck.card.movimiento.description"),
       icon: "♥️",
     },
     {
-      type: "flavor",
+      type: "el flavor",
       label: t("culturedeck.card.flavor"),
       description: t("culturedeck.card.flavor.description"),
       icon: "♦️",
     },
     {
-      type: "takeaway",
+      type: "el takeaway",
       label: t("culturedeck.card.takeaway"),
       description: t("culturedeck.card.takeaway.description"),
       icon: "🪄",
     },
     {
-      type: "podcast",
+      type: "el podcast",
       label: t("culturedeck.card.podcast"),
       description: t("culturedeck.card.podcast.description"),
-      icon: "🎙️",
+      icon: "�",
     },
   ]
 
-  const filteredArticles =
-    selectedFilter === "all" ? articles : articles.filter((article) => article.type === selectedFilter)
+  const filteredArticles = useMemo(() => {
+    if (selectedFilter === 'all') {
+      return articles
+    }
+    return articles.filter((article) => article.type === selectedFilter)
+  }, [articles, selectedFilter])
 
   const toggleExpanded = (id: string) => {
     setExpandedItems((prev) => {
@@ -117,7 +121,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
 
             <div className="divide-y divide-[#1a1a1a]/10">
               <AnimatePresence mode="popLayout">
-                {filteredArticles.map((article, index) => {
+                {filteredArticles.map((article: CultureDeckArticle, index: number) => {
                   const cardInfo = getCardTypeInfo(article.type)
                   return (
                     <CultureDeckCard

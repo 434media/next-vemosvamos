@@ -24,13 +24,12 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
   const { t, language } = useLanguage()
 
   const cardTypeLabels: Record<string, string> = {
-    newsletter: t("culturedeck.card.newsletter"),
-    insight: t("culturedeck.card.insight"),
-    tendencia: t("culturedeck.card.tendencia"),
-    movimiento: t("culturedeck.card.movimiento"),
-    flavor: t("culturedeck.card.flavor"),
-    takeaway: t("culturedeck.card.takeaway"),
-    podcast: t("culturedeck.card.podcast"),
+    "el insight": t("culturedeck.card.insight"),
+    "la tendencia": t("culturedeck.card.tendencia"),
+    "el movimiento": t("culturedeck.card.movimiento"),
+    "el flavor": t("culturedeck.card.flavor"),
+    "el takeaway": t("culturedeck.card.takeaway"),
+    "el podcast": t("culturedeck.card.podcast"),
   }
 
   return (
@@ -378,36 +377,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
             </motion.section>
           )}
 
-          {/* Basic Article Content - for non-newsletter types */}
-          {article.type !== 'newsletter' && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="border-4 border-black bg-white p-6 md:p-8 lg:p-12"
-            >
-              <div className="prose prose-lg max-w-none">
-                <div 
-                  className="text-[#1a1a1a]/90 leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_ul]:list-disc [&_ul]:ml-6 [&_li]:mb-2"
-                  dangerouslySetInnerHTML={{ __html: safeFormatContent(article.content[language]) }}
-                />
-              </div>
 
-              {article.link && (
-                <div className="mt-8 pt-8 border-t border-[#1a1a1a]/10">
-                  <Link
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white text-sm uppercase tracking-wider font-mono font-bold hover:bg-gray-800 transition-colors border-2 border-black group"
-                  >
-                    {t("culturedeck.visitExternalLink")}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              )}
-            </motion.section>
-          )}
         </div>
 
         {/* Back to Feed */}
