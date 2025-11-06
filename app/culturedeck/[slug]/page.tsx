@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation"
 import { getCultureDeckArticlesWithFallback, getArticleBySlugWithFallback } from "../../../lib/utils/culturedeck-fallback"
-import { CultureDeckArticleContent } from "../../../components/culturedeck/article-content"
+import { CultureDeckArticleContentWrapper } from "../../../components/culturedeck/article-content-wrapper"
 
 export async function generateStaticParams() {
   try {
@@ -24,7 +24,7 @@ export default async function CultureDeckArticlePage({ params }: { params: Promi
       notFound()
     }
 
-    return <CultureDeckArticleContent article={article} />
+    return <CultureDeckArticleContentWrapper article={article} />
   } catch (error) {
     console.error(`Error fetching article with slug "${slug}":`, error)
     notFound()

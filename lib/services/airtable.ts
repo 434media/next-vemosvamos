@@ -1,4 +1,5 @@
 import Airtable from 'airtable'
+import { formatContent } from '../utils/content-formatter'
 import type { 
   CultureDeckArticle, 
   AirtableRecord, 
@@ -10,7 +11,7 @@ import type {
 function getAirtableConfig() {
   const AIRTABLE_API_KEY = process.env.AIRTABLE_API_KEY
   const AIRTABLE_CULTURE_DECK_BASE_ID = process.env.AIRTABLE_CULTURE_DECK_BASE_ID
-  const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_CULTURE_DECK_TABLE || 'CultureDeck'
+  const AIRTABLE_TABLE_NAME = process.env.AIRTABLE_CULTURE_DECK_TABLE || 'culturedeck'
 
   if (!AIRTABLE_API_KEY) {
     throw new Error('AIRTABLE_API_KEY environment variable is required')
@@ -35,37 +36,143 @@ function getAirtableConfig() {
 export function transformAirtableRecord(record: AirtableRecord): CultureDeckArticle {
   const fields = record.fields as AirtableFields
   
-  // Parse tags from comma-separated string
-  const tags = fields.Tags 
-    ? fields.Tags.split(',').map(tag => tag.trim()).filter(Boolean)
-    : undefined
+  // Parse topics from various possible formats
+  let tags: string[] | undefined = undefined
+  if (fields.topics) {
+    try {
+      if (typeof fields.topics === 'string') {
+        tags = fields.topics.split(',').map(topic => topic.trim()).filter(Boolean)
+      } else if (Array.isArray(fields.topics)) {
+        tags = (fields.topics as any[]).map((topic: any) => String(topic).trim()).filter(Boolean)
+      } else {
+        tags = [String(fields.topics).trim()].filter(Boolean)
+      }
+    } catch (error) {
+      console.warn('Error parsing topics field:', error)
+      tags = undefined
+    }
+  }
   
-  // Get card image URL if available
-  const cardImage = fields["Card Image"] && fields["Card Image"].length > 0
-    ? fields["Card Image"][0].url
+  // Get image URLs if available
+  const cardImage = fields.og_image && fields.og_image.length > 0
+    ? fields.og_image[0].url
     : undefined
 
+  // Build spotlights array from spotlight fields
+  const spotlights = []
+  for (let i = 1; i <= 3; i++) {
+    const titleField = `spotlight_${i}_title` as keyof AirtableFields
+    const titleEsField = `spotlight_${i}_title-es` as keyof AirtableFields
+    const descField = `spotlight_${i}_description` as keyof AirtableFields
+    const descEsField = `spotlight_${i}_description-es` as keyof AirtableFields
+    const imageField = `spotlight_${i}_image` as keyof AirtableFields
+    const ctaField = `spotlight_${i}_cta_text` as keyof AirtableFields
+    const ctaEsField = `spotlight_${i}_cta_text-es` as keyof AirtableFields
+    const linkField = `spotlight_${i}_cta_link` as keyof AirtableFields
+    
+    const title = fields[titleField] as string
+    const titleEs = fields[titleEsField] as string
+    
+    if (title && titleEs) {
+      spotlights.push({
+        title: {
+          en: title,
+          es: titleEs,
+        },
+        description: {
+          en: formatContent((fields[descField] as string) || ''),
+          es: formatContent((fields[descEsField] as string) || ''),
+        },
+        image: fields[imageField] && (fields[imageField] as any[]).length > 0
+          ? (fields[imageField] as any[])[0].url
+          : undefined,
+        ctaText: {
+          en: (fields[ctaField] as string) || 'Learn More',
+          es: (fields[ctaEsField] as string) || 'Aprende Más',
+        },
+        ctaLink: fields[linkField] as string,
+      })
+    }
+  }
+
   return {
-    id: record.id,
-    slug: fields.Slug,
-    date: fields.Date,
-    type: fields.Type,
+    id: fields.id,
+    slug: fields.slug,
+    date: fields.published_date,
+    type: fields.type,
     title: {
-      en: fields["Title (EN)"],
-      es: fields["Title (ES)"],
+      en: fields.title,
+      es: fields["title-es"],
     },
     summary: {
-      en: fields["Summary (EN)"],
-      es: fields["Summary (ES)"],
+      en: formatContent(fields.summary || ''),
+      es: formatContent(fields["summary-es"] || ''),
     },
     content: {
-      en: fields["Content (EN)"],
-      es: fields["Content (ES)"],
+      en: formatContent(fields.summary || ''), // Using summary as content for now
+      es: formatContent(fields["summary-es"] || ''),
     },
-    author: fields.Author,
+    author: fields.authors,
     tags,
-    link: fields.Link,
+    link: undefined, // No direct link field in new structure
     cardImage,
+    
+    // Newsletter-specific fields
+    heroImage: {
+      desktop: fields.hero_image_desktop && fields.hero_image_desktop.length > 0
+        ? fields.hero_image_desktop[0].url
+        : undefined,
+      mobile: fields.hero_image_mobile && fields.hero_image_mobile.length > 0
+        ? fields.hero_image_mobile[0].url
+        : undefined,
+    },
+    foundersNote: fields.founders_note_text && fields["founders_note_text-es"] ? {
+      text: {
+        en: formatContent(fields.founders_note_text),
+        es: formatContent(fields["founders_note_text-es"]),
+      },
+      image: fields.founders_note_image && fields.founders_note_image.length > 0
+        ? fields.founders_note_image[0].url
+        : undefined,
+    } : undefined,
+    lastMonthGif: fields.last_month_gif && fields.last_month_gif.length > 0
+      ? fields.last_month_gif[0].url
+      : undefined,
+    theDropGif: fields.the_drop_gif && fields.the_drop_gif.length > 0
+      ? fields.the_drop_gif[0].url
+      : undefined,
+    featuredPost: fields.featured_post_title && fields["featured_post_title-es"] ? {
+      title: {
+        en: fields.featured_post_title,
+        es: fields["featured_post_title-es"],
+      },
+      content: {
+        en: formatContent(fields.featured_post_content || ''),
+        es: formatContent(fields["featured_post_content-es"] || ''),
+      },
+      image: fields.featured_post_image && fields.featured_post_image.length > 0
+        ? fields.featured_post_image[0].url
+        : undefined,
+    } : undefined,
+    upcomingEvent: fields.upcoming_event_title && fields["upcoming_event_title-es"] ? {
+      title: {
+        en: fields.upcoming_event_title,
+        es: fields["upcoming_event_title-es"],
+      },
+      description: {
+        en: fields.upcoming_event_description || '',
+        es: fields["upcoming_event_description-es"] || '',
+      },
+      image: fields.upcoming_event_image && fields.upcoming_event_image.length > 0
+        ? fields.upcoming_event_image[0].url
+        : undefined,
+      ctaText: {
+        en: fields.upcoming_event_cta_text || 'Learn More',
+        es: fields["upcoming_event_cta_text-es"] || 'Aprende Más',
+      },
+      ctaLink: fields.upcoming_event_cta_link,
+    } : undefined,
+    spotlights: spotlights.length > 0 ? spotlights : undefined,
   }
 }
 
@@ -78,9 +185,9 @@ export async function fetchCultureDeckArticles(): Promise<CultureDeckArticle[]> 
     // Fetch all records (handles pagination automatically)
     await table.select({
       // Sort by date in descending order (newest first)
-      sort: [{ field: 'Date', direction: 'desc' }],
-      // Only fetch published articles (you can add a "Published" boolean field if needed)
-      filterByFormula: "AND({Slug} != '', {Title (EN)} != '', {Title (ES)} != '')",
+      sort: [{ field: 'published_date', direction: 'desc' }],
+      // Only fetch published articles
+      filterByFormula: "AND({slug} != '', {title} != '', {title-es} != '', {status} = 'published')",
     }).eachPage((pageRecords, fetchNextPage) => {
       records.push(...pageRecords.map(record => ({
         id: record.id,
@@ -102,7 +209,7 @@ export async function fetchArticleBySlug(slug: string): Promise<CultureDeckArtic
   try {
     const { table } = getAirtableConfig()
     const records = await table.select({
-      filterByFormula: `{Slug} = '${slug}'`,
+      filterByFormula: `{slug} = '${slug}'`,
       maxRecords: 1,
     }).firstPage()
 
@@ -129,8 +236,8 @@ export async function fetchArticlesByType(type: CardType): Promise<CultureDeckAr
     const records: AirtableRecord[] = []
     
     await table.select({
-      filterByFormula: `{Type} = '${type}'`,
-      sort: [{ field: 'Date', direction: 'desc' }],
+      filterByFormula: `{type} = '${type}'`,
+      sort: [{ field: 'published_date', direction: 'desc' }],
     }).eachPage((pageRecords, fetchNextPage) => {
       records.push(...pageRecords.map(record => ({
         id: record.id,
@@ -152,12 +259,12 @@ export async function fetchAvailableCardTypes(): Promise<CardType[]> {
   try {
     const { table } = getAirtableConfig()
     const records = await table.select({
-      fields: ['Type'],
+      fields: ['type'],
     }).all()
 
     const types = new Set<CardType>()
     records.forEach(record => {
-      const type = record.get('Type') as CardType
+      const type = record.get('type') as CardType
       if (type) {
         types.add(type)
       }

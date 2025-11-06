@@ -228,7 +228,21 @@ const translations = {
     "tag.Content": "Content",
     "tag.Framework": "Framework",
 
+    // Topics
+    "topic.community": "Community",
+    "topic.Innovation": "Innovation",
+    "topic.creative": "Creative",
+    "topic.development": "Development",
+    "topic.Design": "Design",
+    "topic.technology": "Technology",
+    "topic.Marketing": "Marketing",
+    "topic.Bilingual": "Bilingual",
+    "topic.Gen Z": "Gen Z",
+    "topic.Collaboration": "Collaboration",
+    "topic.Trends": "Trends",
+
     // Card Types
+    "culturedeck.card.newsletter": "Newsletter",
     "culturedeck.card.insight": "El Insight",
     "culturedeck.card.insight.description": "Industry Insights",
     "culturedeck.card.tendencia": "La Tendencia",
@@ -456,7 +470,21 @@ const translations = {
     "tag.Content": "Contenido",
     "tag.Framework": "Marco de Trabajo",
 
+    // Topics
+    "topic.community": "Comunidad",
+    "topic.Innovation": "Innovación",
+    "topic.creative": "Creativo",
+    "topic.development": "Desarrollo",
+    "topic.Design": "Diseño",
+    "topic.technology": "Tecnología",
+    "topic.Marketing": "Marketing",
+    "topic.Bilingual": "Bilingüe",
+    "topic.Gen Z": "Gen Z",
+    "topic.Collaboration": "Colaboración",
+    "topic.Trends": "Tendencias",
+
     // Card Types
+    "culturedeck.card.newsletter": "Newsletter",
     "culturedeck.card.insight": "El Insight",
     "culturedeck.card.insight.description": "Insights de la Industria",
     "culturedeck.card.tendencia": "La Tendencia",

@@ -2,14 +2,15 @@
 
 import { motion, AnimatePresence } from "motion/react"
 import Link from "next/link"
+import { safeFormatContent } from "../../lib/utils/content-formatter"
 import type { CultureDeckArticle } from "../../lib/types/culturedeck"
 
-// Utility function to translate tags
-function translateTag(tag: string, t: (key: string) => string): string {
-  const tagKey = `tag.${tag}`
-  const translated = t(tagKey)
-  // If translation returns the key (not found), return original tag
-  return translated === tagKey ? tag : translated
+// Utility function to translate topics
+function translateTopic(topic: string, t: (key: string) => string): string {
+  const topicKey = `topic.${topic}`
+  const translated = t(topicKey)
+  // If translation returns the key (not found), return original topic
+  return translated === topicKey ? topic : translated
 }
 
 interface CultureDeckCardProps {
@@ -64,7 +65,10 @@ export function CultureDeckCard({
 
           <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">{article.title[language]}</h3>
 
-          <p className="text-sm text-[#1a1a1a]/80 leading-relaxed">{article.summary[language]}</p>
+          <div 
+            className="text-sm text-[#1a1a1a]/80 leading-relaxed [&_p]:mb-1 [&_strong]:font-bold"
+            dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
+          />
 
           {article.tags && (
             <div className="flex flex-wrap gap-2 mt-3">
@@ -73,7 +77,7 @@ export function CultureDeckCard({
                   key={tag}
                   className="text-xs uppercase tracking-wider px-2 py-1 bg-[#1a1a1a]/10 text-[#1a1a1a] rounded"
                 >
-                  {translateTag(tag, t)}
+                                          {translateTopic(tag, t)}
                 </span>
               ))}
             </div>
@@ -103,11 +107,15 @@ export function CultureDeckCard({
             className="overflow-hidden"
           >
             <div className="px-6 pb-6 pl-16">
-              <div className="mb-4">
-                <p className="text-sm text-[#1a1a1a]/90 leading-relaxed whitespace-pre-line">
-                  {article.content[language]}
-                </p>
-              </div>
+              {/* Only show content if it's different from summary */}
+              {article.content[language] !== article.summary[language] && (
+                <div className="mb-4">
+                  <div 
+                    className="text-sm text-[#1a1a1a]/90 leading-relaxed [&_p]:mb-2 [&_strong]:font-bold [&_ul]:list-disc [&_ul]:ml-4 [&_li]:mb-1"
+                    dangerouslySetInnerHTML={{ __html: safeFormatContent(article.content[language]) }}
+                  />
+                </div>
+              )}
 
               {article.author && (
                 <div className="mb-4">
