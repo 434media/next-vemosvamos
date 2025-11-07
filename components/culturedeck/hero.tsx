@@ -51,7 +51,7 @@ export function CultureDeckHero() {
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
           >
             <Image
-              src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/culturedeck.png"
+              src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Black.svg"
               alt="Culture Deck"
               width={700}
               height={210}
