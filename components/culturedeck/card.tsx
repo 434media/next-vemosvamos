@@ -70,8 +70,20 @@ export function CultureDeckCard({
           </h3>
 
           <div 
-            className="max-w-lg text-balance tracking-tighter text-base text-[#1a1a1a]/80 leading-relaxed font-medium [&_p]:mb-2 [&_strong]:font-bold [&_strong]:text-[#1a1a1a]"
-            dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
+            className="max-w-lg text-balance tracking-tighter text-base text-[#1a1a1a]/80 leading-relaxed font-medium"
+            dangerouslySetInnerHTML={{ 
+              __html: (() => {
+                let content = article.summary[language]
+                // Direct markdown to HTML conversion with brand colors
+                content = content.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 900; color: #ca0013;">$1</strong>')
+                content = content.replace(/\*(.*?)\*/g, '<em style="font-style: italic;">$1</em>')
+                // Add paragraph styling if needed
+                if (!content.includes('<p>')) {
+                  content = `<p style="margin-bottom: 0.5rem; line-height: 1.6;">${content}</p>`
+                }
+                return content
+              })()
+            }}
           />
 
           {article.tags && (
@@ -115,8 +127,21 @@ export function CultureDeckCard({
               {article.content[language] !== article.summary[language] && (
                 <div className="mb-4 sm:mb-6">
                   <div 
-                    className="text-sm sm:text-base text-[#1a1a1a]/90 leading-relaxed font-medium [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#1a1a1a] [&_ul]:list-disc [&_ul]:ml-4 [&_li]:mb-2"
-                    dangerouslySetInnerHTML={{ __html: safeFormatContent(article.content[language]) }}
+                    className="text-sm sm:text-base text-[#1a1a1a]/90 leading-relaxed font-medium"
+                    dangerouslySetInnerHTML={{ 
+                      __html: (() => {
+                        let content = article.content[language]
+                        // Direct markdown to HTML conversion with brand colors
+                        content = content.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 900; color: #ca0013;">$1</strong>')
+                        content = content.replace(/\*(.*?)\*/g, '<em style="font-style: italic;">$1</em>')
+                        // Handle lists and paragraphs
+                        content = content.replace(/\n\n/g, '</p><p style="margin-bottom: 0.75rem; line-height: 1.6;">')
+                        if (!content.includes('<p>')) {
+                          content = `<p style="margin-bottom: 0.75rem; line-height: 1.6;">${content}</p>`
+                        }
+                        return content
+                      })()
+                    }}
                   />
                 </div>
               )}

@@ -77,8 +77,20 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
 
             {/* Summary */}
             <div 
-              className="text-lg sm:text-xl md:text-2xl text-[#1a1a1a]/80 leading-relaxed mb-6 sm:mb-8 [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#ca0013]"
-              dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
+              className="text-lg sm:text-xl md:text-2xl text-[#1a1a1a]/80 leading-relaxed mb-6 sm:mb-8"
+              dangerouslySetInnerHTML={{ 
+                __html: (() => {
+                  let content = article.summary[language]
+                  // Direct markdown to HTML conversion
+                  content = content.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 900; color: #ca0013;">$1</strong>')
+                  content = content.replace(/\*(.*?)\*/g, '<em style="font-style: italic;">$1</em>')
+                  // Wrap in paragraph if not already wrapped
+                  if (!content.includes('<p>')) {
+                    content = `<p style="margin-bottom: 1rem; line-height: 1.6;">${content}</p>`
+                  }
+                  return content
+                })()
+              }}
             />
 
             {/* Author */}
@@ -150,7 +162,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                       {spotlight.title[language]}
                     </h3>
                     <div
-                      className="prose prose-lg max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_li]:leading-relaxed"
+                      className="prose prose-lg max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-2 [&_li]:leading-relaxed [&_a]:text-[#ca0013] [&_a]:underline [&_a:hover]:text-[#1a1a1a]"
                       dangerouslySetInnerHTML={{ __html: safeFormatContent(spotlight.description[language]) }}
                     />
                     {spotlight.ctaLink && (
@@ -203,12 +215,13 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                 </div>
               )}
               <div className="flex flex-col justify-center p-6 md:p-8 space-y-6">
-                <h3 className="text-2xl md:text-3xl font-bold font-mono uppercase tracking-tighter text-balance">
+                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white">
                   {article.upcomingEvent.title[language]}
                 </h3>
-                <p className="text-base leading-relaxed text-gray-200">
-                  {article.upcomingEvent.description[language]}
-                </p>
+                <div 
+                  className="text-base leading-relaxed text-gray-200 prose prose-lg max-w-none [&_p]:mb-3 [&_p]:leading-relaxed [&_strong]:font-bold [&_strong]:text-white [&_em]:italic [&_em]:text-gray-100 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-white [&_a]:underline [&_a:hover]:text-gray-200"
+                  dangerouslySetInnerHTML={{ __html: safeFormatContent(article.upcomingEvent.description[language]) }}
+                />
                 {article.upcomingEvent.ctaLink && (
                   <Link
                     href={article.upcomingEvent.ctaLink}
