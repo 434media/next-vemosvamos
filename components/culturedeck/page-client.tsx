@@ -108,10 +108,12 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
         clearFiltersLabel={t("culturedeck.clearFilters")}
       />
       
-      {/* Main Content Container with Background */}
-      <div className="relative min-h-screen">
-        {/* Background Images - Full Viewport Coverage */}
-        <div className="absolute inset-0 w-full h-full z-0">
+      {/* Main Content Container with Dynamic Background */}
+      <div className="relative">
+        {/* Background Images - Dynamic Height Coverage */}
+        <div className="absolute inset-0 w-full z-0" style={{ 
+          minHeight: filteredArticles.length <= 2 ? '60vh' : '100vh' 
+        }}>
           {/* Desktop Background */}
           <Image
             src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-shapes.png"
@@ -134,12 +136,20 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
           <div className="absolute inset-0 bg-white/20" />
         </div>
         
-        {/* Content Layer - Aligned with Hero Width */}
-        <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 md:pb-6">
+        {/* Content Layer - Dynamic Spacing */}
+        <div className={`relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 ${
+          filteredArticles.length <= 2 
+            ? 'pb-4 sm:pb-6 md:pb-8' 
+            : 'pb-8 sm:pb-12 md:pb-16'
+        }`}>
 
-          {/* Feed Section - Enhanced Typography with Visual Hierarchy */}
+          {/* Feed Section - Dynamic Bottom Margin */}
           <motion.div
-            className="bg-white rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm mb-8 sm:mb-12 md:mb-16"
+            className={`bg-white rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm ${
+              filteredArticles.length <= 2 
+                ? 'mb-4 sm:mb-6 md:mb-8' 
+                : 'mb-8 sm:mb-12 md:mb-16'
+            }`}
             initial={{ opacity: 0, y: 30, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -237,7 +247,8 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
         </div>
       </div>
 
-      <div className="">
+      {/* Connect Form - Optimized Spacing */}
+      <div className={`${filteredArticles.length <= 2 ? 'mt-4 sm:mt-6 md:mt-8' : ''}`}>
         <ConnectForm />
       </div>
     </div>

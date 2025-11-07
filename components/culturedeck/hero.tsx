@@ -8,7 +8,7 @@ export function CultureDeckHero() {
   const { t } = useLanguage()
 
   return (
-    <div className="relative min-h-screen w-full flex items-center justify-center">
+    <div className="relative h-screen w-full flex flex-col">
       {/* Background Images - Full Viewport Coverage */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Desktop Background */}
@@ -35,53 +35,100 @@ export function CultureDeckHero() {
         <div className="absolute inset-0 bg-white/15" />
       </div>
 
-      {/* Content - Mobile First Maximized */}
-      <motion.div
-        className="relative z-10 text-center px-2 sm:px-4 md:px-6 lg:px-8 w-full max-w-6xl mx-auto py-6 sm:py-12 md:py-16"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        {/* Logo - Mobile Optimized */}
+      {/* Main Content - Mobile Optimized */}
+      <div className="relative z-10 flex-1 flex items-center justify-center">
         <motion.div
-          className="mb-3 sm:mb-6 md:mb-8"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          className="text-center px-4 sm:px-6 md:px-8 w-full max-w-6xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/culturedeck.png"
-            alt="Culture Deck"
-            width={600}
-            height={180}
-            className="mx-auto h-28 w-auto sm:h-32 md:h-40 lg:h-48 xl:h-56"
-            priority
-          />
+          {/* Logo - Significantly Larger on Mobile */}
+          <motion.div
+            className="mb-4 sm:mb-6 md:mb-8"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+          >
+            <Image
+              src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/culturedeck.png"
+              alt="Culture Deck"
+              width={700}
+              height={210}
+              className="mx-auto h-36 w-auto sm:h-40 md:h-44 lg:h-52 xl:h-60"
+              priority
+            />
+          </motion.div>
+
+          {/* Subtitle - More Impactful Typography */}
+          <motion.h1
+            className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ca0013] mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight px-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          >
+            {t("culturedeck.subtitle")}
+          </motion.h1>
+
+          {/* Description - Enhanced Mobile Typography */}
+          <motion.p
+            className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl text-[#1a1a1a] leading-snug font-semibold max-w-4xl mx-auto px-2"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+          >
+            {t("culturedeck.description")}
+          </motion.p>
         </motion.div>
+      </div>
 
-        {/* Subtitle as H1 - Desktop Single Line Optimized */}
-        <motion.h1
-          className="text-2xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-3xl 2xl:text-4xl font-bold text-[#ca0013] mb-2 sm:mb-4 md:mb-6 leading-tight tracking-tight w-full mx-auto"
-          style={{ 
-            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
-          }}
-          initial={{ opacity: 0, y: 20 }}
+      {/* Filter Cards Teaser - Bottom Section */}
+      <div className="relative z-20 h-32 md:h-40 flex items-end pb-4">
+        <motion.div
+          className="w-full"
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
         >
-          {t("culturedeck.subtitle")}
-        </motion.h1>
-
-        {/* Description - Mobile Maximized */}
-        <motion.p
-          className="text-base sm:text-base md:text-lg lg:text-xl xl:text-2xl text-[#1a1a1a] leading-tight sm:leading-snug md:leading-normal font-medium max-w-4xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-        >
-          {t("culturedeck.description")}
-        </motion.p>
-      </motion.div>
+          {/* Teaser Text */}
+          <motion.div
+            className="text-center mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
+            <p className="text-sm sm:text-base font-semibold text-[#1a1a1a] uppercase tracking-wider">
+              Explore Articles Below
+            </p>
+            <div className="w-12 h-0.5 bg-[#ca0013] mx-auto mt-2"></div>
+          </motion.div>
+          
+          {/* Cards Preview Hint */}
+          <motion.div
+            className="flex justify-center items-end space-x-2 px-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
+          >
+            {[0, 1, 2].map((index) => (
+              <motion.div
+                key={index}
+                className="w-12 h-16 sm:w-14 sm:h-18 bg-white rounded-lg shadow-lg border border-gray-200"
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.4, delay: 1.2 + (index * 0.1) }}
+                style={{
+                  transform: `rotate(${(index - 1) * 5}deg) translateY(${index === 1 ? -4 : 0}px)`
+                }}
+              >
+                <div className="h-full w-full bg-gradient-to-br from-[#ca0013]/10 to-[#ca0013]/30 rounded-lg flex items-center justify-center">
+                  <div className="w-3 h-3 bg-[#ca0013] rounded-full"></div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
     </div>
   )
 }

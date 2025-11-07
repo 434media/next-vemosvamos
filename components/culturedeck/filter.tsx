@@ -46,9 +46,9 @@ export function CultureDeckFilter({
   }
 
   return (
-    <div ref={containerRef} className="absolute inset-x-0 top-[75vh] md:top-[80vh] z-30 pointer-events-none">
+    <div ref={containerRef} className="absolute inset-x-0 top-[85vh] md:top-[80vh] z-30 pointer-events-none">
       <motion.div
-        className="w-full h-[25vh] md:h-[20vh]"
+        className="w-full h-[15vh] md:h-[20vh]"
         style={{ y, opacity, scale }}
       >
         {/* Deck Layout: Tight card spacing like real playing cards */}
