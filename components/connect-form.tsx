@@ -127,46 +127,52 @@ export default function ConnectForm() {
   }
 
   return (
-    <section className="relative w-full min-h-screen bg-[#eeebe3] pt-16 md:pt-0">
-      <div className="relative w-full min-h-screen flex flex-col md:flex-row">
-        {/* Left Side - Image */}
-        <motion.div
-          className="relative w-full md:w-1/2 h-[70vh] md:h-auto md:min-h-screen"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/vemosinsights.jpg"
-            alt="Connect with Vemos Vamos"
-            fill
-            priority
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 50vw"
-          />
-        </motion.div>
+    <section className="relative w-full min-h-screen flex items-center justify-center md:py-10 md:mt-0 -mt-16">
+      {/* Background Images - Full Viewport Coverage */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        {/* Desktop Background */}
+        <Image
+          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-mouth.png"
+          alt=""
+          fill
+          className="hidden md:block object-cover"
+          quality={90}
+          sizes="100vw"
+          priority
+        />
+        {/* Mobile Background */}
+        <Image
+          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/mobile-mouth.png"
+          alt=""
+          fill
+          className="block md:hidden object-cover"
+          quality={90}
+          sizes="100vw"
+          priority
+        />
+      </div>
 
-        {/* Right Side - Form */}
-        <motion.div
-          ref={formRef}
-          className="relative w-full md:w-1/2 bg-[#ca0013] flex items-center justify-center px-6 py-12 md:px-12 lg:px-16 xl:px-20"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-        >
-          <div className="w-full max-w-xl">
-            <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white mb-4 leading-tight"
-              initial={{ opacity: 0, y: 30 }}
-              animate={formInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-              suppressHydrationWarning
-            >
-              {t("connect.form.title")}
-            </motion.h1>
+      {/* Form Section - Centered and viewport optimized */}
+      <motion.div
+        ref={formRef}
+        className="relative z-10 w-full max-w-2xl mx-auto px-4 py-6 md:py-8"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+      >
+        <div className="w-full bg-[#ca0013] rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+          <motion.h1
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase text-white mb-2 sm:mb-3 leading-tight"
+            initial={{ opacity: 0, y: 30 }}
+            animate={formInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+            suppressHydrationWarning
+          >
+            {t("connect.form.title")}
+          </motion.h1>
 
             <motion.p
-              className="text-white text-base md:text-lg mb-8 leading-relaxed"
+              className="text-white text-sm sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={formInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
@@ -177,13 +183,13 @@ export default function ConnectForm() {
 
             <motion.form
               onSubmit={handleSubmit}
-              className="space-y-4"
+              className="space-y-2 sm:space-y-3 md:space-y-4"
               initial={{ opacity: 0, y: 30 }}
               animate={formInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.5 }}
             >
               {/* Row 1: Full Name & Email */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                 <div>
                   <input
                     type="text"
@@ -192,7 +198,7 @@ export default function ConnectForm() {
                     onChange={handleChange}
                     placeholder={t("connect.form.fullName")}
                     required
-                    className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                   />
                 </div>
                 <div>
@@ -203,13 +209,13 @@ export default function ConnectForm() {
                     onChange={handleChange}
                     placeholder={t("connect.form.email")}
                     required
-                    className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                   />
                 </div>
               </div>
 
               {/* Row 2: Phone & Company */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                 <div>
                   <input
                     type="tel"
@@ -217,7 +223,7 @@ export default function ConnectForm() {
                     value={formData.phoneNumber}
                     onChange={handleChange}
                     placeholder={t("connect.form.phone")}
-                    className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                   />
                 </div>
                 <div>
@@ -227,13 +233,13 @@ export default function ConnectForm() {
                     value={formData.company}
                     onChange={handleChange}
                     placeholder={t("connect.form.company")}
-                    className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                   />
                 </div>
               </div>
 
               {/* Row 3: City & State */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                 <div>
                   <input
                     type="text"
@@ -241,7 +247,7 @@ export default function ConnectForm() {
                     value={formData.city}
                     onChange={handleChange}
                     placeholder={t("connect.form.city")}
-                    className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                   />
                 </div>
                 <div>
@@ -251,7 +257,7 @@ export default function ConnectForm() {
                     value={formData.state}
                     onChange={handleChange}
                     placeholder={t("connect.form.state")}
-                    className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                    className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                   />
                 </div>
               </div>
@@ -264,7 +270,7 @@ export default function ConnectForm() {
                   value={formData.country}
                   onChange={handleChange}
                   placeholder={t("connect.form.country")}
-                  className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
+                  className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors"
                 />
               </div>
 
@@ -276,8 +282,8 @@ export default function ConnectForm() {
                   onChange={handleChange}
                   placeholder={t("connect.form.message")}
                   required
-                  rows={4}
-                  className="w-full px-4 py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors resize-none"
+                  rows={2}
+                  className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors resize-none"
                 />
               </div>
 
@@ -288,19 +294,19 @@ export default function ConnectForm() {
               )}
 
               {/* Consent Checkbox */}
-              <div className="flex items-start gap-3 py-2">
+              <div className="flex items-start gap-2 md:gap-3 py-1 md:py-2">
                 <input
                   type="checkbox"
                   id="consent"
                   checked={consentChecked}
                   onChange={(e) => setConsentChecked(e.target.checked)}
                   required
-                  className="mt-1 h-5 w-5 rounded border-2 border-white bg-transparent checked:bg-white checked:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ca0013] cursor-pointer appearance-none relative
-                    after:content-[''] after:absolute after:left-[5px] after:top-[1px] after:w-[6px] after:h-[10px] after:border-[#ca0013] after:border-r-2 after:border-b-2 after:rotate-45 after:opacity-0 checked:after:opacity-100 after:transition-opacity"
+                  className="mt-1 h-4 w-4 md:h-5 md:w-5 rounded border-2 border-white bg-transparent checked:bg-white checked:border-white focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#ca0013] cursor-pointer appearance-none relative
+                    after:content-[''] after:absolute after:left-[3px] md:after:left-[5px] after:top-[0px] md:after:top-[1px] after:w-[5px] md:after:w-[6px] after:h-[8px] md:after:h-[10px] after:border-[#ca0013] after:border-r-2 after:border-b-2 after:rotate-45 after:opacity-0 checked:after:opacity-100 after:transition-opacity"
                 />
                 <label
                   htmlFor="consent"
-                  className="text-white text-sm md:text-base leading-relaxed cursor-pointer"
+                  className="text-white text-xs md:text-sm leading-relaxed cursor-pointer"
                   suppressHydrationWarning
                 >
                   {t("connect.form.consent")}
@@ -311,7 +317,7 @@ export default function ConnectForm() {
               <motion.button
                 type="submit"
                 disabled={isSubmitting || !consentChecked}
-                className="w-full md:w-auto px-8 py-4 bg-white text-[#ca0013] font-bold uppercase text-lg rounded-full hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+                className="w-full md:w-auto px-6 md:px-8 py-3 md:py-4 bg-white text-[#ca0013] font-bold uppercase text-base md:text-lg rounded-full hover:bg-white/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
                 whileHover={{ scale: consentChecked && !isSubmitting ? 1.05 : 1 }}
                 whileTap={{ scale: consentChecked && !isSubmitting ? 0.95 : 1 }}
               >
@@ -339,9 +345,8 @@ export default function ConnectForm() {
                 </motion.div>
               )}
             </motion.form>
-          </div>
-        </motion.div>
-      </div>
+        </div>
+      </motion.div>
     </section>
   )
 }

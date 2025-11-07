@@ -39,59 +39,63 @@ export function CultureDeckCard({
   language,
 }: CultureDeckCardProps) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="hover:bg-[#eeebe3]/30 transition-colors"
-    >
-      <button onClick={onToggle} className="w-full p-6 text-left flex items-start gap-4">
-        <div className="flex-shrink-0">
+    <div className="hover:bg-[#eeebe3]/20 transition-all duration-300 relative overflow-hidden group">
+      <motion.div
+        className="absolute inset-0 bg-gradient-to-r from-[#ca0013]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        initial={false}
+        animate={{ x: "-100%" }}
+        whileHover={{ x: "0%" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      />
+      <div className="relative z-10">
+      <button onClick={onToggle} className="w-full p-4 sm:p-6 md:p-8 text-left flex items-start gap-4 sm:gap-6 group hover:bg-[#eeebe3]/20 transition-all duration-300">
+        <div className="flex-shrink-0 mt-1">
           <motion.div
-            className="w-3 h-3 bg-[#ca0013] rounded-full"
+            className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#ca0013] rounded-full"
             whileHover={{ scale: 1.3 }}
             transition={{ type: "spring", stiffness: 400 }}
           />
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{article.date}</span>
-            <span className="text-xs uppercase tracking-wider px-3 py-1 bg-[#ca0013] text-white rounded-full font-semibold">
+          <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-bold">{article.date}</span>
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider px-2 sm:px-3 py-1 bg-[#ca0013] text-white rounded-full font-bold">
               {cardLabel}
             </span>
           </div>
 
-          <h3 className="text-xl font-bold text-[#1a1a1a] mb-2">{article.title[language]}</h3>
+          <h3 className="text-lg sm:text-xl md:text-2xl font-extrabold text-[#1a1a1a] mb-2 sm:mb-3 leading-tight group-hover:text-[#ca0013] transition-colors duration-300">
+            {article.title[language]}
+          </h3>
 
           <div 
-            className="text-sm text-[#1a1a1a]/80 leading-relaxed [&_p]:mb-1 [&_strong]:font-bold"
+            className="text-sm sm:text-base text-[#1a1a1a]/80 leading-relaxed font-medium [&_p]:mb-2 [&_strong]:font-bold [&_strong]:text-[#1a1a1a]"
             dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
           />
 
           {article.tags && (
-            <div className="flex flex-wrap gap-2 mt-3">
+            <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
               {article.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs uppercase tracking-wider px-2 py-1 bg-[#1a1a1a]/10 text-[#1a1a1a] rounded"
+                  className="text-[10px] sm:text-xs uppercase tracking-wider px-2 sm:px-3 py-1 bg-[#1a1a1a]/8 text-[#1a1a1a]/80 rounded-md font-semibold hover:bg-[#ca0013]/10 hover:text-[#ca0013] transition-colors duration-200"
                 >
-                                          {translateTopic(tag, t)}
+                  {translateTopic(tag, t)}
                 </span>
               ))}
             </div>
           )}
         </div>
 
-        <div className="flex-shrink-0">
+        <div className="flex-shrink-0 mt-1">
           <motion.div
             animate={{ rotate: isExpanded ? 45 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="w-8 h-8 flex items-center justify-center"
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-full group-hover:bg-[#ca0013]/10 transition-colors duration-300"
           >
-            <svg className="w-6 h-6 text-[#1a1a1a]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            <svg className="w-4 h-4 sm:w-5 sm:h-5 text-[#1a1a1a] group-hover:text-[#ca0013] transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
             </svg>
           </motion.div>
         </div>
@@ -106,28 +110,28 @@ export function CultureDeckCard({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="px-6 pb-6 pl-16">
+            <div className="px-4 sm:px-6 md:px-8 pb-4 sm:pb-6 md:pb-8 pl-8 sm:pl-12 md:pl-16">
               {/* Only show content if it's different from summary */}
               {article.content[language] !== article.summary[language] && (
-                <div className="mb-4">
+                <div className="mb-4 sm:mb-6">
                   <div 
-                    className="text-sm text-[#1a1a1a]/90 leading-relaxed [&_p]:mb-2 [&_strong]:font-bold [&_ul]:list-disc [&_ul]:ml-4 [&_li]:mb-1"
+                    className="text-sm sm:text-base text-[#1a1a1a]/90 leading-relaxed font-medium [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#1a1a1a] [&_ul]:list-disc [&_ul]:ml-4 [&_li]:mb-2"
                     dangerouslySetInnerHTML={{ __html: safeFormatContent(article.content[language]) }}
                   />
                 </div>
               )}
 
               {article.author && (
-                <div className="mb-4">
-                  <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{authorLabel}:</span>
-                  <span className="text-sm text-[#1a1a1a] ml-2">{article.author}</span>
+                <div className="mb-4 sm:mb-6">
+                  <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-bold">{authorLabel}:</span>
+                  <span className="text-sm sm:text-base text-[#1a1a1a] ml-2 font-semibold">{article.author}</span>
                 </div>
               )}
 
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <Link
                   href={`/culturedeck/${article.slug}`}
-                  className="inline-block px-6 py-2 bg-[#ca0013] text-white rounded-full hover:bg-[#ca0013]/90 transition-colors font-semibold text-sm uppercase tracking-wider"
+                  className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-[#ca0013] text-white rounded-full hover:bg-[#ca0013]/90 hover:shadow-lg transition-all duration-300 font-bold text-xs sm:text-sm uppercase tracking-wider text-center transform hover:scale-105"
                   onClick={(e) => e.stopPropagation()}
                 >
                   {readMoreLabel}
@@ -138,7 +142,7 @@ export function CultureDeckCard({
                     href={article.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block px-6 py-2 border-2 border-[#ca0013] text-[#ca0013] rounded-full hover:bg-[#ca0013] hover:text-white transition-colors font-semibold text-sm uppercase tracking-wider"
+                    className="inline-block px-4 sm:px-6 py-2 sm:py-3 border-2 border-[#ca0013] text-[#ca0013] rounded-full hover:bg-[#ca0013] hover:text-white hover:shadow-lg transition-all duration-300 font-bold text-xs sm:text-sm uppercase tracking-wider text-center transform hover:scale-105"
                     onClick={(e) => e.stopPropagation()}
                   >
                     {visitLinkLabel}
@@ -149,6 +153,7 @@ export function CultureDeckCard({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+      </div>
+    </div>
   )
 }

@@ -114,19 +114,19 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
         <div className="absolute inset-0 w-full h-full z-0">
           {/* Desktop Background */}
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-mouth.png"
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-shapes.png"
             alt=""
             fill
-            className="hidden md:block object-cover"
+            className="hidden md:block object-cover opacity-0"
             quality={90}
             sizes="100vw"
           />
           {/* Mobile Background */}
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/mobile-mouth.png"
+            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/mobile-shapes.png"
             alt=""
             fill
-            className="block md:hidden object-cover"
+            className="block md:hidden object-cover opacity-0"
             quality={90}
             sizes="100vw"
           />
@@ -134,52 +134,110 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
           <div className="absolute inset-0 bg-white/20" />
         </div>
         
-        {/* Content Layer */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24">
+        {/* Content Layer - Aligned with Hero Width */}
+        <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 pb-8 sm:pb-12 md:pb-16">
 
-          {/* Feed Section */}
+          {/* Feed Section - Enhanced Typography with Visual Hierarchy */}
           <motion.div
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-white rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm mb-8 sm:mb-12 md:mb-16"
+            initial={{ opacity: 0, y: 30, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            whileInView={{ 
+              opacity: 1, 
+              y: 0,
+              transition: { duration: 0.6 }
+            }}
+            viewport={{ once: false, amount: 0.2 }}
           >
-            <div className="p-6 border-b border-[#1a1a1a]/10">
-              <h2 className="text-2xl font-bold text-[#1a1a1a]">
+            <motion.div 
+              className="p-4 sm:p-6 md:p-8 border-b border-[#1a1a1a]/8"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <motion.h2 
+                className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#1a1a1a] leading-tight tracking-tight"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.7 }}
+              >
                 {t("culturedeck.title")}
-                <sup className="text-sm ml-2 text-[#ca0013]">
+                <motion.sup 
+                  className="text-xs sm:text-sm md:text-base ml-2 text-[#ca0013] font-bold"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.9, type: "spring", stiffness: 200 }}
+                >
                   ({filteredArticles.length} {t("culturedeck.issueCount")})
-                </sup>
-              </h2>
-            </div>
+                </motion.sup>
+              </motion.h2>
+            </motion.div>
 
-            <div className="divide-y divide-[#1a1a1a]/10">
+            <motion.div 
+              className="divide-y divide-[#1a1a1a]/5"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.8 }}
+            >
               <AnimatePresence mode="popLayout">
                 {filteredArticles.map((article: CultureDeckArticle, index: number) => {
                   const cardInfo = getCardTypeInfo(article.type)
                   return (
-                    <CultureDeckCard
-                      key={article.id}
-                      article={article}
-                      cardLabel={cardInfo.label}
-                      isExpanded={expandedItems.has(article.id)}
-                      onToggle={() => toggleExpanded(article.id)}
-                      index={index}
-                      readMoreLabel={t("culturedeck.readMore")}
-                      visitLinkLabel={t("culturedeck.visitLink")}
-                      authorLabel={t("culturedeck.author")}
-                      t={t}
-                      language={language}
-                    />
+                    <motion.div
+                      key={`${article.id}-${selectedFilter}`}
+                      initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                      animate={{ 
+                        opacity: 1, 
+                        y: 0, 
+                        scale: 1,
+                        transition: {
+                          duration: 0.5,
+                          delay: index * 0.08,
+                          ease: "easeOut"
+                        }
+                      }}
+                      exit={{ 
+                        opacity: 0, 
+                        y: -10, 
+                        scale: 0.98,
+                        transition: {
+                          duration: 0.3
+                        }
+                      }}
+                      whileInView={{
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.4,
+                          ease: "easeOut"
+                        }
+                      }}
+                      viewport={{ once: false, amount: 0.3 }}
+                      layout
+                    >
+                      <CultureDeckCard
+                        article={article}
+                        cardLabel={cardInfo.label}
+                        isExpanded={expandedItems.has(article.id)}
+                        onToggle={() => toggleExpanded(article.id)}
+                        index={index}
+                        readMoreLabel={t("culturedeck.readMore")}
+                        visitLinkLabel={t("culturedeck.visitLink")}
+                        authorLabel={t("culturedeck.author")}
+                        t={t}
+                        language={language}
+                      />
+                    </motion.div>
                   )
                 })}
               </AnimatePresence>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>
 
-      <div className="-mt-16 md:mt-10">
+      <div className="">
         <ConnectForm />
       </div>
     </div>
