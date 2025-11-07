@@ -137,7 +137,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
         </div>
         
         {/* Content Layer - Dynamic Spacing */}
-        <div className={`relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 ${
+        <div className={`relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-24 md:pt-24 ${
           filteredArticles.length <= 2 
             ? 'pb-4 sm:pb-6 md:pb-8' 
             : 'pb-8 sm:pb-12 md:pb-16'

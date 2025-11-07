@@ -62,7 +62,7 @@ export function CultureDeckHero() {
 
           {/* Subtitle - More Impactful Typography */}
           <motion.h1
-            className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ca0013] mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight px-2"
+            className="text-balance text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ca0013] mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
@@ -72,7 +72,7 @@ export function CultureDeckHero() {
 
           {/* Description - Enhanced Mobile Typography */}
           <motion.p
-            className="text-lg sm:text-xl md:text-xl lg:text-2xl xl:text-3xl text-[#1a1a1a] leading-snug font-semibold max-w-4xl mx-auto px-2"
+            className="text-balance text-xl md:text-xl lg:text-2xl xl:text-3xl text-[#1a1a1a] leading-snug font-semibold max-w-4xl mx-auto px-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
@@ -83,7 +83,7 @@ export function CultureDeckHero() {
       </div>
 
       {/* Filter Cards Teaser - Bottom Section */}
-      <div className="relative z-20 h-32 md:h-40 flex items-end pb-4">
+      <div className="relative z-20 h-20 md:h-20 flex items-end pb-6 md:pb-10">
         <motion.div
           className="w-full"
           initial={{ opacity: 0, y: 50 }}
@@ -101,31 +101,6 @@ export function CultureDeckHero() {
               Explore Articles Below
             </p>
             <div className="w-12 h-0.5 bg-[#ca0013] mx-auto mt-2"></div>
-          </motion.div>
-          
-          {/* Cards Preview Hint */}
-          <motion.div
-            className="flex justify-center items-end space-x-2 px-4"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 1, ease: "easeOut" }}
-          >
-            {[0, 1, 2].map((index) => (
-              <motion.div
-                key={index}
-                className="w-12 h-16 sm:w-14 sm:h-18 bg-white rounded-lg shadow-lg border border-gray-200"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.4, delay: 1.2 + (index * 0.1) }}
-                style={{
-                  transform: `rotate(${(index - 1) * 5}deg) translateY(${index === 1 ? -4 : 0}px)`
-                }}
-              >
-                <div className="h-full w-full bg-gradient-to-br from-[#ca0013]/10 to-[#ca0013]/30 rounded-lg flex items-center justify-center">
-                  <div className="w-3 h-3 bg-[#ca0013] rounded-full"></div>
-                </div>
-              </motion.div>
-            ))}
           </motion.div>
         </motion.div>
       </div>
