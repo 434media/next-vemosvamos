@@ -33,7 +33,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
   }
 
   return (
-    <div className="min-h-screen bg-[#eeebe3] pt-20 pb-8">
+    <div className="min-h-screen pt-20 pb-8">
       <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-6">
         {/* Back Button */}
         <motion.div 
@@ -44,111 +44,79 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
         >
           <Link
             href="/culturedeck"
-            className="inline-flex items-center gap-2 text-[#ca0013] hover:underline font-semibold"
+            className="inline-flex items-center gap-2 text-[#ca0013] hover:text-[#1a1a1a] hover:underline font-semibold transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            {t("culturedeck.backToFeed")}
+            {language === 'es' ? 'Volver a Culture Deck' : 'Back to Culture Deck'}
           </Link>
         </motion.div>
 
         <div className="space-y-16 md:space-y-24">
-          {/* Hero Images */}
-          {article.heroImage?.mobile && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative w-full aspect-[4/5] border-4 border-black overflow-hidden bg-gray-100 md:hidden"
-            >
-              <Image
-                src={article.heroImage.mobile}
-                alt={article.title[language]}
-                fill
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-          )}
 
-          {article.heroImage?.desktop && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="relative w-full aspect-[16/9] md:max-w-6xl md:mx-auto border-4 border-black overflow-hidden bg-gray-100 hidden md:block"
-            >
-              <Image
-                src={article.heroImage.desktop}
-                alt={article.title[language]}
-                fill
-                className="object-cover"
-                priority
-              />
-            </motion.div>
-          )}
+          {/* Article Header - Always show, with improved layout */}
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-12 border border-gray-200"
+          >
+            {/* Meta Information */}
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{article.date}</span>
+              <span className="text-xs uppercase tracking-wider px-3 py-1 bg-[#ca0013] text-white rounded-full font-semibold">
+                {cardTypeLabels[article.type]}
+              </span>
+            </div>
 
-          {/* Article Header - if no hero images */}
-          {!article.heroImage?.desktop && !article.heroImage?.mobile && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="border-4 border-black p-6 md:p-8 lg:p-12 bg-white"
-            >
-              {article.cardImage && (
-                <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[2/1] mb-8 border-4 border-black overflow-hidden bg-gray-100">
-                  <Image
-                    src={article.cardImage}
-                    alt={article.title[language]}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              )}
+            {/* Title */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] mb-4 sm:mb-6 leading-tight tracking-tight">
+              {article.title[language]}
+            </h1>
 
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{article.date}</span>
-                  <span className="text-xs uppercase tracking-wider px-3 py-1 bg-[#ca0013] text-white rounded-full font-semibold">
-                    {cardTypeLabels[article.type]}
-                  </span>
-                </div>
+            {/* Summary */}
+            <div 
+              className="text-lg sm:text-xl md:text-2xl text-[#1a1a1a]/80 leading-relaxed mb-6 sm:mb-8 [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#ca0013]"
+              dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
+            />
 
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-3 sm:mb-4 font-serif leading-tight">
-                  {article.title[language]}
-                </h1>
-
-                <div 
-                  className="text-lg sm:text-xl text-[#1a1a1a]/80 leading-relaxed mb-4 sm:mb-6 [&_p]:mb-2 [&_strong]:font-bold"
-                  dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
-                />
-
-                {article.author && (
-                  <div className="flex items-center gap-2 text-sm text-[#1a1a1a]/60">
-                    <span className="uppercase tracking-wider font-semibold">{t("culturedeck.by")}</span>
-                    <span className="text-[#1a1a1a]">{article.author}</span>
-                  </div>
-                )}
-
-                {article.tags && (
-                  <div className="flex flex-wrap gap-2 mt-3 sm:mt-4">
-                    {article.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs uppercase tracking-wider px-2 sm:px-3 py-1 bg-[#1a1a1a]/10 text-[#1a1a1a] rounded-full"
-                      >
-                        {translateTopic(tag, t)}
-                      </span>
-                    ))}
-                  </div>
-                )}
+            {/* Author */}
+            {article.author && (
+              <div className="flex items-center gap-2 text-base text-[#1a1a1a] mb-4">
+                <span className="uppercase tracking-wider font-semibold text-[#ca0013]">{t("culturedeck.by")}</span>
+                <span className="font-medium">{article.author}</span>
               </div>
-            </motion.section>
-          )}
+            )}
+
+            {/* Tags */}
+            {article.tags && (
+              <div className="flex flex-wrap gap-2 mb-8">
+                {article.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs uppercase tracking-wider px-3 py-1.5 bg-[#1a1a1a]/5 text-[#1a1a1a] rounded-full border border-[#1a1a1a]/10 hover:bg-[#ca0013]/10 hover:border-[#ca0013]/20 transition-colors"
+                  >
+                    {translateTopic(tag, t)}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Main Image - Now after title, summary, and meta */}
+            {(article.cardImage || article.heroImage?.desktop || article.heroImage?.mobile) && (
+              <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[2/1] rounded-lg overflow-hidden bg-gray-100 shadow-lg">
+                <Image
+                  src={article.heroImage?.desktop || article.heroImage?.mobile || article.cardImage || ''}
+                  alt={article.title[language]}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            )}
+          </motion.section>
 
           {/* Founder's Note Section */}
           {article.foundersNote && (
@@ -156,9 +124,9 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="border-4 border-black p-6 md:p-8 lg:p-12 bg-white relative"
+              className="rounded-xl shadow-lg p-6 md:p-8 lg:p-12 bg-white border border-gray-200 relative"
             >
-              <h2 className="text-2xl md:text-3xl font-bold font-mono uppercase tracking-tight mb-8 border-b-4 border-black pb-4">
+              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-8 border-b-2 border-[#ca0013] pb-4 text-[#1a1a1a]">
                 {language === 'es' ? "Nota del Fundador" : "Founder's Note"}
               </h2>
               <div className="grid md:grid-cols-2 gap-8 md:gap-12">
@@ -169,7 +137,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                   />
                 </div>
                 {article.foundersNote.image && (
-                  <div className="relative aspect-[4/5] border-4 border-black overflow-visible bg-gray-100">
+                  <div className="relative aspect-[4/5] rounded-lg overflow-visible bg-gray-100 shadow-lg">
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
                       animate={{ opacity: 1, scale: 1, rotate: -8 }}
@@ -187,7 +155,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                       src={article.foundersNote.image}
                       alt="Founder's note"
                       fill
-                      className="object-cover"
+                      className="object-cover rounded-lg"
                     />
                   </div>
                 )}
@@ -227,13 +195,13 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className={`grid md:grid-cols-2 gap-6 md:gap-8 border-4 border-black p-6 md:p-8 bg-white hover:bg-gray-50 transition-colors ${
+                  className={`grid md:grid-cols-2 gap-6 md:gap-8 rounded-xl shadow-lg p-6 md:p-8 bg-white hover:shadow-xl transition-all duration-300 border border-gray-200 ${
                     index % 2 === 1 ? "md:grid-flow-dense" : ""
                   }`}
                 >
                   {spotlight.image && (
                     <div
-                      className={`relative aspect-[4/5] border-4 border-black overflow-hidden bg-gray-100 ${
+                      className={`relative aspect-[4/5] rounded-lg overflow-hidden bg-gray-100 shadow-lg ${
                         index % 2 === 1 ? "md:col-start-2" : ""
                       }`}
                     >
@@ -246,11 +214,11 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                     </div>
                   )}
                   <div className="flex flex-col justify-center space-y-4">
-                    <h3 className="text-xl md:text-2xl font-bold font-mono uppercase tracking-tight">
+                    <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[#1a1a1a]">
                       {spotlight.title[language]}
                     </h3>
                     <div
-                      className="prose prose-lg max-w-none md:tracking-tighter text-gray-700 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-black [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_li]:leading-relaxed"
+                      className="prose prose-lg max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_li]:leading-relaxed"
                       dangerouslySetInnerHTML={{ __html: safeFormatContent(spotlight.description[language]) }}
                     />
                     {spotlight.ctaLink && (
@@ -258,7 +226,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                         href={spotlight.ctaLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white text-sm uppercase tracking-wider font-mono font-bold hover:bg-gray-800 transition-colors w-fit border-2 border-black group"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#ca0013] text-white text-sm uppercase tracking-wider font-bold hover:bg-[#1a1a1a] transition-all duration-300 w-fit rounded-lg shadow-md hover:shadow-lg group"
                       >
                         {spotlight.ctaText[language]}
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -380,7 +348,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
 
         </div>
 
-        {/* Back to Feed */}
+        {/* Back to Culture Deck */}
         <motion.div
           className="text-center mt-16"
           initial={{ opacity: 0 }}
@@ -389,12 +357,12 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
         >
           <Link
             href="/culturedeck"
-            className="inline-flex items-center gap-2 px-6 py-3 border-4 border-black text-black hover:bg-black hover:text-white transition-colors font-mono font-bold text-sm uppercase tracking-wider group"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#ca0013] text-white hover:bg-[#1a1a1a] transition-all duration-300 font-bold text-sm uppercase tracking-wider group rounded-lg shadow-lg hover:shadow-xl"
           >
             <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            {t("culturedeck.backToFeed")}
+            {language === 'es' ? 'Volver a Culture Deck' : 'Back to Culture Deck'}
           </Link>
         </motion.div>
       </div>

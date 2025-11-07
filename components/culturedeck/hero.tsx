@@ -99,7 +99,7 @@ export function CultureDeckHero() {
       </div>
 
       {/* Filter Cards Teaser - Bottom Section */}
-      <div className="relative z-20 h-20 md:h-20 flex items-end pb-6 md:pb-10">
+      <div className="relative z-20 h-20 md:h-20 flex items-end pb-6 md:pb-8">
         <motion.div
           className="w-full"
           initial={{ opacity: 0, y: 50 }}

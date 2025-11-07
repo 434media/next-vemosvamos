@@ -39,8 +39,6 @@ export function CultureDeckFilter({
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
   const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8])
 
-  const selectedCardType = cardTypes.find((ct) => ct.type === selectedFilter) || cardTypes[0]
-
   const handleFilterChange = (type: CardType | "all") => {
     onFilterChange(type)
   }
@@ -60,7 +58,7 @@ export function CultureDeckFilter({
               const middleIndex = (totalCards - 0) / 2
               const offset = index - middleIndex
               // Tighter centering calculation
-              const spacingBetweenCards = 8 // 8% spacing between cards
+              const spacingBetweenCards = 7 // 8% spacing between cards
               const cardPosition = 50 + (offset * spacingBetweenCards) // Center at 50% with tight spacing
               const rotation = offset * 8 // 8 degree fan spread
               

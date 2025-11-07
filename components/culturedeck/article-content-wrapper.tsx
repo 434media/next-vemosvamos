@@ -9,7 +9,7 @@ const CultureDeckArticleContent = dynamic(
   { 
     ssr: false,
     loading: () => (
-      <div className="min-h-screen bg-[#eeebe3] pt-24 pb-16 flex items-center justify-center">
+      <div className="min-h-screen pt-24 pb-16 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#ca0013] mx-auto mb-4"></div>
           <p className="text-[#1a1a1a]/70">Loading Article...</p>

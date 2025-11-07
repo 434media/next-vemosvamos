@@ -70,7 +70,7 @@ export function CultureDeckCard({
           </h3>
 
           <div 
-            className="text-sm sm:text-base text-[#1a1a1a]/80 leading-relaxed font-medium [&_p]:mb-2 [&_strong]:font-bold [&_strong]:text-[#1a1a1a]"
+            className="max-w-lg text-balance tracking-tighter text-base text-[#1a1a1a]/80 leading-relaxed font-medium [&_p]:mb-2 [&_strong]:font-bold [&_strong]:text-[#1a1a1a]"
             dangerouslySetInnerHTML={{ __html: safeFormatContent(article.summary[language]) }}
           />
 
