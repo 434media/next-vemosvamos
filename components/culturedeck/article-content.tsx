@@ -118,74 +118,6 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
             )}
           </motion.section>
 
-          {/* Founder's Note Section */}
-          {article.foundersNote && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="rounded-xl shadow-lg p-6 md:p-8 lg:p-12 bg-white border border-gray-200 relative"
-            >
-              <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-8 border-b-2 border-[#ca0013] pb-4 text-[#1a1a1a]">
-                {language === 'es' ? "Nota del Fundador" : "Founder's Note"}
-              </h2>
-              <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-                <div className="space-y-4">
-                  <div
-                    className="prose prose-lg max-w-none text-gray-800 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-black [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_li]:leading-relaxed md:tracking-tighter"
-                    dangerouslySetInnerHTML={{ __html: safeFormatContent(article.foundersNote.text[language]) }}
-                  />
-                </div>
-                {article.foundersNote.image && (
-                  <div className="relative aspect-[4/5] rounded-lg overflow-visible bg-gray-100 shadow-lg">
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-                      animate={{ opacity: 1, scale: 1, rotate: -8 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                      className="absolute -top-6 -left-6 md:-top-8 md:-left-8 w-32 h-16 md:w-40 md:h-20 z-10"
-                    >
-                      <Image
-                        src="https://ampd-asset.s3.us-east-2.amazonaws.com/The+Feed/ActionsSpeakLouder.png"
-                        alt="Actions Speak Louder"
-                        fill
-                        className="object-contain drop-shadow-lg"
-                      />
-                    </motion.div>
-                    <Image
-                      src={article.foundersNote.image}
-                      alt="Founder's note"
-                      fill
-                      className="object-cover rounded-lg"
-                    />
-                  </div>
-                )}
-              </div>
-            </motion.section>
-          )}
-
-          {/* Last Month in Motion */}
-          {article.lastMonthGif && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-8"
-            >
-              <div className="relative w-full aspect-[3/1] border-4 border-black overflow-hidden bg-gray-100">
-                <Image
-                  src={article.lastMonthGif}
-                  alt="Last month in motion"
-                  fill
-                  className="object-cover"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                  <span className="sr-only">Last Month in Motion</span>
-                </div>
-              </div>
-            </motion.section>
-          )}
-
           {/* Newsletter Spotlights */}
           {article.spotlights && article.spotlights.length > 0 && (
             <div className="space-y-8">
@@ -236,59 +168,6 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                 </motion.div>
               ))}
             </div>
-          )}
-
-          {/* Featured Post */}
-          {article.featuredPost && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="border-4 border-black bg-white overflow-hidden"
-            >
-              {article.featuredPost.image && (
-                <div className="relative w-full aspect-[2/1] bg-gray-100">
-                  <Image
-                    src={article.featuredPost.image}
-                    alt={article.featuredPost.title[language]}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-              <div className="p-6 md:p-8 lg:p-12 space-y-6">
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-mono uppercase tracking-tight border-b-4 border-black pb-4">
-                  {article.featuredPost.title[language]}
-                </h2>
-                <div
-                  className="prose prose-lg max-w-none text-gray-800 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-black [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_li]:leading-relaxed"
-                  dangerouslySetInnerHTML={{ __html: safeFormatContent(article.featuredPost.content[language]) }}
-                />
-              </div>
-            </motion.section>
-          )}
-
-          {/* The Drop */}
-          {article.theDropGif && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="space-y-8"
-            >
-              <div className="relative w-full aspect-[3/1] border-4 border-black overflow-hidden bg-gray-100">
-                <Image 
-                  src={article.theDropGif} 
-                  alt="The Drop" 
-                  fill 
-                  className="object-cover" 
-                  unoptimized 
-                />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                  <span className="sr-only">The Drop</span>
-                </div>
-              </div>
-            </motion.section>
           )}
 
           {/* Upcoming Event CTA */}
