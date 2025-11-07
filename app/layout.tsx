@@ -243,7 +243,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-[#eeebe3] w-full min-h-screen m-0 p-0 overflow-x-hidden">
+      <body className="font-sans antialiased bg-[#f1eee7] w-full min-h-screen m-0 p-0 overflow-x-hidden">
         <Suspense fallback={<div>Loading...</div>}>
           <LayoutWrapper>{children}</LayoutWrapper>
         </Suspense>

@@ -87,13 +87,13 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
   }
 
   return (
-    <div className="min-h-screen bg-[#eeebe3]">
+    <div className="min-h-screen">
+      {/* Hero Section - Full Width */}
+      <CultureDeckHero />
+      
       {/* Main Content Container */}
-      <div className="pt-24 pb-16">
+      <div className="pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Hero Section */}
-          <CultureDeckHero />
-
           {/* Filter Section */}
           <CultureDeckFilter
             cardTypes={cardTypes}
