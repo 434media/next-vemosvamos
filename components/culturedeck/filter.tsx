@@ -1,8 +1,8 @@
 "use client"
 
-import { motion } from "motion/react"
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+import { motion, useScroll, useTransform } from "motion/react"
+import { useState, useRef } from "react"
+import Image from "next/image"
 import type { CardType } from "../../lib/types/culturedeck"
 
 interface CardTypeInfo {
@@ -10,6 +10,7 @@ interface CardTypeInfo {
   label: string
   description: string
   icon: string
+  image: string
 }
 
 interface CultureDeckFilterProps {
@@ -24,106 +25,246 @@ export function CultureDeckFilter({
   cardTypes,
   selectedFilter,
   onFilterChange,
-  filterLabel,
-  clearFiltersLabel,
 }: CultureDeckFilterProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+  
+  // Scroll-based animations
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  })
+  
+  const y = useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50])
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.8, 1, 1, 0.8])
 
   const selectedCardType = cardTypes.find((ct) => ct.type === selectedFilter) || cardTypes[0]
 
   const handleFilterChange = (type: CardType | "all") => {
     onFilterChange(type)
-    setIsDropdownOpen(false)
   }
 
   return (
-    <motion.div
-      className="bg-white rounded-lg shadow-lg p-6 mb-8"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-    >
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
-        <h2 className="text-sm uppercase tracking-wider text-[#1a1a1a] font-semibold">{filterLabel}</h2>
-        {selectedFilter !== "all" && (
-          <button
-            onClick={() => onFilterChange("all")}
-            className="text-sm uppercase tracking-wider text-[#ca0013] hover:underline font-semibold transition-colors"
-          >
-            {clearFiltersLabel}
-          </button>
-        )}
-      </div>
-
-      <div className="lg:hidden">
-        <div className="relative">
-          <button
-            onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full p-4 rounded-lg border-2 border-[#1a1a1a]/20 bg-white text-[#1a1a1a] hover:border-[#ca0013] transition-all duration-300 flex items-center justify-between"
-          >
-            <div className="flex items-center gap-3">
-              <span className="text-2xl">{selectedCardType.icon}</span>
-              <div className="text-left">
-                <div className="text-sm uppercase font-semibold tracking-wider">{selectedCardType.label}</div>
-                {selectedCardType.description && (
-                  <div className="text-xs mt-1 opacity-80">{selectedCardType.description}</div>
-                )}
-              </div>
-            </div>
-            <ChevronDown
-              className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""}`}
-            />
-          </button>
-
-          {isDropdownOpen && (
-            <motion.div
-              className="absolute z-10 w-full mt-2 bg-white rounded-lg border-2 border-[#1a1a1a]/20 shadow-xl overflow-hidden"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              {cardTypes.map((cardType) => (
-                <button
-                  key={cardType.type}
+    <div ref={containerRef} className="absolute inset-x-0 top-[75vh] md:top-[80vh] z-30 pointer-events-none">
+      <motion.div
+        className="w-full h-[25vh] md:h-[20vh]"
+        style={{ y, opacity, scale }}
+      >
+        {/* Deck Layout: Tight card spacing like real playing cards */}
+        <div className="relative w-full h-full">
+          {/* Desktop Layout - Centered Fan Formation */}
+          <div className="hidden md:block w-full h-full relative">
+            {cardTypes.map((cardType, index) => {
+              const totalCards = cardTypes.length
+              const middleIndex = (totalCards - 0) / 2
+              const offset = index - middleIndex
+              // Tighter centering calculation
+              const spacingBetweenCards = 8 // 8% spacing between cards
+              const cardPosition = 50 + (offset * spacingBetweenCards) // Center at 50% with tight spacing
+              const rotation = offset * 8 // 8 degree fan spread
+              
+              return (
+                <motion.button
+                  key={`desktop-${cardType.type}`}
                   onClick={() => handleFilterChange(cardType.type)}
-                  className={`w-full p-4 flex items-center gap-3 transition-colors ${
-                    selectedFilter === cardType.type
-                      ? "bg-[#ca0013] text-white"
-                      : "bg-white text-[#1a1a1a] hover:bg-[#eeebe3]"
-                  }`}
+                  onHoverStart={() => setHoveredCard(cardType.type)}
+                  onHoverEnd={() => setHoveredCard(null)}
+                  className={`absolute pointer-events-auto transition-all duration-300 ${
+                    selectedFilter === cardType.type ? "z-20" : "z-10"
+                  } ${hoveredCard === cardType.type ? "z-30" : ""}`}
+                  style={{
+                    left: `${cardPosition}%`,
+                    top: '50%',
+                    transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
+                  }}
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.8,
+                    rotate: rotation + 180
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: selectedFilter === cardType.type ? 1.1 : 1,
+                    rotate: rotation
+                  }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ 
+                    scale: selectedFilter === cardType.type ? 1.15 : 1.05,
+                    rotate: rotation * 0.5,
+                    y: -10,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  <span className="text-2xl">{cardType.icon}</span>
-                  <div className="text-left">
-                    <div className="text-sm uppercase font-semibold tracking-wider">{cardType.label}</div>
-                    {cardType.description && <div className="text-xs mt-1 opacity-80">{cardType.description}</div>}
+                  {/* Overlay Card Design with Image Support */}
+                  <div className={`
+                    w-24 h-32 lg:w-28 lg:h-36
+                    bg-white rounded-lg shadow-xl
+                    transition-all duration-300 transform-gpu
+                    overflow-hidden
+                    ${selectedFilter === cardType.type 
+                      ? "ring-3 ring-[#ca0013] shadow-2xl shadow-[#ca0013]/30" 
+                      : "ring-1 ring-black/20 hover:ring-[#ca0013]/50 hover:shadow-xl"
+                    }
+                  `}>
+                    {/* Card Image or Icon */}
+                    <div className="h-full w-full relative">
+                      {cardType.image ? (
+                        <Image
+                          src={cardType.image}
+                          alt={cardType.label}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 64px, (max-width: 768px) 80px, (max-width: 1024px) 96px, 112px"
+                        />
+                      ) : (
+                        <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-white to-gray-50">
+                          <span className={`text-3xl lg:text-4xl font-bold transition-colors duration-300 ${
+                            selectedFilter === cardType.type ? "text-[#ca0013]" : "text-black/70"
+                          }`}>
+                            {cardType.icon}
+                          </span>
+                        </div>
+                      )}
+                      
+                      {/* Card Overlay */}
+                      <div className={`absolute inset-0 transition-colors duration-300 ${
+                        selectedFilter === cardType.type 
+                          ? "bg-gradient-to-t from-[#ca0013]/90 via-[#ca0013]/20 to-transparent" 
+                          : "bg-gradient-to-t from-black/60 via-black/10 to-transparent"
+                      }`} />
+                      
+                      {/* Card Label */}
+                      <div className="absolute bottom-0 left-0 right-0 p-2">
+                        <div className={`text-[10px] font-bold uppercase tracking-wider text-center ${
+                          selectedFilter === cardType.type ? "text-white" : "text-white"
+                        }`}>
+                          {cardType.label}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </button>
-              ))}
-            </motion.div>
-          )}
-        </div>
-      </div>
+                </motion.button>
+              )
+            })}
+          </div>
 
-      <div className="hidden lg:grid grid-cols-4 xl:grid-cols-7 gap-3">
-        {cardTypes.map((cardType) => (
-          <motion.button
-            key={cardType.type}
-            onClick={() => onFilterChange(cardType.type)}
-            className={`p-4 rounded-lg border-2 transition-all duration-300 ${
-              selectedFilter === cardType.type
-                ? "border-[#ca0013] bg-[#ca0013] text-white"
-                : "border-[#1a1a1a]/20 bg-white text-[#1a1a1a] hover:border-[#ca0013]"
-            }`}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <div className="text-3xl mb-2">{cardType.icon}</div>
-            <div className="text-xs uppercase font-semibold tracking-wider">{cardType.label}</div>
-            {cardType.description && <div className="text-xs mt-1 opacity-80">{cardType.description}</div>}
-          </motion.button>
-        ))}
-      </div>
-    </motion.div>
+          {/* Mobile Layout - Centered Fan Formation */}
+          <div className="block md:hidden w-full h-full relative">
+            {cardTypes.map((cardType, index) => {
+              const isTopRow = index < 4
+              const rowIndex = isTopRow ? index : index - 4
+              const totalInRow = isTopRow ? 4 : 3
+              
+              // Calculate position for mobile cards - true centering
+              const middleIndex = (totalInRow - 0) / 2
+              const offset = rowIndex - middleIndex
+              // Tighter spacing for true mobile centering
+              const spacingBetweenCards = isTopRow ? 18 : 16 // Compact spacing for mobile
+              const cardPosition = 50 + (offset * spacingBetweenCards) // Center at 50%
+              const topPosition = isTopRow ? 30 : 90 // 30% for top row, 70% for bottom
+              const rotation = offset * 6 // 6 degree fan spread
+              
+              return (
+                <motion.button
+                  key={`mobile-${cardType.type}`}
+                  onClick={() => handleFilterChange(cardType.type)}
+                  onHoverStart={() => setHoveredCard(cardType.type)}
+                  onHoverEnd={() => setHoveredCard(null)}
+                  className={`absolute pointer-events-auto transition-all duration-300 ${
+                    selectedFilter === cardType.type ? "z-20" : "z-10"
+                  } ${hoveredCard === cardType.type ? "z-30" : ""}`}
+                  style={{
+                    left: `${cardPosition}%`,
+                    top: `${topPosition}%`,
+                    transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
+                  }}
+                  initial={{ 
+                    opacity: 0, 
+                    scale: 0.8,
+                    rotate: rotation + 180
+                  }}
+                  animate={{ 
+                    opacity: 1, 
+                    scale: selectedFilter === cardType.type ? 1.1 : 1,
+                    rotate: rotation
+                  }}
+                  transition={{ 
+                    duration: 0.5, 
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  whileHover={{ 
+                    scale: selectedFilter === cardType.type ? 1.15 : 1.05,
+                    rotate: 0,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {/* Mobile Card Design - Slightly Larger for Text */}
+                  <div className={`
+                    w-18 h-24 sm:w-22 sm:h-30
+                    bg-white rounded-lg shadow-xl
+                    transition-all duration-300 transform-gpu
+                    overflow-hidden
+                    ${selectedFilter === cardType.type 
+                      ? "ring-3 ring-[#ca0013] shadow-2xl shadow-[#ca0013]/30" 
+                      : "ring-1 ring-black/20 hover:ring-[#ca0013]/50 hover:shadow-xl"
+                    }
+                  `}>
+                  {/* Card Image or Icon */}
+                  <div className="h-full w-full relative">
+                    {cardType.image ? (
+                      <Image
+                        src={cardType.image}
+                        alt={cardType.label}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 64px, 80px"
+                      />
+                    ) : (
+                      <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-white to-gray-50">
+                        <span className={`text-2xl sm:text-3xl font-bold transition-colors duration-300 ${
+                          selectedFilter === cardType.type ? "text-[#ca0013]" : "text-black/70"
+                        }`}>
+                          {cardType.icon}
+                        </span>
+                      </div>
+                    )}
+                    
+                    {/* Card Overlay */}
+                    <div className={`absolute inset-0 transition-colors duration-300 ${
+                      selectedFilter === cardType.type 
+                        ? "bg-gradient-to-t from-[#ca0013]/90 via-[#ca0013]/20 to-transparent" 
+                        : "bg-gradient-to-t from-black/60 via-black/10 to-transparent"
+                    }`} />
+                    
+                    {/* Card Label - Mobile Optimized */}
+                    <div className="absolute bottom-0 left-0 right-0 p-1">
+                      <div className={`text-[8px] sm:text-[9px] font-bold uppercase tracking-wide text-center leading-tight ${
+                        selectedFilter === cardType.type ? "text-white" : "text-white"
+                      }`}
+                      style={{
+                        wordBreak: 'break-word',
+                        hyphens: 'auto',
+                        lineHeight: '1.1'
+                      }}>
+                        {cardType.label}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </motion.button>
+              )
+            })}
+          </div>
+        </div>
+      </motion.div>
+    </div>
   )
 }
