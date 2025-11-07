@@ -160,7 +160,7 @@ export default function ConnectForm() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
       >
-        <div className="w-full bg-[#ca0013] rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="w-full bg-[#ca0013]/90 rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8 backdrop-blur-sm">
           <motion.h1
             className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase text-white mb-2 sm:mb-3 leading-tight"
             initial={{ opacity: 0, y: 30 }}

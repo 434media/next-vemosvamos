@@ -60,25 +60,41 @@ export function CultureDeckHero() {
             />
           </motion.div>
 
-          {/* Subtitle - More Impactful Typography */}
-          <motion.h1
-            className="text-balance text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ca0013] mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight px-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
-          >
-            {t("culturedeck.subtitle")}
-          </motion.h1>
+          {/* Subtitle - Stable Layout Typography */}
+          <div className="h-20 md:h-16 lg:h-20 xl:h-24 flex items-center justify-center px-2">
+            <motion.h1
+              className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-[#ca0013] text-center leading-none tracking-tighter text-balance max-w-full"
+              style={{
+                lineHeight: '1.0',
+                wordBreak: 'keep-all',
+                overflowWrap: 'break-word',
+                whiteSpace: 'pre-line'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
+              {t("culturedeck.subtitle")}
+            </motion.h1>
+          </div>
 
-          {/* Description - Enhanced Mobile Typography */}
-          <motion.p
-            className="text-balance text-xl md:text-xl lg:text-2xl xl:text-3xl text-[#1a1a1a] leading-snug font-semibold max-w-4xl mx-auto px-2"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
-          >
-            {t("culturedeck.description")}
-          </motion.p>
+          {/* Description - Stable Layout Typography */}
+          <div className="h-24 md:h-20 lg:h-24 xl:h-28 flex items-center justify-center px-2 mt-2 md:mt-4">
+            <motion.p
+              className="text-xl md:text-xl lg:text-2xl xl:text-3xl text-[#1a1a1a] font-semibold text-center max-w-4xl leading-tight tracking-tight md:tracking-normal"
+              style={{
+                lineHeight: '1.1',
+                wordBreak: 'keep-all',
+                overflowWrap: 'break-word',
+                whiteSpace: 'pre-line'
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
+              {t("culturedeck.description")}
+            </motion.p>
+          </div>
         </motion.div>
       </div>
 
