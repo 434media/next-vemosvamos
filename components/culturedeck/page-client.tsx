@@ -109,7 +109,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
       />
       
       {/* Main Content Container with Background */}
-      <div className="relative min-h-screen pb-16">
+      <div className="relative min-h-screen">
         {/* Background Images - Full Viewport Coverage */}
         <div className="absolute inset-0 w-full h-full z-0">
           {/* Desktop Background */}
@@ -135,7 +135,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
         </div>
         
         {/* Content Layer - Aligned with Hero Width */}
-        <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 pb-8 sm:pb-12 md:pb-16">
+        <div className="relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 md:pb-6">
 
           {/* Feed Section - Enhanced Typography with Visual Hierarchy */}
           <motion.div
