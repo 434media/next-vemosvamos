@@ -335,12 +335,12 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
               >
                 <motion.div
                   className="flex flex-col items-center"
-                  initial={{ y: "-100%" }}
+                  initial={{ y: "0%" }}
                   animate={{
-                    y: ["-100%", "-200%"]
+                    y: ["0%", "-100%"]
                   }}
                   transition={{
-                    duration: isMobile ? 30 : 20, // Slower: 30s mobile, 20s desktop
+                    duration: isMobile ? 50 : 20, // Much slower: 50s mobile, 20s desktop
                     repeat: Infinity,
                     ease: "linear",
                     repeatType: "loop",
@@ -419,7 +419,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                     y: ["-100%", "0%"]
                   }}
                   transition={{
-                    duration: isMobile ? 30 : 20, // Slower: 30s mobile, 20s desktop
+                    duration: isMobile ? 50 : 20, // Much slower: 50s mobile, 20s desktop
                     repeat: Infinity,
                     ease: "linear",
                     repeatType: "loop",
@@ -493,12 +493,12 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
               >
                 <motion.div
                   className="flex flex-col items-center"
-                  initial={{ y: "-100%" }}
+                  initial={{ y: "0%" }}
                   animate={{
-                    y: ["-100%", "-200%"]
+                    y: ["0%", "-100%"]
                   }}
                   transition={{
-                    duration: isMobile ? 30 : 20, // Slower: 30s mobile, 20s desktop
+                    duration: isMobile ? 50 : 20, // Much slower: 50s mobile, 20s desktop
                     repeat: Infinity,
                     ease: "linear",
                     repeatType: "loop",
