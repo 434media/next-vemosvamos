@@ -127,7 +127,7 @@ export default function ConnectForm() {
   }
 
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center py-6">
+    <section className="relative w-full min-h-screen flex items-center justify-center -mt-10 md:mt-0 py-6">
       {/* Background Images - Full Viewport Coverage */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Desktop Background */}
