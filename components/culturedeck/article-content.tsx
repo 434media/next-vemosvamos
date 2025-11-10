@@ -33,14 +33,14 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
   }
 
   return (
-    <div className="min-h-screen pt-20 pb-8">
+    <div className="min-h-screen pt-20 pb-6">
       <div className="max-w-6xl mx-auto px-2 sm:px-4 lg:px-6">
         {/* Back Button */}
         <motion.div 
           initial={{ opacity: 0, x: -20 }} 
           animate={{ opacity: 1, x: 0 }} 
           transition={{ duration: 0.4 }}
-          className="mb-6"
+          className="mb-4 md:mb-6"
         >
           <Link
             href="/culturedeck"
@@ -53,84 +53,106 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
           </Link>
         </motion.div>
 
-        <div className="space-y-16 md:space-y-24">
+        <div className="space-y-8 md:space-y-12 lg:space-y-16">
 
-          {/* Article Header - Always show, with improved layout */}
+          {/* Article Header - Mobile-first layout with image at top */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-12 border border-gray-200"
+            className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden"
           >
-            {/* Meta Information */}
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{article.date}</span>
-              <span className="text-xs uppercase tracking-wider px-3 py-1 bg-[#ca0013] text-white rounded-full font-semibold">
-                {cardTypeLabels[article.type]}
-              </span>
+            <div className="p-4 sm:p-6 md:p-8 lg:p-12">
+              {/* Meta Information */}
+              <div className="flex items-center gap-3 mb-3 md:mb-4">
+                <span className="text-xs uppercase tracking-wider text-[#1a1a1a]/60 font-semibold">{article.date}</span>
+                <span className="text-xs uppercase tracking-wider px-3 py-1 bg-[#ca0013] text-white rounded-full font-semibold">
+                  {cardTypeLabels[article.type]}
+                </span>
+              </div>
+
+              {/* Title */}
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] mb-3 sm:mb-4 md:mb-6 leading-tight tracking-tight">
+                {article.title[language]}
+              </h1>
+
+              {/* Mobile Image - Below title, above summary, aligned left with date/title */}
+              {(article.cardImage || article.heroImage?.desktop || article.heroImage?.mobile) && (
+                <div className="relative md:hidden mb-4 sm:mb-6 -mx-4 sm:-mx-6">
+                  {/* Mobile Image - 4:5 aspect ratio with scale-down to prevent cropping */}
+                  <div className="relative w-full aspect-[4/5] overflow-hidden">
+                    <Image
+                      src={article.heroImage?.mobile || article.heroImage?.desktop || article.cardImage || ''}
+                      alt={article.title[language]}
+                      fill
+                      sizes="100vw"
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                </div>
+              )}
+
+              {/* Summary */}
+              <div 
+                className="text-lg sm:text-xl md:text-2xl text-[#1a1a1a]/80 leading-relaxed mb-4 sm:mb-6 md:mb-8"
+                dangerouslySetInnerHTML={{ 
+                  __html: (() => {
+                    let content = article.summary[language]
+                    // Direct markdown to HTML conversion
+                    content = content.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 900; color: #ca0013;">$1</strong>')
+                    content = content.replace(/\*(.*?)\*/g, '<em style="font-style: italic;">$1</em>')
+                    // Wrap in paragraph if not already wrapped
+                    if (!content.includes('<p>')) {
+                      content = `<p style="margin-bottom: 1rem; line-height: 1.6;">${content}</p>`
+                    }
+                    return content
+                  })()
+                }}
+              />
+
+              {/* Author */}
+              {article.author && (
+                <div className="flex items-center gap-2 text-base text-[#1a1a1a] mb-3 md:mb-4">
+                  <span className="uppercase tracking-wider font-semibold text-[#ca0013]">{t("culturedeck.by")}</span>
+                  <span className="font-medium">{article.author}</span>
+                </div>
+              )}
+
+              {/* Tags */}
+              {article.tags && (
+                <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
+                  {article.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-xs uppercase tracking-wider px-3 py-1.5 bg-[#1a1a1a]/5 text-[#1a1a1a] rounded-full border border-[#1a1a1a]/10 hover:bg-[#ca0013]/10 hover:border-[#ca0013]/40/20 transition-colors"
+                    >
+                      {translateTopic(tag, t)}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Desktop Image - Keep at bottom for desktop */}
+              {(article.cardImage || article.heroImage?.desktop || article.heroImage?.mobile) && (
+                <div className="relative w-full hidden md:block">
+                  {/* Desktop Image - Optimized 16:9 aspect ratio */}
+                  <div className="relative w-full aspect-[16/9] rounded-lg overflow-hidden bg-gray-100 shadow-lg">
+                    <Image
+                      src={article.heroImage?.desktop || article.cardImage || article.heroImage?.mobile || ''}
+                      alt={article.title[language]}
+                      fill
+                      sizes="(max-width: 1200px) 90vw, 80vw"
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                </div>
+              )}
             </div>
-
-            {/* Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-[#1a1a1a] mb-4 sm:mb-6 leading-tight tracking-tight">
-              {article.title[language]}
-            </h1>
-
-            {/* Summary */}
-            <div 
-              className="text-lg sm:text-xl md:text-2xl text-[#1a1a1a]/80 leading-relaxed mb-6 sm:mb-8"
-              dangerouslySetInnerHTML={{ 
-                __html: (() => {
-                  let content = article.summary[language]
-                  // Direct markdown to HTML conversion
-                  content = content.replace(/\*\*(.*?)\*\*/g, '<strong style="font-weight: 900; color: #ca0013;">$1</strong>')
-                  content = content.replace(/\*(.*?)\*/g, '<em style="font-style: italic;">$1</em>')
-                  // Wrap in paragraph if not already wrapped
-                  if (!content.includes('<p>')) {
-                    content = `<p style="margin-bottom: 1rem; line-height: 1.6;">${content}</p>`
-                  }
-                  return content
-                })()
-              }}
-            />
-
-            {/* Author */}
-            {article.author && (
-              <div className="flex items-center gap-2 text-base text-[#1a1a1a] mb-4">
-                <span className="uppercase tracking-wider font-semibold text-[#ca0013]">{t("culturedeck.by")}</span>
-                <span className="font-medium">{article.author}</span>
-              </div>
-            )}
-
-            {/* Tags */}
-            {article.tags && (
-              <div className="flex flex-wrap gap-2 mb-8">
-                {article.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-xs uppercase tracking-wider px-3 py-1.5 bg-[#1a1a1a]/5 text-[#1a1a1a] rounded-full border border-[#1a1a1a]/10 hover:bg-[#ca0013]/10 hover:border-[#ca0013]/20 transition-colors"
-                  >
-                    {translateTopic(tag, t)}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {/* Main Image - Now after title, summary, and meta */}
-            {(article.cardImage || article.heroImage?.desktop || article.heroImage?.mobile) && (
-              <div className="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[2/1] rounded-lg overflow-hidden bg-gray-100 shadow-lg">
-                <Image
-                  src={article.heroImage?.desktop || article.heroImage?.mobile || article.cardImage || ''}
-                  alt={article.title[language]}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            )}
           </motion.section>
 
-          {/* Newsletter Spotlights */}
+          {/* Newsletter Spotlights - Following example pattern */}
           {article.spotlights && article.spotlights.length > 0 && (
             <div className="space-y-8">
               {article.spotlights.map((spotlight, index) => (
@@ -139,13 +161,13 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className={`grid md:grid-cols-2 gap-6 md:gap-8 rounded-xl shadow-lg p-6 md:p-8 bg-white hover:shadow-xl transition-all duration-300 border border-gray-200 ${
+                  className={`grid md:grid-cols-2 gap-6 md:gap-8 border-4 border-[#ca0013]/40 p-6 md:p-8 bg-white hover:bg-gray-50 transition-colors ${
                     index % 2 === 1 ? "md:grid-flow-dense" : ""
                   }`}
                 >
                   {spotlight.image && (
                     <div
-                      className={`relative aspect-[4/5] rounded-lg overflow-hidden bg-gray-100 shadow-lg ${
+                      className={`relative aspect-[4/5] border-4 border-[#ca0013]/40 overflow-hidden bg-gray-100 ${
                         index % 2 === 1 ? "md:col-start-2" : ""
                       }`}
                     >
@@ -157,12 +179,12 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                       />
                     </div>
                   )}
-                  <div className="flex flex-col justify-center space-y-4">
-                    <h3 className="text-xl md:text-2xl font-black uppercase tracking-tight text-[#1a1a1a]">
+                  <div className="flex flex-col justify-center space-y-4 md:space-y-6">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#1a1a1a] leading-tight">
                       {spotlight.title[language]}
                     </h3>
                     <div
-                      className="prose prose-lg max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-4 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-2 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-2 [&_li]:leading-relaxed [&_a]:text-[#ca0013] [&_a]:underline [&_a:hover]:text-[#1a1a1a]"
+                      className="prose prose-base sm:prose-lg md:prose-xl max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-[#ca0013] [&_a]:underline [&_a:hover]:text-[#1a1a1a]"
                       dangerouslySetInnerHTML={{ __html: safeFormatContent(spotlight.description[language]) }}
                     />
                     {spotlight.ctaLink && (
@@ -170,10 +192,10 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                         href={spotlight.ctaLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-[#ca0013] text-white text-sm uppercase tracking-wider font-bold hover:bg-[#1a1a1a] transition-all duration-300 w-fit rounded-lg shadow-md hover:shadow-lg group"
+                        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#ca0013] text-white text-sm md:text-base uppercase tracking-wider font-bold hover:bg-[#1a1a1a] transition-all duration-300 w-fit rounded-lg shadow-md hover:shadow-lg group"
                       >
                         {spotlight.ctaText[language]}
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                       </Link>
                     )}
                   </div>
@@ -182,14 +204,15 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
             </div>
           )}
 
-          {/* Upcoming Event CTA */}
+          {/* Upcoming Event CTA - Following example pattern */}
           {article.upcomingEvent && (
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="grid md:grid-cols-2 gap-6 md:gap-8 border-4 border-black bg-black text-white overflow-visible relative"
+              className="grid md:grid-cols-2 gap-6 md:gap-8 border-4 border-[#ca0013]/40 bg-black text-white overflow-visible relative"
             >
+              {/* 434 Featured Event Sticker */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
                 animate={{ opacity: 1, scale: 1, rotate: 12 }}
@@ -214,12 +237,12 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                   />
                 </div>
               )}
-              <div className="flex flex-col justify-center p-6 md:p-8 space-y-6">
-                <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white">
+              <div className="flex flex-col justify-center p-6 md:p-8 space-y-4 md:space-y-6">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black uppercase tracking-tight text-white leading-tight">
                   {article.upcomingEvent.title[language]}
                 </h3>
                 <div 
-                  className="text-base leading-relaxed text-gray-200 prose prose-lg max-w-none [&_p]:mb-3 [&_p]:leading-relaxed [&_strong]:font-bold [&_strong]:text-white [&_em]:italic [&_em]:text-gray-100 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-white [&_a]:underline [&_a:hover]:text-gray-200"
+                  className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-200 prose prose-lg max-w-none [&_p]:mb-2 [&_p]:leading-relaxed [&_strong]:font-bold [&_strong]:text-white [&_em]:italic [&_em]:text-gray-100 [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-white [&_a]:underline [&_a:hover]:text-gray-200"
                   dangerouslySetInnerHTML={{ __html: safeFormatContent(article.upcomingEvent.description[language]) }}
                 />
                 {article.upcomingEvent.ctaLink && (
@@ -242,7 +265,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
 
         {/* Back to Culture Deck */}
         <motion.div
-          className="text-center mt-16"
+          className="text-center mt-8 md:mt-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.5 }}

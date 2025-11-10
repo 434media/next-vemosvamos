@@ -202,6 +202,7 @@ const translations = {
     "culturedeck.subtitle": "Creative strategy for those who play to win",
     "culturedeck.description":
       "Each issue delivers insights, trends, and creative thought leadership designed for bilingual founders, marketers, and brand builders who live and work between worlds.",
+    "culturedeck.exploreBelow": "Explore Articles Below",
     "culturedeck.filterLabel": "Filter by Card Type",
     "culturedeck.clearFilters": "Clear Filters",
     "culturedeck.allCards": "All Cards",
@@ -445,6 +446,7 @@ const translations = {
     "culturedeck.subtitle": "Estrategia creativa para quienes juegan para ganar",
     "culturedeck.description":
       "Cada edición ofrece insights, tendencias y liderazgo creativo diseñado para fundadores, marketers y constructores de marca bilingües que viven y trabajan entre dos mundos.",
+    "culturedeck.exploreBelow": "Explorar Artículos Abajo",
     "culturedeck.filterLabel": "Filtrar por Tipo de Carta",
     "culturedeck.clearFilters": "Limpiar Filtros",
     "culturedeck.allCards": "Todas las Cartas",
