@@ -25,6 +25,7 @@ const translations = {
     // Mobile Menu
     "menu.whyDifferent": "MEET THE TEAM",
     "menu.contentHub": "CONTENT HUB",
+    "menu.culturedeck": "CULTURE DECK",
     "menu.connectWithUs": "CONNECT",
     "menu.partnerships": "PARTNERSHIPS",
     "menu.followUs": "FOLLOW US",
@@ -266,8 +267,9 @@ const translations = {
     "nav.menu": "Menú",
 
     // Mobile Menu
-    "menu.whyDifferent": "CONOCE AL EQUIPO",
-    "menu.contentHub": "CENTRO DE CONTENIDO",
+    "menu.whyDifferent": "EL EQUIPO",
+    "menu.contentHub": "CONTENIDO",
+    "menu.culturedeck": "CULTURA DECK",
     "menu.connectWithUs": "CONÉCTATE",
     "menu.partnerships": "ALIANZAS",
     "menu.followUs": "SÍGUENOS",

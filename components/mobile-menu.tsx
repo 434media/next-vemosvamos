@@ -126,8 +126,9 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
   ]
 
   const pageLinks = [
-    { name: t("menu.contentHub"), href: "/content-hub" },
+    { name: t("menu.culturedeck"), href: "/culturedeck" },
     { name: t("menu.whyDifferent"), href: "/about" },
+    { name: t("menu.contentHub"), href: "/content-hub" },
     { name: t("menu.connectWithUs"), href: "/connect" },
   ]
 
