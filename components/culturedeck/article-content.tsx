@@ -187,7 +187,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                       className="prose prose-base sm:prose-lg md:prose-xl max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-[#ca0013] [&_a]:underline [&_a:hover]:text-[#1a1a1a]"
                       dangerouslySetInnerHTML={{ __html: safeFormatContent(spotlight.description[language]) }}
                     />
-                    {spotlight.ctaLink && (
+                    {/* {spotlight.ctaLink && (
                       <Link
                         href={spotlight.ctaLink}
                         target="_blank"
@@ -197,7 +197,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                         {spotlight.ctaText[language]}
                         <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                       </Link>
-                    )}
+                    )} */}
                   </div>
                 </motion.div>
               ))}
