@@ -185,7 +185,7 @@ export default function NewsletterPopup({ showModal, onClose }: NewsletterPopupP
             {/* Left Side - Image */}
             <div className="lg:w-1/2 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#ca0013]/20 z-10" />
-              <Image src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/el-insight-card.jpg" alt="Vemos Vamos Community" fill className="object-cover" priority />
+              <Image src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/vemosinsights.jpg" alt="Vemos Vamos Community" fill className="object-cover" priority />
             </div>
 
             {/* Right Side - Newsletter Form */}
