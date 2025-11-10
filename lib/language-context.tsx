@@ -215,6 +215,8 @@ const translations = {
     "culturedeck.visitExternalLink": "Visit External Link",
     "culturedeck.author": "Author",
     "culturedeck.by": "By",
+    "culturedeck.hoverHint": "Hover image to reveal details",
+    "culturedeck.tapLogoHint": "Tap the Culture Deck logo to reveal details",
 
     // Tag translations
     "tag.Marketing": "Marketing",
@@ -460,6 +462,8 @@ const translations = {
     "culturedeck.visitExternalLink": "Visitar Enlace Externo",
     "culturedeck.author": "Autor",
     "culturedeck.by": "Por",
+    "culturedeck.hoverHint": "Pasa el cursor sobre la imagen para ver detalles",
+    "culturedeck.tapLogoHint": "Toca el logo de Culture Deck para ver detalles",
 
     // Tag translations
     "tag.Marketing": "Marketing",

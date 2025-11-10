@@ -241,6 +241,18 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
 
   return (
     <div className="relative h-screen w-full flex flex-col overflow-hidden">
+      {/* Add pulse animation keyframes for mobile logo */}
+      <style jsx>{`
+        @keyframes pulse {
+          0%, 100% {
+            filter: drop-shadow(0 0 8px rgba(202, 0, 19, 0.3));
+          }
+          50% {
+            filter: drop-shadow(0 0 12px rgba(202, 0, 19, 0.5));
+          }
+        }
+      `}</style>
+      
       {/* Background Images - Full Viewport Coverage */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Desktop Background */}
@@ -283,7 +295,18 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
           >
-            <div className="relative">
+            <div 
+              className={`relative ${isMobile ? 'cursor-pointer' : ''}`}
+              {...(isMobile && {
+                onTouchStart: handleTouchStart,
+                onTouchEnd: handleTouchEnd,
+                onClick: handleClick
+              })}
+              style={isMobile ? {
+                filter: 'drop-shadow(0 0 8px rgba(202, 0, 19, 0.3))',
+                animation: 'pulse 3s ease-in-out infinite'
+              } : {}}
+            >
               <Image
                 src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Black.svg"
                 alt="Culture Deck Logo"
@@ -364,12 +387,14 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                           aspectRatio: '4/5', // Exact 4:5 aspect ratio
                           transform: 'rotateX(-35deg) translateZ(20px)', // Counter the container rotation
                         }}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onMouseMove={handleMouseMove}
-                        onTouchStart={handleTouchStart}
-                        onTouchEnd={handleTouchEnd}
-                        onClick={handleClick}
+                        {...(!isMobile && {
+                          onMouseEnter: handleMouseEnter,
+                          onMouseLeave: handleMouseLeave,
+                          onMouseMove: handleMouseMove,
+                          onTouchStart: handleTouchStart,
+                          onTouchEnd: handleTouchEnd,
+                          onClick: handleClick
+                        })}
                         whileHover={{ 
                           scale: 1.08,
                           rotateY: 5,
@@ -443,12 +468,14 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                           aspectRatio: '4/5', // Exact 4:5 aspect ratio
                           transform: 'rotateX(-35deg) translateZ(20px)', // Counter the container rotation
                         }}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onMouseMove={handleMouseMove}
-                        onTouchStart={handleTouchStart}
-                        onTouchEnd={handleTouchEnd}
-                        onClick={handleClick}
+                        {...(!isMobile && {
+                          onMouseEnter: handleMouseEnter,
+                          onMouseLeave: handleMouseLeave,
+                          onMouseMove: handleMouseMove,
+                          onTouchStart: handleTouchStart,
+                          onTouchEnd: handleTouchEnd,
+                          onClick: handleClick
+                        })}
                         whileHover={{ 
                           scale: 1.08,
                           rotateY: -5,
@@ -522,12 +549,14 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                           aspectRatio: '4/5', // Exact 4:5 aspect ratio
                           transform: 'rotateX(-35deg) translateZ(20px)', // Counter the container rotation
                         }}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        onMouseMove={handleMouseMove}
-                        onTouchStart={handleTouchStart}
-                        onTouchEnd={handleTouchEnd}
-                        onClick={handleClick}
+                        {...(!isMobile && {
+                          onMouseEnter: handleMouseEnter,
+                          onMouseLeave: handleMouseLeave,
+                          onMouseMove: handleMouseMove,
+                          onTouchStart: handleTouchStart,
+                          onTouchEnd: handleTouchEnd,
+                          onClick: handleClick
+                        })}
                         whileHover={{ 
                           scale: 1.08,
                           rotateY: -5,
@@ -649,14 +678,17 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                     stiffness: 200,
                     damping: 20,
                   }}
-                  className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 overflow-hidden rounded-xl border border-white/20 shadow-xl mx-4"
-                  style={{
-                    width: 'min(90vw, 400px)',
-                    maxWidth: '400px',
-                    background: 'rgba(255, 255, 255, 0.95)',
-                    backdropFilter: 'blur(12px)'
-                  }}
+                  className="fixed inset-0 flex items-center justify-center z-50 p-4"
                 >
+                  <div
+                    className="overflow-hidden rounded-xl border border-white/20 shadow-xl"
+                    style={{
+                      width: 'min(90vw, 400px)',
+                      maxWidth: '400px',
+                      background: 'rgba(255, 255, 255, 0.95)',
+                      backdropFilter: 'blur(12px)'
+                    }}
+                  >
                   {/* Culture Deck Logo Background */}
                   <div 
                     className="absolute inset-0 opacity-15"
@@ -697,6 +729,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                       Close
                     </button>
                   </div>
+                  </div>
                 </motion.div>
               </>
             )}
@@ -710,10 +743,10 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
             transition={{ duration: 0.6, delay: 1.2 }}
           >
             <p className="text-xs sm:text-sm text-[#1a1a1a]/50 font-medium tracking-wide hidden sm:block">
-              Hover image to reveal details
+              {t("culturedeck.hoverHint")}
             </p>
             <p className="text-xs sm:text-sm text-[#1a1a1a]/50 font-medium tracking-wide block sm:hidden">
-              {isMobile ? 'Tap any card to reveal details' : 'Tap image to reveal details'}
+              {t("culturedeck.tapLogoHint")}
             </p>
           </motion.div>
         </motion.div>
