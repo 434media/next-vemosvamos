@@ -2,10 +2,31 @@
 
 import { motion } from "motion/react"
 import Image from "next/image"
+import { useState } from "react"
 import { useLanguage } from "../../lib/language-context"
+import type { CardType } from "../../lib/types/culturedeck"
 
-export function CultureDeckHero() {
+interface CardTypeInfo {
+  type: CardType | "all"
+  label: string
+  description: string
+  icon: string
+  image: string
+}
+
+interface CultureDeckHeroProps {
+  cardTypes?: CardTypeInfo[]
+  selectedFilter?: CardType | "all"
+  onFilterChange?: (filter: CardType | "all") => void
+}
+
+export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: CultureDeckHeroProps) {
   const { t } = useLanguage()
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null)
+
+  const handleFilterChange = (type: CardType | "all") => {
+    onFilterChange?.(type)
+  }
 
   return (
     <div className="relative h-[75vh] sm:h-[80vh] md:h-screen w-full flex flex-col">
@@ -37,8 +58,8 @@ export function CultureDeckHero() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-transparent" />
       </div>
 
-      {/* Main Content - Mobile Optimized */}
-      <div className="relative z-10 flex-1 flex items-center justify-center py-4 sm:py-6 md:py-8">
+      {/* Main Content - Mobile Optimized with Navbar Clearance */}
+      <div className="relative z-10 flex-1 flex items-center justify-center py-4 sm:py-6 md:py-8 pt-20 sm:pt-24 md:pt-8">
         <motion.div
           className="text-center px-3 sm:px-4 md:px-6 lg:px-8 w-full max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 30 }}
@@ -57,7 +78,7 @@ export function CultureDeckHero() {
               alt="Culture Deck"
               width={800}
               height={240}
-              className="mx-auto h-32 w-auto sm:h-36 md:h-40 lg:h-48 xl:h-56 drop-shadow-sm"
+              className="mx-auto h-24 w-auto sm:h-32 md:h-40 lg:h-48 xl:h-56 drop-shadow-sm"
               priority
             />
           </motion.div>
@@ -105,7 +126,7 @@ export function CultureDeckHero() {
       </div>
 
       {/* Filter Cards Teaser - Optimized for Mobile Visibility */}
-      <div className="relative z-20 h-16 sm:h-18 md:h-20 flex items-center justify-center pb-3 sm:pb-4 md:pb-6">
+      <div className="relative z-20 flex items-center justify-center pb-6 sm:pb-8 md:pb-6">
         <motion.div
           className="w-full"
           initial={{ opacity: 0, y: 50 }}
@@ -114,7 +135,7 @@ export function CultureDeckHero() {
         >
           {/* Teaser Text - Enhanced Visibility */}
           <motion.div
-            className="text-center"
+            className="text-center mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.8 }}
@@ -133,6 +154,179 @@ export function CultureDeckHero() {
             </div>
             <div className="w-8 h-0.5 bg-[#ca0013] mx-auto mt-2 shadow-sm"></div>
           </motion.div>
+
+          {/* Mobile Filter Cards - Static Integration */}
+          {cardTypes && onFilterChange && (
+            <motion.div
+              className="block md:hidden px-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+            >
+              {/* Two Rows Layout for Mobile */}
+              <div className="space-y-4">
+                {/* Top Row - 4 cards */}
+                <div className="flex justify-center gap-3 sm:gap-4">
+                  {cardTypes.slice(0, 4).map((cardType, index) => (
+                    <motion.button
+                      key={`mobile-hero-${cardType.type}`}
+                      onClick={() => handleFilterChange(cardType.type)}
+                      onHoverStart={() => setHoveredCard(cardType.type)}
+                      onHoverEnd={() => setHoveredCard(null)}
+                      className={`transition-all duration-300 ${
+                        selectedFilter === cardType.type ? "z-20" : "z-10"
+                      }`}
+                      initial={{ 
+                        opacity: 0, 
+                        scale: 0.8,
+                        y: 20
+                      }}
+                      animate={{ 
+                        opacity: 1, 
+                        scale: selectedFilter === cardType.type ? 1.05 : 1,
+                        y: 0
+                      }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: 1.2 + index * 0.1,
+                        ease: "easeOut"
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <div className={`
+                        w-16 h-20 sm:w-18 sm:h-24
+                        bg-white rounded-lg shadow-lg
+                        transition-all duration-300
+                        overflow-hidden
+                        ${selectedFilter === cardType.type 
+                          ? "ring-2 ring-[#ca0013] shadow-xl shadow-[#ca0013]/30" 
+                          : "ring-1 ring-black/20 hover:ring-[#ca0013]/50 hover:shadow-xl"
+                        }
+                      `}>
+                        <div className="h-full w-full relative">
+                          {cardType.image ? (
+                            <Image
+                              src={cardType.image}
+                              alt={cardType.label}
+                              fill
+                              className="object-cover"
+                              sizes="64px"
+                            />
+                          ) : (
+                            <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-white to-gray-50">
+                              <span className={`text-lg font-bold transition-colors duration-300 ${
+                                selectedFilter === cardType.type ? "text-[#ca0013]" : "text-black/70"
+                              }`}>
+                                {cardType.icon}
+                              </span>
+                            </div>
+                          )}
+                          
+                          <div className={`absolute inset-0 transition-colors duration-300 ${
+                            selectedFilter === cardType.type 
+                              ? "bg-gradient-to-t from-[#ca0013]/80 via-[#ca0013]/10 to-transparent" 
+                              : "bg-gradient-to-t from-black/50 via-black/5 to-transparent"
+                          }`} />
+                          
+                          <div className="absolute bottom-0 left-0 right-0 p-1">
+                            <div className={`text-[7px] font-bold uppercase tracking-wide text-center leading-tight ${
+                              selectedFilter === cardType.type ? "text-white" : "text-white"
+                            }`}
+                            style={{
+                              wordBreak: 'break-word',
+                              lineHeight: '1.0'
+                            }}>
+                              {cardType.label}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+
+                {/* Bottom Row - 3 cards */}
+                <div className="flex justify-center gap-3 sm:gap-4">
+                  {cardTypes.slice(4, 7).map((cardType, index) => (
+                    <motion.button
+                      key={`mobile-hero-bottom-${cardType.type}`}
+                      onClick={() => handleFilterChange(cardType.type)}
+                      onHoverStart={() => setHoveredCard(cardType.type)}
+                      onHoverEnd={() => setHoveredCard(null)}
+                      className={`transition-all duration-300 ${
+                        selectedFilter === cardType.type ? "z-20" : "z-10"
+                      }`}
+                      initial={{ 
+                        opacity: 0, 
+                        scale: 0.8,
+                        y: 20
+                      }}
+                      animate={{ 
+                        opacity: 1, 
+                        scale: selectedFilter === cardType.type ? 1.05 : 1,
+                        y: 0
+                      }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: 1.6 + index * 0.1,
+                        ease: "easeOut"
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <div className={`
+                        w-16 h-20 sm:w-18 sm:h-24
+                        bg-white rounded-lg shadow-lg
+                        transition-all duration-300
+                        overflow-hidden
+                        ${selectedFilter === cardType.type 
+                          ? "ring-2 ring-[#ca0013] shadow-xl shadow-[#ca0013]/30" 
+                          : "ring-1 ring-black/20 hover:ring-[#ca0013]/50 hover:shadow-xl"
+                        }
+                      `}>
+                        <div className="h-full w-full relative">
+                          {cardType.image ? (
+                            <Image
+                              src={cardType.image}
+                              alt={cardType.label}
+                              fill
+                              className="object-cover"
+                              sizes="64px"
+                            />
+                          ) : (
+                            <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-white to-gray-50">
+                              <span className={`text-lg font-bold transition-colors duration-300 ${
+                                selectedFilter === cardType.type ? "text-[#ca0013]" : "text-black/70"
+                              }`}>
+                                {cardType.icon}
+                              </span>
+                            </div>
+                          )}
+                          
+                          <div className={`absolute inset-0 transition-colors duration-300 ${
+                            selectedFilter === cardType.type 
+                              ? "bg-gradient-to-t from-[#ca0013]/80 via-[#ca0013]/10 to-transparent" 
+                              : "bg-gradient-to-t from-black/50 via-black/5 to-transparent"
+                          }`} />
+                          
+                          <div className="absolute bottom-0 left-0 right-0 p-1">
+                            <div className={`text-[7px] font-bold uppercase tracking-wide text-center leading-tight ${
+                              selectedFilter === cardType.type ? "text-white" : "text-white"
+                            }`}
+                            style={{
+                              wordBreak: 'break-word',
+                              lineHeight: '1.0'
+                            }}>
+                              {cardType.label}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </div>

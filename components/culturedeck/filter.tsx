@@ -51,8 +51,8 @@ export function CultureDeckFilter({
       >
         {/* Deck Layout: Tight card spacing like real playing cards */}
         <div className="relative w-full h-full">
-          {/* Desktop Layout - Centered Fan Formation */}
-          <div className="hidden md:block w-full h-full relative">
+          {/* Desktop Layout Only - Centered Fan Formation */}
+          <div className="w-full h-full relative">
             {cardTypes.map((cardType, index) => {
               const totalCards = cardTypes.length
               const middleIndex = (totalCards - 0) / 2
@@ -147,116 +147,6 @@ export function CultureDeckFilter({
                       </div>
                     </div>
                   </div>
-                </motion.button>
-              )
-            })}
-          </div>
-
-          {/* Mobile Layout - Centered Fan Formation */}
-          <div className="block md:hidden w-full h-full relative">
-            {cardTypes.map((cardType, index) => {
-              const isTopRow = index < 4
-              const rowIndex = isTopRow ? index : index - 4
-              const totalInRow = isTopRow ? 4 : 3
-              
-              // Calculate position for mobile cards - true centering
-              const middleIndex = (totalInRow - 0) / 2
-              const offset = rowIndex - middleIndex
-              // Tighter spacing for true mobile centering
-              const spacingBetweenCards = isTopRow ? 18 : 16 // Compact spacing for mobile
-              const cardPosition = 50 + (offset * spacingBetweenCards) // Center at 50%
-              const topPosition = isTopRow ? 30 : 90 // 30% for top row, 70% for bottom
-              const rotation = offset * 6 // 6 degree fan spread
-              
-              return (
-                <motion.button
-                  key={`mobile-${cardType.type}`}
-                  onClick={() => handleFilterChange(cardType.type)}
-                  onHoverStart={() => setHoveredCard(cardType.type)}
-                  onHoverEnd={() => setHoveredCard(null)}
-                  className={`absolute pointer-events-auto transition-all duration-300 ${
-                    selectedFilter === cardType.type ? "z-20" : "z-10"
-                  } ${hoveredCard === cardType.type ? "z-30" : ""}`}
-                  style={{
-                    left: `${cardPosition}%`,
-                    top: `${topPosition}%`,
-                    transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
-                  }}
-                  initial={{ 
-                    opacity: 0, 
-                    scale: 0.8,
-                    rotate: rotation + 180
-                  }}
-                  animate={{ 
-                    opacity: 1, 
-                    scale: selectedFilter === cardType.type ? 1.1 : 1,
-                    rotate: rotation
-                  }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: index * 0.1,
-                    ease: "easeOut"
-                  }}
-                  whileHover={{ 
-                    scale: selectedFilter === cardType.type ? 1.15 : 1.05,
-                    rotate: 0,
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {/* Mobile Card Design - Slightly Larger for Text */}
-                  <div className={`
-                    w-18 h-24 sm:w-22 sm:h-30
-                    bg-white rounded-lg shadow-xl
-                    transition-all duration-300 transform-gpu
-                    overflow-hidden
-                    ${selectedFilter === cardType.type 
-                      ? "ring-3 ring-[#ca0013] shadow-2xl shadow-[#ca0013]/30" 
-                      : "ring-1 ring-black/20 hover:ring-[#ca0013]/50 hover:shadow-xl"
-                    }
-                  `}>
-                  {/* Card Image or Icon */}
-                  <div className="h-full w-full relative">
-                    {cardType.image ? (
-                      <Image
-                        src={cardType.image}
-                        alt={cardType.label}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 640px) 64px, 80px"
-                      />
-                    ) : (
-                      <div className="h-full w-full flex items-center justify-center bg-gradient-to-br from-white to-gray-50">
-                        <span className={`text-2xl sm:text-3xl font-bold transition-colors duration-300 ${
-                          selectedFilter === cardType.type ? "text-[#ca0013]" : "text-black/70"
-                        }`}>
-                          {cardType.icon}
-                        </span>
-                      </div>
-                    )}
-                    
-                    {/* Card Overlay */}
-                    <div className={`absolute inset-0 transition-colors duration-300 ${
-                      selectedFilter === cardType.type 
-                        ? "bg-gradient-to-t from-[#ca0013]/90 via-[#ca0013]/20 to-transparent" 
-                        : "bg-gradient-to-t from-black/60 via-black/10 to-transparent"
-                    }`} />
-                    
-                    {/* Card Label - Mobile Optimized */}
-                    <div className="absolute bottom-0 left-0 right-0 p-1">
-                      <div className={`text-[8px] sm:text-[9px] font-bold uppercase tracking-wide text-center leading-tight ${
-                        selectedFilter === cardType.type ? "text-white" : "text-white"
-                      }`}
-                      style={{
-                        wordBreak: 'break-word',
-                        hyphens: 'auto',
-                        lineHeight: '1.1'
-                      }}>
-                        {cardType.label}
-                      </div>
-                    </div>
-                  </div>
-                </div>
                 </motion.button>
               )
             })}

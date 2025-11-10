@@ -97,16 +97,22 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
   return (
     <div className="min-h-screen relative">
       {/* Hero Section - Full Width */}
-      <CultureDeckHero />
-      
-      {/* Filter Cards Overlay - Absolute positioning across hero/content boundary */}
-      <CultureDeckFilter
+      <CultureDeckHero 
         cardTypes={cardTypes}
         selectedFilter={selectedFilter}
         onFilterChange={setSelectedFilter}
-        filterLabel={t("culturedeck.filterLabel")}
-        clearFiltersLabel={t("culturedeck.clearFilters")}
       />
+      
+      {/* Filter Cards Overlay - Desktop Only */}
+      <div className="hidden md:block">
+        <CultureDeckFilter
+          cardTypes={cardTypes}
+          selectedFilter={selectedFilter}
+          onFilterChange={setSelectedFilter}
+          filterLabel={t("culturedeck.filterLabel")}
+          clearFiltersLabel={t("culturedeck.clearFilters")}
+        />
+      </div>
       
       {/* Main Content Container with Dynamic Background */}
       <div className="relative">
@@ -136,8 +142,8 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
           <div className="absolute inset-0 bg-white/20" />
         </div>
         
-        {/* Content Layer - Dynamic Spacing */}
-        <div className={`relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-16 md:pt-24 ${
+        {/* Content Layer - Enhanced Mobile Spacing */}
+        <div className={`relative z-10 max-w-6xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-24 ${
           filteredArticles.length <= 2 
             ? 'pb-4 sm:pb-6 md:pb-8' 
             : 'pb-8 sm:pb-12 md:pb-16'
