@@ -155,52 +155,84 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
           {/* Newsletter Spotlights - Following example pattern */}
           {article.spotlights && article.spotlights.length > 0 && (
             <div className="space-y-8">
-              {article.spotlights.map((spotlight, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                  className={`grid md:grid-cols-2 gap-6 md:gap-8 border-4 border-[#ca0013]/40 p-6 md:p-8 bg-white hover:bg-gray-50 transition-colors ${
-                    index % 2 === 1 ? "md:grid-flow-dense" : ""
-                  }`}
-                >
-                  {spotlight.image && (
-                    <div
-                      className={`relative aspect-[4/5] border-4 border-[#ca0013]/40 overflow-hidden bg-gray-100 ${
-                        index % 2 === 1 ? "md:col-start-2" : ""
+              {article.spotlights.map((spotlight, index) => {
+                // Client-specified loteria cards for spotlights
+                const loteriaCardMap = [
+                  'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Insight.png',    // First spotlight: El Insight
+                  'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Tendencia.png',  // Second spotlight: La Tendencia
+                  'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Takeaway.png',   // Third spotlight: El Takeaway
+                ]
+                
+                // Select specific card for this spotlight, fallback to cycling if more than 3 spotlights
+                const selectedCard = loteriaCardMap[index] || loteriaCardMap[index % loteriaCardMap.length]
+                
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                    className={`relative grid md:grid-cols-2 gap-6 md:gap-8 border-4 border-[#ca0013]/40 p-6 md:p-8 bg-white hover:bg-gray-50 transition-colors overflow-visible ${
+                      index % 2 === 1 ? "md:grid-flow-dense" : ""
+                    }`}
+                  >
+                    {/* Loteria Card Sticker */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+                      animate={{ opacity: 1, scale: 1, rotate: index % 2 === 0 ? -12 : 15 }}
+                      transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
+                      className={`absolute z-10 w-16 h-20 md:w-24 md:h-28 ${
+                        index % 2 === 0 
+                          ? "-right-2 top-102 md:-right-10 md:-top-4" 
+                          : "left-80 top-128 md:-left-14 md:-top-4"
                       }`}
                     >
                       <Image
-                        src={spotlight.image}
-                        alt={spotlight.title[language]}
+                        src={selectedCard}
+                        alt={`Loteria Card ${index + 1}`}
                         fill
-                        className="object-cover"
+                        className="object-contain drop-shadow-2xl"
+                        sizes="(max-width: 768px) 64px, 80px"
                       />
-                    </div>
-                  )}
-                  <div className="flex flex-col justify-center space-y-4 md:space-y-6">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#1a1a1a] leading-tight">
-                      {spotlight.title[language]}
-                    </h3>
-                    <div
-                      className="prose prose-base sm:prose-lg md:prose-xl max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-[#ca0013] [&_a]:underline [&_a:hover]:text-[#1a1a1a]"
-                      dangerouslySetInnerHTML={{ __html: safeFormatContent(spotlight.description[language]) }}
-                    />
-                    {/* {spotlight.ctaLink && (
-                      <Link
-                        href={spotlight.ctaLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#ca0013] text-white text-sm md:text-base uppercase tracking-wider font-bold hover:bg-[#1a1a1a] transition-all duration-300 w-fit rounded-lg shadow-md hover:shadow-lg group"
+                    </motion.div>
+
+                    {spotlight.image && (
+                      <div
+                        className={`relative aspect-[4/5] border-4 border-[#ca0013]/40 overflow-hidden bg-gray-100 ${
+                          index % 2 === 1 ? "md:col-start-2" : ""
+                        }`}
                       >
-                        {spotlight.ctaText[language]}
-                        <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
-                      </Link>
-                    )} */}
-                  </div>
-                </motion.div>
-              ))}
+                        <Image
+                          src={spotlight.image}
+                          alt={spotlight.title[language]}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="flex flex-col justify-center space-y-4 md:space-y-6">
+                      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black uppercase tracking-tight text-[#1a1a1a] leading-tight">
+                        {spotlight.title[language]}
+                      </h3>
+                      <div
+                        className="prose prose-base sm:prose-lg md:prose-xl max-w-none text-[#1a1a1a]/80 [&_p]:leading-relaxed [&_p]:mb-3 [&_strong]:font-bold [&_strong]:text-[#ca0013] [&_em]:italic [&_ul]:list-disc [&_ul]:ml-6 [&_ul]:space-y-1 [&_ol]:list-decimal [&_ol]:ml-6 [&_ol]:space-y-1 [&_li]:leading-relaxed [&_a]:text-[#ca0013] [&_a]:underline [&_a:hover]:text-[#1a1a1a]"
+                        dangerouslySetInnerHTML={{ __html: safeFormatContent(spotlight.description[language]) }}
+                      />
+                      {/* {spotlight.ctaLink && (
+                        <Link
+                          href={spotlight.ctaLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-[#ca0013] text-white text-sm md:text-base uppercase tracking-wider font-bold hover:bg-[#1a1a1a] transition-all duration-300 w-fit rounded-lg shadow-md hover:shadow-lg group"
+                        >
+                          {spotlight.ctaText[language]}
+                          <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      )} */}
+                    </div>
+                  </motion.div>
+                )
+              })}
             </div>
           )}
 
@@ -224,6 +256,22 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                   alt="434 Featured Event"
                   fill
                   className="object-contain drop-shadow-2xl"
+                />
+              </motion.div>
+
+              {/* El Movimiento Loteria Card Sticker */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: -15 }}
+                transition={{ duration: 0.5, delay: 1.2 }}
+                className="absolute -left-3 -top-8 md:-left-6 md:-top-10 w-16 h-20 md:w-20 md:h-24 z-10"
+              >
+                <Image
+                  src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Movimiento.png"
+                  alt="El Movimiento Loteria Card"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  sizes="(max-width: 768px) 64px, 80px"
                 />
               </motion.div>
 
