@@ -1,5 +1,6 @@
 import Airtable from 'airtable'
 import { formatContent } from '../utils/content-formatter'
+import { transformArticleImageUrls } from '../utils/image-proxy'
 import type { 
   CultureDeckArticle, 
   AirtableRecord, 
@@ -197,7 +198,9 @@ export async function fetchCultureDeckArticles(): Promise<CultureDeckArticle[]> 
       fetchNextPage()
     })
 
-    return records.map(transformAirtableRecord)
+    // Transform records and apply image proxy URLs
+    const articles = records.map(transformAirtableRecord)
+    return articles.map(article => transformArticleImageUrls(article))
   } catch (error) {
     console.error('Error fetching culture deck articles from Airtable:', error)
     throw new Error('Failed to fetch articles from Airtable')
@@ -218,11 +221,14 @@ export async function fetchArticleBySlug(slug: string): Promise<CultureDeckArtic
     }
 
     const record = records[0]
-    return transformAirtableRecord({
+    const article = transformAirtableRecord({
       id: record.id,
       createdTime: record._rawJson.createdTime,
       fields: record.fields as unknown as AirtableFields
     })
+    
+    // Apply image proxy transformation
+    return transformArticleImageUrls(article)
   } catch (error) {
     console.error(`Error fetching article with slug "${slug}" from Airtable:`, error)
     return null

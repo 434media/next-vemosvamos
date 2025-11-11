@@ -2,6 +2,9 @@ import { notFound } from "next/navigation"
 import { getCultureDeckArticlesWithFallback, getArticleBySlugWithFallback } from "../../../lib/utils/culturedeck-fallback"
 import { CultureDeckArticleContentWrapper } from "../../../components/culturedeck/article-content-wrapper"
 
+// Enable Incremental Static Regeneration to refresh Airtable data
+export const revalidate = 3600 // Revalidate every hour
+
 export async function generateStaticParams() {
   try {
     const articles = await getCultureDeckArticlesWithFallback()

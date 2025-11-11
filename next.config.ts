@@ -32,6 +32,16 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'v3.airtableusercontent.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'v4.airtableusercontent.com',
+        pathname: '/**'
+      },
+      {
+        protocol: 'https',
         hostname: 'dl.airtable.com',
         pathname: '/**'
       },
@@ -39,6 +49,12 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'attachments.airtable.com',
         pathname: '/**'
+      },
+      // Additional Airtable domains
+      {
+        protocol: 'https',
+        hostname: 'airtable.com',
+        pathname: '/attachments/**'
       }
     ],
   },  
