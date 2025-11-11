@@ -2,8 +2,8 @@ import { getCultureDeckArticlesWithFallback } from "../../lib/utils/culturedeck-
 import { CultureDeckError, CultureDeckEmptyState } from "../../components/culturedeck/error-states"
 import { CultureDeckClientWrapper } from "../../components/culturedeck/client-wrapper"
 
-// Enable Incremental Static Regeneration to refresh Airtable data
-export const revalidate = 3600 // Revalidate every hour
+// Force dynamic rendering to ensure fresh Airtable data on every request
+export const dynamic = 'force-dynamic'
 
 export default async function CultureDeckPage() {
   try {
