@@ -183,8 +183,8 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                       transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
                       className={`absolute z-10 w-16 h-20 md:w-24 md:h-28 ${
                         index % 2 === 0 
-                          ? "-right-2 top-102 md:-right-10 md:-top-4" 
-                          : "left-80 top-128 md:-left-14 md:-top-4"
+                          ? "-right-4 -top-6 md:-right-10 md:-top-4" 
+                          : "-left-4 -top-6 md:-left-14 md:-top-4"
                       }`}
                     >
                       <Image
