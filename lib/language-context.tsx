@@ -260,6 +260,9 @@ const translations = {
     "culturedeck.card.takeaway.description": "Playable Insight",
     "culturedeck.card.podcast": "El Podcast",
     "culturedeck.card.podcast.description": "Audio Series",
+    
+    // Back to Homepage
+    "culturedeck.backToHome": "Back to Vemos Vamos",
   },
   es: {
     // Navbar
@@ -507,6 +510,9 @@ const translations = {
     "culturedeck.card.takeaway.description": "Insight Accionable",
     "culturedeck.card.podcast": "El Podcast",
     "culturedeck.card.podcast.description": "Serie de Audio",
+    
+    // Back to Homepage
+    "culturedeck.backToHome": "Volver a Vemos Vamos",
   },
 }
 

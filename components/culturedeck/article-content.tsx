@@ -43,13 +43,13 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
           className="mb-4 md:mb-6"
         >
           <Link
-            href="/culturedeck"
+            href="/"
             className="inline-flex items-center gap-2 text-[#ca0013] hover:text-[#1a1a1a] hover:underline font-semibold transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            {language === 'es' ? 'Volver a Culture Deck' : 'Back to Culture Deck'}
+            {t('culturedeck.backToHome')}
           </Link>
         </motion.div>
 
@@ -311,7 +311,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
 
         </div>
 
-        {/* Back to Culture Deck */}
+        {/* Back to Vemos Vamos */}
         <motion.div
           className="text-center mt-8 md:mt-12"
           initial={{ opacity: 0 }}
@@ -319,13 +319,13 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
           transition={{ duration: 0.6, delay: 0.5 }}
         >
           <Link
-            href="/culturedeck"
+            href="/"
             className="inline-flex items-center gap-2 px-8 py-4 bg-[#ca0013] text-white hover:bg-[#1a1a1a] transition-all duration-300 font-bold text-sm uppercase tracking-wider group rounded-lg shadow-lg hover:shadow-xl"
           >
             <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            {language === 'es' ? 'Volver a Culture Deck' : 'Back to Culture Deck'}
+            {t('culturedeck.backToHome')}
           </Link>
         </motion.div>
       </div>
