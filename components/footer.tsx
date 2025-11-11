@@ -26,21 +26,15 @@ export function Footer() {
 
   return (
     <footer
-      className="relative z-10 w-full py-8 backdrop-blur-sm"
+      className="relative z-10 w-full py-4 backdrop-blur-sm"
       style={{
-        background: `
-          radial-gradient(circle at 20% 20%, #ca001360 0%, transparent 50%),
-          radial-gradient(circle at 80% 20%, #ca001340 0%, transparent 50%),
-          radial-gradient(circle at 80% 80%, #ca001320 0%, transparent 50%),
-          radial-gradient(circle at 20% 80%, #ca001310 0%, transparent 50%)
-        `,
-        backgroundColor: "#1A1A1A",
+        backgroundColor: "#000000",
       }}
     >
       <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+        <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-3">
           {/* Copyright Section */}
-          <p className="text-center md:text-right text-white/80 text-sm md:text-base font-medium">
+          <p className="text-center md:text-right text-white/80 text-xs md:text-sm font-normal">
             © {new Date().getFullYear()}{" "}
             <Link
               href="https://434media.com"
@@ -61,7 +55,7 @@ export function Footer() {
             </Link>
           </p>
           {/* Social Links Section */}
-          <div className="flex justify-center md:justify-start items-center gap-6">
+          <div className="flex justify-center md:justify-start items-center gap-4">
             {socialLinks.map((social) => (
               <a
                 key={social.name}
@@ -71,7 +65,7 @@ export function Footer() {
                 className="text-white/80 hover:text-[#ca0013] transition-colors"
                 aria-label={social.name}
               >
-                <i className={`${social.icon} text-3xl`} />
+                <i className={`${social.icon} text-xl`} />
               </a>
             ))}
           </div>

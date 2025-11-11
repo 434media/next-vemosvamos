@@ -25,6 +25,7 @@ const translations = {
     // Mobile Menu
     "menu.whyDifferent": "MEET THE TEAM",
     "menu.contentHub": "CONTENT HUB",
+    "menu.culturedeck": "CULTURE DECK",
     "menu.connectWithUs": "CONNECT",
     "menu.partnerships": "PARTNERSHIPS",
     "menu.followUs": "FOLLOW US",
@@ -196,6 +197,72 @@ const translations = {
     series3Title: "BRAND SPOTLIGHT FEATURES",
     series3Description:
       "Collaborative content showcasing brands making an impact in Latino communities through authentic storytelling.",
+
+    // Culture Deck
+    "culturedeck.title": "The Culture Deck",
+    "culturedeck.subtitle": "Creative strategy for those who play to win",
+    "culturedeck.description":
+      "Each issue delivers insights, trends, and creative thought leadership designed for bilingual founders, marketers, and brand builders who live and work between worlds.",
+    "culturedeck.exploreBelow": "Explore Articles Below",
+    "culturedeck.filterLabel": "Filter by Card Type",
+    "culturedeck.clearFilters": "Clear Filters",
+    "culturedeck.allCards": "All Cards",
+    "culturedeck.readMore": "Read More",
+    "culturedeck.collapse": "Collapse",
+    "culturedeck.issueCount": "Issues",
+    "culturedeck.backToFeed": "Back to Feed",
+    "culturedeck.visitLink": "Visit Link",
+    "culturedeck.visitExternalLink": "Visit External Link",
+    "culturedeck.author": "Author",
+    "culturedeck.by": "By",
+    "culturedeck.hoverHint": "Hover image to reveal details",
+    "culturedeck.tapLogoHint": "Tap the Culture Deck logo to reveal details",
+
+    // Tag translations
+    "tag.Marketing": "Marketing",
+    "tag.Bilingual": "Bilingual",
+    "tag.Gen Z": "Gen Z", 
+    "tag.Trends": "Trends",
+    "tag.Culture": "Culture",
+    "tag.Content Creation": "Content Creation",
+    "tag.Events": "Events",
+    "tag.Tech": "Tech",
+    "tag.Entrepreneurship": "Entrepreneurship",
+    "tag.Strategy": "Strategy",
+    "tag.Content": "Content",
+    "tag.Framework": "Framework",
+
+    // Topics
+    "topic.community": "Community",
+    "topic.Innovation": "Innovation",
+    "topic.creative": "Creative",
+    "topic.development": "Development",
+    "topic.Design": "Design",
+    "topic.technology": "Technology",
+    "topic.Marketing": "Marketing",
+    "topic.Bilingual": "Bilingual",
+    "topic.Gen Z": "Gen Z",
+    "topic.Collaboration": "Collaboration",
+    "topic.Trends": "Trends",
+
+    // Card Types
+    "culturedeck.card.newsletter": "Newsletter",
+    "culturedeck.card.newsletter.description": "Monthly Updates",
+    "culturedeck.card.insight": "El Insight",
+    "culturedeck.card.insight.description": "Industry Insights",
+    "culturedeck.card.tendencia": "La Tendencia",
+    "culturedeck.card.tendencia.description": "Trends",
+    "culturedeck.card.movimiento": "El Movimiento",
+    "culturedeck.card.movimiento.description": "The Movement",
+    "culturedeck.card.flavor": "El Flavor",
+    "culturedeck.card.flavor.description": "Collabs We Love",
+    "culturedeck.card.takeaway": "El Takeaway",
+    "culturedeck.card.takeaway.description": "Playable Insight",
+    "culturedeck.card.podcast": "El Podcast",
+    "culturedeck.card.podcast.description": "Audio Series",
+    
+    // Back to Homepage
+    "culturedeck.backToHome": "Back to Vemos Vamos",
   },
   es: {
     // Navbar
@@ -205,8 +272,9 @@ const translations = {
     "nav.menu": "Menú",
 
     // Mobile Menu
-    "menu.whyDifferent": "CONOCE AL EQUIPO",
-    "menu.contentHub": "CENTRO DE CONTENIDO",
+    "menu.whyDifferent": "EL EQUIPO",
+    "menu.contentHub": "CONTENIDO",
+    "menu.culturedeck": "CULTURA DECK",
     "menu.connectWithUs": "CONÉCTATE",
     "menu.partnerships": "ALIANZAS",
     "menu.followUs": "SÍGUENOS",
@@ -379,6 +447,72 @@ const translations = {
     series3Title: "DESTACADOS DE MARCAS",
     series3Description:
       "Contenido colaborativo mostrando marcas que impactan comunidades latinas a través de narrativa auténtica.",
+
+    // Culture Deck
+    "culturedeck.title": "La Baraja Cultural",
+    "culturedeck.subtitle": "Estrategia creativa para quienes juegan para ganar",
+    "culturedeck.description":
+      "Cada edición ofrece insights, tendencias y liderazgo creativo diseñado para fundadores, marketers y constructores de marca bilingües que viven y trabajan entre dos mundos.",
+    "culturedeck.exploreBelow": "Explorar Artículos Abajo",
+    "culturedeck.filterLabel": "Filtrar por Tipo de Carta",
+    "culturedeck.clearFilters": "Limpiar Filtros",
+    "culturedeck.allCards": "Todas las Cartas",
+    "culturedeck.readMore": "Leer Más",
+    "culturedeck.collapse": "Colapsar",
+    "culturedeck.issueCount": "Ediciones",
+    "culturedeck.backToFeed": "Volver al Feed",
+    "culturedeck.visitLink": "Visitar Enlace",
+    "culturedeck.visitExternalLink": "Visitar Enlace Externo",
+    "culturedeck.author": "Autor",
+    "culturedeck.by": "Por",
+    "culturedeck.hoverHint": "Pasa el cursor sobre la imagen para ver detalles",
+    "culturedeck.tapLogoHint": "Toca el logo de Culture Deck para ver detalles",
+
+    // Tag translations
+    "tag.Marketing": "Marketing",
+    "tag.Bilingual": "Bilingüe", 
+    "tag.Gen Z": "Generación Z",
+    "tag.Trends": "Tendencias",
+    "tag.Culture": "Cultura",
+    "tag.Content Creation": "Creación de Contenido",
+    "tag.Events": "Eventos",
+    "tag.Tech": "Tecnología",
+    "tag.Entrepreneurship": "Emprendimiento",
+    "tag.Strategy": "Estrategia", 
+    "tag.Content": "Contenido",
+    "tag.Framework": "Marco de Trabajo",
+
+    // Topics
+    "topic.community": "Comunidad",
+    "topic.Innovation": "Innovación",
+    "topic.creative": "Creativo",
+    "topic.development": "Desarrollo",
+    "topic.Design": "Diseño",
+    "topic.technology": "Tecnología",
+    "topic.Marketing": "Marketing",
+    "topic.Bilingual": "Bilingüe",
+    "topic.Gen Z": "Gen Z",
+    "topic.Collaboration": "Colaboración",
+    "topic.Trends": "Tendencias",
+
+    // Card Types
+    "culturedeck.card.newsletter": "Newsletter",
+    "culturedeck.card.newsletter.description": "Actualizaciones Mensuales",
+    "culturedeck.card.insight": "El Insight",
+    "culturedeck.card.insight.description": "Insights de la Industria",
+    "culturedeck.card.tendencia": "La Tendencia",
+    "culturedeck.card.tendencia.description": "Tendencias",
+    "culturedeck.card.movimiento": "El Movimiento",
+    "culturedeck.card.movimiento.description": "El Movimiento",
+    "culturedeck.card.flavor": "El Flavor",
+    "culturedeck.card.flavor.description": "Colaboraciones que Amamos",
+    "culturedeck.card.takeaway": "El Takeaway",
+    "culturedeck.card.takeaway.description": "Insight Accionable",
+    "culturedeck.card.podcast": "El Podcast",
+    "culturedeck.card.podcast.description": "Serie de Audio",
+    
+    // Back to Homepage
+    "culturedeck.backToHome": "Volver a Vemos Vamos",
   },
 }
 
@@ -389,22 +523,18 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     // Load saved language from localStorage
     const savedLanguage = localStorage.getItem("vv-language") as Language
     if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
-      console.log("[v0] Loading saved language:", savedLanguage)
       setLanguage(savedLanguage)
     }
   }, [])
 
   const toggleLanguage = () => {
     const newLanguage = language === "en" ? "es" : "en"
-    console.log("[v0] Toggling language from", language, "to", newLanguage)
     setLanguage(newLanguage)
     localStorage.setItem("vv-language", newLanguage)
   }
 
   const t = (key: string): string => {
-    const translation = translations[language][key as keyof (typeof translations)["en"]] || key
-    console.log("[v0] Translating key:", key, "to:", translation, "for language:", language)
-    return translation
+    return translations[language][key as keyof (typeof translations)["en"]] || key
   }
 
   return <LanguageContext.Provider value={{ language, toggleLanguage, t }}>{children}</LanguageContext.Provider>
