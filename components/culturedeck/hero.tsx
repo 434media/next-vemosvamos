@@ -110,33 +110,24 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
     const viewportWidth = window.innerWidth
     const viewportHeight = window.innerHeight
 
-    const tooltipWidth = 450 // Updated to match actual tooltip width
+    const tooltipWidth = 320 // Desktop tooltip width
     const tooltipHeight = tooltip.scrollHeight
 
     const absoluteX = containerRect.left + mouseX
     const absoluteY = containerRect.top + mouseY
 
-    let finalX = mouseX + 12
+    // Simple positioning: prefer right, fallback to left if needed
+    let finalX = mouseX + 15
     let finalY = mouseY + 12
 
-    // Check if tooltip goes beyond right edge
-    if (absoluteX + 12 + tooltipWidth > viewportWidth) {
-      finalX = mouseX - tooltipWidth - 12
+    // Only move to left if tooltip would go beyond right edge of viewport
+    if (absoluteX + 15 + tooltipWidth > viewportWidth - 10) {
+      finalX = mouseX - tooltipWidth - 15
     }
 
-    // Check if tooltip goes beyond left edge
-    if (absoluteX + finalX < 0) {
-      finalX = -containerRect.left + 12
-    }
-
-    // Check if tooltip goes beyond bottom edge
-    if (absoluteY + 12 + tooltipHeight > viewportHeight) {
+    // Simple vertical positioning
+    if (absoluteY + 12 + tooltipHeight > viewportHeight - 10) {
       finalY = mouseY - tooltipHeight - 12
-    }
-
-    // Check if tooltip goes beyond top edge
-    if (absoluteY + finalY < 0) {
-      finalY = -containerRect.top + 12
     }
 
     return { x: finalX, y: finalY }
@@ -241,17 +232,6 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
 
   return (
     <div className="relative h-screen w-full flex flex-col overflow-hidden">
-      {/* Add pulse animation keyframes for mobile logo */}
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% {
-            filter: drop-shadow(0 0 8px rgba(202, 0, 19, 0.3));
-          }
-          50% {
-            filter: drop-shadow(0 0 12px rgba(202, 0, 19, 0.5));
-          }
-        }
-      `}</style>
       
       {/* Background Images - Full Viewport Coverage */}
       <div className="absolute inset-0 w-full h-full z-0">
@@ -302,13 +282,9 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                 onTouchEnd: handleTouchEnd,
                 onClick: handleClick
               })}
-              style={isMobile ? {
-                filter: 'drop-shadow(0 0 8px rgba(202, 0, 19, 0.3))',
-                animation: 'pulse 3s ease-in-out infinite'
-              } : {}}
             >
               <Image
-                src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Black.svg"
+                src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Red.svg"
                 alt="Culture Deck Logo"
                 width={200}
                 height={80}
@@ -322,7 +298,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
           {/* Star Wars Crawl - Cards Feed Into Logo */}
           <div
             ref={containerRef}
-            className="relative w-full max-w-4xl sm:max-w-5xl md:max-w-6xl overflow-hidden -mt-16 md:-mt-20"
+            className="relative w-full max-w-4xl sm:max-w-5xl md:max-w-6xl overflow-visible -mt-16 md:-mt-20"
             style={{ 
               height: 'min(80vh, 650px)',
               perspective: '1200px',
@@ -603,12 +579,12 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                     stiffness: 200,
                     damping: 20,
                   }}
-                  className="pointer-events-none absolute z-50 overflow-hidden rounded-xl border border-white/20 shadow-xl"
+                  className="pointer-events-none absolute z-50 overflow-visible rounded-xl border border-white/20 shadow-xl"
                   style={{
                     top: position.y,
                     left: position.x,
-                    width: 'min(95%, 450px)',
-                    maxWidth: '450px',
+                    width: 'min(95%, 320px)',
+                    maxWidth: '320px',
                     background: 'rgba(255, 255, 255, 0.95)',
                     backdropFilter: 'blur(12px)'
                   }}
@@ -617,7 +593,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                   <div 
                     className="absolute inset-0 opacity-15"
                     style={{
-                      backgroundImage: 'url(https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/culture-deck-logo-large.png)',
+                      backgroundImage: 'url(https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Gradient.svg)',
                       backgroundSize: '80%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat'
@@ -626,12 +602,12 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                   
                   <div
                     ref={tooltipRef}
-                    className="p-6 text-center relative z-10"
+                    className="p-4 relative z-10"
                   >
                     <h1
-                      className="text-xl sm:text-2xl md:text-3xl font-black leading-[1.2] tracking-tight mb-4 relative z-20"
+                      className="text-xl font-black leading-[1.2] text-balance mb-3 relative z-20"
                       style={{
-                        color: '#ca0013',
+                        color: '#333',
                         letterSpacing: '-0.02em',
                         textShadow: '0 2px 4px rgba(255, 255, 255, 0.9)'
                       }}
@@ -640,7 +616,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                     </h1>
                     
                     <p 
-                      className="text-sm sm:text-base leading-relaxed font-medium relative z-20"
+                      className="text-xs tracking-tight leading-relaxed font-medium relative z-20"
                       style={{
                         color: '#1a1a1a',
                         textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)'
@@ -693,7 +669,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                   <div 
                     className="absolute inset-0 opacity-15"
                     style={{
-                      backgroundImage: 'url(https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/culture-deck-logo-large.png)',
+                      backgroundImage: 'url(https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Gradient.svg)',
                       backgroundSize: '80%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat'
@@ -702,9 +678,9 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                   
                   <div className="p-6 text-center relative z-10">
                     <h1
-                      className="text-2xl font-black leading-[1.2] tracking-tight mb-4 relative z-20"
+                      className="text-2xl font-black leading-[1.2] text-balance mb-4 relative z-20"
                       style={{
-                        color: '#ca0013',
+                        color: '#333',
                         letterSpacing: '-0.02em',
                         textShadow: '0 2px 4px rgba(255, 255, 255, 0.9)'
                       }}
@@ -713,7 +689,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                     </h1>
                     
                     <p 
-                      className="text-base leading-relaxed font-medium relative z-20 mb-4"
+                      className="text-xs tracking-tight leading-relaxed font-medium relative z-20 mb-4"
                       style={{
                         color: '#1a1a1a',
                         textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)'
