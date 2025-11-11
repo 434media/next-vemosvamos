@@ -38,17 +38,13 @@ export function getProxiedImageUrl(originalUrl: string): string {
 
 /**
  * Get the best image URL with fallback to proxy
- * In development, use direct URLs. In production, prefer proxy for reliability.
+ * Always use proxy for Airtable images to ensure production reliability
  */
 export function getOptimalImageUrl(originalUrl: string): string {
   if (!originalUrl) return ''
   
-  // In development, use direct URLs for better performance
-  if (process.env.NODE_ENV === 'development') {
-    return originalUrl
-  }
-  
-  // In production, use proxy for Airtable images to avoid authentication issues
+  // Always use proxy for Airtable images to avoid authentication issues
+  // This ensures consistent behavior in all environments
   if (isAirtableImageUrl(originalUrl)) {
     return getProxiedImageUrl(originalUrl)
   }

@@ -60,13 +60,18 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Access to internal networks is not allowed' }, { status: 403 })
     }
 
-    // 4. Ensure the path looks like an image path
+    // 4. For Airtable domains, skip file extension validation since they use dynamic URLs
+    // For other domains, ensure the path looks like an image path
     const path = urlObj.pathname.toLowerCase()
-    const validImageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg']
-    const hasValidExtension = validImageExtensions.some(ext => path.includes(ext))
+    const isAirtableDomain = allowedDomains.includes(urlObj.hostname)
     
-    if (!hasValidExtension && !path.includes('airtable')) {
-      return NextResponse.json({ error: 'Invalid image URL' }, { status: 403 })
+    if (!isAirtableDomain) {
+      const validImageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg']
+      const hasValidExtension = validImageExtensions.some(ext => path.includes(ext))
+      
+      if (!hasValidExtension) {
+        return NextResponse.json({ error: 'Invalid image URL' }, { status: 403 })
+      }
     }
 
     // 5. Reconstruct the URL to prevent any manipulation
@@ -106,16 +111,16 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: 'Invalid content type' }, { status: 403 })
       }
 
-      // Check content length to prevent extremely large files (max 10MB)
+      // Check content length to prevent extremely large files (max 20MB for Airtable)
       const contentLength = response.headers.get('content-length')
-      if (contentLength && parseInt(contentLength) > 10 * 1024 * 1024) {
+      if (contentLength && parseInt(contentLength) > 20 * 1024 * 1024) {
         return NextResponse.json({ error: 'File too large' }, { status: 413 })
       }
 
       const imageData = await response.arrayBuffer()
 
-      // Additional size check after download
-      if (imageData.byteLength > 10 * 1024 * 1024) {
+      // Additional size check after download (max 20MB for Airtable images)
+      if (imageData.byteLength > 20 * 1024 * 1024) {
         return NextResponse.json({ error: 'File too large' }, { status: 413 })
       }
 
