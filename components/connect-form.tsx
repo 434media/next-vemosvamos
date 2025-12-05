@@ -1,9 +1,8 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, useEffect } from "react"
-import { motion, useInView } from "framer-motion"
+import { motion, useInView } from "motion/react"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
 
