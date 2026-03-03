@@ -1,12 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { motion, useInView } from "motion/react"
 import Image from "next/image"
 import { useLanguage } from "@/lib/language-context"
-
-const isDevelopment = process.env.NODE_ENV === "development"
 
 export default function ConnectForm() {
   const { t } = useLanguage()
@@ -21,42 +19,12 @@ export default function ConnectForm() {
     message: "",
   })
   const [consentChecked, setConsentChecked] = useState(false)
-  const turnstileRef = useRef<HTMLDivElement>(null)
-  const [turnstileWidget, setTurnstileWidget] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
   const [errorMessage, setErrorMessage] = useState("")
 
   const formRef = useRef<HTMLDivElement>(null)
   const formInView = useInView(formRef, { once: true, amount: 0.2 })
-
-  useEffect(() => {
-    if (!isDevelopment && !window.turnstile) {
-      const script = document.createElement("script")
-      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"
-      script.async = true
-      script.defer = true
-      document.body.appendChild(script)
-
-      script.onload = () => {
-        if (window.turnstile && turnstileRef.current && !turnstileWidget) {
-          const widgetId = window.turnstile.render(turnstileRef.current, {
-            sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
-            callback: (token: string) => {
-              console.log("[v0] Turnstile token received:", token)
-            },
-          })
-          setTurnstileWidget(widgetId)
-        }
-      }
-
-      return () => {
-        if (document.body.contains(script)) {
-          document.body.removeChild(script)
-        }
-      }
-    }
-  }, [turnstileWidget])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -72,24 +40,10 @@ export default function ConnectForm() {
     setErrorMessage("")
 
     try {
-      let turnstileResponse = undefined
-
-      if (!isDevelopment) {
-        if (!window.turnstile || !turnstileWidget) {
-          throw new Error("Turnstile is not initialized")
-        }
-
-        turnstileResponse = window.turnstile.getResponse(turnstileWidget)
-        if (!turnstileResponse) {
-          throw new Error(t("connect.form.errorTurnstile"))
-        }
-      }
-
       const response = await fetch("/api/connect", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(turnstileResponse && { "cf-turnstile-response": turnstileResponse }),
         },
         body: JSON.stringify(formData),
       })
@@ -109,9 +63,6 @@ export default function ConnectForm() {
           message: "",
         })
         setConsentChecked(false)
-        if (!isDevelopment && turnstileWidget && window.turnstile) {
-          window.turnstile.reset(turnstileWidget)
-        }
       } else {
         setSubmitStatus("error")
         setErrorMessage(responseData.error || t("connect.form.errorGeneral"))
@@ -131,7 +82,7 @@ export default function ConnectForm() {
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Desktop Background */}
         <Image
-          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-mouth.png"
+          src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/desktop-mouth.png"
           alt=""
           fill
           className="hidden md:block object-cover"
@@ -141,7 +92,7 @@ export default function ConnectForm() {
         />
         {/* Mobile Background */}
         <Image
-          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/mobile-mouth.png"
+          src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/mobile-mouth.png"
           alt=""
           fill
           className="block md:hidden object-cover"
@@ -285,12 +236,6 @@ export default function ConnectForm() {
                   className="w-full px-2 py-1.5 sm:px-3 sm:py-2 md:px-4 md:py-3 bg-transparent border-b-2 border-white text-white placeholder-white/70 focus:outline-none focus:border-white/90 transition-colors resize-none"
                 />
               </div>
-
-              {!isDevelopment && (
-                <div className="flex justify-start">
-                  <div ref={turnstileRef} data-size="normal" className="w-full" />
-                </div>
-              )}
 
               {/* Consent Checkbox */}
               <div className="flex items-start gap-2 md:gap-3 py-1 md:py-2">

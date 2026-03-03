@@ -1,23 +1,10 @@
 "use client"
 
 import type React from "react"
-import { useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useLanguage } from "@/lib/language-context"
 import Image from "next/image"
-
-// Extend the Window interface to include the turnstile property
-declare global {
-  interface Window {
-    turnstile?: {
-      render: (element: HTMLElement, options: { sitekey: string; callback: (token: string) => void }) => string
-      getResponse: (widgetId: string) => string | null
-      reset: (widgetId: string) => void
-    }
-  }
-}
-
-const isDevelopment = process.env.NODE_ENV === "development"
 
 interface NewsletterProps {
   currentLanguage?: "en" | "es"
@@ -28,37 +15,9 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const turnstileRef = useRef<HTMLDivElement>(null)
-  const [turnstileWidget, setTurnstileWidget] = useState<string | null>(null)
 
   const { t, language } = useLanguage()
   const activeLanguage = currentLanguage || language
-
-  useEffect(() => {
-    if (!isDevelopment && !window.turnstile) {
-      const script = document.createElement("script")
-      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js"
-      script.async = true
-      script.defer = true
-      document.body.appendChild(script)
-
-      script.onload = () => {
-        if (window.turnstile && turnstileRef.current && !turnstileWidget) {
-          const widgetId = window.turnstile.render(turnstileRef.current, {
-            sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
-            callback: (token: string) => {
-              console.log("Turnstile token:", token)
-            },
-          })
-          setTurnstileWidget(widgetId)
-        }
-      }
-
-      return () => {
-        document.body.removeChild(script)
-      }
-    }
-  }, [turnstileWidget])
 
   const handleSubmit = async (e: React.FormEvent) => {
     console.log("[v0] Form submit triggered")
@@ -67,25 +26,11 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
     setError(null)
 
     try {
-      let turnstileResponse = undefined
-
-      if (!isDevelopment) {
-        if (!window.turnstile || !turnstileWidget) {
-          throw new Error("Turnstile is not initialized")
-        }
-
-        turnstileResponse = window.turnstile.getResponse(turnstileWidget)
-        if (!turnstileResponse) {
-          throw new Error("Failed to get Turnstile response")
-        }
-      }
-
       console.log("[v0] Making API request to /api/newsletter")
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          ...(turnstileResponse && { "cf-turnstile-response": turnstileResponse }),
         },
         body: JSON.stringify({ email }),
       })
@@ -97,11 +42,6 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
         setEmail("")
         setIsSuccess(true)
         setTimeout(() => setIsSuccess(false), 5000)
-        if (!isDevelopment && turnstileWidget) {
-          if (window.turnstile) {
-            window.turnstile.reset(turnstileWidget)
-          }
-        }
       } else {
         throw new Error(responseData.error || "Newsletter subscription failed")
       }
@@ -120,7 +60,7 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
       <div className="bg-white rounded-2xl shadow-2xl overflow-hidden" style={{ aspectRatio: "4/5", height: "500px" }}>
         <div className="relative w-full" style={{ height: "40%" }}>
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/about-hero.png"
+            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/about-hero.png"
             alt="VEMOS VAMOS Newsletter"
             fill
             className="object-cover"
@@ -159,7 +99,6 @@ export function Newsletter({ currentLanguage }: NewsletterProps) {
                       className="w-full px-4 py-3 bg-white/20 rounded-lg border border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-white/70 text-sm backdrop-blur-sm"
                     />
                   </div>
-                  {!isDevelopment && <div ref={turnstileRef} data-size="flexible" className="w-full" />}
                   <button
                     type="submit"
                     disabled={isSubmitting}

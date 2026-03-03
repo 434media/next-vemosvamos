@@ -2,7 +2,7 @@ import { getCultureDeckArticlesWithFallback } from "../../lib/utils/culturedeck-
 import { CultureDeckError, CultureDeckEmptyState } from "../../components/culturedeck/error-states"
 import { CultureDeckClientWrapper } from "../../components/culturedeck/client-wrapper"
 
-// Force dynamic rendering to ensure fresh Airtable data on every request
+// Force dynamic rendering to ensure fresh Firestore data on every request
 export const dynamic = 'force-dynamic'
 
 export default async function CultureDeckPage() {

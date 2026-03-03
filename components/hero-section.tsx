@@ -34,7 +34,7 @@ export default function NewLandingPage() {
         {/* Desktop Hero Background */}
         <div className="absolute inset-0 hidden md:block lg:block xl:block">
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/hero-desktop"
+            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/hero-desktop"
             alt="Hero background for desktop"
             fill
             priority
@@ -45,7 +45,7 @@ export default function NewLandingPage() {
 
         <div className="absolute inset-0 xs:block sm:block md:hidden">
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/hero-mobile"
+            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/hero-mobile"
             alt="Hero background for mobile"
             fill
             priority

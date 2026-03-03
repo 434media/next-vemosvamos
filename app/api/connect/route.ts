@@ -1,77 +1,29 @@
 import { NextResponse } from "next/server"
-import Airtable from "airtable"
-import axios from "axios"
-
-const isDevelopment = process.env.NODE_ENV === "development"
-
-const airtableBaseId = process.env.AIRTABLE_BASE_ID
-const airtableApiKey = process.env.AIRTABLE_API_KEY
-const turnstileSecretKey = process.env.TURNSTILE_SECRET_KEY
-
-if (!airtableBaseId || !airtableApiKey) {
-  throw new Error("Airtable configuration is missing")
-}
-
-const base = new Airtable({ apiKey: airtableApiKey }).base(airtableBaseId)
+import { checkBotId } from "botid/server"
+import { db } from "@/lib/services/firebase"
 
 export async function POST(request: Request) {
   try {
+    // BotID verification
+    const verification = await checkBotId()
+    if (verification.isBot) {
+      return NextResponse.json({ error: "Access denied" }, { status: 403 })
+    }
+
     const { fullName, email, phoneNumber, company, city, state, country, message } = await request.json()
-    const turnstileToken = request.headers.get("cf-turnstile-response")
-    const remoteIp = request.headers.get("CF-Connecting-IP")
 
-    if (!airtableBaseId || !airtableApiKey) {
-      console.error("Airtable configuration is missing")
-      return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
-    }
-
-    if (!isDevelopment) {
-      if (!turnstileSecretKey) {
-        console.error("Turnstile secret key is not defined")
-        return NextResponse.json({ error: "Server configuration error" }, { status: 500 })
-      }
-
-      // Verify Turnstile token
-      if (turnstileToken) {
-        const idempotencyKey = crypto.randomUUID()
-        const turnstileVerification = await axios.post(
-          "https://challenges.cloudflare.com/turnstile/v0/siteverify",
-          new URLSearchParams({
-            secret: turnstileSecretKey,
-            response: turnstileToken,
-            remoteip: remoteIp || "",
-            idempotency_key: idempotencyKey,
-          }),
-          {
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          },
-        )
-
-        if (!turnstileVerification.data.success) {
-          const errorCodes = turnstileVerification.data["error-codes"] || []
-          console.error("Turnstile verification failed:", errorCodes)
-          return NextResponse.json({ error: "Turnstile verification failed", errorCodes }, { status: 400 })
-        }
-      } else {
-        return NextResponse.json({ error: "Turnstile token is missing" }, { status: 400 })
-      }
-    }
-
-    // Create record in Airtable
-    await base("VEMOSForm").create([
-      {
-        fields: {
-          FullName: fullName,
-          Email: email,
-          Phone: phoneNumber,
-          Company: company,
-          City: city,
-          State: state,
-          Country: country,
-          Message: message,
-        },
-      },
-    ])
+    // Save to Firestore
+    await db.collection("contact_submissions").add({
+      fullName,
+      email,
+      phone: phoneNumber,
+      company,
+      city,
+      state,
+      country,
+      message,
+      createdAt: new Date().toISOString(),
+    })
 
     return NextResponse.json({ message: "Form submitted successfully" }, { status: 200 })
   } catch (error) {

@@ -14,7 +14,7 @@ marked.setOptions({
 export function formatContent(content: string): string {
   if (!content) return ''
   
-  // First, let's handle Airtable's rich text format which often comes as markdown
+  // Handle rich text format which often comes as markdown
   let processedContent = content
   
   // Check if content has markdown syntax (like **bold** or *italic*)

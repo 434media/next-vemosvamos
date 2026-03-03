@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withBotId } from 'botid/next/config';
 
 const nextConfig: NextConfig = {
   typescript: {
@@ -8,16 +9,14 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     localPatterns: [
       {
-        pathname: '/api/proxy-image',
-      },
-      {
         pathname: '/images/**',
       },
     ],
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ampd-asset.s3.us-east-2.amazonaws.com",
+        hostname: "storage.googleapis.com",
+        pathname: "/groovy-ego-462522-v2.firebasestorage.app/**",
       },
        {
         protocol: 'https',
@@ -29,40 +28,8 @@ const nextConfig: NextConfig = {
         hostname: 'placehold.co',
         pathname: '/**'
       },
-      // Airtable CDN domains for Culture Deck images
-      {
-        protocol: 'https',
-        hostname: 'v5.airtableusercontent.com',
-        pathname: '/**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'v3.airtableusercontent.com',
-        pathname: '/**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'v4.airtableusercontent.com',
-        pathname: '/**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'dl.airtable.com',
-        pathname: '/**'
-      },
-      {
-        protocol: 'https',
-        hostname: 'attachments.airtable.com',
-        pathname: '/**'
-      },
-      // Additional Airtable domains
-      {
-        protocol: 'https',
-        hostname: 'airtable.com',
-        pathname: '/attachments/**'
-      }
     ],
   },  
 };
 
-export default nextConfig;
+export default withBotId(nextConfig);

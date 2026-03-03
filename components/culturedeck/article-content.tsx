@@ -158,9 +158,9 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
               {article.spotlights.map((spotlight, index) => {
                 // Client-specified loteria cards for spotlights
                 const loteriaCardMap = [
-                  'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Insight.png',    // First spotlight: El Insight
-                  'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Tendencia.png',  // Second spotlight: La Tendencia
-                  'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Takeaway.png',   // Third spotlight: El Takeaway
+                  'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Insight.png',    // First spotlight: El Insight
+                  'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Tendencia.png',  // Second spotlight: La Tendencia
+                  'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Takeaway.png',   // Third spotlight: El Takeaway
                 ]
                 
                 // Select specific card for this spotlight, fallback to cycling if more than 3 spotlights
@@ -252,7 +252,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                 className="absolute -right-5 -top-10 md:-top-8 md:-right-10 w-24 h-24 md:w-32 md:h-32 z-10"
               >
                 <Image
-                  src="https://ampd-asset.s3.us-east-2.amazonaws.com/The+Feed/434Featured.png"
+                  src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/The%20Feed/434Featured.png"
                   alt="434 Featured Event"
                   fill
                   className="object-contain drop-shadow-2xl"
@@ -267,7 +267,7 @@ export function CultureDeckArticleContent({ article }: CultureDeckArticleContent
                 className="absolute -left-3 -top-8 md:-left-6 md:-top-10 w-16 h-20 md:w-20 md:h-24 z-10"
               >
                 <Image
-                  src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Movimiento.png"
+                  src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Movimiento.png"
                   alt="El Movimiento Loteria Card"
                   fill
                   className="object-contain drop-shadow-2xl"

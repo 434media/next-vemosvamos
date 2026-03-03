@@ -27,7 +27,7 @@ const teamMembers = [
     name: "Stacy Carrizales",
     titleKey: "team.member1.title",
     descriptionKey: "team.member1.description",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/stacy-team",
+    image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/stacy-team",
     linkedin: "https://www.linkedin.com/in/stacycarrizales/",
     instagram: "https://www.instagram.com/strawberry.stacyy/",
   },
@@ -36,7 +36,7 @@ const teamMembers = [
     name: "Diana Garcia",
     titleKey: "team.member2.title",
     descriptionKey: "team.member2.description",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/diana-team",
+    image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/diana-team",
     linkedin: "https://www.linkedin.com/in/dianagrc/",
   },
   {
@@ -44,7 +44,7 @@ const teamMembers = [
     name: "Arely Reyes",
     titleKey: "team.member3.title",
     descriptionKey: "team.member3.description",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-arely.png",
+    image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/team-arely.png",
     linkedin: "https://www.linkedin.com/in/arely-reyes/",
     instagram: "https://www.instagram.com/reyes.arely_/",
   },
@@ -53,7 +53,7 @@ const teamMembers = [
     name: "Camille Rivera",
     titleKey: "team.member4.title",
     descriptionKey: "team.member4.description",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/team-camille.png",
+    image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/team-camille.png",
     linkedin: "https://www.linkedin.com/in/camille-louise-rivera/",
   },
   {
@@ -61,7 +61,7 @@ const teamMembers = [
     name: "Barbara Carreon",
     titleKey: "team.member5.title",
     descriptionKey: "team.member5.description",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-barb.png",
+    image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/team-barb.png",
     linkedin: "https://www.linkedin.com/in/barbara-c-6299ba1/",
   },
   {
@@ -69,7 +69,7 @@ const teamMembers = [
     name: "Marcos Resendez",
     titleKey: "team.member6.title",
     descriptionKey: "team.member6.description",
-    image: "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/team-marcos.png",
+    image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/team-marcos.png",
     linkedin: "https://www.linkedin.com/in/marcosresendez/",
   },
 ]

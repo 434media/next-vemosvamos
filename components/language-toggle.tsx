@@ -64,8 +64,8 @@ export function LanguageToggle() {
         <img
           src={
             language === "en"
-              ? "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/chat-bubble"
-              : "https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/boxing-glove"
+              ? "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/chat-bubble"
+              : "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/boxing-glove"
           }
           alt=""
           className={`w-full h-auto object-contain transition-all duration-500 ${

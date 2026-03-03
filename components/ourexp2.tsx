@@ -163,7 +163,7 @@ export default function RedIdentityPage() {
               >
                 <div className="absolute inset-0">
                   <video
-                    src="https://ampd-asset.s3.us-east-2.amazonaws.com/vemos-vamos/Pitch+Deck.mp4"
+                    src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/Pitch%20Deck.mp4"
                     autoPlay
                     muted
                     loop

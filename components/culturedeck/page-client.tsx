@@ -24,49 +24,49 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
       label: t("culturedeck.allCards"),
       description: "",
       icon: "🃏",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
     {
       type: "el insight",
       label: t("culturedeck.card.insight"),
       description: t("culturedeck.card.insight.description"),
       icon: "💡",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
     {
       type: "la tendencia",
       label: t("culturedeck.card.tendencia"),
       description: t("culturedeck.card.tendencia.description"),
       icon: "♣️",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
     {
       type: "el movimiento",
       label: t("culturedeck.card.movimiento"),
       description: t("culturedeck.card.movimiento.description"),
       icon: "♥️",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
     {
       type: "el flavor",
       label: t("culturedeck.card.flavor"),
       description: t("culturedeck.card.flavor.description"),
       icon: "♦️",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
     {
       type: "el takeaway",
       label: t("culturedeck.card.takeaway"),
       description: t("culturedeck.card.takeaway.description"),
       icon: "🪄",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
     {
       type: "el podcast",
       label: t("culturedeck.card.podcast"),
       description: t("culturedeck.card.podcast.description"),
       icon: "🎙️",
-      image: "https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+      image: "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
     },
   ]
 
@@ -94,7 +94,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
         }}>
           {/* Desktop Background */}
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-shapes.png"
+            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/desktop-shapes.png"
             alt=""
             fill
             className="hidden md:block object-cover opacity-0"
@@ -103,7 +103,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
           />
           {/* Mobile Background */}
           <Image
-            src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/mobile-shapes.png"
+            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/mobile-shapes.png"
             alt=""
             fill
             className="block md:hidden object-cover opacity-0"
@@ -141,7 +141,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
             {/* Deck Image Background Element - Mobile Only */}
             <div className="absolute top-0 right-0 w-64 h-64 md:hidden opacity-[0.08] pointer-events-none z-0 -mr-12 -mt-8">
               <Image
-                src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+                src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
                 alt=""
                 fill
                 className="object-contain"
@@ -166,7 +166,7 @@ export function CultureDeckPageClient({ articles }: CultureDeckPageClientProps) 
                 transition={{ duration: 0.6, delay: 0.7 }}
               >
                 <Image
-                  src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Black.svg"
+                  src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Logo_Black.svg"
                   alt="Culture Deck"
                   width={400}
                   height={120}

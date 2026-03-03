@@ -64,32 +64,32 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
   const loteriaCards = [
     {
       id: 'el-corazon',
-      src: 'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Flavor.png',
+      src: 'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Flavor.png',
       alt: 'El Corazón - Heart Card'
     },
     {
       id: 'la-estrella', 
-      src: 'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Insight.png',
+      src: 'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Insight.png',
       alt: 'La Estrella - Star Card'
     },
     {
       id: 'el-sol',
-      src: 'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Movimiento.png', 
+      src: 'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Movimiento.png', 
       alt: 'El Sol - Sun Card'
     },
     {
       id: 'la-luna',
-      src: 'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Podcast.png',
+      src: 'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Podcast.png',
       alt: 'La Luna - Moon Card'
     },
     {
       id: 'el-mundo',
-      src: 'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Takeaway.png',
+      src: 'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Takeaway.png',
       alt: 'El Mundo - World Card'
     },
     {
       id: 'la-vida',
-      src: 'https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Tendencia.png',
+      src: 'https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Tendencia.png',
       alt: 'La Vida - Life Card'
     }
   ]
@@ -237,7 +237,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Desktop Background */}
         <Image
-          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/desktop-shapes-black.png"
+          src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/desktop-shapes-black.png"
           alt=""
           fill
           className="hidden md:block object-cover"
@@ -247,7 +247,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
         />
         {/* Mobile Background */}
         <Image
-          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/mobile-shapes-black.png"
+          src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/mobile-shapes-black.png"
           alt=""
           fill
           className="block md:hidden object-cover object-center"
@@ -284,7 +284,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
               })}
             >
               <Image
-                src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Red.svg"
+                src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Logo_Red.svg"
                 alt="Culture Deck Logo"
                 width={200}
                 height={80}
@@ -593,7 +593,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                   <div 
                     className="absolute inset-0 opacity-15"
                     style={{
-                      backgroundImage: 'url(https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Gradient.svg)',
+                      backgroundImage: 'url(https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Logo_Gradient.svg)',
                       backgroundSize: '80%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat'
@@ -669,7 +669,7 @@ export function CultureDeckHero({ cardTypes, selectedFilter, onFilterChange }: C
                   <div 
                     className="absolute inset-0 opacity-15"
                     style={{
-                      backgroundImage: 'url(https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/Logo_Gradient.svg)',
+                      backgroundImage: 'url(https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/Logo_Gradient.svg)',
                       backgroundSize: '80%',
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat'

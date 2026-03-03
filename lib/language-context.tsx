@@ -144,7 +144,6 @@ const translations = {
     "connect.form.send": "SEND MESSAGE",
     "connect.form.sending": "SENDING...",
     "connect.form.success": "Thank you for reaching out! We'll get back to you soon.",
-    "connect.form.errorTurnstile": "Please complete the security verification",
     "connect.form.errorGeneral": "Something went wrong. Please try again.",
 
     // Common
@@ -394,7 +393,6 @@ const translations = {
     "connect.form.send": "ENVIAR MENSAJE",
     "connect.form.sending": "ENVIANDO...",
     "connect.form.success": "¡Gracias por contactarnos! Te responderemos pronto.",
-    "connect.form.errorTurnstile": "Por favor completa la verificación de seguridad",
     "connect.form.errorGeneral": "Algo salió mal. Por favor intenta de nuevo.",
 
     // Common

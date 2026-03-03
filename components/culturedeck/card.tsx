@@ -52,7 +52,7 @@ export function CultureDeckCard({
       {/* Desktop Deck Background Image - Large Design Element */}
       <div className="hidden md:block absolute top-0 right-0 w-56 h-56 md:w-96 md:h-96 opacity-[0.18] pointer-events-none z-[1] -mr-8 -mt-4">
         <Image
-          src="https://ampd-asset.s3.us-east-2.amazonaws.com/culturedeck/vv-deck.png"
+          src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/culturedeck/vv-deck.png"
           alt=""
           fill
           className="object-contain"

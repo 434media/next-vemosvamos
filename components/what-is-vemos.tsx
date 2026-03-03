@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 
 const images = [
-  "https://ampd-asset.s3.us-east-2.amazonaws.com/VVSpanishQuote.mp4",
+  "https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/VVSpanishQuote.mp4",
 ]
 
 export default function AboutSection() {

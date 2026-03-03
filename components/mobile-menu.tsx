@@ -126,7 +126,6 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
   ]
 
   const pageLinks = [
-    { name: t("menu.culturedeck"), href: "/culturedeck/rebranding-the-familiar" },
     { name: t("menu.whyDifferent"), href: "/about" },
     { name: t("menu.contentHub"), href: "/content-hub" },
     { name: t("menu.connectWithUs"), href: "/connect" },
@@ -243,11 +242,11 @@ export function MobileMenu({ onClose }: MobileMenuProps) {
                 >
                   {isMobile ? (
                     <source
-                      src="https://ampd-asset.s3.us-east-2.amazonaws.com/Horizontal+Intro+on+Loop.mov"
+                      src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/Horizontal%20Intro%20on%20Loop.mov"
                       type="video/mp4"
                     />
                   ) : (
-                    <source src="https://ampd-asset.s3.us-east-2.amazonaws.com/VV_Intro_V01.mp4" type="video/mp4" />
+                    <source src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/VV_Intro_V01.mp4" type="video/mp4" />
                   )}
                   Your browser does not support the video tag.
                 </video>

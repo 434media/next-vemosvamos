@@ -1,4 +1,4 @@
-import { fetchCultureDeckArticles, fetchArticleBySlug } from '../services/airtable'
+import { fetchCultureDeckArticles, fetchArticleBySlug } from '../services/culturedeck'
 import { allFallbackArticles } from '../../data/culturedeck/articles'
 import type { CultureDeckArticle } from '../types/culturedeck'
 
@@ -14,23 +14,23 @@ function getLocalArticleBySlug(slug: string): CultureDeckArticle | null {
   return allFallbackArticles.find(article => article.slug === slug) || null
 }
 
-// Wrapper function that falls back to local data if Airtable fails
+// Wrapper function that falls back to local data if Firestore fails
 export async function getCultureDeckArticlesWithFallback(): Promise<CultureDeckArticle[]> {
   try {
-    // Try to fetch from Airtable first
-    const airtableArticles = await fetchCultureDeckArticles()
+    // Try to fetch from Firestore first
+    const articles = await fetchCultureDeckArticles()
     
-    // If we get articles from Airtable, return them
-    if (airtableArticles && airtableArticles.length > 0) {
-      console.log(`Successfully fetched ${airtableArticles.length} articles from Airtable`)
-      return airtableArticles
+    // If we get articles from Firestore, return them
+    if (articles && articles.length > 0) {
+      console.log(`Successfully fetched ${articles.length} articles from Firestore`)
+      return articles
     }
     
-    // If Airtable returns empty, fall back to local data (sorted by date)
-    console.log('Airtable returned no articles, falling back to local data')
+    // If Firestore returns empty, fall back to local data (sorted by date)
+    console.log('Firestore returned no articles, falling back to local data')
     return allFallbackArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   } catch (error) {
-    console.error('Airtable fetch failed, falling back to local data:', error)
+    console.error('Firestore fetch failed, falling back to local data:', error)
     return allFallbackArticles.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   }
 }
@@ -38,23 +38,23 @@ export async function getCultureDeckArticlesWithFallback(): Promise<CultureDeckA
 // Wrapper function for single articles with fallback
 export async function getArticleBySlugWithFallback(slug: string): Promise<CultureDeckArticle | null> {
   try {
-    // Try to fetch from Airtable first
-    const airtableArticle = await fetchArticleBySlug(slug)
+    // Try to fetch from Firestore first
+    const article = await fetchArticleBySlug(slug)
     
-    if (airtableArticle && isCompleteNewsletterArticle(airtableArticle)) {
-      console.log(`Successfully fetched complete article "${slug}" from Airtable`)
-      return airtableArticle
+    if (article && isCompleteNewsletterArticle(article)) {
+      console.log(`Successfully fetched complete article "${slug}" from Firestore`)
+      return article
     }
     
-    if (airtableArticle && !isCompleteNewsletterArticle(airtableArticle)) {
-      console.log(`Article "${slug}" from Airtable is incomplete, falling back to local data`)
+    if (article && !isCompleteNewsletterArticle(article)) {
+      console.log(`Article "${slug}" from Firestore is incomplete, falling back to local data`)
     } else {
-      console.log(`Article "${slug}" not found in Airtable, checking local data`)
+      console.log(`Article "${slug}" not found in Firestore, checking local data`)
     }
     
     return getLocalArticleBySlug(slug)
   } catch (error) {
-    console.error(`Airtable fetch failed for article "${slug}", falling back to local data:`, error)
+    console.error(`Firestore fetch failed for article "${slug}", falling back to local data:`, error)
     return getLocalArticleBySlug(slug)
   }
 }
