@@ -1,146 +1,202 @@
 "use client"
 
-import { motion, useScroll } from "motion/react"
-import { useRef } from "react"
+import { AnimatePresence, motion } from "motion/react"
 import Image from "next/image"
+import { useCallback, useEffect, useState } from "react"
 import { useLanguage } from "../lib/language-context"
+import { OperatorConsole } from "./operator-console"
+import { Ornament } from "./ornament"
 
-export default function NewLandingPage() {
-  const { t } = useLanguage()
-  const scrollRef = useRef(null)
+const STICKER_EN =
+  "https://firebasestorage.googleapis.com/v0/b/groovy-ego-462522-v2.firebasestorage.app/o/vemos-vamos%2Fvv-hero-transparent.png?alt=media"
+const STICKER_ES =
+  "https://firebasestorage.googleapis.com/v0/b/groovy-ego-462522-v2.firebasestorage.app/o/vemos-vamos%2Fvv-spanish-transparent.png?alt=media"
 
-  // Get scroll progress and map it to motion values
-  const { scrollYProgress } = useScroll({
-    target: scrollRef,
-    offset: ["start start", "end end"],
-  })
+export default function HeroMasthead() {
+  const { t, language } = useLanguage()
+  const stickerSrc = language === "es" ? STICKER_ES : STICKER_EN
 
-  const scrollToWhyItMatters = () => {
-    const element = document.getElementById("why-it-matters")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
+  // Operator console state — the sticker is the easter-egg trigger.
+  const [consoleOpen, setConsoleOpen] = useState(false)
+  // null until a real mouse event provides coordinates — prevents the tooltip
+  // from flashing at (0, 0) in the navbar area before the first mousemove.
+  const [tooltipPos, setTooltipPos] = useState<{ x: number; y: number } | null>(null)
+
+  // Cmd+K / Ctrl+K from anywhere on the page opens the console.
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault()
+        setConsoleOpen(true)
+      }
     }
-  }
+    window.addEventListener("keydown", handler)
+    return () => window.removeEventListener("keydown", handler)
+  }, [])
+
+  const openConsole = useCallback((e: React.MouseEvent) => {
+    e.preventDefault()
+    setConsoleOpen(true)
+    setTooltipPos(null)
+  }, [])
+
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
+    setTooltipPos({ x: e.clientX, y: e.clientY })
+  }, [])
+
+  const showTooltip = useCallback((e: React.MouseEvent) => {
+    setTooltipPos({ x: e.clientX, y: e.clientY })
+  }, [])
+
+  const hideTooltip = useCallback(() => {
+    setTooltipPos(null)
+  }, [])
 
   return (
-    <div ref={scrollRef} className="relative w-full overflow-x-hidden xs:-mt-10 md:mt-1.5">
-      <section
-        className="relative w-full bg-[#eeebe3] flex flex-col items-center justify-center overflow-hidden 
-                   px-4 xs:px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 
-                   h-screen min-h-[100vh] -mt-10 md:mt-16"
-        role="banner"
-        aria-label="Hero section"
-      >
-        {/* Desktop Hero Background */}
-        <div className="absolute inset-0 hidden md:block lg:block xl:block">
-          <Image
-            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/hero-desktop"
-            alt="Hero background for desktop"
-            fill
-            priority
-            className="object-cover w-full h-full"
-            sizes="(max-width: 767px) 0vw, 100vw"
-          />
-        </div>
+    <section
+      aria-label="Vemos Vamos masthead"
+      className="relative w-full bg-[#eeebe3] overflow-hidden"
+      style={{ height: "100dvh" }}
+    >
+      {/* Paper texture */}
+      <Image
+        src="/images/redcrumple.jpg"
+        alt=""
+        aria-hidden="true"
+        fill
+        sizes="100vw"
+        priority
+        className="pointer-events-none object-cover opacity-[0.18] mix-blend-multiply"
+      />
 
-        <div className="absolute inset-0 xs:block sm:block md:hidden">
-          <Image
-            src="https://storage.googleapis.com/groovy-ego-462522-v2.firebasestorage.app/vemos-vamos/hero-mobile"
-            alt="Hero background for mobile"
-            fill
-            priority
-            className="object-contain w-full h-full xs:scale-110"
-            sizes="(max-width: 767px) 100vw, 0vw"
-          />
-        </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
-          {/* Desktop Content */}
-          <motion.div
-            className="absolute right-2 xs:right-4 sm:right-6 md:right-8 lg:right-12 xl:right-10 
-                       bottom-[10%] xs:bottom-[12%] sm:bottom-[10%] md:bottom-[8%] lg:bottom-[6%] xl:bottom-[12%] 
-                       z-20 hidden sm:hidden md:block"
-            initial={{ opacity: 0, x: 80, scale: 0.8 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            transition={{ duration: 1.5, delay: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <div className="text-right relative">
-              <h2
-                className="text-lg xs:text-xl sm:text-2xl md:text-4xl lg:text-5xl md:max-w-lg
-                           md:mr-6 lg:mr-8 xl:mr-12 
-                           md:leading-[0.8] lg:leading-[0.75] xl:leading-[0.7] 
-                           md:tracking-tighter lg:tracking-tighter xl:tracking-tighter 
-                           font-black text-gray-900 font-serif leading-tight drop-shadow-lg 
-                           cursor-pointer transition-colors duration-300 hover:text-[#ca0013] relative group"
-                onClick={scrollToWhyItMatters}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => e.key === "Enter" && scrollToWhyItMatters()}
-                aria-label="Navigate to Why It Matters section"
-              >
-                {t("hero.title")}
-                <div className="absolute -bottom-2 md:left-16 w-full h-0.5 bg-gradient-to-r from-transparent via-[#ca0013] to-transparent opacity-60 shadow-[0_0_8px_rgba(202,0,19,0.6)] group-hover:opacity-100 group-hover:shadow-[0_0_12px_rgba(202,0,19,0.8)] transition-all duration-300"></div>
-              </h2>
-            </div>
-          </motion.div>
-
-          <div className="absolute inset-0 flex flex-col md:hidden z-10">
-            {/* Mobile Button - Centered */}
-            <div className="flex-1 flex items-center justify-center px-4 xs:px-6 sm:px-8 xs:mt-16">
-              <motion.button
-                onClick={scrollToWhyItMatters}
-                className="bg-[#ca0013] text-white px-6 xs:px-7 sm:px-8 py-3 xs:py-4 sm:py-4 
-                           rounded-lg font-semibold text-lg xs:text-xl sm:text-xl 
-                           shadow-lg hover:bg-[#a00010] transition-colors duration-300 
-                           focus:outline-none focus:ring-2 focus:ring-[#ca0013] focus:ring-offset-2"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1.2, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                aria-label="Navigate to Why It Matters section"
-              >
-                <span>{t("matters.title")}</span>
-              </motion.button>
-            </div>
-
-            {/* Mobile Marquee - Below image */}
+      <div className="relative z-10 w-full h-full max-w-7xl mx-auto flex flex-col px-6 sm:px-10 md:px-14 lg:px-20 xl:px-24 pt-16 sm:pt-24 pb-6 sm:pb-10">
+        {/* Asymmetric spread */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center min-h-0">
+          {/* LEFT (mobile first) — typography stack */}
+          <div className="lg:col-span-7 flex flex-col items-start">
+            {/* Eyebrow — ornaments hidden on mobile so the text fits one line */}
             <motion.div
-              className="absolute xs:bottom-13 left-0 right-0 bg-[#ca0013] 
-                         py-4 xs:py-5 sm:py-6 overflow-hidden shadow-lg w-screen -ml-4 xs:-ml-4 sm:-ml-6"
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.5, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-8 md:mb-10 pl-1 md:pl-0"
             >
-              <div className="relative">
-                <motion.div
-                  className="flex whitespace-nowrap"
-                  animate={{ x: [0, -2000] }}
-                  transition={{
-                    duration: 30,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "linear",
-                  }}
-                >
-                  {Array.from({ length: 8 }).map((_, index) => (
-                    <span
-                      key={index}
-                      className="text-white font-black text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif 
-                                 drop-shadow-2xl mx-8 tracking-wide text-shadow-lg
-                                 [text-shadow:_2px_2px_4px_rgba(0,0,0,0.8),_0_0_20px_rgba(255,255,255,0.3)]"
-                      style={{
-                        textShadow:
-                          "2px 2px 4px rgba(0,0,0,0.8), 0 0 20px rgba(255,255,255,0.3), 0 0 40px rgba(255,255,255,0.1)",
-                      }}
-                    >
-                      {t("hero.title")}
-                    </span>
-                  ))}
-                </motion.div>
-              </div>
+              <Ornament className="hidden md:inline-block h-2 w-14 text-[#1a2a5c]/70" />
+              <span
+                className="font-bold uppercase text-[#ca0013]
+                           text-[10px] sm:text-xs md:text-sm
+                           tracking-[0.16em] sm:tracking-[0.22em]
+                           whitespace-nowrap"
+              >
+                {t("hero.masthead.eyebrow")}
+              </span>
+              <Ornament className="hidden md:inline-block h-2 w-14 text-[#1a2a5c]/70" flip />
+            </motion.div>
+
+            {/* Headline — fluid size that respects viewport height so short laptops don't overflow */}
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="font-serif font-black leading-[0.9] tracking-[-0.025em] text-[#0d1f2d]"
+              style={{
+                fontSize: "clamp(42px, min(9vw, 13dvh), 132px)",
+                fontVariationSettings: '"SOFT" 50',
+              }}
+            >
+              {t("hero.masthead.tagline")}
+            </motion.h1>
+
+            {/* Operating triplet — tightened so it stays on one line in both locales */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="mt-3 sm:mt-8 md:mt-10 flex flex-wrap items-center gap-x-2.5 gap-y-1.5"
+            >
+              <span className="text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.14em] sm:tracking-[0.16em] uppercase text-[#1a2a5c] whitespace-nowrap">
+                {t("hero.masthead.opSee")}
+              </span>
+              <span aria-hidden="true" className="text-[#1a2a5c]/40 text-xs">·</span>
+              <span className="text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.14em] sm:tracking-[0.16em] uppercase text-[#1a2a5c] whitespace-nowrap">
+                {t("hero.masthead.opShape")}
+              </span>
+              <span aria-hidden="true" className="text-[#1a2a5c]/40 text-xs">·</span>
+              <span className="text-[10px] sm:text-[11px] md:text-xs font-bold tracking-[0.14em] sm:tracking-[0.16em] uppercase text-[#1a2a5c] whitespace-nowrap">
+                {t("hero.masthead.opMove")}
+              </span>
             </motion.div>
           </div>
+
+          {/* RIGHT (mobile second) — sticker. Scales to the shorter of viewport-width or viewport-height
+              so it fits cleanly within 100dvh on every device. Also the easter-egg trigger: hover, right-click,
+              or Cmd/Ctrl+K opens the operator console. */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.86, rotate: -1 }}
+            animate={{ opacity: 1, scale: 1, rotate: -5 }}
+            transition={{
+              duration: 0.95,
+              delay: 0.7,
+              type: "spring",
+              stiffness: 160,
+              damping: 18,
+            }}
+            className="lg:col-span-5 flex items-center justify-center lg:justify-end"
+          >
+            <button
+              type="button"
+              onContextMenu={openConsole}
+              onClick={(e) => e.preventDefault()}
+              onMouseEnter={showTooltip}
+              onMouseLeave={hideTooltip}
+              onMouseMove={handleMouseMove}
+              aria-label={t("console.discoveryHint")}
+              className="relative aspect-square block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#ca0013] focus-visible:ring-offset-4 focus-visible:ring-offset-[#eeebe3] rounded-sm"
+              style={{
+                width: "min(82vw, 55dvh, 540px)",
+                filter: "drop-shadow(0 20px 36px rgba(0,0,0,0.18))",
+                cursor: "url(/cursor-bot.svg) 16 16, context-menu",
+              }}
+            >
+              <Image
+                src={stickerSrc}
+                alt={t("hero.masthead.stampAlt")}
+                fill
+                priority
+                sizes="(max-width: 640px) 82vw, (max-width: 1024px) 50vw, 540px"
+                className="object-contain pointer-events-none"
+              />
+            </button>
+          </motion.div>
         </div>
-      </section>
-    </div>
+      </div>
+
+      {/* Floating discovery hint — follows the cursor while hovering the sticker.
+          Hidden on touch devices (no mousemove fires). */}
+      <AnimatePresence>
+        {tooltipPos && !consoleOpen && (
+          <motion.div
+            aria-hidden="true"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.15, ease: "easeOut" }}
+            className="pointer-events-none fixed top-0 left-0 z-[60] bg-[#0d1f2d] text-white shadow-[0_6px_16px_rgba(0,0,0,0.32)] px-3 py-1.5"
+            style={{
+              transform: `translate3d(${tooltipPos.x + 26}px, ${tooltipPos.y + 22}px, 0)`,
+            }}
+          >
+            <span className="block font-mono text-[10px] font-bold tracking-[0.18em] uppercase whitespace-nowrap">
+              {t("console.discoveryHint")}
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Operator console */}
+      <AnimatePresence>
+        {consoleOpen && <OperatorConsole onClose={() => setConsoleOpen(false)} />}
+      </AnimatePresence>
+    </section>
   )
 }

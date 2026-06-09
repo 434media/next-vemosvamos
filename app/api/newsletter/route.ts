@@ -1,139 +1,76 @@
 import { NextResponse } from "next/server"
-import axios from "axios"
-import crypto from "crypto"
+import { Resend } from "resend"
 import { checkBotId } from "botid/server"
 import { db } from "@/lib/services/firebase"
+import { buildWelcomeEmail } from "@/lib/emails/welcome"
 
-const mailchimpApiKey = process.env.MAILCHIMP_API_KEY
-const mailchimpListId = process.env.MAILCHIMP_AUDIENCE_ID
-
-const mailchimpDatacenter = mailchimpApiKey ? mailchimpApiKey.split("-").pop() : null
+const FROM_ADDRESS = "Vemos Vamos <hello@send.434media.com>"
+const REPLY_TO = "hello@434media.com"
 
 export async function POST(request: Request) {
   try {
-    // BotID verification
     const verification = await checkBotId()
     if (verification.isBot) {
       return NextResponse.json({ error: "Access denied" }, { status: 403 })
     }
 
-    const { email } = await request.json()
+    const body = await request.json()
+    const email = typeof body?.email === "string" ? body.email.trim() : ""
 
-    const mailchimpEnabled = mailchimpApiKey && mailchimpListId
-    if (!mailchimpEnabled) {
-      console.warn("Mailchimp integration disabled - missing API key or Audience ID")
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: "A valid email is required" }, { status: 400 })
     }
 
-    const firestorePromise = db.collection("newsletter_signups").add({
+    // Write to Firestore first. If this fails, no email goes out.
+    await db.collection("newsletter_signups").add({
       email,
       source: "VemosVamos",
       createdAt: new Date().toISOString(),
     })
 
-    const promises: Promise<any>[] = [firestorePromise]
+    // Fire the welcome email. Don't fail the subscription if Resend errors —
+    // the user is already in the database; the worst case is a missed welcome.
+    sendWelcomeEmail(email).catch((err) => {
+      console.error("Welcome email failed:", err)
+    })
 
-    if (mailchimpEnabled) {
-      console.log(
-        "[v0] Mailchimp API URL:",
-        `https://${mailchimpDatacenter}.api.mailchimp.com/3.0/lists/${mailchimpListId}/members`,
-      )
-
-      const mailchimpPromise = axios.post(
-        `https://${mailchimpDatacenter}.api.mailchimp.com/3.0/lists/${mailchimpListId}/members`,
-        {
-          email_address: email,
-          status: "subscribed",
-          tags: ["web-vemosvamos", "newsletter-signup"],
-        },
-        {
-          auth: {
-            username: "apikey",
-            password: mailchimpApiKey,
-          },
-          headers: {
-            "Content-Type": "application/json",
-          },
-          validateStatus: (status) => status < 500, // Don't throw on 4xx errors
-        },
-      )
-
-      promises.push(mailchimpPromise)
-    }
-
-    const results = await Promise.allSettled(promises)
-
-    const firestoreResult = results[0]
-    const mailchimpResult = mailchimpEnabled ? results[1] : null
-
-    const errors = []
-
-    if (firestoreResult.status === "rejected") {
-      console.error("Firestore error:", firestoreResult.reason)
-      errors.push("Firestore subscription failed")
-    }
-
-    if (mailchimpEnabled && mailchimpResult && mailchimpResult.status === "rejected") {
-      console.error("Mailchimp error:", mailchimpResult.reason)
-
-      const error = mailchimpResult.reason
-      if (error?.response?.data) {
-        const responseData = error.response.data
-        if (typeof responseData === "string" && responseData.includes("<!DOCTYPE")) {
-          console.error("Mailchimp returned HTML error page - likely authentication issue")
-          errors.push("Mailchimp authentication failed")
-        } else if (responseData?.title === "Member Exists") {
-          console.log("Email already exists in Mailchimp, updating tags")
-          // Try to update existing member with tags
-          try {
-            const emailHash = crypto.createHash("md5").update(email.toLowerCase()).digest("hex")
-            await axios.patch(
-              `https://${mailchimpDatacenter}.api.mailchimp.com/3.0/lists/${mailchimpListId}/members/${emailHash}`,
-              {
-                tags: ["web-vemosvamos", "newsletter-signup"],
-              },
-              {
-                auth: {
-                  username: "apikey",
-                  password: mailchimpApiKey,
-                },
-                headers: {
-                  "Content-Type": "application/json",
-                },
-              },
-            )
-          } catch (updateError) {
-            console.error("Failed to update existing Mailchimp member:", updateError)
-            errors.push("Mailchimp update failed")
-          }
-        } else {
-          errors.push("Mailchimp subscription failed")
-        }
-      } else {
-        errors.push("Mailchimp subscription failed")
-      }
-    }
-
-    const totalServices = mailchimpEnabled ? 2 : 1
-    if (errors.length < totalServices) {
-      return NextResponse.json(
-        {
-          message: "Newsletter subscription successful",
-          warnings: errors.length > 0 ? errors : undefined,
-          mailchimpEnabled,
-        },
-        { status: 200 },
-      )
-    } else {
-      return NextResponse.json(
-        {
-          error: mailchimpEnabled ? "Both services failed" : "Firestore service failed",
-          details: errors,
-        },
-        { status: 500 },
-      )
-    }
+    return NextResponse.json({ message: "Newsletter subscription successful" }, { status: 200 })
   } catch (error) {
     console.error("Error subscribing to newsletter:", error)
-    return NextResponse.json({ error: "An error occurred while subscribing to the newsletter" }, { status: 500 })
+    return NextResponse.json(
+      { error: "An error occurred while subscribing to the newsletter" },
+      { status: 500 },
+    )
+  }
+}
+
+async function sendWelcomeEmail(to: string): Promise<void> {
+  const apiKey = process.env.RESEND_API_KEY
+  if (!apiKey) {
+    console.warn("RESEND_API_KEY not configured — skipping welcome email")
+    return
+  }
+
+  const resend = new Resend(apiKey)
+  const { subject, html, text } = buildWelcomeEmail()
+
+  const { error } = await resend.emails.send({
+    from: FROM_ADDRESS,
+    to,
+    replyTo: REPLY_TO,
+    subject,
+    html,
+    text,
+    headers: {
+      "X-Entity-Ref-ID": `welcome-${Date.now()}`,
+    },
+    tags: [
+      { name: "category", value: "newsletter" },
+      { name: "type", value: "welcome" },
+    ],
+  })
+
+  if (error) {
+    throw new Error(`Resend error: ${error.message || JSON.stringify(error)}`)
   }
 }

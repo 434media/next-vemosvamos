@@ -18,15 +18,20 @@ const nextConfig: NextConfig = {
         hostname: "storage.googleapis.com",
         pathname: "/groovy-ego-462522-v2.firebasestorage.app/**",
       },
-       {
-        protocol: 'https',
-        hostname: 'cdn.shopify.com',
-        pathname: '/s/files/**'
+      {
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        pathname: "/v0/b/groovy-ego-462522-v2.firebasestorage.app/**",
       },
       {
-        protocol: 'https',
-        hostname: 'placehold.co',
-        pathname: '/**'
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+        pathname: "/s/files/**",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+        pathname: "/**",
       },
     ],
   },  

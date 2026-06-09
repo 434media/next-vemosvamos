@@ -6,9 +6,5 @@ initBotId({
       path: '/api/newsletter',
       method: 'POST',
     },
-    {
-      path: '/api/connect',
-      method: 'POST',
-    },
   ],
 });

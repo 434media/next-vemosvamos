@@ -1,8 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
-import { Inter, Playfair_Display } from "next/font/google"
+import { Inter, Fraunces } from "next/font/google"
 import "./globals.css"
-import "remixicon/fonts/remixicon.css"
 import Script from "next/script"
 import { Analytics } from "@vercel/analytics/next"
 import { LayoutWrapper } from "../components/layout-wrapper"
@@ -14,10 +13,11 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-playfair",
+  variable: "--font-fraunces",
+  axes: ["SOFT", "opsz"],
 })
 
 export const viewport: Viewport = {
@@ -35,51 +35,31 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vemosvamos.com"),
   title: {
-    default: "Vemos Vamos - Bicultural Media for a New Generation | Multicultural Brand Studio",
-    template: "%s | Vemos Vamos",
+    default: "Vemos Vamos — Acciones hablan más fuerte.",
+    template: "%s · Vemos Vamos",
   },
   description:
-    "Vemos Vamos is a bicultural media platform and multicultural brand studio fostering entrepreneurial success through community, resources, and innovative solutions for the new generation.",
+    "An AI-enabled bicultural creative media system. We see cultural signals and turn them into content, campaigns, and experiences.",
   keywords: [
     "Vemos Vamos",
     "bicultural media",
-    "multicultural brand studio",
-    "bilingual",
-    "entrepreneurship",
-    "community",
-    "success",
-    "innovation",
-    "Spanish",
-    "English",
-    "Latino entrepreneurs",
-    "Hispanic business",
+    "Texas-Latin culture",
+    "creative operating system",
+    "AI-enabled media",
+    "cultural signals",
+    "Acciones hablan más fuerte",
+    "bilingual media",
+    "Latino media",
     "434 Media",
-    "new generation",
-    "cultural diversity",
-    "brand development",
-    "media production",
   ],
-  authors: [{ name: "Vemos Vamos Team" }, { name: "434 Media" }],
+  authors: [{ name: "Vemos Vamos" }, { name: "434 Media" }],
   creator: "Vemos Vamos",
   publisher: "434 Media",
-  category: "Business",
+  category: "Media",
   classification: "Media & Entertainment",
   referrer: "origin-when-cross-origin",
-  verification: {
-    google: "your-google-site-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-    other: {
-      "msvalidate.01": "your-bing-verification-code",
-    },
-  },
   alternates: {
     canonical: "https://www.vemosvamos.com",
-    languages: {
-      "en-US": "https://www.vemosvamos.com",
-      "es-ES": "https://www.vemosvamos.com/es",
-      "es-MX": "https://www.vemosvamos.com/es-mx",
-    },
   },
   formatDetection: {
     email: false,
@@ -87,33 +67,24 @@ export const metadata: Metadata = {
     telephone: false,
   },
   openGraph: {
-    title: "Vemos Vamos - Bicultural Media for a New Generation",
+    title: "Vemos Vamos — Acciones hablan más fuerte.",
     description:
-      "Join Vemos Vamos, the multicultural brand studio powered by 434 Media, for bicultural resources and community support in your entrepreneurial journey.",
+      "An AI-enabled bicultural creative media system. We see cultural signals and turn them into content, campaigns, and experiences.",
     url: "https://www.vemosvamos.com",
     siteName: "Vemos Vamos",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Vemos Vamos - Bicultural Media for a New Generation",
-        type: "image/png",
-      },
-    ],
     locale: "en_US",
-    alternateLocale: ["es_ES", "es_MX"],
     type: "website",
     countryName: "United States",
+    // images resolved via the file-based convention at app/opengraph-image.tsx
   },
   twitter: {
     card: "summary_large_image",
     site: "@vemosvamos",
     creator: "@vemosvamos",
-    title: "Vemos Vamos - Bicultural Media for a New Generation",
+    title: "Vemos Vamos — Acciones hablan más fuerte.",
     description:
-      "Empowering bicultural entrepreneurs with community and resources through our multicultural brand studio.",
-    images: ["/opengraph-image.png"],
+      "An AI-enabled bicultural creative media system. We see cultural signals and turn them into content, campaigns, and experiences.",
+    // images resolved via the file-based convention at app/twitter-image.tsx (falls back to opengraph-image)
   },
   appleWebApp: {
     capable: true,
@@ -142,7 +113,7 @@ export const metadata: Metadata = {
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#dc2626" }],
+    other: [{ rel: "mask-icon", url: "/safari-pinned-tab.svg", color: "#ca0013" }],
   },
 }
 
@@ -152,7 +123,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -171,27 +142,28 @@ export default function RootLayout({
               "@type": "Organization",
               "@id": "https://www.vemosvamos.com/#organization",
               name: "Vemos Vamos",
-              alternateName: "434 Media",
+              alternateName: "VemosVamos",
               url: "https://www.vemosvamos.com",
               logo: {
                 "@type": "ImageObject",
-                url: "https://www.vemosvamos.com/opengraph-image.png",
+                url: "https://www.vemosvamos.com/opengraph-image",
                 width: 1200,
                 height: 630,
               },
-              image: "https://www.vemosvamos.com/opengraph-image.png",
+              image: "https://www.vemosvamos.com/opengraph-image",
               description:
-                "Bicultural media platform and multicultural brand studio fostering entrepreneurial success for a new generation.",
+                "An AI-enabled bicultural creative media system. We see cultural signals and turn them into content, campaigns, and experiences.",
+              slogan: "Acciones hablan más fuerte.",
               foundingDate: "2024",
-              founder: {
+              parentOrganization: {
                 "@type": "Organization",
                 name: "434 Media",
+                url: "https://434media.com",
               },
               sameAs: [
                 "https://www.instagram.com/vemos.vamos/",
                 "https://www.linkedin.com/company/vemosvamos/",
                 "https://www.facebook.com/vemosvamos",
-                "https://twitter.com/vemosvamos",
               ],
               contactPoint: {
                 "@type": "ContactPoint",
@@ -203,12 +175,14 @@ export default function RootLayout({
                 name: "United States",
               },
               knowsAbout: [
-                "Entrepreneurship",
-                "Multicultural Marketing",
+                "Bicultural Media",
+                "Cultural Signals",
+                "Creative Systems",
+                "AI-Enabled Content Workflows",
+                "Texas-Latin Culture",
+                "Editorial Strategy",
                 "Bilingual Content",
-                "Brand Development",
-                "Media Production",
-                "Community Building",
+                "Brand Storytelling",
               ],
             }),
           }}
@@ -226,19 +200,12 @@ export default function RootLayout({
               "@id": "https://www.vemosvamos.com/#website",
               url: "https://www.vemosvamos.com",
               name: "Vemos Vamos",
-              description: "Bicultural Media for a New Generation",
+              description:
+                "An AI-enabled bicultural creative media system. We see cultural signals and turn them into content, campaigns, and experiences.",
               publisher: {
                 "@id": "https://www.vemosvamos.com/#organization",
               },
-              inLanguage: ["en-US", "es-ES"],
-              potentialAction: {
-                "@type": "SearchAction",
-                target: {
-                  "@type": "EntryPoint",
-                  urlTemplate: "https://www.vemosvamos.com/search?q={search_term_string}",
-                },
-                "query-input": "required name=search_term_string",
-              },
+              inLanguage: ["en-US", "es"],
             }),
           }}
         />

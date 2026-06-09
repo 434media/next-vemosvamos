@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- antenna stub -->
+  <line x1="16" y1="2" x2="16" y2="6" stroke="#0d1f2d" stroke-width="1.5" stroke-linecap="round" />
+  <!-- antenna ball -->
+  <circle cx="16" cy="2.5" r="1.6" fill="#ca0013" />
+  <!-- head — cream with ink outline for visibility on both cream paper and dark sticker elements -->
+  <rect x="6" y="6" width="20" height="18" rx="3.5" ry="3.5" fill="#eeebe3" stroke="#0d1f2d" stroke-width="1.2" />
+  <!-- ear nubs -->
+  <rect x="3.5" y="11" width="2.5" height="6" rx="1" ry="1" fill="#eeebe3" stroke="#0d1f2d" stroke-width="1" />
+  <rect x="26" y="11" width="2.5" height="6" rx="1" ry="1" fill="#eeebe3" stroke="#0d1f2d" stroke-width="1" />
+  <!-- left eye — ink ring with red iris -->
+  <circle cx="11" cy="13" r="2.6" fill="#0d1f2d" />
+  <circle cx="11" cy="13" r="1.1" fill="#ca0013" />
+  <!-- right eye -->
+  <circle cx="21" cy="13" r="2.6" fill="#0d1f2d" />
+  <circle cx="21" cy="13" r="1.1" fill="#ca0013" />
+  <!-- mouth slit — ink with cream teeth -->
+  <rect x="10.5" y="18" width="11" height="1.8" rx="0.6" ry="0.6" fill="#0d1f2d" />
+  <line x1="13" y1="18" x2="13" y2="19.8" stroke="#eeebe3" stroke-width="0.6" />
+  <line x1="16" y1="18" x2="16" y2="19.8" stroke="#eeebe3" stroke-width="0.6" />
+  <line x1="19" y1="18" x2="19" y2="19.8" stroke="#eeebe3" stroke-width="0.6" />
+  <!-- shoulder pin -->
+  <rect x="13" y="24" width="6" height="2" rx="0.5" ry="0.5" fill="#eeebe3" stroke="#0d1f2d" stroke-width="0.8" />
+  <!-- subtle navy highlight on head -->
+  <rect x="7.8" y="7.8" width="3" height="2" rx="0.6" ry="0.6" fill="#1a2a5c" opacity="0.35" />
+</svg>

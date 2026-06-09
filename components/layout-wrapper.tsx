@@ -2,11 +2,8 @@
 
 import type React from "react"
 
-import { useState } from "react"
 import { Navbar } from "./navbar"
-import { MobileMenu } from "./mobile-menu"
 import { Footer } from "./footer"
-import { AnimatePresence } from "motion/react"
 import { LanguageProvider } from "../lib/language-context"
 
 interface LayoutWrapperProps {
@@ -14,20 +11,9 @@ interface LayoutWrapperProps {
 }
 
 export function LayoutWrapper({ children }: LayoutWrapperProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const handleOpenMenu = () => {
-    setIsMobileMenuOpen(true)
-  }
-
-  const handleCloseMenu = () => {
-    setIsMobileMenuOpen(false)
-  }
-
   return (
     <LanguageProvider>
-      <Navbar onOpenMenu={handleOpenMenu} />
-      <AnimatePresence>{isMobileMenuOpen && <MobileMenu onClose={handleCloseMenu} />}</AnimatePresence>
+      <Navbar />
       <main className="min-h-screen">{children}</main>
       <Footer />
     </LanguageProvider>

@@ -1,14 +1,15 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
-Disallow: /admin/
+# API endpoints and Next internals
 Disallow: /api/
 Disallow: /_next/
-Disallow: /private/
 
-# Allow important pages
-Allow: /api/sitemap
+# Brand-refresh-pending routes — keep out of fresh crawls until rebuilt
+Disallow: /about
+Disallow: /connect
+Disallow: /culturedeck
+Disallow: /content-hub
 
 # Sitemap location
 Sitemap: https://www.vemosvamos.com/sitemap.xml
