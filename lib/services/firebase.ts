@@ -1,5 +1,6 @@
 import { initializeApp, getApps, getApp, cert, type ServiceAccount } from 'firebase-admin/app'
 import { getFirestore } from 'firebase-admin/firestore'
+import { isKeyless, keylessFirestore } from '../gcp-keyless'
 
 const DATABASE_ID = 'vemosvamos'
 
@@ -72,9 +73,15 @@ function getServiceAccount(): ServiceAccount {
   return parsed as ServiceAccount
 }
 
-const app =
-  getApps().length === 0
-    ? initializeApp({ credential: cert(getServiceAccount()) })
-    : getApp()
+// Keyless (Vercel OIDC, see ../gcp-keyless) when its variables are set;
+// otherwise the GOOGLE_SERVICE_ACCOUNT_KEY path exactly as before.
+function getDb() {
+  if (isKeyless()) return keylessFirestore(DATABASE_ID)
+  const app =
+    getApps().length === 0
+      ? initializeApp({ credential: cert(getServiceAccount()) })
+      : getApp()
+  return getFirestore(app, DATABASE_ID)
+}
 
-export const db = getFirestore(app, DATABASE_ID)
+export const db = getDb()
