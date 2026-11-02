@@ -34,7 +34,8 @@
   },
   "pnpm": {
     "overrides": {
-      "eslint-plugin-react-hooks>zod": "^4.6.6"
+      "eslint-plugin-react-hooks>zod": "^4.6.6",
+      "zod": ">=4.6.6 <5"
     }
   }
 }
