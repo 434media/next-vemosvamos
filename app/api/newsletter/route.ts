@@ -17,7 +17,9 @@ export async function POST(request: Request) {
     const body = await request.json()
     const email = typeof body?.email === "string" ? body.email.trim() : ""
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Length cap first (RFC 5321 max is 254), and domain labels exclude dots so
+    // the pattern cannot backtrack polynomially (CodeQL js/polynomial-redos).
+    if (!email || email.length > 254 || !/^[^\s@]+@[^\s@.]+(?:\.[^\s@.]+)+$/.test(email)) {
       return NextResponse.json({ error: "A valid email is required" }, { status: 400 })
     }
 
