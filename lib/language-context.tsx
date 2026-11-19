@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useSyncExternalStore } from "react"
 
 type Language = "en" | "es"
 
@@ -102,20 +102,53 @@ const translations = {
   },
 }
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguage] = useState<Language>("en")
+const STORAGE_KEY = "vv-language"
+const DEFAULT_LANGUAGE: Language = "en"
 
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem("vv-language") as Language
-    if (savedLanguage && (savedLanguage === "en" || savedLanguage === "es")) {
-      setLanguage(savedLanguage)
-    }
-  }, [])
+// The saved language lives in localStorage, an external store, so it is read
+// with useSyncExternalStore: the server (and hydration) render the default,
+// then the client snapshot takes over without a setState in an effect.
+const listeners = new Set<() => void>()
+
+function subscribe(onChange: () => void) {
+  listeners.add(onChange)
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === STORAGE_KEY) onChange()
+  }
+  window.addEventListener("storage", onStorage)
+  return () => {
+    listeners.delete(onChange)
+    window.removeEventListener("storage", onStorage)
+  }
+}
+
+function getSnapshot(): Language {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    return saved === "en" || saved === "es" ? saved : DEFAULT_LANGUAGE
+  } catch {
+    return DEFAULT_LANGUAGE
+  }
+}
+
+function getServerSnapshot(): Language {
+  return DEFAULT_LANGUAGE
+}
+
+function saveLanguage(language: Language) {
+  try {
+    localStorage.setItem(STORAGE_KEY, language)
+  } catch {
+    // Storage unavailable (private mode, blocked): nothing to persist.
+  }
+  listeners.forEach((listener) => listener())
+}
+
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const language = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)
 
   const toggleLanguage = () => {
-    const newLanguage = language === "en" ? "es" : "en"
-    setLanguage(newLanguage)
-    localStorage.setItem("vv-language", newLanguage)
+    saveLanguage(language === "en" ? "es" : "en")
   }
 
   const t = (key: string): string => {
